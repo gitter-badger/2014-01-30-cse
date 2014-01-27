@@ -83,9 +83,9 @@ def update_bash_profile(extra_paths=()):
     lines = [
         '',
         '# Add paths for Software-Carpentry-installed scripts and executables',
-        'export PATH=$PATH:{}'.format(':'.join(
+        'export PATH=\"$PATH:{}\"'.format(':'.join(
             make_posix_path(path) for path in extra_paths),),
-        '',
+	'',
         '# Make nano the default editor',
         'export EDITOR=nano',
         '',
