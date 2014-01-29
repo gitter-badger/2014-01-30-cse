@@ -1,0 +1,1068 @@
+----------------------------------------
+Begin Torque Prologue (Tue Mar 12 01:51:55 2013)
+Job ID:           385328.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O2-100-opt
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=04:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub324 taub334 taub337 taub338 taub339 taub341 taub344 taub345 taub348 taub349 taub350 taub351 taub352 taub354 taub355 taub356 taub357 taub358 taub368 taub374 taub377 taub380 taub392 taub393
+End Torque Prologue
+----------------------------------------
+ argument  1 = ./U6O2-100-opt.nw
+
+
+
+============================== echo of input deck ==============================
+title "Gamma-uranium (100) adsorption"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+restart U6O2-100-crossctr
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 64 64 512
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 3
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 8 12 8
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+  tolerances 1.0e-7 1.0e-7
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:kbpp_filter    .true.
+
+## Optimization ##
+driver
+  #clear                # Deletes all restart data
+  loose               # Specify loose, default, or tight convergence
+  xyz U6O2     # Output XYZ file of geometry at each stage
+  maxiter 80
+end
+set driver:linopt 0
+set nwpw:cif_filename U6O2.opt
+set nwpw:psi_nolattice .true.
+
+#       (100) gamma-uranium surface with surface displacements:	29.7%	-15.3%	and X displacement of	1.75	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	3.44
+	lat_b	3.44
+	lat_c	22.32
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.50000	0.50000	0.72009
+	U2	0.00000	0.00000	0.66591
+	U3	0.50000	0.50000	0.57706
+	U4	0.00000	0.00000	0.50000
+	U5	0.50000	0.50000	0.41115
+	U6	0.00000	0.00000	0.35697
+	O1	0.37571	0.14805	0.81510
+	O2	0.08092	0.35304	0.78224
+end
+constraints surf
+  fix atom 1:6
+end
+set constraints surf
+task band optimize ignore
+
+# A.M.D.G.
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 6.1.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2012
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = taub393
+    program         = /home/davis68/bin/nwchem-dev
+    date            = Tue Mar 12 01:52:42 2013
+
+    compiled        = Wed_Oct_03_09:41:00_2012
+    source          = /home/davis68/nwchem/nwchem-src-2012-Aug-27/
+    nwchem branch   = Development
+    nwchem revision = 22805
+    ga revision     = 10079
+    input           = ./U6O2-100-opt.nw
+    prefix          = U6O2-100-crossctr.
+    data base       = ./perm/U6O2-100-crossctr.db
+    status          = restart
+    nproc           =      288
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =   81920001 doubles =    625.0 Mbytes
+    stack    =   81920001 doubles =    625.0 Mbytes
+    global   =  163840000 doubles =   1250.0 Mbytes (distinct from heap & stack)
+    total    =  327680002 doubles =   2500.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = ./perm
+  0 scratch   = ./scratch
+
+
+           Previous task information
+           -------------------------
+
+    Theory    = band                            
+    Operation = optimize                      
+    Status    = fail                          
+    Qmmm      = F
+    Ignore    = T
+
+
+           Geometries in the database
+           --------------------------
+
+       Name                              Natoms  Last Modified
+       --------------------------------  ------  ------------------------
+    1  geometry                               8  Sun Mar 10 07:56:02 2013  
+    2  driverinitial                          8  Sun Mar 10 07:56:02 2013  
+    3  pspwgeometry                           8  Sun Mar 10 07:59:33 2013  
+
+  The geometry named "geometry" is the default for restart
+
+
+
+           Basis sets in the database
+           --------------------------
+
+  There are no basis sets in the database
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+                          Gamma-uranium (100) adsorption
+                          ------------------------------
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.72000000     1.72000000    16.07240880
+    2 U2                  92.0000     0.00000000     0.00000000    14.86311120
+    3 U3                  92.0000     1.72000000     1.72000000    12.87997920
+    4 U4                  92.0000     0.00000000     0.00000000    11.16000000
+    5 U5                  92.0000     1.72000000     1.72000000     9.17686800
+    6 U6                  92.0000     0.00000000     0.00000000     7.96757040
+    7 O1                   8.0000     1.29244240     0.50929200    18.19303200
+    8 O2                   8.0000     0.27836480     1.21445760    17.45959680
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   3.440   0.000   0.000 >
+      a2=<   0.000   3.440   0.000 >
+      a3=<   0.000   0.000  22.320 >
+      a=       3.440 b=      3.440 c=      22.320
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   264.1
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   0.967   0.000  -0.000 >
+      b2=<  -0.000   0.967  -0.000 >
+      b3=<   0.000   0.000   0.149 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.13338  |     2.71647
+    3 U3               |   1 U1               |     6.03282  |     3.19243
+    3 U3               |   2 U2               |     5.93073  |     3.13841
+    4 U4               |   2 U2               |     6.99787  |     3.70311
+    4 U4               |   3 U3               |     5.62971  |     2.97912
+    5 U5               |   3 U3               |     6.99787  |     3.70311
+    5 U5               |   4 U4               |     5.93073  |     3.13841
+    6 U6               |   4 U4               |     6.03282  |     3.19243
+    6 U6               |   5 U5               |     5.13338  |     2.71647
+    7 O1               |   1 U1               |     4.68472  |     2.47904
+    8 O2               |   1 U1               |     3.89952  |     2.06353
+    8 O2               |   2 U2               |     5.44232  |     2.87995
+    8 O2               |   7 O1               |     2.71460  |     1.43650
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         13
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.62
+    2 U2               |   1 U1               |   7 O1               |    87.84
+    2 U2               |   1 U1               |   8 O2               |    72.65
+    3 U3               |   1 U1               |   7 O1               |   148.81
+    3 U3               |   1 U1               |   8 O2               |   132.24
+    1 U1               |   8 O2               |   7 O1               |    88.30
+    1 U1               |   2 U2               |   3 U3               |    65.62
+    1 U1               |   2 U2               |   4 U4               |   116.43
+    2 U2               |   1 U1               |   8 O2               |    72.65
+    2 U2               |   3 U3               |   4 U4               |    74.45
+    3 U3               |   2 U2               |   8 O2               |   106.60
+    4 U4               |   2 U2               |   8 O2               |   154.37
+    3 U3               |   2 U2               |   1 U1               |    65.62
+    1 U1               |   3 U3               |   4 U4               |   125.26
+    1 U1               |   3 U3               |   5 U5               |   180.00
+    2 U2               |   3 U3               |   4 U4               |    74.45
+    2 U2               |   3 U3               |   5 U5               |   129.19
+    3 U3               |   4 U4               |   5 U5               |    74.45
+    4 U4               |   3 U3               |   2 U2               |    74.45
+    2 U2               |   4 U4               |   5 U5               |   129.19
+    2 U2               |   4 U4               |   6 U6               |   180.00
+    3 U3               |   4 U4               |   5 U5               |    74.45
+    3 U3               |   4 U4               |   6 U6               |   125.26
+    4 U4               |   5 U5               |   6 U6               |    65.62
+    5 U5               |   4 U4               |   3 U3               |    74.45
+    3 U3               |   5 U5               |   6 U6               |   116.43
+    4 U4               |   5 U5               |   6 U6               |    65.62
+    6 U6               |   5 U5               |   4 U4               |    65.62
+    7 O1               |   8 O2               |   1 U1               |    88.30
+    8 O2               |   1 U1               |   2 U2               |    72.65
+    1 U1               |   8 O2               |   7 O1               |    88.30
+    2 U2               |   8 O2               |   7 O1               |   108.76
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         32
+ ==============================================================================
+
+
+
+ fixed atoms                  :   1     2     3     4
+                                  5     6
+
+
+ no springs found
+                         NWChem Constraints Module
+                         -------------------------
+ General Information
+ -------------------
+ fixed atoms                  :   1     2     3     4
+                                  5     6
+
+
+ no springs found
+ no springs found
+
+
+                           NWChem Geometry Optimization
+                           ----------------------------
+
+
+
+
+                          Gamma-uranium (100) adsorption
+
+
+ maximum gradient threshold         (gmax) =   0.004500
+ rms gradient threshold             (grms) =   0.003000
+ maximum cartesian step threshold   (xmax) =   0.018000
+ rms cartesian step threshold       (xrms) =   0.012000
+ fixed trust radius                (trust) =   0.300000
+ maximum step size to saddle      (sadstp) =   0.100000
+ energy precision                  (eprec) =   1.0D-07
+ maximum number of steps          (nptopt) =   80
+ initial hessian option           (inhess) =    0
+ line search option               (linopt) =    0
+ hessian update option            (modupd) =    1
+ saddle point option              (modsad) =    0
+ initial eigen-mode to follow     (moddir) =    0
+ initial variable to follow       (vardir) =    0
+ follow first negative mode     (firstneg) =    T
+ apply conjugacy                    (opcg) =    F
+ source of zmatrix                         =           
+
+
+          -------------------
+          Energy Minimization
+          -------------------
+
+
+ Using old Hessian from previous optimization
+
+          --------
+          Step   0
+          --------
+
+
+                         Geometry "geometry" -> "geometry"
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.72000000     1.72000000    16.07240880
+    2 U2                  92.0000     0.00000000     0.00000000    14.86311120
+    3 U3                  92.0000     1.72000000     1.72000000    12.87997920
+    4 U4                  92.0000     0.00000000     0.00000000    11.16000000
+    5 U5                  92.0000     1.72000000     1.72000000     9.17686800
+    6 U6                  92.0000     0.00000000     0.00000000     7.96757040
+    7 O1                   8.0000     1.29244240     0.50929200    18.19303200
+    8 O2                   8.0000     0.27836480     1.21445760    17.45959680
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   3.440   0.000   0.000 >
+      a2=<   0.000   3.440   0.000 >
+      a3=<   0.000   0.000  22.320 >
+      a=       3.440 b=      3.440 c=      22.320
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   264.1
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   0.967   0.000  -0.000 >
+      b2=<  -0.000   0.967  -0.000 >
+      b3=<   0.000   0.000   0.149 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Tue Mar 12 01:52:42 2013  <<<
+          ================ input data ========================
+ Error reading psi - bad unitcell
+  - Ignored if the following  parameter is set
+  - set nwpw:psi_nolattice .true.
+ Error reading psi - bad unitcell
+  - Ignored if the following  parameter is set
+  - set nwpw:psi_nolattice .true.
+ Error reading psi - bad unitcell
+  - Ignored if the following  parameter is set
+  - set nwpw:psi_nolattice .true.
+
+ input psi filename:./perm/U6O2-100-crossctr.movecs
+
+ Fixed ion positions:    1    2    3    4    5    6
+
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+      2: O     core charge: 6.0  lmax=2
+             comment    : Parameterized (Chem.Phys.Lett., vol 322, page 447) Hamman psp
+             pseudpotential type            :   0
+             highest angular component      :   2
+             local potential used           :   2
+             number of non-local projections:   4
+             cutoff =   0.700   0.700   0.700
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  6     O   :  2
+
+ number of electrons: spin up=   49.00  spin down=   47.00 (fourier space)
+ number of orbitals:  spin up=      49  spin down=      47 (fourier space)
+
+ supercell:
+      lattice:    a1=<   6.501   0.000   0.000 >
+                  a2=<   0.000   6.501   0.000 >
+                  a3=<   0.000   0.000  42.179 >
+      reciprocal: b1=<   0.967   0.000  -0.000 >
+                  b2=<  -0.000   0.967  -0.000 >
+                  b3=<   0.000   0.000   0.149 >
+
+      lattice:    a=   6.501    b=   6.501     c=  42.179
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     1782.4
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-3.34887517
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.362   0.362  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.121   0.362  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.121   0.362  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.362  -0.362  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.362   0.121  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.121   0.121  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.121  -0.121  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.362  -0.121  -0.000>
+
+ computational grids:
+      density     cutoff=180.000  fft=  64x  64x 512(   205623 waves     5711 per task)
+      wavefnc   1 cutoff= 90.000  fft=  64x  64x 512(    72794 waves     2022 per task)
+      wavefnc   2 cutoff= 90.000  fft=  64x  64x 512(    72667 waves     2018 per task)
+      wavefnc   3 cutoff= 90.000  fft=  64x  64x 512(    72667 waves     2018 per task)
+      wavefnc   4 cutoff= 90.000  fft=  64x  64x 512(    72794 waves     2022 per task)
+      wavefnc   5 cutoff= 90.000  fft=  64x  64x 512(    72667 waves     2018 per task)
+      wavefnc   6 cutoff= 90.000  fft=  64x  64x 512(    72659 waves     2018 per task)
+      wavefnc   7 cutoff= 90.000  fft=  64x  64x 512(    72659 waves     2018 per task)
+      wavefnc   8 cutoff= 90.000  fft=  64x  64x 512(    72667 waves     2018 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Tue Mar 12 01:57:09 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+      10   -0.3363310107E+03   -0.80887E+00    0.83056E+01
+     -  10 steepest descent iterations performed
+      20   -0.3393898144E+03   -0.53792E-01    0.17679E+00
+     -  10 steepest descent iterations performed
+      30   -0.3396968086E+03   -0.12614E-01    0.11083E-01
+     -  10 steepest descent iterations performed
+      40   -0.3397761586E+03   -0.38593E-02    0.38252E-02
+      50   -0.3398175905E+03   -0.15272E-02    0.18648E-02
+      60   -0.3398296611E+03   -0.11626E-02    0.27501E-03
+      70   -0.3398388363E+03   -0.66035E-03    0.17246E-03
+      80   -0.3398438171E+03   -0.38035E-03    0.89790E-04
+      90   -0.3398473722E+03   -0.35300E-03    0.85131E-04
+     100   -0.3398497986E+03   -0.18031E-03    0.63315E-04
+     110   -0.3398514343E+03   -0.15307E-03    0.52675E-04
+     120   -0.3398527212E+03   -0.10822E-03    0.50825E-04
+     130   -0.3398535861E+03   -0.78643E-04    0.44455E-04
+     140   -0.3398543239E+03   -0.63455E-04    0.54738E-04
+     150   -0.3398548744E+03   -0.53183E-04    0.51144E-04
+     160   -0.3398553485E+03   -0.42202E-04    0.62169E-04
+     170   -0.3398557251E+03   -0.33575E-04    0.58451E-04
+     180   -0.3398560372E+03   -0.30676E-04    0.59612E-04
+     190   -0.3398563116E+03   -0.24157E-04    0.64831E-04
+     200   -0.3398565474E+03   -0.22854E-04    0.66538E-04
+     210   -0.3398567590E+03   -0.19706E-04    0.70019E-04
+     220   -0.3398569410E+03   -0.16912E-04    0.65861E-04
+     230   -0.3398571067E+03   -0.16002E-04    0.67641E-04
+     240   -0.3398572475E+03   -0.12922E-04    0.58466E-04
+     250   -0.3398573697E+03   -0.11683E-04    0.51704E-04
+     260   -0.3398574776E+03   -0.10168E-04    0.46943E-04
+     270   -0.3398575694E+03   -0.87649E-05    0.40096E-04
+     280   -0.3398576511E+03   -0.75185E-05    0.37409E-04
+     290   -0.3398577218E+03   -0.68739E-05    0.33382E-04
+     300   -0.3398577872E+03   -0.63066E-05    0.34539E-04
+     310   -0.3398578470E+03   -0.56813E-05    0.35359E-04
+     320   -0.3398579019E+03   -0.53783E-05    0.36717E-04
+     330   -0.3398579533E+03   -0.50582E-05    0.39129E-04
+     340   -0.3398580030E+03   -0.49347E-05    0.43704E-04
+     350   -0.3398580520E+03   -0.49500E-05    0.49659E-04
+     -  10 steepest descent iterations performed
+     360   -0.3398581133E+03   -0.44470E-05    0.15952E-05
+     370   -0.3398581574E+03   -0.40253E-05    0.35576E-05
+     380   -0.3398581944E+03   -0.35165E-05    0.50131E-05
+     390   -0.3398582276E+03   -0.31428E-05    0.70816E-05
+     400   -0.3398582578E+03   -0.29073E-05    0.94706E-05
+     410   -0.3398582875E+03   -0.31082E-05    0.13385E-04
+     -  10 steepest descent iterations performed
+     420   -0.3398583127E+03   -0.17171E-05    0.67457E-06
+     430   -0.3398583299E+03   -0.17961E-05    0.20838E-05
+     -  10 steepest descent iterations performed
+     440   -0.3398583446E+03   -0.10017E-05    0.70804E-06
+     450   -0.3398583546E+03   -0.10180E-05    0.20850E-05
+     -  10 steepest descent iterations performed
+     460   -0.3398583671E+03   -0.97423E-06    0.67761E-06
+     470   -0.3398583765E+03   -0.96225E-06    0.23811E-05
+     480   -0.3398584300E+03   -0.58337E-05    0.12022E-03
+     -  10 steepest descent iterations performed
+     490   -0.3398584823E+03   -0.15308E-05    0.57404E-06
+     500   -0.3398584911E+03   -0.71349E-06    0.39282E-06
+     510   -0.3398584998E+03   -0.72449E-06    0.15865E-05
+     -  10 steepest descent iterations performed
+     520   -0.3398585120E+03   -0.99258E-06    0.10250E-05
+     -  10 steepest descent iterations performed
+     530   -0.3398585212E+03   -0.64025E-06    0.97272E-06
+     540   -0.3398585573E+03   -0.67535E-05    0.58280E-04
+     -  10 steepest descent iterations performed
+     550   -0.3398585961E+03   -0.85935E-06    0.21098E-06
+     560   -0.3398586022E+03   -0.59142E-06    0.52479E-06
+     570   -0.3398586309E+03   -0.34519E-05    0.31289E-04
+     -  10 steepest descent iterations performed
+     580   -0.3398586600E+03   -0.13301E-05    0.43752E-06
+     590   -0.3398586692E+03   -0.55502E-06    0.77621E-06
+     600   -0.3398586835E+03   -0.23119E-05    0.70955E-05
+     -  10 steepest descent iterations performed
+     610   -0.3398587018E+03   -0.12064E-05    0.49627E-06
+     620   -0.3398587119E+03   -0.81423E-06    0.18197E-05
+     630   -0.3398587342E+03   -0.28504E-05    0.17822E-04
+     -  10 steepest descent iterations performed
+     640   -0.3398587617E+03   -0.13067E-05    0.46829E-06
+     650   -0.3398587723E+03   -0.69758E-06    0.10572E-05
+     660   -0.3398587853E+03   -0.20715E-05    0.54537E-05
+     -  10 steepest descent iterations performed
+     670   -0.3398588038E+03   -0.13061E-05    0.56834E-06
+     680   -0.3398588153E+03   -0.10018E-05    0.22446E-05
+     690   -0.3398588372E+03   -0.26541E-05    0.15688E-04
+     -  10 steepest descent iterations performed
+     700   -0.3398588658E+03   -0.13596E-05    0.51948E-06
+     710   -0.3398588772E+03   -0.82630E-06    0.11602E-05
+     720   -0.3398588906E+03   -0.20014E-05    0.51084E-05
+     -  10 steepest descent iterations performed
+     730   -0.3398589100E+03   -0.13761E-05    0.64153E-06
+     740   -0.3398589225E+03   -0.12002E-05    0.24291E-05
+     750   -0.3398589453E+03   -0.25903E-05    0.15172E-04
+     -  10 steepest descent iterations performed
+     760   -0.3398589756E+03   -0.14289E-05    0.58297E-06
+     770   -0.3398589879E+03   -0.96553E-06    0.12544E-05
+     780   -0.3398590019E+03   -0.19931E-05    0.49796E-05
+     -  10 steepest descent iterations performed
+     790   -0.3398590227E+03   -0.14508E-05    0.70813E-06
+     800   -0.3398590363E+03   -0.14159E-05    0.26431E-05
+     810   -0.3398590602E+03   -0.25836E-05    0.14883E-04
+     -  10 steepest descent iterations performed
+     820   -0.3398590926E+03   -0.15056E-05    0.64841E-06
+     830   -0.3398591059E+03   -0.11142E-05    0.13629E-05
+     840   -0.3398591206E+03   -0.20193E-05    0.48966E-05
+     -  10 steepest descent iterations performed
+     850   -0.3398591428E+03   -0.15391E-05    0.76774E-06
+     860   -0.3398591577E+03   -0.16218E-05    0.28781E-05
+     -  10 steepest descent iterations performed
+     870   -0.3398591780E+03   -0.18626E-05    0.19039E-05
+     -  10 steepest descent iterations performed
+     880   -0.3398591925E+03   -0.14533E-05    0.14584E-05
+     890   -0.3398592369E+03   -0.66894E-05    0.47706E-04
+     -  10 steepest descent iterations performed
+     900   -0.3398592846E+03   -0.17476E-05    0.49073E-06
+     910   -0.3398592967E+03   -0.10572E-05    0.91373E-06
+     920   -0.3398593149E+03   -0.11938E-05    0.54113E-05
+     -  10 steepest descent iterations performed
+     930   -0.3398593397E+03   -0.12680E-05    0.11440E-05
+     -  10 steepest descent iterations performed
+     940   -0.3398593532E+03   -0.99709E-06    0.12735E-05
+     950   -0.3398596158E+03   -0.20699E-04    0.14650E-02
+     -  10 steepest descent iterations performed
+     960   -0.3398598038E+03   -0.22098E-05    0.45958E-06
+     970   -0.3398598232E+03   -0.21240E-05    0.53311E-06
+     980   -0.3398598333E+03   -0.16272E-05    0.70363E-06
+     990   -0.3398598700E+03   -0.82436E-05    0.26280E-04
+     -  10 steepest descent iterations performed
+    1000   -0.3398598993E+03   -0.61591E-06    0.29202E-06
+    1010   -0.3398599140E+03   -0.14164E-05    0.28572E-05
+     -  10 steepest descent iterations performed
+    1020   -0.3398599265E+03   -0.10256E-05    0.58722E-06
+    1030   -0.3398599400E+03   -0.20215E-05    0.38126E-05
+     -  10 steepest descent iterations performed
+    1040   -0.3398599552E+03   -0.11318E-05    0.59122E-06
+    1050   -0.3398599632E+03   -0.70883E-06    0.11092E-05
+    1060   -0.3398599883E+03   -0.30951E-05    0.20080E-04
+     -  10 steepest descent iterations performed
+    1070   -0.3398600146E+03   -0.81035E-06    0.26950E-06
+    1080   -0.3398600218E+03   -0.82027E-06    0.48411E-06
+     -  10 steepest descent iterations performed
+    1090   -0.3398600301E+03   -0.91207E-06    0.96390E-06
+     -  10 steepest descent iterations performed
+    1100   -0.3398600373E+03   -0.38805E-06    0.35198E-06
+    1110   -0.3398600592E+03   -0.40285E-05    0.19308E-04
+     -  10 steepest descent iterations performed
+    1120   -0.3398600810E+03   -0.52646E-06    0.16885E-06
+    1130   -0.3398600853E+03   -0.48484E-06    0.40441E-06
+    1140   -0.3398601023E+03   -0.14281E-05    0.12234E-04
+     -  10 steepest descent iterations performed
+    1150   -0.3398601198E+03   -0.64195E-06    0.37429E-06
+    1160   -0.3398601238E+03   -0.34332E-06    0.29681E-06
+    1170   -0.3398601327E+03   -0.11034E-05    0.38723E-05
+     -  10 steepest descent iterations performed
+    1180   -0.3398601432E+03   -0.41649E-06    0.19946E-06
+    1190   -0.3398601481E+03   -0.74134E-06    0.77606E-06
+     -  10 steepest descent iterations performed
+    1200   -0.3398601543E+03   -0.51603E-06    0.43777E-06
+    1210   -0.3398601615E+03   -0.71528E-06    0.25080E-05
+     -  10 steepest descent iterations performed
+    1220   -0.3398601706E+03   -0.53523E-06    0.30359E-06
+    1230   -0.3398601743E+03   -0.45865E-06    0.47884E-06
+    1240   -0.3398601863E+03   -0.10638E-05    0.89799E-05
+     -  10 steepest descent iterations performed
+    1250   -0.3398601996E+03   -0.33531E-06    0.19962E-06
+    1260   -0.3398602038E+03   -0.40789E-06    0.42369E-06
+     -  10 steepest descent iterations performed
+    1270   -0.3398602098E+03   -0.69068E-06    0.10081E-05
+     -  10 steepest descent iterations performed
+    1280   -0.3398602150E+03   -0.35830E-06    0.38430E-06
+    1290   -0.3398602222E+03   -0.89649E-06    0.32503E-05
+     -  10 steepest descent iterations performed
+    1300   -0.3398602308E+03   -0.49452E-06    0.27486E-06
+    1310   -0.3398602338E+03   -0.37018E-06    0.36443E-06
+    1320   -0.3398602429E+03   -0.75605E-06    0.62630E-05
+     -  10 steepest descent iterations performed
+    1330   -0.3398602534E+03   -0.29221E-06    0.17417E-06
+    1340   -0.3398602569E+03   -0.36671E-06    0.40634E-06
+     -  10 steepest descent iterations performed
+    1350   -0.3398602618E+03   -0.59669E-06    0.69536E-06
+     -  10 steepest descent iterations performed
+    1360   -0.3398602660E+03   -0.32109E-06    0.33011E-06
+    1370   -0.3398602736E+03   -0.83452E-06    0.47059E-05
+     -  10 steepest descent iterations performed
+    1380   -0.3398602823E+03   -0.34634E-06    0.19584E-06
+    1390   -0.3398602849E+03   -0.35862E-06    0.29705E-06
+     -  10 steepest descent iterations performed
+    1400   -0.3398602890E+03   -0.41309E-06    0.43954E-06
+     -  10 steepest descent iterations performed
+    1410   -0.3398602928E+03   -0.36907E-06    0.36430E-06
+    1420   -0.3398603007E+03   -0.10609E-05    0.57875E-05
+     -  10 steepest descent iterations performed
+    1430   -0.3398603101E+03   -0.24135E-06    0.15175E-06
+    1440   -0.3398603121E+03   -0.23183E-06    0.23017E-06
+    1450   -0.3398603460E+03   -0.21172E-05    0.11879E-03
+     -  10 steepest descent iterations performed
+    1460   -0.3398603785E+03   -0.10576E-05    0.28251E-06
+    1470   -0.3398603815E+03   -0.23902E-06    0.75231E-07
+    1480   -0.3398603844E+03   -0.30400E-06    0.49166E-06
+     -  10 steepest descent iterations performed
+    1490   -0.3398603884E+03   -0.23477E-06    0.26176E-06
+    1500   -0.3398603950E+03   -0.57375E-06    0.37783E-05
+     -  10 steepest descent iterations performed
+    1510   -0.3398604026E+03   -0.40119E-06    0.20413E-06
+    1520   -0.3398604053E+03   -0.25201E-06    0.30835E-06
+    1530   -0.3398604157E+03   -0.16669E-05    0.10456E-04
+     -  10 steepest descent iterations performed
+    1540   -0.3398604274E+03   -0.29205E-06    0.15386E-06
+    1550   -0.3398604306E+03   -0.27741E-06    0.29314E-06
+    1560   -0.3398604359E+03   -0.55903E-06    0.23242E-05
+     -  10 steepest descent iterations performed
+    1570   -0.3398604428E+03   -0.41176E-06    0.19748E-06
+    1580   -0.3398604460E+03   -0.29427E-06    0.39029E-06
+    1590   -0.3398604545E+03   -0.98642E-06    0.62779E-05
+     -  10 steepest descent iterations performed
+    1600   -0.3398604646E+03   -0.37749E-06    0.15591E-06
+    1610   -0.3398604682E+03   -0.32826E-06    0.34990E-06
+    1620   -0.3398604729E+03   -0.58330E-06    0.15889E-05
+     -  10 steepest descent iterations performed
+    1630   -0.3398604796E+03   -0.46608E-06    0.20873E-06
+    1640   -0.3398604833E+03   -0.34111E-06    0.54532E-06
+    1650   -0.3398604914E+03   -0.93467E-06    0.51671E-05
+     -  10 steepest descent iterations performed
+    1660   -0.3398605018E+03   -0.41962E-06    0.15740E-06
+    1670   -0.3398605059E+03   -0.36022E-06    0.42271E-06
+    1680   -0.3398605107E+03   -0.58294E-06    0.15053E-05
+     -  10 steepest descent iterations performed
+    1690   -0.3398605180E+03   -0.51810E-06    0.22387E-06
+    1700   -0.3398605223E+03   -0.39001E-06    0.60827E-06
+    1710   -0.3398605310E+03   -0.10152E-05    0.53023E-05
+     -  10 steepest descent iterations performed
+    1720   -0.3398605425E+03   -0.46861E-06    0.16820E-06
+    1730   -0.3398605472E+03   -0.40265E-06    0.46876E-06
+    1740   -0.3398605525E+03   -0.63284E-06    0.15847E-05
+     -  10 steepest descent iterations performed
+    1750   -0.3398605608E+03   -0.59356E-06    0.24690E-06
+    1760   -0.3398605656E+03   -0.45862E-06    0.67876E-06
+    1770   -0.3398605755E+03   -0.11350E-05    0.56666E-05
+     -  10 steepest descent iterations performed
+    1780   -0.3398605885E+03   -0.53130E-06    0.18688E-06
+    1790   -0.3398605940E+03   -0.46522E-06    0.53058E-06
+    1800   -0.3398606001E+03   -0.73235E-06    0.17239E-05
+     -  10 steepest descent iterations performed
+    1810   -0.3398606097E+03   -0.67842E-06    0.27755E-06
+    1820   -0.3398606154E+03   -0.54312E-06    0.77432E-06
+    1830   -0.3398606268E+03   -0.13229E-05    0.61878E-05
+     -  10 steepest descent iterations performed
+    1840   -0.3398606420E+03   -0.61063E-06    0.21167E-06
+    1850   -0.3398606485E+03   -0.55059E-06    0.61226E-06
+    1860   -0.3398606556E+03   -0.85692E-06    0.19113E-05
+     -  10 steepest descent iterations performed
+    1870   -0.3398606668E+03   -0.78365E-06    0.31700E-06
+    1880   -0.3398606736E+03   -0.65063E-06    0.89117E-06
+    1890   -0.3398606868E+03   -0.15388E-05    0.67684E-05
+     -  10 steepest descent iterations performed
+    1900   -0.3398607046E+03   -0.70877E-06    0.24199E-06
+    1910   -0.3398607123E+03   -0.65359E-06    0.70446E-06
+    1920   -0.3398607205E+03   -0.98466E-06    0.21009E-05
+     -  10 steepest descent iterations performed
+    1930   -0.3398607335E+03   -0.89973E-06    0.36003E-06
+    1940   -0.3398607414E+03   -0.76443E-06    0.10110E-05
+    1950   -0.3398607564E+03   -0.17207E-05    0.72424E-05
+     -  10 steepest descent iterations performed
+    1960   -0.3398607764E+03   -0.80074E-06    0.26945E-06
+    1970   -0.3398607851E+03   -0.74133E-06    0.77752E-06
+    1980   -0.3398607943E+03   -0.10724E-05    0.22090E-05
+     -  10 steepest descent iterations performed
+    1990   -0.3398608086E+03   -0.98812E-06    0.39260E-06
+    2000   -0.3398608172E+03   -0.84415E-06    0.10892E-05
+    2010   -0.3398608332E+03   -0.17825E-05    0.72615E-05
+     -  10 steepest descent iterations performed
+    2020   -0.3398608542E+03   -0.84338E-06    0.28197E-06
+    2030   -0.3398608633E+03   -0.77286E-06    0.79788E-06
+    2040   -0.3398608726E+03   -0.10691E-05    0.21451E-05
+     -  10 steepest descent iterations performed
+    2050   -0.3398608870E+03   -0.99648E-06    0.39669E-06
+    2060   -0.3398608957E+03   -0.84691E-06    0.10822E-05
+    2070   -0.3398609111E+03   -0.16678E-05    0.66598E-05
+     -  10 steepest descent iterations performed
+    2080   -0.3398609310E+03   -0.80425E-06    0.26996E-06
+    2090   -0.3398609396E+03   -0.72374E-06    0.74567E-06
+    2100   -0.3398609480E+03   -0.95886E-06    0.18970E-05
+     -  10 steepest descent iterations performed
+    2110   -0.3398609611E+03   -0.90376E-06    0.36529E-06
+    2120   -0.3398609690E+03   -0.76301E-06    0.98122E-06
+    2130   -0.3398609824E+03   -0.14068E-05    0.56002E-05
+     -  10 steepest descent iterations performed
+    2140   -0.3398609993E+03   -0.69207E-06    0.23631E-06
+    2150   -0.3398610066E+03   -0.61306E-06    0.64182E-06
+    2160   -0.3398610137E+03   -0.78302E-06    0.15602E-05
+     -  10 steepest descent iterations performed
+    2170   -0.3398610244E+03   -0.74832E-06    0.31011E-06
+    2180   -0.3398610309E+03   -0.62701E-06    0.82437E-06
+    2190   -0.3398610416E+03   -0.11046E-05    0.44582E-05
+     -  10 steepest descent iterations performed
+    2200   -0.3398610550E+03   -0.55142E-06    0.19367E-06
+    2210   -0.3398610608E+03   -0.48439E-06    0.52191E-06
+    2220   -0.3398610663E+03   -0.60516E-06    0.12316E-05
+     -  10 steepest descent iterations performed
+    2230   -0.3398610747E+03   -0.58410E-06    0.24975E-06
+    2240   -0.3398610797E+03   -0.48826E-06    0.66249E-06
+    2250   -0.3398610879E+03   -0.83998E-06    0.34833E-05
+     -  10 steepest descent iterations performed
+    2260   -0.3398610982E+03   -0.42529E-06    0.15401E-06
+    2270   -0.3398611026E+03   -0.37334E-06    0.41554E-06
+    2280   -0.3398611068E+03   -0.46159E-06    0.96811E-06
+     -  10 steepest descent iterations performed
+    2290   -0.3398611132E+03   -0.44997E-06    0.19755E-06
+    2300   -0.3398611171E+03   -0.37737E-06    0.52642E-06
+    2310   -0.3398611234E+03   -0.64498E-06    0.27509E-05
+     -  10 steepest descent iterations performed
+    2320   -0.3398611313E+03   -0.33098E-06    0.12263E-06
+    2330   -0.3398611348E+03   -0.29186E-06    0.33292E-06
+    2340   -0.3398611381E+03   -0.36098E-06    0.77488E-06
+     -  10 steepest descent iterations performed
+    2350   -0.3398611431E+03   -0.35478E-06    0.15766E-06
+    2360   -0.3398611462E+03   -0.29943E-06    0.42338E-06
+    2370   -0.3398611512E+03   -0.51417E-06    0.22285E-05
+     -  10 steepest descent iterations performed
+    2380   -0.3398611575E+03   -0.26748E-06    0.99825E-07
+    2390   -0.3398611603E+03   -0.23751E-06    0.27290E-06
+    2400   -0.3398611630E+03   -0.29494E-06    0.63742E-06
+     -  10 steepest descent iterations performed
+    2410   -0.3398611671E+03   -0.29228E-06    0.12903E-06
+    2420   -0.3398611696E+03   -0.24836E-06    0.34912E-06
+    2430   -0.3398611738E+03   -0.42985E-06    0.18575E-05
+     -  10 steepest descent iterations performed
+    2440   -0.3398611791E+03   -0.22674E-06    0.83812E-07
+    2450   -0.3398611815E+03   -0.20266E-06    0.23018E-06
+    2460   -0.3398611837E+03   -0.25259E-06    0.53881E-06
+     -  10 steepest descent iterations performed
+    2470   -0.3398611873E+03   -0.25252E-06    0.10890E-06
+    2480   -0.3398611895E+03   -0.21576E-06    0.29626E-06
+    2490   -0.3398611931E+03   -0.37573E-06    0.15886E-05
+     -  10 steepest descent iterations performed
+    2500   -0.3398611978E+03   -0.20101E-06    0.72589E-07
+    2510   -0.3398611999E+03   -0.18055E-06    0.19962E-06
+    2520   -0.3398612019E+03   -0.22528E-06    0.46644E-06
+     -  10 steepest descent iterations performed
+    2530   -0.3398612051E+03   -0.22741E-06    0.94667E-07
+     -  10 steepest descent iterations performed
+    2540   -0.3398612068E+03   -0.13706E-06    0.12367E-06
+    2550   -0.3398612231E+03   -0.33727E-05    0.40399E-04
+     -  10 steepest descent iterations performed
+    2560   -0.3398612379E+03   -0.23876E-06    0.44431E-07
+    2570   -0.3398612393E+03   -0.12942E-06    0.63566E-07
+=>> PBS: job killed: walltime 14410 exceeded limit 14400
+Last System Error Message from Task 1:: Numerical result out of range
+Last System Error Message from Task 2:: Numerical result out of range
+Last System Error Message from Task 3:: Numerical result out of range
+Last System Error Message from Task 4:: Numerical result out of range
+0:Terminate signal was sent, status=: 15
+(rank:0 hostname:taub393 pid:27275):ARMCI DASSERT fail. ../../ga-5-1/armci/src/common/signaltrap.c:SigTermHandler():472 cond:0
+Last System Error Message from Task 0:: Numerical result out of range
+Last System Error Message from Task 5:: Numerical result out of range
+Last System Error Message from Task 6:: Numerical result out of range
+Last System Error Message from Task 7:: Numerical result out of range
+Last System Error Message from Task 8:: Numerical result out of range
+Last System Error Message from Task 9:: Numerical result out of range
+Last System Error Message from Task 10:: Numerical result out of range
+Last System Error Message from Task 11:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 1
+application called MPI_Abort(comm=0x84000003, 15) - process 4
+application called MPI_Abort(comm=0x84000003, 15) - process 5
+application called MPI_Abort(comm=0x84000005, 15) - process 0
+application called MPI_Abort(comm=0x84000003, 15) - process 6
+application called MPI_Abort(comm=0x84000003, 15) - process 9
+application called MPI_Abort(comm=0x84000003, 15) - process 8
+application called MPI_Abort(comm=0x84000003, 15) - process 7
+application called MPI_Abort(comm=0x84000003, 15) - process 3
+application called MPI_Abort(comm=0x84000003, 15) - process 11
+application called MPI_Abort(comm=0x84000003, 15) - process 2
+application called MPI_Abort(comm=0x84000003, 15) - process 10
+Last System Error Message from Task 12:: Numerical result out of range
+Last System Error Message from Task 24:: Numerical result out of range
+Last System Error Message from Task 36:: Numerical result out of range
+Last System Error Message from Task 48:: Numerical result out of range
+Last System Error Message from Task 60:: Numerical result out of range
+Last System Error Message from Task 72:: Numerical result out of range
+application called MPI_Abort(comm=0x84000005, 15) - process 12
+application called MPI_Abort(comm=0x84000005, 15) - process 24
+application called MPI_Abort(comm=0x84000005, 15) - process 36
+application called MPI_Abort(comm=0x84000005, 15) - process 48
+application called MPI_Abort(comm=0x84000005, 15) - process 60
+application called MPI_Abort(comm=0x84000005, 15) - process 72
+Last System Error Message from Task 37:: Numerical result out of range
+Last System Error Message from Task 73:: Numerical result out of range
+Last System Error Message from Task 25:: Numerical result out of range
+Last System Error Message from Task 61:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 37
+Last System Error Message from Task 13:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 73
+application called MPI_Abort(comm=0x84000003, 15) - process 25
+Last System Error Message from Task 49:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 61
+application called MPI_Abort(comm=0x84000003, 15) - process 13
+application called MPI_Abort(comm=0x84000003, 15) - process 49
+Last System Error Message from Task 74:: Numerical result out of range
+Last System Error Message from Task 38:: Numerical result out of range
+Last System Error Message from Task 26:: Numerical result out of range
+Last System Error Message from Task 62:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 74
+application called MPI_Abort(comm=0x84000003, 15) - process 38
+application called MPI_Abort(comm=0x84000003, 15) - process 26
+application called MPI_Abort(comm=0x84000003, 15) - process 62
+Last System Error Message from Task 14:: Numerical result out of range
+Last System Error Message from Task 50:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 14
+application called MPI_Abort(comm=0x84000003, 15) - process 50
+Last System Error Message from Task 39:: Numerical result out of range
+Last System Error Message from Task 27:: Numerical result out of range
+Last System Error Message from Task 75:: Numerical result out of range
+Last System Error Message from Task 63:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 39
+application called MPI_Abort(comm=0x84000003, 15) - process 27
+application called MPI_Abort(comm=0x84000003, 15) - process 75
+application called MPI_Abort(comm=0x84000003, 15) - process 63
+Last System Error Message from Task 15:: Numerical result out of range
+Last System Error Message from Task 51:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 15
+application called MPI_Abort(comm=0x84000003, 15) - process 51
+Last System Error Message from Task 40:: Numerical result out of range
+Last System Error Message from Task 76:: Numerical result out of range
+Last System Error Message from Task 28:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 40
+Last System Error Message from Task 64:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 76
+application called MPI_Abort(comm=0x84000003, 15) - process 28
+application called MPI_Abort(comm=0x84000003, 15) - process 64
+Last System Error Message from Task 16:: Numerical result out of range
+Last System Error Message from Task 52:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 16
+application called MPI_Abort(comm=0x84000003, 15) - process 52
+Last System Error Message from Task 41:: Numerical result out of range
+Last System Error Message from Task 77:: Numerical result out of range
+Last System Error Message from Task 29:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 41
+application called MPI_Abort(comm=0x84000003, 15) - process 77
+Last System Error Message from Task 65:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 29
+application called MPI_Abort(comm=0x84000003, 15) - process 65
+Last System Error Message from Task 17:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 17
+Last System Error Message from Task 53:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 53
+Last System Error Message from Task 42:: Numerical result out of range
+Last System Error Message from Task 78:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 42
+Last System Error Message from Task 30:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 78
+Last System Error Message from Task 66:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 30
+Last System Error Message from Task 18:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 66
+application called MPI_Abort(comm=0x84000003, 15) - process 18
+Last System Error Message from Task 54:: Numerical result out of range
+Last System Error Message from Task 43:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 54
+Last System Error Message from Task 79:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 43
+application called MPI_Abort(comm=0x84000003, 15) - process 79
+Last System Error Message from Task 31:: Numerical result out of range
+Last System Error Message from Task 67:: Numerical result out of range
+Last System Error Message from Task 19:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 31
+application called MPI_Abort(comm=0x84000003, 15) - process 67
+application called MPI_Abort(comm=0x84000003, 15) - process 19
+Last System Error Message from Task 55:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 55
+Last System Error Message from Task 44:: Numerical result out of range
+Last System Error Message from Task 80:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 44
+application called MPI_Abort(comm=0x84000003, 15) - process 80
+Last System Error Message from Task 20:: Numerical result out of range
+Last System Error Message from Task 32:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 20
+Last System Error Message from Task 68:: Numerical result out of range
+Last System Error Message from Task 56:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 32
+application called MPI_Abort(comm=0x84000003, 15) - process 56
+application called MPI_Abort(comm=0x84000003, 15) - process 68
+Last System Error Message from Task 45:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 45
+Last System Error Message from Task 21:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 21
+Last System Error Message from Task 33:: Numerical result out of range
+Last System Error Message from Task 57:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 33
+Last System Error Message from Task 69:: Numerical result out of range
+Last System Error Message from Task 46:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 57
+application called MPI_Abort(comm=0x84000003, 15) - process 69
+application called MPI_Abort(comm=0x84000003, 15) - process 46
+Last System Error Message from Task 22:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 22
+Last System Error Message from Task 58:: Numerical result out of range
+Last System Error Message from Task 34:: Numerical result out of range
+Last System Error Message from Task 47:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 58
+Last System Error Message from Task 70:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 34
+application called MPI_Abort(comm=0x84000003, 15) - process 47
+application called MPI_Abort(comm=0x84000003, 15) - process 70
+Last System Error Message from Task 23:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 23
+Last System Error Message from Task 59:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 59
+Last System Error Message from Task 35:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 35
+Last System Error Message from Task 71:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 71
+----------------------------------------
+Begin Torque Epilogue (Tue Mar 12 05:52:12 2013)
+Job ID:           385328.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O2-100-opt
+Session:          27207
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=04:00:00
+Resources:        cput=1146:48:21,mem=94432968kb,vmem=587368328kb,walltime=04:00:10
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub324 taub334 taub337 taub338 taub339 taub341 taub344 taub345 taub348 taub349 taub350 taub351 taub352 taub354 taub355 taub356 taub357 taub358 taub368 taub374 taub377 taub380 taub392 taub393
+End Torque Epilogue
+----------------------------------------

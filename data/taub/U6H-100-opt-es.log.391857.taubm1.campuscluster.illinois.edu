@@ -1,0 +1,50 @@
+----------------------------------------
+Begin Torque Prologue (Tue Mar 19 14:59:20 2013)
+Job ID:           391857.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6H-100-opt-es
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=06:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub386 taub387 taub388 taub390 taub391 taub429 taub430 taub431 taub434 taub438 taub452 taub460 taub464 taub465 taub467 taub468 taub469 taub470 taub471 taub472 taub473 taub475 taub479 taub502
+End Torque Prologue
+----------------------------------------
+Last System Error Message from Task 1:: Numerical result out of range
+Last System Error Message from Task 2:: Numerical result out of range
+Last System Error Message from Task 3:: Numerical result out of range
+Last System Error Message from Task 0:: Numerical result out of range
+Last System Error Message from Task 4:: Numerical result out of range
+Last System Error Message from Task 5:: Numerical result out of range
+Last System Error Message from Task 6:: Numerical result out of range
+Last System Error Message from Task 7:: Numerical result out of range
+Last System Error Message from Task 8:: Numerical result out of range
+Last System Error Message from Task 9:: Numerical result out of range
+Last System Error Message from Task 10:: Numerical result out of range
+Last System Error Message from Task 11:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 2
+application called MPI_Abort(comm=0x84000003, 15) - process 1
+application called MPI_Abort(comm=0x84000003, 15) - process 5
+application called MPI_Abort(comm=0x84000003, 15) - process 3
+application called MPI_Abort(comm=0x84000003, 15) - process 7
+application called MPI_Abort(comm=0x84000003, 15) - process 4
+application called MPI_Abort(comm=0x84000003, 15) - process 9
+application called MPI_Abort(comm=0x84000005, 15) - process 0
+application called MPI_Abort(comm=0x84000003, 15) - process 11
+application called MPI_Abort(comm=0x84000003, 15) - process 8
+application called MPI_Abort(comm=0x84000003, 15) - process 6
+application called MPI_Abort(comm=0x84000003, 15) - process 10
+----------------------------------------
+Begin Torque Epilogue (Tue Mar 19 20:59:27 2013)
+Job ID:           391857.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6H-100-opt-es
+Session:          16126
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=06:00:00
+Resources:        cput=1724:28:25,mem=310293776kb,vmem=666451456kb,walltime=06:00:07
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub386 taub387 taub388 taub390 taub391 taub429 taub430 taub431 taub434 taub438 taub452 taub460 taub464 taub465 taub467 taub468 taub469 taub470 taub471 taub472 taub473 taub475 taub479 taub502
+End Torque Epilogue
+----------------------------------------

@@ -1,0 +1,27 @@
+----------------------------------------
+Begin Torque Prologue (Tue Apr  2 23:16:01 2013)
+Job ID:           421672.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O2-100-opt
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=24:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub096 taub235 taub259 taub260 taub261 taub262 taub264 taub265 taub266 taub267 taub279 taub280 taub281 taub282 taub287 taub400 taub402 taub403 taub404 taub405 taub406 taub409 taub410 taub413
+End Torque Prologue
+----------------------------------------
+mkdir: cannot create directory `/home/davis68/def-gamma-ads//U6O2-100-opt': File exists
+----------------------------------------
+Begin Torque Epilogue (Wed Apr  3 11:42:08 2013)
+Job ID:           421672.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O2-100-opt
+Session:          9405
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=24:00:00
+Resources:        cput=3569:41:45,mem=280174636kb,vmem=657068140kb,walltime=12:26:02
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub096 taub235 taub259 taub260 taub261 taub262 taub264 taub265 taub266 taub267 taub279 taub280 taub281 taub282 taub287 taub400 taub402 taub403 taub404 taub405 taub406 taub409 taub410 taub413
+End Torque Epilogue
+----------------------------------------

@@ -1,0 +1,166 @@
+title "Gamma-uranium (211) adsorption"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+start U6H-211-top
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 36 48 320
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 2
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 10 10 12
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:cif_filename U6-pbe96.opt
+
+#       (211) gamma-uranium surface with surface displacements: 43.40%  -18.50% and H displacement of   0.250   Å
+geometry        center  noautosym       noautoz print
+        system  crystal
+        lat_a   2.97913
+        lat_b   4.86259
+        lat_c   23.42762
+        alpha   90.0d0
+        beta    90.0d0
+        gamma   90.0d0
+        end
+        U1      0.66667 0.50000 0.66494
+        U2      0.33333 0.00000 0.63100
+        U3      0.00000 0.50000 0.55996
+        U4      0.66667 0.00000 0.50000
+        U5      0.33333 0.50000 0.42895
+        U6      0.00000 0.00000 0.39502
+        H1      0.66667 0.50000 0.67561
+end
+#task band energy
+
+nwpw
+  simulation_cell
+    ngrid 60 96 480
+  end
+end
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	2.250	Å
+geometry	center	noautosym	noautoz	print	
+	system	crystal			
+	lat_a	2.97913			
+	lat_b	4.86259			
+	lat_c	23.42762			
+	alpha	90.0d0			
+	beta	90.0d0			
+	gamma	90.0d0			
+	end				
+	U1	0.66667	0.50000	0.66494	
+	U2	0.33333	0.00000	0.63100	
+	U3	0.00000	0.50000	0.55996	
+	U4	0.66667	0.00000	0.50000	
+	U5	0.33333	0.50000	0.42895	
+	U6	0.00000	0.00000	0.39502	
+	H1	0.66667	0.50000	0.76098	
+end					
+task band energy					
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	2.500	Å
+geometry	center	noautosym	noautoz	print	
+	system	crystal			
+	lat_a	2.97913			
+	lat_b	4.86259			
+	lat_c	23.42762			
+	alpha	90.0d0			
+	beta	90.0d0			
+	gamma	90.0d0			
+	end				
+	U1	0.66667	0.50000	0.66494	
+	U2	0.33333	0.00000	0.63100	
+	U3	0.00000	0.50000	0.55996	
+	U4	0.66667	0.00000	0.50000	
+	U5	0.33333	0.50000	0.42895	
+	U6	0.00000	0.00000	0.39502	
+	H1	0.66667	0.50000	0.77165	
+end					
+task band energy					
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.000	Å
+geometry	center	noautosym	noautoz	print	
+	system	crystal			
+	lat_a	2.97913			
+	lat_b	4.86259			
+	lat_c	23.42762			
+	alpha	90.0d0			
+	beta	90.0d0			
+	gamma	90.0d0			
+	end				
+	U1	0.66667	0.50000	0.66494	
+	U2	0.33333	0.00000	0.63100	
+	U3	0.00000	0.50000	0.55996	
+	U4	0.66667	0.00000	0.50000	
+	U5	0.33333	0.50000	0.42895	
+	U6	0.00000	0.00000	0.39502	
+	H1	0.83333	0.00000	0.70762	
+end					
+task band energy					
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.250	Å
+geometry	center	noautosym	noautoz	print	
+	system	crystal			
+	lat_a	2.97913			
+	lat_b	4.86259			
+	lat_c	23.42762			
+	alpha	90.0d0			
+	beta	90.0d0			
+	gamma	90.0d0			
+	end				
+	U1	0.66667	0.50000	0.66494	
+	U2	0.33333	0.00000	0.63100	
+	U3	0.00000	0.50000	0.55996	
+	U4	0.66667	0.00000	0.50000	
+	U5	0.33333	0.50000	0.42895	
+	U6	0.00000	0.00000	0.39502	
+	H1	0.83333	0.00000	0.71829	
+end					
+task band energy					
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.500	Å
+geometry	center	noautosym	noautoz	print	
+	system	crystal			
+	lat_a	2.97913			
+	lat_b	4.86259			
+	lat_c	23.42762			
+	alpha	90.0d0			
+	beta	90.0d0			
+	gamma	90.0d0			
+	end				
+	U1	0.66667	0.50000	0.66494	
+	U2	0.33333	0.00000	0.63100	
+	U3	0.00000	0.50000	0.55996	
+	U4	0.66667	0.00000	0.50000	
+	U5	0.33333	0.50000	0.42895	
+	U6	0.00000	0.00000	0.39502	
+	H1	0.83333	0.00000	0.72896	
+end					
+task band energy					
+
+# A.M.D.G.

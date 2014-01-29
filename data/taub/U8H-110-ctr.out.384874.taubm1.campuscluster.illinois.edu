@@ -1,0 +1,2578 @@
+----------------------------------------
+Begin Torque Prologue (Sat Mar  9 22:50:35 2013)
+Job ID:           384874.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8H-110-ctr
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=12:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub092 taub093 taub094 taub095 taub243 taub247 taub248 taub268 taub297 taub310 taub320 taub322 taub381 taub397 taub399 taub403 taub428 taub432 taub435 taub471 taub476 taub477 taub481 taub489
+End Torque Prologue
+----------------------------------------
+ argument  1 = ./U8H-110-ctr.nw
+
+
+
+============================== echo of input deck ==============================
+title "Gamma-uranium (110) adsorption"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+start U8H-110-ctr
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 36 48 360
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 2
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 8 12 12
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:cif_filename U6-pbe96.opt
+
+#       (110) gamma-uranium surface with surface displacements:	15.30%	and X displacement of	-1.000	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	3.440
+	lat_b	4.865
+	lat_c	26.595
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.00000	0.00000	0.66893
+	U2	0.50000	0.50000	0.66893
+	U3	0.00000	0.50000	0.59146
+	U4	0.50000	0.00000	0.59146
+	U5	0.00000	0.00000	0.50000
+	U6	0.50000	0.50000	0.50000
+	U7	0.00000	0.50000	0.42253
+	U8	0.50000	0.00000	0.42253
+	ctr	0.50000	0.00000	0.63133
+end
+#task band energy
+
+#nwpw
+#  simulation_cell
+#    ngrid 64 72 360 #64 92 512
+#  end
+#end
+
+#       (110) gamma-uranium surface with surface displacements:	15.30%	and X displacement of	1.250	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	3.440
+	lat_b	4.865
+	lat_c	26.595
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.00000	0.00000	0.66893
+	U2	0.50000	0.50000	0.66893
+	U3	0.00000	0.50000	0.59146
+	U4	0.50000	0.00000	0.59146
+	U5	0.00000	0.00000	0.50000
+	U6	0.50000	0.50000	0.50000
+	U7	0.00000	0.50000	0.42253
+	U8	0.50000	0.00000	0.42253
+	H1	0.00000	0.00000	0.71594
+end
+task band energy
+
+#       (110) gamma-uranium surface with surface displacements:	15.30%	and X displacement of	1.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	3.440
+	lat_b	4.865
+	lat_c	26.595
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.00000	0.00000	0.66893
+	U2	0.50000	0.50000	0.66893
+	U3	0.00000	0.50000	0.59146
+	U4	0.50000	0.00000	0.59146
+	U5	0.00000	0.00000	0.50000
+	U6	0.50000	0.50000	0.50000
+	U7	0.00000	0.50000	0.42253
+	U8	0.50000	0.00000	0.42253
+	H1	0.00000	0.00000	0.72534
+end
+task band energy
+
+# A.M.D.G.
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 6.1.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2012
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = taub489
+    program         = /home/davis68/bin/nwchem-dev
+    date            = Sat Mar  9 22:50:39 2013
+
+    compiled        = Wed_Oct_03_09:41:00_2012
+    source          = /home/davis68/nwchem/nwchem-src-2012-Aug-27/
+    nwchem branch   = Development
+    nwchem revision = 22805
+    ga revision     = 10079
+    input           = ./U8H-110-ctr.nw
+    prefix          = U8H-110-ctr.
+    data base       = ./perm/U8H-110-ctr.db
+    status          = startup
+    nproc           =      288
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =   81920001 doubles =    625.0 Mbytes
+    stack    =   81920001 doubles =    625.0 Mbytes
+    global   =  163840000 doubles =   1250.0 Mbytes (distinct from heap & stack)
+    total    =  327680002 doubles =   2500.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = ./perm
+  0 scratch   = ./scratch
+
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+                          Gamma-uranium (110) adsorption
+                          ------------------------------
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     0.00000000     0.00000000    17.79019335
+    2 U2                  92.0000     1.72000000     2.43250000    17.79019335
+    3 U3                  92.0000     0.00000000     2.43250000    15.72987870
+    4 U4                  92.0000     1.72000000     0.00000000    15.72987870
+    5 U5                  92.0000     0.00000000     0.00000000    13.29750000
+    6 U6                  92.0000     1.72000000     2.43250000    13.29750000
+    7 U7                  92.0000     0.00000000     2.43250000    11.23718535
+    8 U8                  92.0000     1.72000000     0.00000000    11.23718535
+    9 ctr                  6.0000     1.72000000     0.00000000    16.79022135
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   3.440   0.000   0.000 >
+      a2=<   0.000   4.865   0.000 >
+      a3=<   0.000   0.000  26.595 >
+      a=       3.440 b=      4.865 c=      26.595
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   445.1
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   0.967   0.000  -0.000 >
+      b2=<  -0.000   0.683  -0.000 >
+      b3=<   0.000   0.000   0.125 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      U7               238.050800
+      U8               238.050800
+      ctr               12.000000
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.62982  |     2.97917
+    3 U3               |   1 U1               |     6.02403  |     3.18778
+    3 U3               |   2 U2               |     5.07183  |     2.68390
+    4 U4               |   1 U1               |     5.07183  |     2.68390
+    4 U4               |   2 U2               |     6.02403  |     3.18778
+    4 U4               |   3 U3               |     5.62982  |     2.97917
+    5 U5               |   3 U3               |     6.50064  |     3.43999
+    5 U5               |   4 U4               |     5.62963  |     2.97907
+    6 U6               |   3 U3               |     5.62963  |     2.97907
+    6 U6               |   4 U4               |     6.50064  |     3.43999
+    6 U6               |   5 U5               |     5.62982  |     2.97917
+    7 U7               |   5 U5               |     6.02403  |     3.18778
+    7 U7               |   6 U6               |     5.07183  |     2.68390
+    8 U8               |   5 U5               |     5.07183  |     2.68390
+    8 U8               |   6 U6               |     6.02403  |     3.18778
+    8 U8               |   7 U7               |     5.62982  |     2.97917
+    9 ctr              |   1 U1               |     3.75972  |     1.98956
+    9 ctr              |   2 U2               |     4.97002  |     2.63002
+    9 ctr              |   4 U4               |     2.00376  |     1.06034
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         19
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    68.28
+    2 U2               |   1 U1               |   4 U4               |    68.28
+    1 U1               |   9 ctr              |   2 U2               |    78.98
+    1 U1               |   4 U4               |   3 U3               |    68.28
+    3 U3               |   1 U1               |   9 ctr              |    71.04
+    1 U1               |   9 ctr              |   4 U4               |   120.17
+    1 U1               |   2 U2               |   3 U3               |    68.28
+    2 U2               |   1 U1               |   4 U4               |    68.28
+    2 U2               |   9 ctr              |   1 U1               |    78.98
+    2 U2               |   3 U3               |   4 U4               |    68.28
+    3 U3               |   2 U2               |   9 ctr              |    73.03
+    2 U2               |   9 ctr              |   4 U4               |   112.35
+    3 U3               |   2 U2               |   1 U1               |    68.28
+    3 U3               |   4 U4               |   1 U1               |    68.28
+    1 U1               |   3 U3               |   5 U5               |    85.26
+    1 U1               |   3 U3               |   6 U6               |   121.85
+    2 U2               |   3 U3               |   4 U4               |    68.28
+    2 U2               |   3 U3               |   5 U5               |   122.87
+    2 U2               |   3 U3               |   6 U6               |   104.88
+    3 U3               |   4 U4               |   5 U5               |    70.53
+    4 U4               |   3 U3               |   6 U6               |    70.53
+    3 U3               |   6 U6               |   5 U5               |    70.53
+    4 U4               |   1 U1               |   2 U2               |    68.28
+    1 U1               |   4 U4               |   3 U3               |    68.28
+    1 U1               |   4 U4               |   5 U5               |   104.88
+    1 U1               |   4 U4               |   6 U6               |   122.87
+    4 U4               |   9 ctr              |   1 U1               |   120.17
+    4 U4               |   3 U3               |   2 U2               |    68.28
+    2 U2               |   4 U4               |   5 U5               |   121.85
+    2 U2               |   4 U4               |   6 U6               |    85.26
+    4 U4               |   9 ctr              |   2 U2               |   112.35
+    3 U3               |   4 U4               |   5 U5               |    70.53
+    4 U4               |   3 U3               |   6 U6               |    70.53
+    3 U3               |   4 U4               |   9 ctr              |    90.00
+    4 U4               |   5 U5               |   6 U6               |    70.53
+    5 U5               |   4 U4               |   9 ctr              |   144.73
+    6 U6               |   4 U4               |   9 ctr              |   135.00
+    5 U5               |   4 U4               |   3 U3               |    70.53
+    5 U5               |   6 U6               |   3 U3               |    70.53
+    3 U3               |   5 U5               |   7 U7               |    85.26
+    3 U3               |   5 U5               |   8 U8               |   122.87
+    4 U4               |   5 U5               |   6 U6               |    70.53
+    4 U4               |   5 U5               |   7 U7               |   121.85
+    4 U4               |   5 U5               |   8 U8               |   104.88
+    5 U5               |   6 U6               |   7 U7               |    68.28
+    6 U6               |   5 U5               |   8 U8               |    68.28
+    5 U5               |   8 U8               |   7 U7               |    68.28
+    6 U6               |   3 U3               |   4 U4               |    70.53
+    3 U3               |   6 U6               |   5 U5               |    70.53
+    3 U3               |   6 U6               |   7 U7               |   104.88
+    3 U3               |   6 U6               |   8 U8               |   121.85
+    6 U6               |   5 U5               |   4 U4               |    70.53
+    4 U4               |   6 U6               |   7 U7               |   122.87
+    4 U4               |   6 U6               |   8 U8               |    85.26
+    5 U5               |   6 U6               |   7 U7               |    68.28
+    6 U6               |   5 U5               |   8 U8               |    68.28
+    6 U6               |   7 U7               |   8 U8               |    68.28
+    7 U7               |   6 U6               |   5 U5               |    68.28
+    7 U7               |   8 U8               |   5 U5               |    68.28
+    6 U6               |   7 U7               |   8 U8               |    68.28
+    8 U8               |   5 U5               |   6 U6               |    68.28
+    5 U5               |   8 U8               |   7 U7               |    68.28
+    8 U8               |   7 U7               |   6 U6               |    68.28
+    1 U1               |   9 ctr              |   2 U2               |    78.98
+    1 U1               |   9 ctr              |   4 U4               |   120.17
+    2 U2               |   9 ctr              |   4 U4               |   112.35
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         66
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     0.00000000     0.00000000    17.79019335
+    2 U2                  92.0000     1.72000000     2.43250000    17.79019335
+    3 U3                  92.0000     0.00000000     2.43250000    15.72987870
+    4 U4                  92.0000     1.72000000     0.00000000    15.72987870
+    5 U5                  92.0000     0.00000000     0.00000000    13.29750000
+    6 U6                  92.0000     1.72000000     2.43250000    13.29750000
+    7 U7                  92.0000     0.00000000     2.43250000    11.23718535
+    8 U8                  92.0000     1.72000000     0.00000000    11.23718535
+    9 H1                   1.0000     0.00000000     0.00000000    19.04042430
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   3.440   0.000   0.000 >
+      a2=<   0.000   4.865   0.000 >
+      a3=<   0.000   0.000  26.595 >
+      a=       3.440 b=      4.865 c=      26.595
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   445.1
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   0.967   0.000  -0.000 >
+      b2=<  -0.000   0.683  -0.000 >
+      b3=<   0.000   0.000   0.125 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      U7               238.050800
+      U8               238.050800
+      H1                 1.007825
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.62982  |     2.97917
+    3 U3               |   1 U1               |     6.02403  |     3.18778
+    3 U3               |   2 U2               |     5.07183  |     2.68390
+    4 U4               |   1 U1               |     5.07183  |     2.68390
+    4 U4               |   2 U2               |     6.02403  |     3.18778
+    4 U4               |   3 U3               |     5.62982  |     2.97917
+    5 U5               |   3 U3               |     6.50064  |     3.43999
+    5 U5               |   4 U4               |     5.62963  |     2.97907
+    6 U6               |   3 U3               |     5.62963  |     2.97907
+    6 U6               |   4 U4               |     6.50064  |     3.43999
+    6 U6               |   5 U5               |     5.62982  |     2.97917
+    7 U7               |   5 U5               |     6.02403  |     3.18778
+    7 U7               |   6 U6               |     5.07183  |     2.68390
+    8 U8               |   5 U5               |     5.07183  |     2.68390
+    8 U8               |   6 U6               |     6.02403  |     3.18778
+    8 U8               |   7 U7               |     5.62982  |     2.97917
+    9 H1               |   1 U1               |     2.36259  |     1.25023
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         17
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    68.28
+    2 U2               |   1 U1               |   4 U4               |    68.28
+    2 U2               |   1 U1               |   9 H1               |    90.00
+    1 U1               |   4 U4               |   3 U3               |    68.28
+    3 U3               |   1 U1               |   9 H1               |   130.26
+    4 U4               |   1 U1               |   9 H1               |   140.14
+    1 U1               |   2 U2               |   3 U3               |    68.28
+    2 U2               |   1 U1               |   4 U4               |    68.28
+    2 U2               |   3 U3               |   4 U4               |    68.28
+    3 U3               |   2 U2               |   1 U1               |    68.28
+    3 U3               |   4 U4               |   1 U1               |    68.28
+    1 U1               |   3 U3               |   5 U5               |    85.26
+    1 U1               |   3 U3               |   6 U6               |   121.85
+    2 U2               |   3 U3               |   4 U4               |    68.28
+    2 U2               |   3 U3               |   5 U5               |   122.87
+    2 U2               |   3 U3               |   6 U6               |   104.88
+    3 U3               |   4 U4               |   5 U5               |    70.53
+    4 U4               |   3 U3               |   6 U6               |    70.53
+    3 U3               |   6 U6               |   5 U5               |    70.53
+    4 U4               |   1 U1               |   2 U2               |    68.28
+    1 U1               |   4 U4               |   3 U3               |    68.28
+    1 U1               |   4 U4               |   5 U5               |   104.88
+    1 U1               |   4 U4               |   6 U6               |   122.87
+    4 U4               |   3 U3               |   2 U2               |    68.28
+    2 U2               |   4 U4               |   5 U5               |   121.85
+    2 U2               |   4 U4               |   6 U6               |    85.26
+    3 U3               |   4 U4               |   5 U5               |    70.53
+    4 U4               |   3 U3               |   6 U6               |    70.53
+    4 U4               |   5 U5               |   6 U6               |    70.53
+    5 U5               |   4 U4               |   3 U3               |    70.53
+    5 U5               |   6 U6               |   3 U3               |    70.53
+    3 U3               |   5 U5               |   7 U7               |    85.26
+    3 U3               |   5 U5               |   8 U8               |   122.87
+    4 U4               |   5 U5               |   6 U6               |    70.53
+    4 U4               |   5 U5               |   7 U7               |   121.85
+    4 U4               |   5 U5               |   8 U8               |   104.88
+    5 U5               |   6 U6               |   7 U7               |    68.28
+    6 U6               |   5 U5               |   8 U8               |    68.28
+    5 U5               |   8 U8               |   7 U7               |    68.28
+    6 U6               |   3 U3               |   4 U4               |    70.53
+    3 U3               |   6 U6               |   5 U5               |    70.53
+    3 U3               |   6 U6               |   7 U7               |   104.88
+    3 U3               |   6 U6               |   8 U8               |   121.85
+    6 U6               |   5 U5               |   4 U4               |    70.53
+    4 U4               |   6 U6               |   7 U7               |   122.87
+    4 U4               |   6 U6               |   8 U8               |    85.26
+    5 U5               |   6 U6               |   7 U7               |    68.28
+    6 U6               |   5 U5               |   8 U8               |    68.28
+    6 U6               |   7 U7               |   8 U8               |    68.28
+    7 U7               |   6 U6               |   5 U5               |    68.28
+    7 U7               |   8 U8               |   5 U5               |    68.28
+    6 U6               |   7 U7               |   8 U8               |    68.28
+    8 U8               |   5 U5               |   6 U6               |    68.28
+    5 U5               |   8 U8               |   7 U7               |    68.28
+    8 U8               |   7 U7               |   6 U6               |    68.28
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         55
+ ==============================================================================
+
+
+
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Sat Mar  9 22:50:40 2013  <<<
+          ================ input data ========================
+  library name resolved from: environment
+  NWCHEM_NWPW_LIBRARY set to: </home/davis68/nwchem/nwchem-6.1/src/nwpw/libraryps/>
+ Generating 1d pseudopotential for U   
+
+ Generated formatted_filename: ./perm/U.cpp
+ - Spline fitted, nray=27864 -
+  library name resolved from: environment
+  NWCHEM_NWPW_LIBRARY set to: </home/davis68/nwchem/nwchem-6.1/src/nwpw/libraryps/>
+ Generating 1d pseudopotential for H   
+
+ Generated formatted_filename: ./perm/H.cpp
+ - Spline fitted, nray=27864 -
+ random planewave guess, initial psi:U8H-110-ctr.movecs                                
+ -   spin, nalpha, nbeta:                    2                   57                   56
+
+ input psi filename:./perm/U8H-110-ctr.movecs
+Warning - Orthogonalization performed, spin,zone: 1   1
+        - error(before)=  0.661369E+01 (  0.503863E+02)
+        - error(after)=   0.710543E-14 (  0.570000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   1
+        - error(before)=  0.649969E+01 (  0.495003E+02)
+        - error(after)=   0.142109E-13 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   2
+        - error(before)=  0.661535E+01 (  0.503847E+02)
+        - error(after)=   0.000000E+00 (  0.570000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   2
+        - error(before)=  0.649956E+01 (  0.495004E+02)
+        - error(after)=   0.142109E-13 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   3
+        - error(before)=  0.661642E+01 (  0.503836E+02)
+        - error(after)=   0.710543E-14 (  0.570000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   3
+        - error(before)=  0.649949E+01 (  0.495005E+02)
+        - error(after)=   0.000000E+00 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   4
+        - error(before)=  0.661371E+01 (  0.503863E+02)
+        - error(after)=   0.710543E-14 (  0.570000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   4
+        - error(before)=  0.649898E+01 (  0.495010E+02)
+        - error(after)=   0.000000E+00 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   5
+        - error(before)=  0.661421E+01 (  0.503858E+02)
+        - error(after)=   0.710543E-14 (  0.570000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   5
+        - error(before)=  0.649852E+01 (  0.495015E+02)
+        - error(after)=   0.000000E+00 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   6
+        - error(before)=  0.661575E+01 (  0.503842E+02)
+        - error(after)=   0.710543E-14 (  0.570000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   6
+        - error(before)=  0.650074E+01 (  0.494993E+02)
+        - error(after)=   0.710543E-14 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   7
+        - error(before)=  0.661617E+01 (  0.503838E+02)
+        - error(after)=   0.000000E+00 (  0.570000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   7
+        - error(before)=  0.649882E+01 (  0.495012E+02)
+        - error(after)=   0.710543E-14 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   8
+        - error(before)=  0.661305E+01 (  0.503870E+02)
+        - error(after)=   0.000000E+00 (  0.570000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   8
+        - error(before)=  0.649741E+01 (  0.495026E+02)
+        - error(after)=   0.710543E-14 (  0.560000E+02)
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+      2: H     core charge: 1.0  lmax=1
+             comment    : Parameterized (Chem.Phys.Lett., vol 322, page 447) Hamman psp
+             pseudpotential type            :   0
+             highest angular component      :   1
+             local potential used           :   1
+             number of non-local projections:   1
+             cutoff =   0.800   0.800
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  8     H   :  1
+
+ number of electrons: spin up=   57.00  spin down=   56.00 (fourier space)
+ number of orbitals:  spin up=      57  spin down=      56 (fourier space)
+
+ supercell:
+      lattice:    a1=<   6.501   0.000   0.000 >
+                  a2=<   0.000   9.194   0.000 >
+                  a3=<   0.000   0.000  50.257 >
+      reciprocal: b1=<   0.967   0.000  -0.000 >
+                  b2=<  -0.000   0.683  -0.000 >
+                  b3=<   0.000   0.000   0.125 >
+
+      lattice:    a=   6.501    b=   9.194     c=  50.257
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     3003.6
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-3.45682194
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.362   0.256  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.121   0.256  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.121   0.256  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.362  -0.256  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.362   0.085  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.121   0.085  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.121  -0.085  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.362  -0.085  -0.000>
+
+ computational grids:
+      density     cutoff=134.521  fft=  36x  48x 360(   223609 waves     6211 per task)
+      wavefnc   1 cutoff= 90.000  fft=  36x  48x 360(   122493 waves     3402 per task)
+      wavefnc   2 cutoff= 90.000  fft=  36x  48x 360(   122404 waves     3400 per task)
+      wavefnc   3 cutoff= 90.000  fft=  36x  48x 360(   122404 waves     3400 per task)
+      wavefnc   4 cutoff= 90.000  fft=  36x  48x 360(   122493 waves     3402 per task)
+      wavefnc   5 cutoff= 90.000  fft=  36x  48x 360(   122618 waves     3406 per task)
+      wavefnc   6 cutoff= 90.000  fft=  36x  48x 360(   122427 waves     3400 per task)
+      wavefnc   7 cutoff= 90.000  fft=  36x  48x 360(   122427 waves     3400 per task)
+      wavefnc   8 cutoff= 90.000  fft=  36x  48x 360(   122618 waves     3406 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Sat Mar  9 22:55:11 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+     -  10 steepest descent iterations performed
+      10   -0.3830343544E+03   -0.46087E+01    0.89236E+01
+     -  10 steepest descent iterations performed
+      20   -0.4053823152E+03   -0.47332E+00    0.11266E+00
+     -  10 steepest descent iterations performed
+      30   -0.4082952910E+03   -0.15597E+00    0.29852E-01
+     -  10 steepest descent iterations performed
+      40   -0.4093835029E+03   -0.64995E-01    0.11193E-01
+     -  10 steepest descent iterations performed
+      50   -0.4098939819E+03   -0.29791E-01    0.54458E-02
+     -  10 steepest descent iterations performed
+      60   -0.4101758265E+03   -0.17562E-01    0.24570E-02
+     -  10 steepest descent iterations performed
+      70   -0.4103465364E+03   -0.10330E-01    0.17057E-02
+     -  10 steepest descent iterations performed
+      80   -0.4104575315E+03   -0.71499E-02    0.85310E-03
+      90   -0.4106202984E+03   -0.45774E-02    0.53599E-02
+     100   -0.4106537133E+03   -0.39099E-02    0.45707E-03
+     110   -0.4107037948E+03   -0.39526E-02    0.20964E-02
+     -  10 steepest descent iterations performed
+     120   -0.4107315451E+03   -0.10449E-02    0.21543E-03
+     130   -0.4107583738E+03   -0.26374E-02    0.15828E-02
+     -  10 steepest descent iterations performed
+     140   -0.4107751819E+03   -0.91132E-03    0.31529E-03
+     150   -0.4107879506E+03   -0.13899E-02    0.94036E-03
+     -  10 steepest descent iterations performed
+     160   -0.4108006147E+03   -0.62149E-03    0.40435E-03
+     170   -0.4108091937E+03   -0.77596E-03    0.96196E-03
+     -  10 steepest descent iterations performed
+     180   -0.4108191532E+03   -0.63636E-03    0.40827E-03
+     190   -0.4108257406E+03   -0.66474E-03    0.66064E-03
+     -  10 steepest descent iterations performed
+     200   -0.4108343191E+03   -0.46744E-03    0.43831E-03
+     210   -0.4108399987E+03   -0.55091E-03    0.84809E-03
+     -  10 steepest descent iterations performed
+     220   -0.4108478790E+03   -0.52139E-03    0.40627E-03
+     230   -0.4108530859E+03   -0.53626E-03    0.70238E-03
+     -  10 steepest descent iterations performed
+     240   -0.4108604576E+03   -0.40746E-03    0.40742E-03
+     250   -0.4108651961E+03   -0.45483E-03    0.76918E-03
+     -  10 steepest descent iterations performed
+     260   -0.4108719412E+03   -0.44770E-03    0.34899E-03
+     270   -0.4108762274E+03   -0.43175E-03    0.56960E-03
+     280   -0.4108946787E+03   -0.46347E-03    0.83396E-02
+     -  10 steepest descent iterations performed
+     290   -0.4109009195E+03   -0.23176E-03    0.11953E-03
+     300   -0.4109027991E+03   -0.19397E-03    0.96940E-04
+     310   -0.4109060974E+03   -0.14589E-03    0.47755E-03
+     320   -0.4109091634E+03   -0.23402E-03    0.56262E-03
+     -  10 steepest descent iterations performed
+     330   -0.4109115939E+03   -0.20830E-03    0.68776E-04
+     340   -0.4109129627E+03   -0.88285E-04    0.78725E-04
+     350   -0.4109139822E+03   -0.12341E-03    0.91286E-04
+     -  10 steepest descent iterations performed
+     360   -0.4109150434E+03   -0.85502E-04    0.44586E-04
+     370   -0.4109161240E+03   -0.90986E-04    0.17602E-03
+     -  10 steepest descent iterations performed
+     380   -0.4109171093E+03   -0.92462E-04    0.33755E-04
+     -  10 steepest descent iterations performed
+     390   -0.4109176983E+03   -0.38631E-04    0.26184E-04
+     400   -0.4109193372E+03   -0.20691E-03    0.87885E-03
+     -  10 steepest descent iterations performed
+     410   -0.4109208361E+03   -0.51952E-04    0.15837E-04
+     420   -0.4109211700E+03   -0.42168E-04    0.27372E-04
+     430   -0.4109221724E+03   -0.88494E-04    0.44328E-03
+     -  10 steepest descent iterations performed
+     440   -0.4109231956E+03   -0.32020E-04    0.24164E-04
+     450   -0.4109235855E+03   -0.40232E-04    0.41008E-04
+     -  10 steepest descent iterations performed
+     460   -0.4109240984E+03   -0.47937E-04    0.38494E-04
+     -  10 steepest descent iterations performed
+     470   -0.4109245241E+03   -0.32127E-04    0.37399E-04
+     480   -0.4109256840E+03   -0.10369E-03    0.86621E-03
+     -  10 steepest descent iterations performed
+     490   -0.4109268999E+03   -0.52602E-04    0.21811E-04
+     500   -0.4109271157E+03   -0.22547E-04    0.12388E-04
+     510   -0.4109282609E+03   -0.25725E-03    0.10510E-02
+     -  10 steepest descent iterations performed
+     520   -0.4109293744E+03   -0.20802E-04    0.91010E-05
+     530   -0.4109296306E+03   -0.25652E-04    0.27712E-04
+     -  10 steepest descent iterations performed
+     540   -0.4109299648E+03   -0.39277E-04    0.29845E-04
+     -  10 steepest descent iterations performed
+     550   -0.4109302562E+03   -0.16416E-04    0.21210E-04
+     560   -0.4109314511E+03   -0.13471E-03    0.14769E-02
+     -  10 steepest descent iterations performed
+     570   -0.4109325900E+03   -0.27402E-04    0.86400E-05
+     580   -0.4109327820E+03   -0.18359E-04    0.11759E-04
+     590   -0.4109332614E+03   -0.81122E-04    0.23324E-03
+     -  10 steepest descent iterations performed
+     600   -0.4109338116E+03   -0.17518E-04    0.11947E-04
+     610   -0.4109340424E+03   -0.27239E-04    0.35880E-04
+     -  10 steepest descent iterations performed
+     620   -0.4109343828E+03   -0.33507E-04    0.28051E-04
+     -  10 steepest descent iterations performed
+     630   -0.4109346860E+03   -0.27846E-04    0.37415E-04
+     640   -0.4109353529E+03   -0.51158E-04    0.48981E-03
+     -  10 steepest descent iterations performed
+     650   -0.4109361460E+03   -0.26478E-04    0.13268E-04
+     660   -0.4109362865E+03   -0.16828E-04    0.97242E-05
+     670   -0.4109375945E+03   -0.16994E-03    0.19707E-02
+     -  10 steepest descent iterations performed
+     680   -0.4109388257E+03   -0.16777E-04    0.91640E-05
+     690   -0.4109390157E+03   -0.14286E-04    0.15024E-04
+     700   -0.4109393353E+03   -0.45292E-04    0.10942E-03
+     -  10 steepest descent iterations performed
+     710   -0.4109397419E+03   -0.21927E-04    0.98139E-05
+     720   -0.4109399220E+03   -0.21422E-04    0.21414E-04
+     730   -0.4109405746E+03   -0.71551E-04    0.52368E-03
+     -  10 steepest descent iterations performed
+     740   -0.4109412609E+03   -0.16164E-04    0.66656E-05
+     750   -0.4109414320E+03   -0.14959E-04    0.14269E-04
+     760   -0.4109416599E+03   -0.27032E-04    0.65758E-04
+     -  10 steepest descent iterations performed
+     770   -0.4109419759E+03   -0.17145E-04    0.82859E-05
+     780   -0.4109421426E+03   -0.19829E-04    0.22528E-04
+     -  10 steepest descent iterations performed
+     790   -0.4109423922E+03   -0.19101E-04    0.18265E-04
+     800   -0.4109425867E+03   -0.19710E-04    0.43906E-04
+     -  10 steepest descent iterations performed
+     810   -0.4109428960E+03   -0.20969E-04    0.12504E-04
+     -  10 steepest descent iterations performed
+     820   -0.4109431353E+03   -0.35300E-04    0.44147E-04
+     -  10 steepest descent iterations performed
+     830   -0.4109433615E+03   -0.14743E-04    0.77277E-05
+     840   -0.4109436872E+03   -0.24467E-04    0.12426E-03
+     -  10 steepest descent iterations performed
+     850   -0.4109440651E+03   -0.16231E-04    0.71684E-05
+     860   -0.4109442152E+03   -0.14742E-04    0.16680E-04
+     870   -0.4109449332E+03   -0.16495E-03    0.65830E-03
+     -  10 steepest descent iterations performed
+     880   -0.4109456879E+03   -0.13719E-04    0.41313E-05
+     890   -0.4109458233E+03   -0.14595E-04    0.63856E-05
+     -  10 steepest descent iterations performed
+     900   -0.4109460315E+03   -0.31786E-04    0.20447E-04
+     -  10 steepest descent iterations performed
+     910   -0.4109462155E+03   -0.12367E-04    0.61998E-05
+     920   -0.4109465154E+03   -0.29392E-04    0.90133E-04
+     -  10 steepest descent iterations performed
+     930   -0.4109468347E+03   -0.11636E-04    0.47011E-05
+     940   -0.4109469334E+03   -0.10104E-04    0.65719E-05
+     950   -0.4109472597E+03   -0.58081E-04    0.13731E-03
+     -  10 steepest descent iterations performed
+     960   -0.4109475888E+03   -0.57402E-05    0.24102E-05
+     970   -0.4109476764E+03   -0.98008E-05    0.58098E-05
+     -  10 steepest descent iterations performed
+     980   -0.4109478017E+03   -0.16238E-04    0.92066E-05
+     -  10 steepest descent iterations performed
+     990   -0.4109479109E+03   -0.10164E-04    0.58280E-05
+    1000   -0.4109480851E+03   -0.11071E-04    0.51961E-04
+     -  10 steepest descent iterations performed
+    1010   -0.4109482866E+03   -0.67831E-05    0.33967E-05
+    1020   -0.4109483348E+03   -0.67761E-05    0.32942E-05
+    1030   -0.4109486877E+03   -0.37242E-04    0.32102E-03
+     -  10 steepest descent iterations performed
+    1040   -0.4109490131E+03   -0.33046E-05    0.13237E-05
+    1050   -0.4109490648E+03   -0.67997E-05    0.37739E-05
+     -  10 steepest descent iterations performed
+    1060   -0.4109491366E+03   -0.10731E-04    0.56631E-05
+     -  10 steepest descent iterations performed
+    1070   -0.4109492012E+03   -0.45600E-05    0.28420E-05
+    1080   -0.4109494304E+03   -0.27132E-04    0.17968E-03
+     -  10 steepest descent iterations performed
+    1090   -0.4109496679E+03   -0.44963E-05    0.16394E-05
+    1100   -0.4109497094E+03   -0.48675E-05    0.23238E-05
+     -  10 steepest descent iterations performed
+    1110   -0.4109497753E+03   -0.75479E-05    0.58205E-05
+     -  10 steepest descent iterations performed
+    1120   -0.4109498374E+03   -0.39699E-05    0.25529E-05
+    1130   -0.4109499943E+03   -0.29920E-04    0.90918E-04
+     -  10 steepest descent iterations performed
+    1140   -0.4109501681E+03   -0.49934E-05    0.12443E-05
+    1150   -0.4109502066E+03   -0.39724E-05    0.31490E-05
+    1160   -0.4109505103E+03   -0.36618E-04    0.36819E-03
+     -  10 steepest descent iterations performed
+    1170   -0.4109508088E+03   -0.61795E-05    0.28942E-05
+    1180   -0.4109508450E+03   -0.36146E-05    0.15729E-05
+    1190   -0.4109509152E+03   -0.88796E-05    0.20011E-04
+     -  10 steepest descent iterations performed
+    1200   -0.4109510014E+03   -0.26692E-05    0.16977E-05
+    1210   -0.4109510647E+03   -0.11110E-04    0.15421E-04
+     -  10 steepest descent iterations performed
+    1220   -0.4109511434E+03   -0.61663E-05    0.30762E-05
+    1230   -0.4109511898E+03   -0.43534E-05    0.72947E-05
+    1240   -0.4109516959E+03   -0.38822E-04    0.14155E-02
+     -  10 steepest descent iterations performed
+    1250   -0.4109520723E+03   -0.37964E-05    0.29609E-05
+    1260   -0.4109521110E+03   -0.30098E-05    0.14771E-05
+    1270   -0.4109521475E+03   -0.39994E-05    0.53249E-05
+     -  10 steepest descent iterations performed
+    1280   -0.4109521948E+03   -0.32694E-05    0.24549E-05
+    1290   -0.4109522367E+03   -0.50507E-05    0.99362E-05
+     -  10 steepest descent iterations performed
+    1300   -0.4109522919E+03   -0.34000E-05    0.20423E-05
+    1310   -0.4109523199E+03   -0.25347E-05    0.35045E-05
+    1320   -0.4109525715E+03   -0.52713E-04    0.54185E-03
+     -  10 steepest descent iterations performed
+    1330   -0.4109528042E+03   -0.42465E-05    0.12807E-05
+    1340   -0.4109528296E+03   -0.21615E-05    0.89879E-06
+    1350   -0.4109528626E+03   -0.25319E-05    0.64163E-05
+     -  10 steepest descent iterations performed
+    1360   -0.4109529042E+03   -0.25134E-05    0.19680E-05
+    1370   -0.4109529337E+03   -0.31133E-05    0.52460E-05
+     -  10 steepest descent iterations performed
+    1380   -0.4109529765E+03   -0.31873E-05    0.21856E-05
+     -  10 steepest descent iterations performed
+    1390   -0.4109530069E+03   -0.38175E-05    0.37339E-05
+     -  10 steepest descent iterations performed
+    1400   -0.4109530351E+03   -0.20407E-05    0.14098E-05
+    1410   -0.4109531560E+03   -0.99426E-05    0.13985E-03
+     -  10 steepest descent iterations performed
+    1420   -0.4109532764E+03   -0.26058E-05    0.77006E-06
+    1430   -0.4109532939E+03   -0.19633E-05    0.10158E-05
+    1440   -0.4109533628E+03   -0.11488E-04    0.43387E-04
+     -  10 steepest descent iterations performed
+    1450   -0.4109534344E+03   -0.15470E-05    0.99597E-06
+    1460   -0.4109534540E+03   -0.20599E-05    0.17415E-05
+     -  10 steepest descent iterations performed
+    1470   -0.4109534852E+03   -0.42563E-05    0.35749E-05
+     -  10 steepest descent iterations performed
+    1480   -0.4109535111E+03   -0.17134E-05    0.14999E-05
+    1490   -0.4109535753E+03   -0.73512E-05    0.42761E-04
+     -  10 steepest descent iterations performed
+    1500   -0.4109536431E+03   -0.24302E-05    0.10431E-05
+    1510   -0.4109536591E+03   -0.12993E-05    0.11887E-05
+    1520   -0.4109537098E+03   -0.54315E-05    0.30438E-04
+     -  10 steepest descent iterations performed
+    1530   -0.4109537661E+03   -0.98742E-06    0.63947E-06
+    1540   -0.4109537844E+03   -0.20046E-05    0.23563E-05
+     -  10 steepest descent iterations performed
+    1550   -0.4109538086E+03   -0.30242E-05    0.19347E-05
+     -  10 steepest descent iterations performed
+    1560   -0.4109538290E+03   -0.14371E-05    0.16435E-05
+    1570   -0.4109539341E+03   -0.11673E-04    0.16559E-03
+     -  10 steepest descent iterations performed
+    1580   -0.4109540348E+03   -0.20555E-05    0.57693E-06
+    1590   -0.4109540489E+03   -0.15622E-05    0.90149E-06
+    1600   -0.4109540718E+03   -0.26676E-05    0.67924E-05
+     -  10 steepest descent iterations performed
+    1610   -0.4109541024E+03   -0.11814E-05    0.13199E-05
+    1620   -0.4109541204E+03   -0.24030E-05    0.42372E-05
+     -  10 steepest descent iterations performed
+    1630   -0.4109541465E+03   -0.21785E-05    0.16348E-05
+    1640   -0.4109541649E+03   -0.20907E-05    0.41823E-05
+    1650   -0.4109545021E+03   -0.28005E-04    0.22105E-02
+     -  10 steepest descent iterations performed
+    1660   -0.4109547510E+03   -0.21207E-05    0.15366E-05
+    1670   -0.4109547746E+03   -0.18357E-05    0.10880E-05
+    1680   -0.4109547963E+03   -0.26204E-05    0.31478E-05
+     -  10 steepest descent iterations performed
+    1690   -0.4109548249E+03   -0.24566E-05    0.16674E-05
+    1700   -0.4109548467E+03   -0.23560E-05    0.46970E-05
+    1710   -0.4109549615E+03   -0.15459E-04    0.20623E-03
+     -  10 steepest descent iterations performed
+    1720   -0.4109550766E+03   -0.21615E-05    0.85643E-06
+    1730   -0.4109550979E+03   -0.17510E-05    0.14218E-05
+    1740   -0.4109551172E+03   -0.22751E-05    0.36924E-05
+     -  10 steepest descent iterations performed
+    1750   -0.4109551464E+03   -0.22990E-05    0.16194E-05
+     -  10 steepest descent iterations performed
+    1760   -0.4109551655E+03   -0.20149E-05    0.19097E-05
+    1770   -0.4109553076E+03   -0.28434E-04    0.32282E-03
+     -  10 steepest descent iterations performed
+    1780   -0.4109554297E+03   -0.51046E-05    0.65702E-06
+    1790   -0.4109554480E+03   -0.65005E-06    0.37963E-06
+    1800   -0.4109554662E+03   -0.33329E-05    0.37796E-05
+     -  10 steepest descent iterations performed
+    1810   -0.4109554876E+03   -0.12128E-05    0.78379E-06
+    1820   -0.4109555147E+03   -0.28145E-05    0.99056E-05
+     -  10 steepest descent iterations performed
+    1830   -0.4109555441E+03   -0.16748E-05    0.84692E-06
+    1840   -0.4109555539E+03   -0.13862E-05    0.10087E-05
+    1850   -0.4109556221E+03   -0.65967E-05    0.94870E-04
+     -  10 steepest descent iterations performed
+    1860   -0.4109556791E+03   -0.78756E-06    0.28375E-06
+    1870   -0.4109556874E+03   -0.64446E-06    0.35374E-06
+    1880   -0.4109556978E+03   -0.12043E-05    0.23510E-05
+     -  10 steepest descent iterations performed
+    1890   -0.4109557104E+03   -0.90633E-06    0.43613E-06
+    1900   -0.4109557189E+03   -0.11288E-05    0.14188E-05
+     -  10 steepest descent iterations performed
+    1910   -0.4109557304E+03   -0.74573E-06    0.62343E-06
+    1920   -0.4109557370E+03   -0.66429E-06    0.10655E-05
+    1930   -0.4109557776E+03   -0.30221E-05    0.61784E-04
+     -  10 steepest descent iterations performed
+    1940   -0.4109558106E+03   -0.43123E-06    0.19090E-06
+    1950   -0.4109558154E+03   -0.60312E-06    0.22564E-06
+     -  10 steepest descent iterations performed
+    1960   -0.4109558204E+03   -0.42119E-06    0.61721E-06
+    1970   -0.4109558331E+03   -0.16289E-05    0.94272E-05
+     -  10 steepest descent iterations performed
+    1980   -0.4109558465E+03   -0.60671E-06    0.10549E-06
+    1990   -0.4109558488E+03   -0.22995E-06    0.90815E-07
+    2000   -0.4109558552E+03   -0.74700E-06    0.22579E-05
+     -  10 steepest descent iterations performed
+    2010   -0.4109558623E+03   -0.27275E-06    0.13521E-06
+    2020   -0.4109558654E+03   -0.29201E-06    0.37288E-06
+     -  10 steepest descent iterations performed
+    2030   -0.4109558695E+03   -0.35268E-06    0.25131E-06
+     -  10 steepest descent iterations performed
+    2040   -0.4109558726E+03   -0.24374E-06    0.22800E-06
+    2050   -0.4109558883E+03   -0.14903E-05    0.18088E-04
+     -  10 steepest descent iterations performed
+    2060   -0.4109559032E+03   -0.46081E-06    0.89258E-07
+    2070   -0.4109559054E+03   -0.15901E-06    0.64154E-07
+    2080   -0.4109559085E+03   -0.64658E-06    0.52441E-06
+     -  10 steepest descent iterations performed
+    2090   -0.4109559126E+03   -0.21240E-06    0.10886E-06
+    2100   -0.4109559159E+03   -0.31198E-06    0.56662E-06
+     -  10 steepest descent iterations performed
+    2110   -0.4109559203E+03   -0.34535E-06    0.14856E-06
+     -  10 steepest descent iterations performed
+    2120   -0.4109559234E+03   -0.31188E-06    0.31010E-06
+    2130   -0.4109559351E+03   -0.89388E-06    0.10039E-04
+     -  10 steepest descent iterations performed
+    2140   -0.4109559475E+03   -0.36518E-06    0.68343E-07
+    2150   -0.4109559494E+03   -0.20127E-06    0.56621E-07
+    2160   -0.4109559523E+03   -0.29375E-06    0.43072E-06
+     -  10 steepest descent iterations performed
+    2170   -0.4109559562E+03   -0.15274E-06    0.89491E-07
+    2180   -0.4109559591E+03   -0.39791E-06    0.42089E-06
+     -  10 steepest descent iterations performed
+    2190   -0.4109559630E+03   -0.33327E-06    0.10958E-06
+    2200   -0.4109559653E+03   -0.20080E-06    0.21135E-06
+    2210   -0.4109559849E+03   -0.24273E-05    0.28397E-04
+     -  10 steepest descent iterations performed
+    2220   -0.4109560042E+03   -0.19400E-06    0.71022E-07
+    2230   -0.4109560067E+03   -0.19515E-06    0.72850E-07
+     -  10 steepest descent iterations performed
+    2240   -0.4109560093E+03   -0.33198E-06    0.20703E-06
+     -  10 steepest descent iterations performed
+    2250   -0.4109560118E+03   -0.10980E-06    0.53815E-07
+    2260   -0.4109560166E+03   -0.53947E-06    0.15254E-05
+     -  10 steepest descent iterations performed
+    2270   -0.4109560219E+03   -0.21405E-06    0.36588E-07
+    2280   -0.4109560234E+03   -0.17066E-06    0.86189E-07
+    2290   -0.4109560363E+03   -0.16892E-05    0.11720E-04
+     -  10 steepest descent iterations performed
+    2300   -0.4109560486E+03   -0.24539E-06    0.62878E-07
+    2310   -0.4109560501E+03   -0.97242E-07    0.27277E-07
+  *** tolerance ok.    iteration terminated.
+     >>>  ITERATION ENDED   AT Sun Mar 10 03:38:45 2013  <<<
+
+
+          =============  summary of results  =================
+
+ number of electrons: spin up=   57.00000  down=   56.00000 (real space)
+
+ total     energy    :  -0.4109560501E+03 (   -0.45662E+02/ion)
+ total orbital energy:  -0.3149650851E+02 (   -0.27873E+00/electron)
+ hartree   energy    :   0.2504807890E+04 (    0.22166E+02/electron)
+ exc-corr  energy    :  -0.5320177665E+02 (   -0.47081E+00/electron)
+ ion-ion   energy    :   0.2109233150E+04 (    0.23436E+03/ion)
+
+ K.S. kinetic energy :   0.1942808665E+03 (    0.17193E+01/electron)
+ K.S. V_l  energy    :  -0.6386485666E+03 (   -0.56518E+01/electron)
+ K.S. V_nl energy    :  -0.6787705958E+02 (   -0.60068E+00/electron)
+ K.S. V_Hart energy  :   0.5009615780E+04 (    0.44333E+02/electron)
+ K.S. V_xc energy    :  -0.6931697524E+02 (   -0.61342E+00/electron)
+ K.S. V_so energy    :   0.0000000000E+00 (    0.00000E+00/electron)
+ Virial Coefficient  :   0.2179202335E+02
+
+ Brillouin zone point:      1
+    weight=  0.125000
+    k     =<   0.375   0.375   0.000> . <b1,b2,b3> 
+          =<   0.362   0.256  -0.000>
+
+ orbital energies:
+     0.2451480E+00 (   6.671eV) occ=1.000
+     0.2403075E+00 (   6.539eV) occ=1.000     0.2461322E+00 (   6.698eV) occ=1.000
+     0.2388403E+00 (   6.499eV) occ=1.000     0.2414180E+00 (   6.569eV) occ=1.000
+     0.2371465E+00 (   6.453eV) occ=1.000     0.2395276E+00 (   6.518eV) occ=1.000
+     0.2343111E+00 (   6.376eV) occ=1.000     0.2361490E+00 (   6.426eV) occ=1.000
+     0.2309956E+00 (   6.286eV) occ=1.000     0.2353805E+00 (   6.405eV) occ=1.000
+     0.2295736E+00 (   6.247eV) occ=1.000     0.2315702E+00 (   6.301eV) occ=1.000
+     0.2283653E+00 (   6.214eV) occ=1.000     0.2282250E+00 (   6.210eV) occ=1.000
+     0.2268260E+00 (   6.172eV) occ=1.000     0.2271947E+00 (   6.182eV) occ=1.000
+     0.2210112E+00 (   6.014eV) occ=1.000     0.2231736E+00 (   6.073eV) occ=1.000
+     0.2145804E+00 (   5.839eV) occ=1.000     0.2164488E+00 (   5.890eV) occ=1.000
+     0.2135330E+00 (   5.811eV) occ=1.000     0.2153544E+00 (   5.860eV) occ=1.000
+     0.2126844E+00 (   5.787eV) occ=1.000     0.2136260E+00 (   5.813eV) occ=1.000
+     0.2091167E+00 (   5.690eV) occ=1.000     0.2128186E+00 (   5.791eV) occ=1.000
+     0.2063256E+00 (   5.614eV) occ=1.000     0.2090236E+00 (   5.688eV) occ=1.000
+     0.2055545E+00 (   5.593eV) occ=1.000     0.2053571E+00 (   5.588eV) occ=1.000
+     0.1833739E+00 (   4.990eV) occ=1.000     0.1840222E+00 (   5.008eV) occ=1.000
+     0.1754290E+00 (   4.774eV) occ=1.000     0.1755953E+00 (   4.778eV) occ=1.000
+     0.1701342E+00 (   4.630eV) occ=1.000     0.1712699E+00 (   4.661eV) occ=1.000
+     0.1617782E+00 (   4.402eV) occ=1.000     0.1607171E+00 (   4.373eV) occ=1.000
+     0.1522920E+00 (   4.144eV) occ=1.000     0.1544334E+00 (   4.202eV) occ=1.000
+     0.1475819E+00 (   4.016eV) occ=1.000     0.1494854E+00 (   4.068eV) occ=1.000
+     0.1444357E+00 (   3.930eV) occ=1.000     0.1451242E+00 (   3.949eV) occ=1.000
+     0.1267627E+00 (   3.449eV) occ=1.000     0.1290355E+00 (   3.511eV) occ=1.000
+     0.1232858E+00 (   3.355eV) occ=1.000     0.1222411E+00 (   3.326eV) occ=1.000
+    -0.3088699E+00 (  -8.405eV) occ=1.000    -0.3081554E+00 (  -8.385eV) occ=1.000
+    -0.3177923E+00 (  -8.648eV) occ=1.000    -0.3157773E+00 (  -8.593eV) occ=1.000
+    -0.3228705E+00 (  -8.786eV) occ=1.000    -0.3241700E+00 (  -8.821eV) occ=1.000
+    -0.3306174E+00 (  -8.997eV) occ=1.000    -0.3265570E+00 (  -8.886eV) occ=1.000
+    -0.3354250E+00 (  -9.127eV) occ=1.000    -0.3292759E+00 (  -8.960eV) occ=1.000
+    -0.3449843E+00 (  -9.388eV) occ=1.000    -0.3430048E+00 (  -9.334eV) occ=1.000
+    -0.3558340E+00 (  -9.683eV) occ=1.000    -0.3490129E+00 (  -9.497eV) occ=1.000
+    -0.3757714E+00 ( -10.225eV) occ=1.000    -0.3624720E+00 (  -9.863eV) occ=1.000
+    -0.3790132E+00 ( -10.314eV) occ=1.000    -0.3783057E+00 ( -10.294eV) occ=1.000
+    -0.3893613E+00 ( -10.595eV) occ=1.000    -0.3872608E+00 ( -10.538eV) occ=1.000
+    -0.3909836E+00 ( -10.639eV) occ=1.000    -0.3920362E+00 ( -10.668eV) occ=1.000
+    -0.3965252E+00 ( -10.790eV) occ=1.000    -0.3967503E+00 ( -10.796eV) occ=1.000
+    -0.4132157E+00 ( -11.244eV) occ=1.000    -0.4068684E+00 ( -11.072eV) occ=1.000
+    -0.4258462E+00 ( -11.588eV) occ=1.000    -0.4210537E+00 ( -11.458eV) occ=1.000
+    -0.4322261E+00 ( -11.762eV) occ=1.000    -0.4289946E+00 ( -11.674eV) occ=1.000
+    -0.4502934E+00 ( -12.253eV) occ=1.000    -0.4467540E+00 ( -12.157eV) occ=1.000
+    -0.5068940E+00 ( -13.793eV) occ=1.000    -0.5066456E+00 ( -13.787eV) occ=1.000
+    -0.5107670E+00 ( -13.899eV) occ=1.000    -0.5136889E+00 ( -13.978eV) occ=1.000
+    -0.5200997E+00 ( -14.153eV) occ=1.000    -0.5210039E+00 ( -14.177eV) occ=1.000
+    -0.5304369E+00 ( -14.434eV) occ=1.000    -0.5282367E+00 ( -14.374eV) occ=1.000
+    -0.5328482E+00 ( -14.500eV) occ=1.000    -0.5327272E+00 ( -14.496eV) occ=1.000
+    -0.5394123E+00 ( -14.678eV) occ=1.000    -0.5395498E+00 ( -14.682eV) occ=1.000
+    -0.5448166E+00 ( -14.825eV) occ=1.000    -0.5470507E+00 ( -14.886eV) occ=1.000
+    -0.5545705E+00 ( -15.091eV) occ=1.000    -0.5530531E+00 ( -15.049eV) occ=1.000
+    -0.1267292E+01 ( -34.485eV) occ=1.000    -0.1265607E+01 ( -34.439eV) occ=1.000
+    -0.1268060E+01 ( -34.506eV) occ=1.000    -0.1267614E+01 ( -34.494eV) occ=1.000
+    -0.1271662E+01 ( -34.604eV) occ=1.000    -0.1269266E+01 ( -34.539eV) occ=1.000
+    -0.1291132E+01 ( -35.134eV) occ=1.000    -0.1272522E+01 ( -34.627eV) occ=1.000
+    -0.1334282E+01 ( -36.308eV) occ=1.000    -0.1333129E+01 ( -36.277eV) occ=1.000
+    -0.1338966E+01 ( -36.435eV) occ=1.000    -0.1337723E+01 ( -36.402eV) occ=1.000
+    -0.1341728E+01 ( -36.511eV) occ=1.000    -0.1341670E+01 ( -36.509eV) occ=1.000
+    -0.1346186E+01 ( -36.632eV) occ=1.000    -0.1346087E+01 ( -36.629eV) occ=1.000
+
+ Brillouin zone point:      2
+    weight=  0.125000
+    k     =<   0.125   0.375   0.000> . <b1,b2,b3> 
+          =<   0.121   0.256  -0.000>
+
+ orbital energies:
+     0.2382766E+00 (   6.484eV) occ=1.000
+     0.2352374E+00 (   6.401eV) occ=1.000     0.2373165E+00 (   6.458eV) occ=1.000
+     0.2333301E+00 (   6.349eV) occ=1.000     0.2349464E+00 (   6.393eV) occ=1.000
+     0.2298259E+00 (   6.254eV) occ=1.000     0.2334554E+00 (   6.353eV) occ=1.000
+     0.2265703E+00 (   6.165eV) occ=1.000     0.2314681E+00 (   6.299eV) occ=1.000
+     0.2235852E+00 (   6.084eV) occ=1.000     0.2254607E+00 (   6.135eV) occ=1.000
+     0.2214535E+00 (   6.026eV) occ=1.000     0.2220727E+00 (   6.043eV) occ=1.000
+     0.2173631E+00 (   5.915eV) occ=1.000     0.2204530E+00 (   5.999eV) occ=1.000
+     0.2149286E+00 (   5.849eV) occ=1.000     0.2168017E+00 (   5.900eV) occ=1.000
+     0.2126230E+00 (   5.786eV) occ=1.000     0.2152040E+00 (   5.856eV) occ=1.000
+     0.2089963E+00 (   5.687eV) occ=1.000     0.2134561E+00 (   5.808eV) occ=1.000
+     0.2058103E+00 (   5.600eV) occ=1.000     0.2100990E+00 (   5.717eV) occ=1.000
+     0.2036007E+00 (   5.540eV) occ=1.000     0.2045427E+00 (   5.566eV) occ=1.000
+     0.1936610E+00 (   5.270eV) occ=1.000     0.2009496E+00 (   5.468eV) occ=1.000
+     0.1906061E+00 (   5.187eV) occ=1.000     0.1937928E+00 (   5.273eV) occ=1.000
+     0.1854104E+00 (   5.045eV) occ=1.000     0.1867580E+00 (   5.082eV) occ=1.000
+     0.1787954E+00 (   4.865eV) occ=1.000     0.1788699E+00 (   4.867eV) occ=1.000
+     0.1724061E+00 (   4.691eV) occ=1.000     0.1718658E+00 (   4.677eV) occ=1.000
+     0.1647106E+00 (   4.482eV) occ=1.000     0.1670614E+00 (   4.546eV) occ=1.000
+     0.1633673E+00 (   4.445eV) occ=1.000     0.1640669E+00 (   4.465eV) occ=1.000
+     0.1581259E+00 (   4.303eV) occ=1.000     0.1597193E+00 (   4.346eV) occ=1.000
+     0.1485172E+00 (   4.041eV) occ=1.000     0.1500344E+00 (   4.083eV) occ=1.000
+     0.1358211E+00 (   3.696eV) occ=1.000     0.1337966E+00 (   3.641eV) occ=1.000
+     0.1219731E+00 (   3.319eV) occ=1.000     0.1261372E+00 (   3.432eV) occ=1.000
+     0.1102655E+00 (   3.001eV) occ=1.000     0.1098667E+00 (   2.990eV) occ=1.000
+    -0.3158880E+00 (  -8.596eV) occ=1.000    -0.3145400E+00 (  -8.559eV) occ=1.000
+    -0.3239710E+00 (  -8.816eV) occ=1.000    -0.3217332E+00 (  -8.755eV) occ=1.000
+    -0.3275847E+00 (  -8.914eV) occ=1.000    -0.3244301E+00 (  -8.828eV) occ=1.000
+    -0.3387319E+00 (  -9.217eV) occ=1.000    -0.3364964E+00 (  -9.157eV) occ=1.000
+    -0.3460278E+00 (  -9.416eV) occ=1.000    -0.3434444E+00 (  -9.346eV) occ=1.000
+    -0.3559124E+00 (  -9.685eV) occ=1.000    -0.3544092E+00 (  -9.644eV) occ=1.000
+    -0.3673933E+00 (  -9.997eV) occ=1.000    -0.3656791E+00 (  -9.951eV) occ=1.000
+    -0.3709706E+00 ( -10.095eV) occ=1.000    -0.3668733E+00 (  -9.983eV) occ=1.000
+    -0.3721216E+00 ( -10.126eV) occ=1.000    -0.3728721E+00 ( -10.146eV) occ=1.000
+    -0.3921117E+00 ( -10.670eV) occ=1.000    -0.3739066E+00 ( -10.175eV) occ=1.000
+    -0.4040406E+00 ( -10.995eV) occ=1.000    -0.4029890E+00 ( -10.966eV) occ=1.000
+    -0.4090922E+00 ( -11.132eV) occ=1.000    -0.4041672E+00 ( -10.998eV) occ=1.000
+    -0.4146773E+00 ( -11.284eV) occ=1.000    -0.4111379E+00 ( -11.188eV) occ=1.000
+    -0.4188360E+00 ( -11.397eV) occ=1.000    -0.4156536E+00 ( -11.311eV) occ=1.000
+    -0.4522009E+00 ( -12.305eV) occ=1.000    -0.4471301E+00 ( -12.167eV) occ=1.000
+    -0.4626872E+00 ( -12.590eV) occ=1.000    -0.4605669E+00 ( -12.533eV) occ=1.000
+    -0.4668368E+00 ( -12.703eV) occ=1.000    -0.4646024E+00 ( -12.643eV) occ=1.000
+    -0.4713235E+00 ( -12.825eV) occ=1.000    -0.4708438E+00 ( -12.812eV) occ=1.000
+    -0.4874600E+00 ( -13.265eV) occ=1.000    -0.4898518E+00 ( -13.330eV) occ=1.000
+    -0.4940261E+00 ( -13.443eV) occ=1.000    -0.4920189E+00 ( -13.389eV) occ=1.000
+    -0.5012503E+00 ( -13.640eV) occ=1.000    -0.5036969E+00 ( -13.706eV) occ=1.000
+    -0.5125417E+00 ( -13.947eV) occ=1.000    -0.5061734E+00 ( -13.774eV) occ=1.000
+    -0.5150671E+00 ( -14.016eV) occ=1.000    -0.5158318E+00 ( -14.037eV) occ=1.000
+    -0.5335994E+00 ( -14.520eV) occ=1.000    -0.5437989E+00 ( -14.798eV) occ=1.000
+    -0.1263505E+01 ( -34.382eV) occ=1.000    -0.1261267E+01 ( -34.321eV) occ=1.000
+    -0.1266296E+01 ( -34.458eV) occ=1.000    -0.1264967E+01 ( -34.422eV) occ=1.000
+    -0.1273099E+01 ( -34.643eV) occ=1.000    -0.1269965E+01 ( -34.558eV) occ=1.000
+    -0.1289836E+01 ( -35.098eV) occ=1.000    -0.1274667E+01 ( -34.686eV) occ=1.000
+    -0.1337227E+01 ( -36.388eV) occ=1.000    -0.1335624E+01 ( -36.344eV) occ=1.000
+    -0.1343826E+01 ( -36.568eV) occ=1.000    -0.1343721E+01 ( -36.565eV) occ=1.000
+    -0.1347822E+01 ( -36.676eV) occ=1.000    -0.1346064E+01 ( -36.629eV) occ=1.000
+    -0.1354219E+01 ( -36.850eV) occ=1.000    -0.1353965E+01 ( -36.844eV) occ=1.000
+
+ Brillouin zone point:      3
+    weight=  0.125000
+    k     =<  -0.125   0.375   0.000> . <b1,b2,b3> 
+          =<  -0.121   0.256  -0.000>
+
+ orbital energies:
+     0.2380139E+00 (   6.477eV) occ=1.000
+     0.2356787E+00 (   6.413eV) occ=1.000     0.2373880E+00 (   6.460eV) occ=1.000
+     0.2333103E+00 (   6.349eV) occ=1.000     0.2348903E+00 (   6.392eV) occ=1.000
+     0.2297789E+00 (   6.253eV) occ=1.000     0.2335936E+00 (   6.356eV) occ=1.000
+     0.2268352E+00 (   6.173eV) occ=1.000     0.2314602E+00 (   6.298eV) occ=1.000
+     0.2235817E+00 (   6.084eV) occ=1.000     0.2254665E+00 (   6.135eV) occ=1.000
+     0.2213735E+00 (   6.024eV) occ=1.000     0.2220637E+00 (   6.043eV) occ=1.000
+     0.2174617E+00 (   5.917eV) occ=1.000     0.2204497E+00 (   5.999eV) occ=1.000
+     0.2152864E+00 (   5.858eV) occ=1.000     0.2167877E+00 (   5.899eV) occ=1.000
+     0.2129402E+00 (   5.794eV) occ=1.000     0.2153026E+00 (   5.859eV) occ=1.000
+     0.2088901E+00 (   5.684eV) occ=1.000     0.2134294E+00 (   5.808eV) occ=1.000
+     0.2058344E+00 (   5.601eV) occ=1.000     0.2100673E+00 (   5.716eV) occ=1.000
+     0.2035349E+00 (   5.539eV) occ=1.000     0.2046310E+00 (   5.568eV) occ=1.000
+     0.1935188E+00 (   5.266eV) occ=1.000     0.2010075E+00 (   5.470eV) occ=1.000
+     0.1906297E+00 (   5.187eV) occ=1.000     0.1938007E+00 (   5.274eV) occ=1.000
+     0.1854385E+00 (   5.046eV) occ=1.000     0.1867381E+00 (   5.081eV) occ=1.000
+     0.1785589E+00 (   4.859eV) occ=1.000     0.1788153E+00 (   4.866eV) occ=1.000
+     0.1723488E+00 (   4.690eV) occ=1.000     0.1718918E+00 (   4.677eV) occ=1.000
+     0.1645971E+00 (   4.479eV) occ=1.000     0.1670021E+00 (   4.544eV) occ=1.000
+     0.1632837E+00 (   4.443eV) occ=1.000     0.1640890E+00 (   4.465eV) occ=1.000
+     0.1581482E+00 (   4.303eV) occ=1.000     0.1597589E+00 (   4.347eV) occ=1.000
+     0.1485543E+00 (   4.042eV) occ=1.000     0.1500566E+00 (   4.083eV) occ=1.000
+     0.1358100E+00 (   3.696eV) occ=1.000     0.1337839E+00 (   3.640eV) occ=1.000
+     0.1219184E+00 (   3.318eV) occ=1.000     0.1261425E+00 (   3.433eV) occ=1.000
+     0.1102221E+00 (   2.999eV) occ=1.000     0.1098804E+00 (   2.990eV) occ=1.000
+    -0.3158874E+00 (  -8.596eV) occ=1.000    -0.3145238E+00 (  -8.559eV) occ=1.000
+    -0.3239589E+00 (  -8.815eV) occ=1.000    -0.3216813E+00 (  -8.753eV) occ=1.000
+    -0.3275795E+00 (  -8.914eV) occ=1.000    -0.3243730E+00 (  -8.827eV) occ=1.000
+    -0.3387316E+00 (  -9.217eV) occ=1.000    -0.3362870E+00 (  -9.151eV) occ=1.000
+    -0.3460499E+00 (  -9.417eV) occ=1.000    -0.3436253E+00 (  -9.351eV) occ=1.000
+    -0.3558843E+00 (  -9.684eV) occ=1.000    -0.3543692E+00 (  -9.643eV) occ=1.000
+    -0.3673380E+00 (  -9.996eV) occ=1.000    -0.3657003E+00 (  -9.951eV) occ=1.000
+    -0.3709637E+00 ( -10.095eV) occ=1.000    -0.3669164E+00 (  -9.984eV) occ=1.000
+    -0.3721440E+00 ( -10.127eV) occ=1.000    -0.3730315E+00 ( -10.151eV) occ=1.000
+    -0.3921017E+00 ( -10.670eV) occ=1.000    -0.3739082E+00 ( -10.175eV) occ=1.000
+    -0.4040527E+00 ( -10.995eV) occ=1.000    -0.4028786E+00 ( -10.963eV) occ=1.000
+    -0.4091413E+00 ( -11.133eV) occ=1.000    -0.4043037E+00 ( -11.002eV) occ=1.000
+    -0.4146304E+00 ( -11.283eV) occ=1.000    -0.4111328E+00 ( -11.188eV) occ=1.000
+    -0.4188554E+00 ( -11.398eV) occ=1.000    -0.4157505E+00 ( -11.313eV) occ=1.000
+    -0.4522261E+00 ( -12.306eV) occ=1.000    -0.4470934E+00 ( -12.166eV) occ=1.000
+    -0.4627582E+00 ( -12.592eV) occ=1.000    -0.4605610E+00 ( -12.533eV) occ=1.000
+    -0.4668882E+00 ( -12.705eV) occ=1.000    -0.4646298E+00 ( -12.643eV) occ=1.000
+    -0.4713132E+00 ( -12.825eV) occ=1.000    -0.4707667E+00 ( -12.810eV) occ=1.000
+    -0.4874519E+00 ( -13.264eV) occ=1.000    -0.4898447E+00 ( -13.329eV) occ=1.000
+    -0.4939987E+00 ( -13.442eV) occ=1.000    -0.4919581E+00 ( -13.387eV) occ=1.000
+    -0.5012141E+00 ( -13.639eV) occ=1.000    -0.5037097E+00 ( -13.707eV) occ=1.000
+    -0.5125191E+00 ( -13.946eV) occ=1.000    -0.5061723E+00 ( -13.774eV) occ=1.000
+    -0.5150671E+00 ( -14.016eV) occ=1.000    -0.5158411E+00 ( -14.037eV) occ=1.000
+    -0.5335958E+00 ( -14.520eV) occ=1.000    -0.5437984E+00 ( -14.798eV) occ=1.000
+    -0.1263505E+01 ( -34.382eV) occ=1.000    -0.1261269E+01 ( -34.321eV) occ=1.000
+    -0.1266296E+01 ( -34.458eV) occ=1.000    -0.1264971E+01 ( -34.422eV) occ=1.000
+    -0.1273098E+01 ( -34.643eV) occ=1.000    -0.1269964E+01 ( -34.558eV) occ=1.000
+    -0.1289836E+01 ( -35.098eV) occ=1.000    -0.1274663E+01 ( -34.686eV) occ=1.000
+    -0.1337228E+01 ( -36.388eV) occ=1.000    -0.1335624E+01 ( -36.344eV) occ=1.000
+    -0.1343826E+01 ( -36.568eV) occ=1.000    -0.1343721E+01 ( -36.565eV) occ=1.000
+    -0.1347821E+01 ( -36.676eV) occ=1.000    -0.1346064E+01 ( -36.629eV) occ=1.000
+    -0.1354219E+01 ( -36.850eV) occ=1.000    -0.1353965E+01 ( -36.844eV) occ=1.000
+
+ Brillouin zone point:      4
+    weight=  0.125000
+    k     =<   0.375  -0.375   0.000> . <b1,b2,b3> 
+          =<   0.362  -0.256  -0.000>
+
+ orbital energies:
+     0.2456182E+00 (   6.684eV) occ=1.000
+     0.2398466E+00 (   6.527eV) occ=1.000     0.2461667E+00 (   6.699eV) occ=1.000
+     0.2388173E+00 (   6.499eV) occ=1.000     0.2413863E+00 (   6.569eV) occ=1.000
+     0.2377447E+00 (   6.469eV) occ=1.000     0.2397834E+00 (   6.525eV) occ=1.000
+     0.2341751E+00 (   6.372eV) occ=1.000     0.2361704E+00 (   6.427eV) occ=1.000
+     0.2311901E+00 (   6.291eV) occ=1.000     0.2354608E+00 (   6.407eV) occ=1.000
+     0.2296720E+00 (   6.250eV) occ=1.000     0.2317480E+00 (   6.306eV) occ=1.000
+     0.2287173E+00 (   6.224eV) occ=1.000     0.2282733E+00 (   6.212eV) occ=1.000
+     0.2270051E+00 (   6.177eV) occ=1.000     0.2271560E+00 (   6.181eV) occ=1.000
+     0.2214929E+00 (   6.027eV) occ=1.000     0.2232224E+00 (   6.074eV) occ=1.000
+     0.2144254E+00 (   5.835eV) occ=1.000     0.2163897E+00 (   5.888eV) occ=1.000
+     0.2137265E+00 (   5.816eV) occ=1.000     0.2152841E+00 (   5.858eV) occ=1.000
+     0.2120667E+00 (   5.771eV) occ=1.000     0.2135211E+00 (   5.810eV) occ=1.000
+     0.2088119E+00 (   5.682eV) occ=1.000     0.2127702E+00 (   5.790eV) occ=1.000
+     0.2061987E+00 (   5.611eV) occ=1.000     0.2090462E+00 (   5.688eV) occ=1.000
+     0.2057256E+00 (   5.598eV) occ=1.000     0.2054023E+00 (   5.589eV) occ=1.000
+     0.1832334E+00 (   4.986eV) occ=1.000     0.1840278E+00 (   5.008eV) occ=1.000
+     0.1754093E+00 (   4.773eV) occ=1.000     0.1755869E+00 (   4.778eV) occ=1.000
+     0.1700975E+00 (   4.629eV) occ=1.000     0.1713360E+00 (   4.662eV) occ=1.000
+     0.1618554E+00 (   4.404eV) occ=1.000     0.1607349E+00 (   4.374eV) occ=1.000
+     0.1522686E+00 (   4.143eV) occ=1.000     0.1544609E+00 (   4.203eV) occ=1.000
+     0.1475893E+00 (   4.016eV) occ=1.000     0.1494460E+00 (   4.067eV) occ=1.000
+     0.1444370E+00 (   3.930eV) occ=1.000     0.1451620E+00 (   3.950eV) occ=1.000
+     0.1267710E+00 (   3.450eV) occ=1.000     0.1290405E+00 (   3.511eV) occ=1.000
+     0.1232815E+00 (   3.355eV) occ=1.000     0.1222328E+00 (   3.326eV) occ=1.000
+    -0.3088523E+00 (  -8.404eV) occ=1.000    -0.3080090E+00 (  -8.381eV) occ=1.000
+    -0.3177708E+00 (  -8.647eV) occ=1.000    -0.3156800E+00 (  -8.590eV) occ=1.000
+    -0.3228868E+00 (  -8.786eV) occ=1.000    -0.3243081E+00 (  -8.825eV) occ=1.000
+    -0.3306152E+00 (  -8.997eV) occ=1.000    -0.3265662E+00 (  -8.886eV) occ=1.000
+    -0.3354221E+00 (  -9.127eV) occ=1.000    -0.3291838E+00 (  -8.958eV) occ=1.000
+    -0.3449980E+00 (  -9.388eV) occ=1.000    -0.3431898E+00 (  -9.339eV) occ=1.000
+    -0.3558024E+00 (  -9.682eV) occ=1.000    -0.3490508E+00 (  -9.498eV) occ=1.000
+    -0.3757927E+00 ( -10.226eV) occ=1.000    -0.3624643E+00 (  -9.863eV) occ=1.000
+    -0.3790027E+00 ( -10.313eV) occ=1.000    -0.3783279E+00 ( -10.295eV) occ=1.000
+    -0.3893493E+00 ( -10.595eV) occ=1.000    -0.3872466E+00 ( -10.538eV) occ=1.000
+    -0.3910140E+00 ( -10.640eV) occ=1.000    -0.3920535E+00 ( -10.668eV) occ=1.000
+    -0.3965232E+00 ( -10.790eV) occ=1.000    -0.3967536E+00 ( -10.796eV) occ=1.000
+    -0.4132086E+00 ( -11.244eV) occ=1.000    -0.4068419E+00 ( -11.071eV) occ=1.000
+    -0.4258542E+00 ( -11.588eV) occ=1.000    -0.4210207E+00 ( -11.457eV) occ=1.000
+    -0.4322276E+00 ( -11.762eV) occ=1.000    -0.4290378E+00 ( -11.675eV) occ=1.000
+    -0.4503292E+00 ( -12.254eV) occ=1.000    -0.4467798E+00 ( -12.158eV) occ=1.000
+    -0.5068943E+00 ( -13.793eV) occ=1.000    -0.5066243E+00 ( -13.786eV) occ=1.000
+    -0.5107658E+00 ( -13.899eV) occ=1.000    -0.5136782E+00 ( -13.978eV) occ=1.000
+    -0.5201181E+00 ( -14.153eV) occ=1.000    -0.5209870E+00 ( -14.177eV) occ=1.000
+    -0.5304178E+00 ( -14.434eV) occ=1.000    -0.5282230E+00 ( -14.374eV) occ=1.000
+    -0.5328445E+00 ( -14.500eV) occ=1.000    -0.5327452E+00 ( -14.497eV) occ=1.000
+    -0.5394043E+00 ( -14.678eV) occ=1.000    -0.5395373E+00 ( -14.682eV) occ=1.000
+    -0.5448411E+00 ( -14.826eV) occ=1.000    -0.5470652E+00 ( -14.887eV) occ=1.000
+    -0.5545399E+00 ( -15.090eV) occ=1.000    -0.5530414E+00 ( -15.049eV) occ=1.000
+    -0.1267292E+01 ( -34.485eV) occ=1.000    -0.1265609E+01 ( -34.439eV) occ=1.000
+    -0.1268062E+01 ( -34.506eV) occ=1.000    -0.1267625E+01 ( -34.494eV) occ=1.000
+    -0.1271660E+01 ( -34.604eV) occ=1.000    -0.1269264E+01 ( -34.539eV) occ=1.000
+    -0.1291132E+01 ( -35.134eV) occ=1.000    -0.1272512E+01 ( -34.627eV) occ=1.000
+    -0.1334285E+01 ( -36.308eV) occ=1.000    -0.1333128E+01 ( -36.277eV) occ=1.000
+    -0.1338963E+01 ( -36.435eV) occ=1.000    -0.1337725E+01 ( -36.402eV) occ=1.000
+    -0.1341728E+01 ( -36.511eV) occ=1.000    -0.1341669E+01 ( -36.509eV) occ=1.000
+    -0.1346186E+01 ( -36.632eV) occ=1.000    -0.1346087E+01 ( -36.629eV) occ=1.000
+
+ Brillouin zone point:      5
+    weight=  0.125000
+    k     =<   0.375   0.125   0.000> . <b1,b2,b3> 
+          =<   0.362   0.085  -0.000>
+
+ orbital energies:
+     0.2509413E+00 (   6.829eV) occ=1.000
+     0.2465843E+00 (   6.710eV) occ=1.000     0.2494995E+00 (   6.789eV) occ=1.000
+     0.2442126E+00 (   6.645eV) occ=1.000     0.2475555E+00 (   6.736eV) occ=1.000
+     0.2422786E+00 (   6.593eV) occ=1.000     0.2451052E+00 (   6.670eV) occ=1.000
+     0.2417342E+00 (   6.578eV) occ=1.000     0.2448912E+00 (   6.664eV) occ=1.000
+     0.2388491E+00 (   6.499eV) occ=1.000     0.2406651E+00 (   6.549eV) occ=1.000
+     0.2366411E+00 (   6.439eV) occ=1.000     0.2382494E+00 (   6.483eV) occ=1.000
+     0.2321408E+00 (   6.317eV) occ=1.000     0.2345523E+00 (   6.383eV) occ=1.000
+     0.2305764E+00 (   6.274eV) occ=1.000     0.2329175E+00 (   6.338eV) occ=1.000
+     0.2255324E+00 (   6.137eV) occ=1.000     0.2261946E+00 (   6.155eV) occ=1.000
+     0.2208216E+00 (   6.009eV) occ=1.000     0.2230828E+00 (   6.070eV) occ=1.000
+     0.2185905E+00 (   5.948eV) occ=1.000     0.2223280E+00 (   6.050eV) occ=1.000
+     0.2165059E+00 (   5.891eV) occ=1.000     0.2180010E+00 (   5.932eV) occ=1.000
+     0.2138810E+00 (   5.820eV) occ=1.000     0.2175144E+00 (   5.919eV) occ=1.000
+     0.2124035E+00 (   5.780eV) occ=1.000     0.2136954E+00 (   5.815eV) occ=1.000
+     0.2089188E+00 (   5.685eV) occ=1.000     0.2110263E+00 (   5.742eV) occ=1.000
+     0.2010875E+00 (   5.472eV) occ=1.000     0.2036553E+00 (   5.542eV) occ=1.000
+     0.1990608E+00 (   5.417eV) occ=1.000     0.2011268E+00 (   5.473eV) occ=1.000
+     0.1980167E+00 (   5.388eV) occ=1.000     0.1993838E+00 (   5.426eV) occ=1.000
+     0.1966688E+00 (   5.352eV) occ=1.000     0.1985011E+00 (   5.402eV) occ=1.000
+     0.1851461E+00 (   5.038eV) occ=1.000     0.1854332E+00 (   5.046eV) occ=1.000
+     0.1747131E+00 (   4.754eV) occ=1.000     0.1755025E+00 (   4.776eV) occ=1.000
+     0.1706561E+00 (   4.644eV) occ=1.000     0.1720789E+00 (   4.683eV) occ=1.000
+     0.1451099E+00 (   3.949eV) occ=1.000     0.1458289E+00 (   3.968eV) occ=1.000
+     0.1321646E+00 (   3.596eV) occ=1.000     0.1309220E+00 (   3.563eV) occ=1.000
+    -0.3185903E+00 (  -8.669eV) occ=1.000    -0.3169930E+00 (  -8.626eV) occ=1.000
+    -0.3231316E+00 (  -8.793eV) occ=1.000    -0.3217505E+00 (  -8.755eV) occ=1.000
+    -0.3369198E+00 (  -9.168eV) occ=1.000    -0.3289241E+00 (  -8.951eV) occ=1.000
+    -0.3383152E+00 (  -9.206eV) occ=1.000    -0.3410241E+00 (  -9.280eV) occ=1.000
+    -0.3471452E+00 (  -9.446eV) occ=1.000    -0.3441470E+00 (  -9.365eV) occ=1.000
+    -0.3574082E+00 (  -9.726eV) occ=1.000    -0.3530826E+00 (  -9.608eV) occ=1.000
+    -0.3725912E+00 ( -10.139eV) occ=1.000    -0.3693462E+00 ( -10.050eV) occ=1.000
+    -0.3785281E+00 ( -10.300eV) occ=1.000    -0.3741656E+00 ( -10.182eV) occ=1.000
+    -0.3935235E+00 ( -10.708eV) occ=1.000    -0.3856099E+00 ( -10.493eV) occ=1.000
+    -0.4033937E+00 ( -10.977eV) occ=1.000    -0.3965849E+00 ( -10.792eV) occ=1.000
+    -0.4079478E+00 ( -11.101eV) occ=1.000    -0.4098360E+00 ( -11.152eV) occ=1.000
+    -0.4166444E+00 ( -11.338eV) occ=1.000    -0.4120648E+00 ( -11.213eV) occ=1.000
+    -0.4174494E+00 ( -11.359eV) occ=1.000    -0.4147537E+00 ( -11.286eV) occ=1.000
+    -0.4213889E+00 ( -11.467eV) occ=1.000    -0.4173554E+00 ( -11.357eV) occ=1.000
+    -0.4736106E+00 ( -12.888eV) occ=1.000    -0.4710631E+00 ( -12.818eV) occ=1.000
+    -0.4751952E+00 ( -12.931eV) occ=1.000    -0.4736138E+00 ( -12.888eV) occ=1.000
+    -0.4882179E+00 ( -13.285eV) occ=1.000    -0.4855772E+00 ( -13.213eV) occ=1.000
+    -0.4993050E+00 ( -13.587eV) occ=1.000    -0.4974078E+00 ( -13.535eV) occ=1.000
+    -0.5023397E+00 ( -13.669eV) occ=1.000    -0.5063314E+00 ( -13.778eV) occ=1.000
+    -0.5168761E+00 ( -14.065eV) occ=1.000    -0.5136274E+00 ( -13.977eV) occ=1.000
+    -0.5189473E+00 ( -14.121eV) occ=1.000    -0.5184427E+00 ( -14.108eV) occ=1.000
+    -0.5232953E+00 ( -14.240eV) occ=1.000    -0.5202105E+00 ( -14.156eV) occ=1.000
+    -0.5276975E+00 ( -14.359eV) occ=1.000    -0.5299234E+00 ( -14.420eV) occ=1.000
+    -0.5403831E+00 ( -14.705eV) occ=1.000    -0.5466830E+00 ( -14.876eV) occ=1.000
+    -0.1265401E+01 ( -34.434eV) occ=1.000    -0.1262933E+01 ( -34.366eV) occ=1.000
+    -0.1266587E+01 ( -34.466eV) occ=1.000    -0.1265290E+01 ( -34.431eV) occ=1.000
+    -0.1274006E+01 ( -34.668eV) occ=1.000    -0.1271571E+01 ( -34.601eV) occ=1.000
+    -0.1291561E+01 ( -35.145eV) occ=1.000    -0.1274658E+01 ( -34.685eV) occ=1.000
+    -0.1331153E+01 ( -36.223eV) occ=1.000    -0.1330057E+01 ( -36.193eV) occ=1.000
+    -0.1338722E+01 ( -36.429eV) occ=1.000    -0.1338711E+01 ( -36.428eV) occ=1.000
+    -0.1342407E+01 ( -36.529eV) occ=1.000    -0.1341080E+01 ( -36.493eV) occ=1.000
+    -0.1349451E+01 ( -36.721eV) occ=1.000    -0.1349300E+01 ( -36.717eV) occ=1.000
+
+ Brillouin zone point:      6
+    weight=  0.125000
+    k     =<   0.125   0.125   0.000> . <b1,b2,b3> 
+          =<   0.121   0.085  -0.000>
+
+ orbital energies:
+     0.2395228E+00 (   6.518eV) occ=1.000
+     0.2374981E+00 (   6.463eV) occ=1.000     0.2400428E+00 (   6.532eV) occ=1.000
+     0.2321526E+00 (   6.317eV) occ=1.000     0.2385910E+00 (   6.492eV) occ=1.000
+     0.2271985E+00 (   6.182eV) occ=1.000     0.2298401E+00 (   6.254eV) occ=1.000
+     0.2242840E+00 (   6.103eV) occ=1.000     0.2265616E+00 (   6.165eV) occ=1.000
+     0.2237912E+00 (   6.090eV) occ=1.000     0.2261829E+00 (   6.155eV) occ=1.000
+     0.2205188E+00 (   6.001eV) occ=1.000     0.2217819E+00 (   6.035eV) occ=1.000
+     0.2184546E+00 (   5.944eV) occ=1.000     0.2200740E+00 (   5.989eV) occ=1.000
+     0.2140534E+00 (   5.825eV) occ=1.000     0.2185034E+00 (   5.946eV) occ=1.000
+     0.2115698E+00 (   5.757eV) occ=1.000     0.2162641E+00 (   5.885eV) occ=1.000
+     0.2074696E+00 (   5.646eV) occ=1.000     0.2110349E+00 (   5.743eV) occ=1.000
+     0.2065784E+00 (   5.621eV) occ=1.000     0.2088262E+00 (   5.682eV) occ=1.000
+     0.1922290E+00 (   5.231eV) occ=1.000     0.1954087E+00 (   5.317eV) occ=1.000
+     0.1895228E+00 (   5.157eV) occ=1.000     0.1925131E+00 (   5.239eV) occ=1.000
+     0.1855154E+00 (   5.048eV) occ=1.000     0.1857810E+00 (   5.055eV) occ=1.000
+     0.1741208E+00 (   4.738eV) occ=1.000     0.1788814E+00 (   4.868eV) occ=1.000
+     0.1709892E+00 (   4.653eV) occ=1.000     0.1727348E+00 (   4.700eV) occ=1.000
+     0.1620210E+00 (   4.409eV) occ=1.000     0.1633822E+00 (   4.446eV) occ=1.000
+     0.1601644E+00 (   4.358eV) occ=1.000     0.1614304E+00 (   4.393eV) occ=1.000
+     0.1509926E+00 (   4.109eV) occ=1.000     0.1471669E+00 (   4.005eV) occ=1.000
+     0.1385039E+00 (   3.769eV) occ=1.000     0.1394743E+00 (   3.795eV) occ=1.000
+     0.1273721E+00 (   3.466eV) occ=1.000     0.1289384E+00 (   3.509eV) occ=1.000
+     0.1139579E+00 (   3.101eV) occ=1.000     0.1127437E+00 (   3.068eV) occ=1.000
+     0.1055129E+00 (   2.871eV) occ=1.000     0.1083355E+00 (   2.948eV) occ=1.000
+     0.9048929E-01 (   2.462eV) occ=1.000     0.9161587E-01 (   2.493eV) occ=1.000
+    -0.3073317E+00 (  -8.363eV) occ=1.000    -0.3060046E+00 (  -8.327eV) occ=1.000
+    -0.3091709E+00 (  -8.413eV) occ=1.000    -0.3066591E+00 (  -8.345eV) occ=1.000
+    -0.3165354E+00 (  -8.613eV) occ=1.000    -0.3137098E+00 (  -8.537eV) occ=1.000
+    -0.3270332E+00 (  -8.899eV) occ=1.000    -0.3264538E+00 (  -8.883eV) occ=1.000
+    -0.3334372E+00 (  -9.073eV) occ=1.000    -0.3303381E+00 (  -8.989eV) occ=1.000
+    -0.3461609E+00 (  -9.420eV) occ=1.000    -0.3449663E+00 (  -9.387eV) occ=1.000
+    -0.3536189E+00 (  -9.623eV) occ=1.000    -0.3532307E+00 (  -9.612eV) occ=1.000
+    -0.3631899E+00 (  -9.883eV) occ=1.000    -0.3579101E+00 (  -9.739eV) occ=1.000
+    -0.3693534E+00 ( -10.051eV) occ=1.000    -0.3653949E+00 (  -9.943eV) occ=1.000
+    -0.3751644E+00 ( -10.209eV) occ=1.000    -0.3682601E+00 ( -10.021eV) occ=1.000
+    -0.3860480E+00 ( -10.505eV) occ=1.000    -0.3809406E+00 ( -10.366eV) occ=1.000
+    -0.3998515E+00 ( -10.881eV) occ=1.000    -0.3876613E+00 ( -10.549eV) occ=1.000
+    -0.4343602E+00 ( -11.820eV) occ=1.000    -0.4309870E+00 ( -11.728eV) occ=1.000
+    -0.4365459E+00 ( -11.879eV) occ=1.000    -0.4356434E+00 ( -11.855eV) occ=1.000
+    -0.4444916E+00 ( -12.095eV) occ=1.000    -0.4394982E+00 ( -11.959eV) occ=1.000
+    -0.4511290E+00 ( -12.276eV) occ=1.000    -0.4501042E+00 ( -12.248eV) occ=1.000
+    -0.4669507E+00 ( -12.706eV) occ=1.000    -0.4654319E+00 ( -12.665eV) occ=1.000
+    -0.4776183E+00 ( -12.997eV) occ=1.000    -0.4789799E+00 ( -13.034eV) occ=1.000
+    -0.4936332E+00 ( -13.433eV) occ=1.000    -0.4926628E+00 ( -13.406eV) occ=1.000
+    -0.4957949E+00 ( -13.491eV) occ=1.000    -0.4934847E+00 ( -13.429eV) occ=1.000
+    -0.5108914E+00 ( -13.902eV) occ=1.000    -0.5147911E+00 ( -14.008eV) occ=1.000
+    -0.5284461E+00 ( -14.380eV) occ=1.000    -0.5265475E+00 ( -14.328eV) occ=1.000
+    -0.5376011E+00 ( -14.629eV) occ=1.000    -0.5357925E+00 ( -14.580eV) occ=1.000
+    -0.5417304E+00 ( -14.741eV) occ=1.000    -0.5488607E+00 ( -14.935eV) occ=1.000
+    -0.1257383E+01 ( -34.215eV) occ=1.000    -0.1254814E+01 ( -34.145eV) occ=1.000
+    -0.1262280E+01 ( -34.349eV) occ=1.000    -0.1258185E+01 ( -34.237eV) occ=1.000
+    -0.1278744E+01 ( -34.797eV) occ=1.000    -0.1275611E+01 ( -34.711eV) occ=1.000
+    -0.1292962E+01 ( -35.184eV) occ=1.000    -0.1280834E+01 ( -34.854eV) occ=1.000
+    -0.1329507E+01 ( -36.178eV) occ=1.000    -0.1327935E+01 ( -36.135eV) occ=1.000
+    -0.1336211E+01 ( -36.360eV) occ=1.000    -0.1336216E+01 ( -36.361eV) occ=1.000
+    -0.1354918E+01 ( -36.869eV) occ=1.000    -0.1353141E+01 ( -36.821eV) occ=1.000
+    -0.1361304E+01 ( -37.043eV) occ=1.000    -0.1360956E+01 ( -37.034eV) occ=1.000
+
+ Brillouin zone point:      7
+    weight=  0.125000
+    k     =<   0.125  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.121  -0.085  -0.000>
+
+ orbital energies:
+     0.2399442E+00 (   6.529eV) occ=1.000
+     0.2372387E+00 (   6.456eV) occ=1.000     0.2401081E+00 (   6.534eV) occ=1.000
+     0.2322495E+00 (   6.320eV) occ=1.000     0.2385642E+00 (   6.492eV) occ=1.000
+     0.2272069E+00 (   6.183eV) occ=1.000     0.2298128E+00 (   6.254eV) occ=1.000
+     0.2243414E+00 (   6.105eV) occ=1.000     0.2266262E+00 (   6.167eV) occ=1.000
+     0.2239750E+00 (   6.095eV) occ=1.000     0.2261971E+00 (   6.155eV) occ=1.000
+     0.2204022E+00 (   5.997eV) occ=1.000     0.2217799E+00 (   6.035eV) occ=1.000
+     0.2185540E+00 (   5.947eV) occ=1.000     0.2200367E+00 (   5.988eV) occ=1.000
+     0.2140774E+00 (   5.825eV) occ=1.000     0.2184989E+00 (   5.946eV) occ=1.000
+     0.2115441E+00 (   5.756eV) occ=1.000     0.2163309E+00 (   5.887eV) occ=1.000
+     0.2075153E+00 (   5.647eV) occ=1.000     0.2109992E+00 (   5.742eV) occ=1.000
+     0.2066059E+00 (   5.622eV) occ=1.000     0.2088425E+00 (   5.683eV) occ=1.000
+     0.1922334E+00 (   5.231eV) occ=1.000     0.1953219E+00 (   5.315eV) occ=1.000
+     0.1893279E+00 (   5.152eV) occ=1.000     0.1925592E+00 (   5.240eV) occ=1.000
+     0.1855689E+00 (   5.050eV) occ=1.000     0.1857857E+00 (   5.056eV) occ=1.000
+     0.1740725E+00 (   4.737eV) occ=1.000     0.1789186E+00 (   4.869eV) occ=1.000
+     0.1709566E+00 (   4.652eV) occ=1.000     0.1727763E+00 (   4.702eV) occ=1.000
+     0.1619909E+00 (   4.408eV) occ=1.000     0.1633691E+00 (   4.446eV) occ=1.000
+     0.1601680E+00 (   4.358eV) occ=1.000     0.1614433E+00 (   4.393eV) occ=1.000
+     0.1509685E+00 (   4.108eV) occ=1.000     0.1471840E+00 (   4.005eV) occ=1.000
+     0.1385138E+00 (   3.769eV) occ=1.000     0.1394718E+00 (   3.795eV) occ=1.000
+     0.1273428E+00 (   3.465eV) occ=1.000     0.1289332E+00 (   3.508eV) occ=1.000
+     0.1139267E+00 (   3.100eV) occ=1.000     0.1127429E+00 (   3.068eV) occ=1.000
+     0.1055248E+00 (   2.871eV) occ=1.000     0.1083504E+00 (   2.948eV) occ=1.000
+     0.9046174E-01 (   2.462eV) occ=1.000     0.9163012E-01 (   2.493eV) occ=1.000
+    -0.3073073E+00 (  -8.362eV) occ=1.000    -0.3058459E+00 (  -8.323eV) occ=1.000
+    -0.3091676E+00 (  -8.413eV) occ=1.000    -0.3066195E+00 (  -8.344eV) occ=1.000
+    -0.3165338E+00 (  -8.613eV) occ=1.000    -0.3136480E+00 (  -8.535eV) occ=1.000
+    -0.3270507E+00 (  -8.900eV) occ=1.000    -0.3265783E+00 (  -8.887eV) occ=1.000
+    -0.3334374E+00 (  -9.073eV) occ=1.000    -0.3304305E+00 (  -8.992eV) occ=1.000
+    -0.3461182E+00 (  -9.418eV) occ=1.000    -0.3450248E+00 (  -9.389eV) occ=1.000
+    -0.3536588E+00 (  -9.624eV) occ=1.000    -0.3531925E+00 (  -9.611eV) occ=1.000
+    -0.3631680E+00 (  -9.882eV) occ=1.000    -0.3579157E+00 (  -9.739eV) occ=1.000
+    -0.3693553E+00 ( -10.051eV) occ=1.000    -0.3654038E+00 (  -9.943eV) occ=1.000
+    -0.3751578E+00 ( -10.209eV) occ=1.000    -0.3682603E+00 ( -10.021eV) occ=1.000
+    -0.3860412E+00 ( -10.505eV) occ=1.000    -0.3809890E+00 ( -10.367eV) occ=1.000
+    -0.3998549E+00 ( -10.881eV) occ=1.000    -0.3876572E+00 ( -10.549eV) occ=1.000
+    -0.4343842E+00 ( -11.820eV) occ=1.000    -0.4309557E+00 ( -11.727eV) occ=1.000
+    -0.4365634E+00 ( -11.880eV) occ=1.000    -0.4357049E+00 ( -11.856eV) occ=1.000
+    -0.4445058E+00 ( -12.096eV) occ=1.000    -0.4395069E+00 ( -11.960eV) occ=1.000
+    -0.4511513E+00 ( -12.277eV) occ=1.000    -0.4501398E+00 ( -12.249eV) occ=1.000
+    -0.4669480E+00 ( -12.706eV) occ=1.000    -0.4654308E+00 ( -12.665eV) occ=1.000
+    -0.4776259E+00 ( -12.997eV) occ=1.000    -0.4789728E+00 ( -13.034eV) occ=1.000
+    -0.4936338E+00 ( -13.433eV) occ=1.000    -0.4926232E+00 ( -13.405eV) occ=1.000
+    -0.4957904E+00 ( -13.491eV) occ=1.000    -0.4934307E+00 ( -13.427eV) occ=1.000
+    -0.5108887E+00 ( -13.902eV) occ=1.000    -0.5147875E+00 ( -14.008eV) occ=1.000
+    -0.5284225E+00 ( -14.379eV) occ=1.000    -0.5265521E+00 ( -14.328eV) occ=1.000
+    -0.5375951E+00 ( -14.629eV) occ=1.000    -0.5357933E+00 ( -14.580eV) occ=1.000
+    -0.5417276E+00 ( -14.741eV) occ=1.000    -0.5488610E+00 ( -14.935eV) occ=1.000
+    -0.1257383E+01 ( -34.215eV) occ=1.000    -0.1254814E+01 ( -34.146eV) occ=1.000
+    -0.1262280E+01 ( -34.349eV) occ=1.000    -0.1258187E+01 ( -34.237eV) occ=1.000
+    -0.1278743E+01 ( -34.797eV) occ=1.000    -0.1275611E+01 ( -34.711eV) occ=1.000
+    -0.1292962E+01 ( -35.184eV) occ=1.000    -0.1280833E+01 ( -34.854eV) occ=1.000
+    -0.1329508E+01 ( -36.178eV) occ=1.000    -0.1327935E+01 ( -36.135eV) occ=1.000
+    -0.1336211E+01 ( -36.360eV) occ=1.000    -0.1336216E+01 ( -36.361eV) occ=1.000
+    -0.1354918E+01 ( -36.869eV) occ=1.000    -0.1353141E+01 ( -36.821eV) occ=1.000
+    -0.1361304E+01 ( -37.043eV) occ=1.000    -0.1360956E+01 ( -37.034eV) occ=1.000
+
+ Brillouin zone point:      8
+    weight=  0.125000
+    k     =<   0.375  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.362  -0.085  -0.000>
+
+ orbital energies:
+     0.2506967E+00 (   6.822eV) occ=1.000
+     0.2469702E+00 (   6.720eV) occ=1.000     0.2497824E+00 (   6.797eV) occ=1.000
+     0.2443357E+00 (   6.649eV) occ=1.000     0.2476890E+00 (   6.740eV) occ=1.000
+     0.2426585E+00 (   6.603eV) occ=1.000     0.2451481E+00 (   6.671eV) occ=1.000
+     0.2417551E+00 (   6.579eV) occ=1.000     0.2450446E+00 (   6.668eV) occ=1.000
+     0.2392222E+00 (   6.510eV) occ=1.000     0.2405675E+00 (   6.546eV) occ=1.000
+     0.2362399E+00 (   6.428eV) occ=1.000     0.2381690E+00 (   6.481eV) occ=1.000
+     0.2330004E+00 (   6.340eV) occ=1.000     0.2346314E+00 (   6.385eV) occ=1.000
+     0.2301766E+00 (   6.263eV) occ=1.000     0.2329486E+00 (   6.339eV) occ=1.000
+     0.2257640E+00 (   6.143eV) occ=1.000     0.2262750E+00 (   6.157eV) occ=1.000
+     0.2209753E+00 (   6.013eV) occ=1.000     0.2231681E+00 (   6.073eV) occ=1.000
+     0.2188186E+00 (   5.954eV) occ=1.000     0.2223611E+00 (   6.051eV) occ=1.000
+     0.2165423E+00 (   5.892eV) occ=1.000     0.2180217E+00 (   5.933eV) occ=1.000
+     0.2137315E+00 (   5.816eV) occ=1.000     0.2176220E+00 (   5.922eV) occ=1.000
+     0.2123773E+00 (   5.779eV) occ=1.000     0.2137493E+00 (   5.816eV) occ=1.000
+     0.2088021E+00 (   5.682eV) occ=1.000     0.2110154E+00 (   5.742eV) occ=1.000
+     0.2012012E+00 (   5.475eV) occ=1.000     0.2036182E+00 (   5.541eV) occ=1.000
+     0.1990559E+00 (   5.417eV) occ=1.000     0.2010417E+00 (   5.471eV) occ=1.000
+     0.1979072E+00 (   5.385eV) occ=1.000     0.1992221E+00 (   5.421eV) occ=1.000
+     0.1963887E+00 (   5.344eV) occ=1.000     0.1984749E+00 (   5.401eV) occ=1.000
+     0.1851256E+00 (   5.038eV) occ=1.000     0.1855422E+00 (   5.049eV) occ=1.000
+     0.1746447E+00 (   4.752eV) occ=1.000     0.1754802E+00 (   4.775eV) occ=1.000
+     0.1707114E+00 (   4.645eV) occ=1.000     0.1720557E+00 (   4.682eV) occ=1.000
+     0.1449899E+00 (   3.945eV) occ=1.000     0.1458492E+00 (   3.969eV) occ=1.000
+     0.1322168E+00 (   3.598eV) occ=1.000     0.1309059E+00 (   3.562eV) occ=1.000
+    -0.3185743E+00 (  -8.669eV) occ=1.000    -0.3169056E+00 (  -8.624eV) occ=1.000
+    -0.3231240E+00 (  -8.793eV) occ=1.000    -0.3217492E+00 (  -8.755eV) occ=1.000
+    -0.3369283E+00 (  -9.168eV) occ=1.000    -0.3289281E+00 (  -8.951eV) occ=1.000
+    -0.3383207E+00 (  -9.206eV) occ=1.000    -0.3409925E+00 (  -9.279eV) occ=1.000
+    -0.3471281E+00 (  -9.446eV) occ=1.000    -0.3440826E+00 (  -9.363eV) occ=1.000
+    -0.3573887E+00 (  -9.725eV) occ=1.000    -0.3530313E+00 (  -9.607eV) occ=1.000
+    -0.3726116E+00 ( -10.139eV) occ=1.000    -0.3694577E+00 ( -10.054eV) occ=1.000
+    -0.3785296E+00 ( -10.300eV) occ=1.000    -0.3744205E+00 ( -10.189eV) occ=1.000
+    -0.3935510E+00 ( -10.709eV) occ=1.000    -0.3855654E+00 ( -10.492eV) occ=1.000
+    -0.4033816E+00 ( -10.977eV) occ=1.000    -0.3965557E+00 ( -10.791eV) occ=1.000
+    -0.4079475E+00 ( -11.101eV) occ=1.000    -0.4098183E+00 ( -11.152eV) occ=1.000
+    -0.4166219E+00 ( -11.337eV) occ=1.000    -0.4120739E+00 ( -11.213eV) occ=1.000
+    -0.4174544E+00 ( -11.360eV) occ=1.000    -0.4148101E+00 ( -11.288eV) occ=1.000
+    -0.4213760E+00 ( -11.466eV) occ=1.000    -0.4172941E+00 ( -11.355eV) occ=1.000
+    -0.4736932E+00 ( -12.890eV) occ=1.000    -0.4710550E+00 ( -12.818eV) occ=1.000
+    -0.4752025E+00 ( -12.931eV) occ=1.000    -0.4736919E+00 ( -12.890eV) occ=1.000
+    -0.4882361E+00 ( -13.286eV) occ=1.000    -0.4855663E+00 ( -13.213eV) occ=1.000
+    -0.4993246E+00 ( -13.587eV) occ=1.000    -0.4973389E+00 ( -13.533eV) occ=1.000
+    -0.5023134E+00 ( -13.669eV) occ=1.000    -0.5063158E+00 ( -13.778eV) occ=1.000
+    -0.5168453E+00 ( -14.064eV) occ=1.000    -0.5136225E+00 ( -13.976eV) occ=1.000
+    -0.5189310E+00 ( -14.121eV) occ=1.000    -0.5184373E+00 ( -14.108eV) occ=1.000
+    -0.5233025E+00 ( -14.240eV) occ=1.000    -0.5201947E+00 ( -14.155eV) occ=1.000
+    -0.5276957E+00 ( -14.359eV) occ=1.000    -0.5299417E+00 ( -14.421eV) occ=1.000
+    -0.5403636E+00 ( -14.704eV) occ=1.000    -0.5466777E+00 ( -14.876eV) occ=1.000
+    -0.1265402E+01 ( -34.434eV) occ=1.000    -0.1262934E+01 ( -34.366eV) occ=1.000
+    -0.1266587E+01 ( -34.466eV) occ=1.000    -0.1265296E+01 ( -34.431eV) occ=1.000
+    -0.1274005E+01 ( -34.668eV) occ=1.000    -0.1271570E+01 ( -34.601eV) occ=1.000
+    -0.1291562E+01 ( -35.145eV) occ=1.000    -0.1274653E+01 ( -34.685eV) occ=1.000
+    -0.1331154E+01 ( -36.223eV) occ=1.000    -0.1330056E+01 ( -36.193eV) occ=1.000
+    -0.1338723E+01 ( -36.429eV) occ=1.000    -0.1338711E+01 ( -36.428eV) occ=1.000
+    -0.1342406E+01 ( -36.529eV) occ=1.000    -0.1341080E+01 ( -36.493eV) occ=1.000
+    -0.1349451E+01 ( -36.721eV) occ=1.000    -0.1349300E+01 ( -36.717eV) occ=1.000
+
+ Total BAND energy   :  -0.4109560501E+03
+
+
+=== Spin Contamination ===
+
+ <Sexact^2> =   0.75000000000000000     
+ <S^2>      =    9.6105712698455683     
+
+
+ Writing Crystallographic Information File:./perm/U6-pbe96.opt.cif
+   - cell not shifted (nwpw:cif_shift_cell .false.)
+
+ output psi filename:./perm/U8H-110-ctr.movecs
+
+
+== Timing ==
+
+cputime in seconds
+  prologue    :   0.271370E+03
+  main loop   :   0.134147E+05
+  epilogue    :   0.125996E+03
+  total       :   0.138120E+05
+  cputime/step:   0.211956E+01       (    6329 evalulations,    2310 linesearches)
+
+
+Time spent doing                        total          step
+  FFTs                       :   0.255130E+03  0.403113E-01
+  dot products               :   0.748611E+04  0.118283E+01
+  geodesic                   :   0.467322E+04  0.738381E+00
+  ffm_dgemm                  :   0.000000E+00  0.000000E+00
+  fmf_dgemm                  :   0.000000E+00  0.000000E+00
+  m_diagonalize              :   0.000000E+00  0.000000E+00
+    - m_tredq                :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq      :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq_dgemm:   0.000000E+00  0.000000E+00
+       - m_tredq_dgemm1      :   0.000000E+00  0.000000E+00
+    - m_getdiags             :   0.000000E+00  0.000000E+00
+    - m_tqliq                :   0.000000E+00  0.000000E+00
+    - m_eigsrt               :   0.000000E+00  0.000000E+00
+  exchange correlation       :   0.364280E+03  0.575572E-01
+  local pseudopotentials     :   0.934839E-03  0.147707E-06
+  non-local pseudopotentials :   0.287616E+04  0.454442E+00
+  hartree potentials         :   0.133633E+01  0.211145E-03
+  ion-ion interaction        :   0.794591E+01  0.125548E-02
+  structure factors          :   0.408307E+01  0.645136E-03
+  phase factors              :   0.000000E+00  0.000000E+00
+  masking and packing        :   0.345867E+03  0.546480E-01
+  queue fft                  :   0.346576E+04  0.547600E+00
+  queue fft (serial)         :   0.106181E+04  0.167769E+00
+  queue fft (message passing):   0.233049E+04  0.368224E+00
+  HFX potential              :   0.000000E+00  0.000000E+00
+  qmmm LJ                    :   0.000000E+00  0.000000E+00
+  qmmm residual Q            :   0.000000E+00  0.000000E+00
+
+     >>>  JOB COMPLETED     AT Sun Mar 10 03:40:52 2013  <<<
+
+ Task  times  cpu:    13691.3s     wall:    13812.4s
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     0.00000000     0.00000000    17.79019335
+    2 U2                  92.0000     1.72000000     2.43250000    17.79019335
+    3 U3                  92.0000     0.00000000     2.43250000    15.72987870
+    4 U4                  92.0000     1.72000000     0.00000000    15.72987870
+    5 U5                  92.0000     0.00000000     0.00000000    13.29750000
+    6 U6                  92.0000     1.72000000     2.43250000    13.29750000
+    7 U7                  92.0000     0.00000000     2.43250000    11.23718535
+    8 U8                  92.0000     1.72000000     0.00000000    11.23718535
+    9 H1                   1.0000     0.00000000     0.00000000    19.29041730
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   3.440   0.000   0.000 >
+      a2=<   0.000   4.865   0.000 >
+      a3=<   0.000   0.000  26.595 >
+      a=       3.440 b=      4.865 c=      26.595
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   445.1
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   0.967   0.000  -0.000 >
+      b2=<  -0.000   0.683  -0.000 >
+      b3=<   0.000   0.000   0.125 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      U7               238.050800
+      U8               238.050800
+      H1                 1.007825
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.62982  |     2.97917
+    3 U3               |   1 U1               |     6.02403  |     3.18778
+    3 U3               |   2 U2               |     5.07183  |     2.68390
+    4 U4               |   1 U1               |     5.07183  |     2.68390
+    4 U4               |   2 U2               |     6.02403  |     3.18778
+    4 U4               |   3 U3               |     5.62982  |     2.97917
+    5 U5               |   3 U3               |     6.50064  |     3.43999
+    5 U5               |   4 U4               |     5.62963  |     2.97907
+    6 U6               |   3 U3               |     5.62963  |     2.97907
+    6 U6               |   4 U4               |     6.50064  |     3.43999
+    6 U6               |   5 U5               |     5.62982  |     2.97917
+    7 U7               |   5 U5               |     6.02403  |     3.18778
+    7 U7               |   6 U6               |     5.07183  |     2.68390
+    8 U8               |   5 U5               |     5.07183  |     2.68390
+    8 U8               |   6 U6               |     6.02403  |     3.18778
+    8 U8               |   7 U7               |     5.62982  |     2.97917
+    9 H1               |   1 U1               |     2.83501  |     1.50022
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         17
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    68.28
+    2 U2               |   1 U1               |   4 U4               |    68.28
+    2 U2               |   1 U1               |   9 H1               |    90.00
+    1 U1               |   4 U4               |   3 U3               |    68.28
+    3 U3               |   1 U1               |   9 H1               |   130.26
+    4 U4               |   1 U1               |   9 H1               |   140.14
+    1 U1               |   2 U2               |   3 U3               |    68.28
+    2 U2               |   1 U1               |   4 U4               |    68.28
+    2 U2               |   3 U3               |   4 U4               |    68.28
+    3 U3               |   2 U2               |   1 U1               |    68.28
+    3 U3               |   4 U4               |   1 U1               |    68.28
+    1 U1               |   3 U3               |   5 U5               |    85.26
+    1 U1               |   3 U3               |   6 U6               |   121.85
+    2 U2               |   3 U3               |   4 U4               |    68.28
+    2 U2               |   3 U3               |   5 U5               |   122.87
+    2 U2               |   3 U3               |   6 U6               |   104.88
+    3 U3               |   4 U4               |   5 U5               |    70.53
+    4 U4               |   3 U3               |   6 U6               |    70.53
+    3 U3               |   6 U6               |   5 U5               |    70.53
+    4 U4               |   1 U1               |   2 U2               |    68.28
+    1 U1               |   4 U4               |   3 U3               |    68.28
+    1 U1               |   4 U4               |   5 U5               |   104.88
+    1 U1               |   4 U4               |   6 U6               |   122.87
+    4 U4               |   3 U3               |   2 U2               |    68.28
+    2 U2               |   4 U4               |   5 U5               |   121.85
+    2 U2               |   4 U4               |   6 U6               |    85.26
+    3 U3               |   4 U4               |   5 U5               |    70.53
+    4 U4               |   3 U3               |   6 U6               |    70.53
+    4 U4               |   5 U5               |   6 U6               |    70.53
+    5 U5               |   4 U4               |   3 U3               |    70.53
+    5 U5               |   6 U6               |   3 U3               |    70.53
+    3 U3               |   5 U5               |   7 U7               |    85.26
+    3 U3               |   5 U5               |   8 U8               |   122.87
+    4 U4               |   5 U5               |   6 U6               |    70.53
+    4 U4               |   5 U5               |   7 U7               |   121.85
+    4 U4               |   5 U5               |   8 U8               |   104.88
+    5 U5               |   6 U6               |   7 U7               |    68.28
+    6 U6               |   5 U5               |   8 U8               |    68.28
+    5 U5               |   8 U8               |   7 U7               |    68.28
+    6 U6               |   3 U3               |   4 U4               |    70.53
+    3 U3               |   6 U6               |   5 U5               |    70.53
+    3 U3               |   6 U6               |   7 U7               |   104.88
+    3 U3               |   6 U6               |   8 U8               |   121.85
+    6 U6               |   5 U5               |   4 U4               |    70.53
+    4 U4               |   6 U6               |   7 U7               |   122.87
+    4 U4               |   6 U6               |   8 U8               |    85.26
+    5 U5               |   6 U6               |   7 U7               |    68.28
+    6 U6               |   5 U5               |   8 U8               |    68.28
+    6 U6               |   7 U7               |   8 U8               |    68.28
+    7 U7               |   6 U6               |   5 U5               |    68.28
+    7 U7               |   8 U8               |   5 U5               |    68.28
+    6 U6               |   7 U7               |   8 U8               |    68.28
+    8 U8               |   5 U5               |   6 U6               |    68.28
+    5 U5               |   8 U8               |   7 U7               |    68.28
+    8 U8               |   7 U7               |   6 U6               |    68.28
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         55
+ ==============================================================================
+
+
+
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Sun Mar 10 03:40:52 2013  <<<
+          ================ input data ========================
+
+ input psi filename:./perm/U8H-110-ctr.movecs
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+      2: H     core charge: 1.0  lmax=1
+             comment    : Parameterized (Chem.Phys.Lett., vol 322, page 447) Hamman psp
+             pseudpotential type            :   0
+             highest angular component      :   1
+             local potential used           :   1
+             number of non-local projections:   1
+             cutoff =   0.800   0.800
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  8     H   :  1
+
+ number of electrons: spin up=   57.00  spin down=   56.00 (fourier space)
+ number of orbitals:  spin up=      57  spin down=      56 (fourier space)
+
+ supercell:
+      lattice:    a1=<   6.501   0.000   0.000 >
+                  a2=<   0.000   9.194   0.000 >
+                  a3=<   0.000   0.000  50.257 >
+      reciprocal: b1=<   0.967   0.000  -0.000 >
+                  b2=<  -0.000   0.683  -0.000 >
+                  b3=<   0.000   0.000   0.125 >
+
+      lattice:    a=   6.501    b=   9.194     c=  50.257
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     3003.6
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-3.45682194
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.362   0.256  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.121   0.256  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.121   0.256  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.362  -0.256  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.362   0.085  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.121   0.085  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.121  -0.085  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.362  -0.085  -0.000>
+
+ computational grids:
+      density     cutoff=134.521  fft=  36x  48x 360(   223609 waves     6211 per task)
+      wavefnc   1 cutoff= 90.000  fft=  36x  48x 360(   122493 waves     3402 per task)
+      wavefnc   2 cutoff= 90.000  fft=  36x  48x 360(   122404 waves     3400 per task)
+      wavefnc   3 cutoff= 90.000  fft=  36x  48x 360(   122404 waves     3400 per task)
+      wavefnc   4 cutoff= 90.000  fft=  36x  48x 360(   122493 waves     3402 per task)
+      wavefnc   5 cutoff= 90.000  fft=  36x  48x 360(   122618 waves     3406 per task)
+      wavefnc   6 cutoff= 90.000  fft=  36x  48x 360(   122427 waves     3400 per task)
+      wavefnc   7 cutoff= 90.000  fft=  36x  48x 360(   122427 waves     3400 per task)
+      wavefnc   8 cutoff= 90.000  fft=  36x  48x 360(   122618 waves     3406 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Sun Mar 10 03:44:59 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+      10   -0.4110801160E+03   -0.20903E-02    0.25639E-01
+     -  10 steepest descent iterations performed
+      20   -0.4110901481E+03   -0.28411E-03    0.74648E-03
+      30   -0.4110918312E+03   -0.12206E-03    0.84347E-04
+      40   -0.4110925191E+03   -0.65903E-04    0.27216E-04
+      50   -0.4110929149E+03   -0.28896E-04    0.25067E-04
+      60   -0.4110931493E+03   -0.17372E-04    0.11226E-04
+      70   -0.4110933102E+03   -0.15313E-04    0.81103E-05
+      80   -0.4110934129E+03   -0.90412E-05    0.55996E-05
+      90   -0.4110934802E+03   -0.53583E-05    0.26329E-05
+     100   -0.4110935267E+03   -0.38644E-05    0.16348E-05
+     110   -0.4110935594E+03   -0.30295E-05    0.10236E-05
+     120   -0.4110935822E+03   -0.19260E-05    0.77084E-06
+     130   -0.4110935984E+03   -0.13714E-05    0.65851E-06
+     140   -0.4110936110E+03   -0.10984E-05    0.63460E-06
+     150   -0.4110936209E+03   -0.90122E-06    0.59353E-06
+     160   -0.4110936286E+03   -0.71916E-06    0.58822E-06
+     170   -0.4110936349E+03   -0.55174E-06    0.58893E-06
+     180   -0.4110936401E+03   -0.45162E-06    0.63121E-06
+     190   -0.4110936445E+03   -0.40819E-06    0.66623E-06
+     200   -0.4110936483E+03   -0.38158E-06    0.72223E-06
+     210   -0.4110936519E+03   -0.33474E-06    0.79679E-06
+     220   -0.4110936553E+03   -0.32706E-06    0.93447E-06
+     230   -0.4110936586E+03   -0.33175E-06    0.10911E-05
+     -  10 steepest descent iterations performed
+     240   -0.4110936614E+03   -0.17882E-06    0.27884E-07
+     250   -0.4110936631E+03   -0.17486E-06    0.73028E-07
+     260   -0.4110936649E+03   -0.18223E-06    0.15845E-06
+     -  10 steepest descent iterations performed
+     270   -0.4110936663E+03   -0.98878E-07    0.15960E-07
+  *** tolerance ok.    iteration terminated.
+     >>>  ITERATION ENDED   AT Sun Mar 10 04:09:35 2013  <<<
+
+
+          =============  summary of results  =================
+
+ number of electrons: spin up=   57.00000  down=   56.00000 (real space)
+
+ total     energy    :  -0.4110936663E+03 (   -0.45677E+02/ion)
+ total orbital energy:  -0.3183368654E+02 (   -0.28171E+00/electron)
+ hartree   energy    :   0.2500573735E+04 (    0.22129E+02/electron)
+ exc-corr  energy    :  -0.5312292511E+02 (   -0.47011E+00/electron)
+ ion-ion   energy    :   0.2105222092E+04 (    0.23391E+03/ion)
+
+ K.S. kinetic energy :   0.1936763642E+03 (    0.17140E+01/electron)
+ K.S. V_l  energy    :  -0.6373303755E+03 (   -0.56401E+01/electron)
+ K.S. V_nl energy    :  -0.6753243953E+02 (   -0.59763E+00/electron)
+ K.S. V_Hart energy  :   0.5001147471E+04 (    0.44258E+02/electron)
+ K.S. V_xc energy    :  -0.6921458921E+02 (   -0.61252E+00/electron)
+ K.S. V_so energy    :   0.0000000000E+00 (    0.00000E+00/electron)
+ Virial Coefficient  :   0.2182543071E+02
+
+ Brillouin zone point:      1
+    weight=  0.125000
+    k     =<   0.375   0.375   0.000> . <b1,b2,b3> 
+          =<   0.362   0.256  -0.000>
+
+ orbital energies:
+     0.2415669E+00 (   6.573eV) occ=1.000
+     0.2365641E+00 (   6.437eV) occ=1.000     0.2418768E+00 (   6.582eV) occ=1.000
+     0.2350686E+00 (   6.397eV) occ=1.000     0.2373730E+00 (   6.459eV) occ=1.000
+     0.2338852E+00 (   6.364eV) occ=1.000     0.2351346E+00 (   6.398eV) occ=1.000
+     0.2305181E+00 (   6.273eV) occ=1.000     0.2322759E+00 (   6.321eV) occ=1.000
+     0.2276647E+00 (   6.195eV) occ=1.000     0.2305174E+00 (   6.273eV) occ=1.000
+     0.2262498E+00 (   6.157eV) occ=1.000     0.2263221E+00 (   6.159eV) occ=1.000
+     0.2246938E+00 (   6.114eV) occ=1.000     0.2237338E+00 (   6.088eV) occ=1.000
+     0.2231357E+00 (   6.072eV) occ=1.000     0.2234359E+00 (   6.080eV) occ=1.000
+     0.2179221E+00 (   5.930eV) occ=1.000     0.2184586E+00 (   5.945eV) occ=1.000
+     0.2112261E+00 (   5.748eV) occ=1.000     0.2128879E+00 (   5.793eV) occ=1.000
+     0.2103737E+00 (   5.725eV) occ=1.000     0.2111929E+00 (   5.747eV) occ=1.000
+     0.2086114E+00 (   5.677eV) occ=1.000     0.2101627E+00 (   5.719eV) occ=1.000
+     0.2053591E+00 (   5.588eV) occ=1.000     0.2084497E+00 (   5.672eV) occ=1.000
+     0.2025005E+00 (   5.510eV) occ=1.000     0.2048676E+00 (   5.575eV) occ=1.000
+     0.2018361E+00 (   5.492eV) occ=1.000     0.2020774E+00 (   5.499eV) occ=1.000
+     0.1790955E+00 (   4.873eV) occ=1.000     0.1803166E+00 (   4.907eV) occ=1.000
+     0.1721451E+00 (   4.684eV) occ=1.000     0.1715423E+00 (   4.668eV) occ=1.000
+     0.1660073E+00 (   4.517eV) occ=1.000     0.1672801E+00 (   4.552eV) occ=1.000
+     0.1575295E+00 (   4.287eV) occ=1.000     0.1563429E+00 (   4.254eV) occ=1.000
+     0.1484438E+00 (   4.039eV) occ=1.000     0.1493624E+00 (   4.064eV) occ=1.000
+     0.1457201E+00 (   3.965eV) occ=1.000     0.1479388E+00 (   4.026eV) occ=1.000
+     0.1404832E+00 (   3.823eV) occ=1.000     0.1411431E+00 (   3.841eV) occ=1.000
+     0.1241066E+00 (   3.377eV) occ=1.000     0.1291351E+00 (   3.514eV) occ=1.000
+     0.1216758E+00 (   3.311eV) occ=1.000     0.1183207E+00 (   3.220eV) occ=1.000
+    -0.3125560E+00 (  -8.505eV) occ=1.000    -0.3113125E+00 (  -8.471eV) occ=1.000
+    -0.3221954E+00 (  -8.767eV) occ=1.000    -0.3190141E+00 (  -8.681eV) occ=1.000
+    -0.3264794E+00 (  -8.884eV) occ=1.000    -0.3259151E+00 (  -8.869eV) occ=1.000
+    -0.3347166E+00 (  -9.108eV) occ=1.000    -0.3305014E+00 (  -8.993eV) occ=1.000
+    -0.3378651E+00 (  -9.194eV) occ=1.000    -0.3330406E+00 (  -9.063eV) occ=1.000
+    -0.3490144E+00 (  -9.497eV) occ=1.000    -0.3461800E+00 (  -9.420eV) occ=1.000
+    -0.3579286E+00 (  -9.740eV) occ=1.000    -0.3524177E+00 (  -9.590eV) occ=1.000
+    -0.3748291E+00 ( -10.200eV) occ=1.000    -0.3665679E+00 (  -9.975eV) occ=1.000
+    -0.3826176E+00 ( -10.412eV) occ=1.000    -0.3818189E+00 ( -10.390eV) occ=1.000
+    -0.3929904E+00 ( -10.694eV) occ=1.000    -0.3921065E+00 ( -10.670eV) occ=1.000
+    -0.3944093E+00 ( -10.733eV) occ=1.000    -0.3953439E+00 ( -10.758eV) occ=1.000
+    -0.4004720E+00 ( -10.897eV) occ=1.000    -0.4004524E+00 ( -10.897eV) occ=1.000
+    -0.4088999E+00 ( -11.127eV) occ=1.000    -0.4043902E+00 ( -11.004eV) occ=1.000
+    -0.4281858E+00 ( -11.652eV) occ=1.000    -0.4253945E+00 ( -11.576eV) occ=1.000
+    -0.4341826E+00 ( -11.815eV) occ=1.000    -0.4318973E+00 ( -11.753eV) occ=1.000
+    -0.4440103E+00 ( -12.082eV) occ=1.000    -0.4435810E+00 ( -12.071eV) occ=1.000
+    -0.5103811E+00 ( -13.888eV) occ=1.000    -0.5101375E+00 ( -13.882eV) occ=1.000
+    -0.5143746E+00 ( -13.997eV) occ=1.000    -0.5144655E+00 ( -13.999eV) occ=1.000
+    -0.5235640E+00 ( -14.247eV) occ=1.000    -0.5221324E+00 ( -14.208eV) occ=1.000
+    -0.5341521E+00 ( -14.535eV) occ=1.000    -0.5324380E+00 ( -14.488eV) occ=1.000
+    -0.5363583E+00 ( -14.595eV) occ=1.000    -0.5360182E+00 ( -14.586eV) occ=1.000
+    -0.5404354E+00 ( -14.706eV) occ=1.000    -0.5393248E+00 ( -14.676eV) occ=1.000
+    -0.5470064E+00 ( -14.885eV) occ=1.000    -0.5449219E+00 ( -14.828eV) occ=1.000
+    -0.5539574E+00 ( -15.074eV) occ=1.000    -0.5516399E+00 ( -15.011eV) occ=1.000
+    -0.1271855E+01 ( -34.609eV) occ=1.000    -0.1268930E+01 ( -34.530eV) occ=1.000
+    -0.1272649E+01 ( -34.631eV) occ=1.000    -0.1271151E+01 ( -34.590eV) occ=1.000
+    -0.1275477E+01 ( -34.708eV) occ=1.000    -0.1272565E+01 ( -34.629eV) occ=1.000
+    -0.1287984E+01 ( -35.048eV) occ=1.000    -0.1275644E+01 ( -34.712eV) occ=1.000
+    -0.1338245E+01 ( -36.416eV) occ=1.000    -0.1336805E+01 ( -36.377eV) occ=1.000
+    -0.1342933E+01 ( -36.543eV) occ=1.000    -0.1341400E+01 ( -36.502eV) occ=1.000
+    -0.1345198E+01 ( -36.605eV) occ=1.000    -0.1343474E+01 ( -36.558eV) occ=1.000
+    -0.1349664E+01 ( -36.727eV) occ=1.000    -0.1349810E+01 ( -36.730eV) occ=1.000
+
+ Brillouin zone point:      2
+    weight=  0.125000
+    k     =<   0.125   0.375   0.000> . <b1,b2,b3> 
+          =<   0.121   0.256  -0.000>
+
+ orbital energies:
+     0.2343232E+00 (   6.376eV) occ=1.000
+     0.2316989E+00 (   6.305eV) occ=1.000     0.2336948E+00 (   6.359eV) occ=1.000
+     0.2302851E+00 (   6.266eV) occ=1.000     0.2310026E+00 (   6.286eV) occ=1.000
+     0.2272703E+00 (   6.184eV) occ=1.000     0.2290370E+00 (   6.232eV) occ=1.000
+     0.2230602E+00 (   6.070eV) occ=1.000     0.2285635E+00 (   6.220eV) occ=1.000
+     0.2199515E+00 (   5.985eV) occ=1.000     0.2209166E+00 (   6.011eV) occ=1.000
+     0.2177917E+00 (   5.926eV) occ=1.000     0.2179664E+00 (   5.931eV) occ=1.000
+     0.2138949E+00 (   5.820eV) occ=1.000     0.2157418E+00 (   5.871eV) occ=1.000
+     0.2110677E+00 (   5.743eV) occ=1.000     0.2129027E+00 (   5.793eV) occ=1.000
+     0.2088456E+00 (   5.683eV) occ=1.000     0.2101725E+00 (   5.719eV) occ=1.000
+     0.2056195E+00 (   5.595eV) occ=1.000     0.2089120E+00 (   5.685eV) occ=1.000
+     0.2020568E+00 (   5.498eV) occ=1.000     0.2055516E+00 (   5.593eV) occ=1.000
+     0.2008105E+00 (   5.464eV) occ=1.000     0.2006875E+00 (   5.461eV) occ=1.000
+     0.1897853E+00 (   5.164eV) occ=1.000     0.1969242E+00 (   5.359eV) occ=1.000
+     0.1863269E+00 (   5.070eV) occ=1.000     0.1903565E+00 (   5.180eV) occ=1.000
+     0.1830084E+00 (   4.980eV) occ=1.000     0.1826228E+00 (   4.969eV) occ=1.000
+     0.1736370E+00 (   4.725eV) occ=1.000     0.1751224E+00 (   4.765eV) occ=1.000
+     0.1684479E+00 (   4.584eV) occ=1.000     0.1658116E+00 (   4.512eV) occ=1.000
+     0.1613773E+00 (   4.391eV) occ=1.000     0.1628998E+00 (   4.433eV) occ=1.000
+     0.1596841E+00 (   4.345eV) occ=1.000     0.1611078E+00 (   4.384eV) occ=1.000
+     0.1543014E+00 (   4.199eV) occ=1.000     0.1554055E+00 (   4.229eV) occ=1.000
+     0.1447694E+00 (   3.939eV) occ=1.000     0.1454970E+00 (   3.959eV) occ=1.000
+     0.1319240E+00 (   3.590eV) occ=1.000     0.1281232E+00 (   3.486eV) occ=1.000
+     0.1187427E+00 (   3.231eV) occ=1.000     0.1236688E+00 (   3.365eV) occ=1.000
+     0.1081577E+00 (   2.943eV) occ=1.000     0.1086613E+00 (   2.957eV) occ=1.000
+    -0.3196933E+00 (  -8.699eV) occ=1.000    -0.3175531E+00 (  -8.641eV) occ=1.000
+    -0.3279719E+00 (  -8.925eV) occ=1.000    -0.3254355E+00 (  -8.856eV) occ=1.000
+    -0.3300010E+00 (  -8.980eV) occ=1.000    -0.3268585E+00 (  -8.894eV) occ=1.000
+    -0.3430342E+00 (  -9.335eV) occ=1.000    -0.3400701E+00 (  -9.254eV) occ=1.000
+    -0.3496036E+00 (  -9.513eV) occ=1.000    -0.3467602E+00 (  -9.436eV) occ=1.000
+    -0.3560207E+00 (  -9.688eV) occ=1.000    -0.3541239E+00 (  -9.636eV) occ=1.000
+    -0.3716293E+00 ( -10.113eV) occ=1.000    -0.3690633E+00 ( -10.043eV) occ=1.000
+    -0.3739779E+00 ( -10.177eV) occ=1.000    -0.3706195E+00 ( -10.085eV) occ=1.000
+    -0.3763552E+00 ( -10.241eV) occ=1.000    -0.3737871E+00 ( -10.171eV) occ=1.000
+    -0.3857468E+00 ( -10.497eV) occ=1.000    -0.3777436E+00 ( -10.279eV) occ=1.000
+    -0.4080112E+00 ( -11.103eV) occ=1.000    -0.4071614E+00 ( -11.080eV) occ=1.000
+    -0.4109430E+00 ( -11.182eV) occ=1.000    -0.4078929E+00 ( -11.099eV) occ=1.000
+    -0.4168685E+00 ( -11.344eV) occ=1.000    -0.4143219E+00 ( -11.274eV) occ=1.000
+    -0.4221312E+00 ( -11.487eV) occ=1.000    -0.4199792E+00 ( -11.428eV) occ=1.000
+    -0.4538500E+00 ( -12.350eV) occ=1.000    -0.4513219E+00 ( -12.281eV) occ=1.000
+    -0.4668404E+00 ( -12.703eV) occ=1.000    -0.4649042E+00 ( -12.651eV) occ=1.000
+    -0.4707993E+00 ( -12.811eV) occ=1.000    -0.4688028E+00 ( -12.757eV) occ=1.000
+    -0.4731341E+00 ( -12.875eV) occ=1.000    -0.4724337E+00 ( -12.856eV) occ=1.000
+    -0.4910893E+00 ( -13.363eV) occ=1.000    -0.4931390E+00 ( -13.419eV) occ=1.000
+    -0.4980362E+00 ( -13.552eV) occ=1.000    -0.4959350E+00 ( -13.495eV) occ=1.000
+    -0.5033683E+00 ( -13.697eV) occ=1.000    -0.5039963E+00 ( -13.715eV) occ=1.000
+    -0.5129459E+00 ( -13.958eV) occ=1.000    -0.5091376E+00 ( -13.854eV) occ=1.000
+    -0.5174352E+00 ( -14.080eV) occ=1.000    -0.5176907E+00 ( -14.087eV) occ=1.000
+    -0.5271836E+00 ( -14.346eV) occ=1.000    -0.5270413E+00 ( -14.342eV) occ=1.000
+    -0.1267476E+01 ( -34.490eV) occ=1.000    -0.1264596E+01 ( -34.412eV) occ=1.000
+    -0.1271059E+01 ( -34.588eV) occ=1.000    -0.1268253E+01 ( -34.511eV) occ=1.000
+    -0.1276748E+01 ( -34.742eV) occ=1.000    -0.1273271E+01 ( -34.648eV) occ=1.000
+    -0.1287568E+01 ( -35.037eV) occ=1.000    -0.1277884E+01 ( -34.773eV) occ=1.000
+    -0.1341042E+01 ( -36.492eV) occ=1.000    -0.1339264E+01 ( -36.444eV) occ=1.000
+    -0.1347318E+01 ( -36.663eV) occ=1.000    -0.1346053E+01 ( -36.628eV) occ=1.000
+    -0.1351624E+01 ( -36.780eV) occ=1.000    -0.1349743E+01 ( -36.729eV) occ=1.000
+    -0.1357726E+01 ( -36.946eV) occ=1.000    -0.1357348E+01 ( -36.936eV) occ=1.000
+
+ Brillouin zone point:      3
+    weight=  0.125000
+    k     =<  -0.125   0.375   0.000> . <b1,b2,b3> 
+          =<  -0.121   0.256  -0.000>
+
+ orbital energies:
+     0.2344431E+00 (   6.380eV) occ=1.000
+     0.2321159E+00 (   6.316eV) occ=1.000     0.2337290E+00 (   6.360eV) occ=1.000
+     0.2301286E+00 (   6.262eV) occ=1.000     0.2309706E+00 (   6.285eV) occ=1.000
+     0.2271510E+00 (   6.181eV) occ=1.000     0.2291415E+00 (   6.235eV) occ=1.000
+     0.2232062E+00 (   6.074eV) occ=1.000     0.2285733E+00 (   6.220eV) occ=1.000
+     0.2200181E+00 (   5.987eV) occ=1.000     0.2208943E+00 (   6.011eV) occ=1.000
+     0.2177337E+00 (   5.925eV) occ=1.000     0.2179703E+00 (   5.931eV) occ=1.000
+     0.2139646E+00 (   5.822eV) occ=1.000     0.2157385E+00 (   5.871eV) occ=1.000
+     0.2113394E+00 (   5.751eV) occ=1.000     0.2129104E+00 (   5.794eV) occ=1.000
+     0.2090573E+00 (   5.689eV) occ=1.000     0.2101754E+00 (   5.719eV) occ=1.000
+     0.2055715E+00 (   5.594eV) occ=1.000     0.2088955E+00 (   5.684eV) occ=1.000
+     0.2020945E+00 (   5.499eV) occ=1.000     0.2055239E+00 (   5.593eV) occ=1.000
+     0.2007722E+00 (   5.463eV) occ=1.000     0.2007367E+00 (   5.462eV) occ=1.000
+     0.1897059E+00 (   5.162eV) occ=1.000     0.1969745E+00 (   5.360eV) occ=1.000
+     0.1863342E+00 (   5.070eV) occ=1.000     0.1903528E+00 (   5.180eV) occ=1.000
+     0.1829757E+00 (   4.979eV) occ=1.000     0.1826204E+00 (   4.969eV) occ=1.000
+     0.1735117E+00 (   4.722eV) occ=1.000     0.1751109E+00 (   4.765eV) occ=1.000
+     0.1683975E+00 (   4.582eV) occ=1.000     0.1658359E+00 (   4.513eV) occ=1.000
+     0.1613104E+00 (   4.390eV) occ=1.000     0.1628693E+00 (   4.432eV) occ=1.000
+     0.1596244E+00 (   4.344eV) occ=1.000     0.1611113E+00 (   4.384eV) occ=1.000
+     0.1543142E+00 (   4.199eV) occ=1.000     0.1554307E+00 (   4.230eV) occ=1.000
+     0.1447848E+00 (   3.940eV) occ=1.000     0.1455093E+00 (   3.960eV) occ=1.000
+     0.1319304E+00 (   3.590eV) occ=1.000     0.1281080E+00 (   3.486eV) occ=1.000
+     0.1187184E+00 (   3.231eV) occ=1.000     0.1236733E+00 (   3.365eV) occ=1.000
+     0.1081194E+00 (   2.942eV) occ=1.000     0.1086725E+00 (   2.957eV) occ=1.000
+    -0.3196916E+00 (  -8.699eV) occ=1.000    -0.3175420E+00 (  -8.641eV) occ=1.000
+    -0.3279681E+00 (  -8.925eV) occ=1.000    -0.3254057E+00 (  -8.855eV) occ=1.000
+    -0.3300011E+00 (  -8.980eV) occ=1.000    -0.3268286E+00 (  -8.894eV) occ=1.000
+    -0.3430413E+00 (  -9.335eV) occ=1.000    -0.3399393E+00 (  -9.250eV) occ=1.000
+    -0.3496151E+00 (  -9.514eV) occ=1.000    -0.3468313E+00 (  -9.438eV) occ=1.000
+    -0.3560052E+00 (  -9.687eV) occ=1.000    -0.3541249E+00 (  -9.636eV) occ=1.000
+    -0.3716028E+00 ( -10.112eV) occ=1.000    -0.3691102E+00 ( -10.044eV) occ=1.000
+    -0.3739592E+00 ( -10.176eV) occ=1.000    -0.3706016E+00 ( -10.085eV) occ=1.000
+    -0.3763631E+00 ( -10.241eV) occ=1.000    -0.3738227E+00 ( -10.172eV) occ=1.000
+    -0.3857418E+00 ( -10.497eV) occ=1.000    -0.3778331E+00 ( -10.281eV) occ=1.000
+    -0.4080223E+00 ( -11.103eV) occ=1.000    -0.4071293E+00 ( -11.079eV) occ=1.000
+    -0.4109481E+00 ( -11.183eV) occ=1.000    -0.4079461E+00 ( -11.101eV) occ=1.000
+    -0.4168719E+00 ( -11.344eV) occ=1.000    -0.4143127E+00 ( -11.274eV) occ=1.000
+    -0.4221248E+00 ( -11.487eV) occ=1.000    -0.4200402E+00 ( -11.430eV) occ=1.000
+    -0.4538605E+00 ( -12.350eV) occ=1.000    -0.4513014E+00 ( -12.281eV) occ=1.000
+    -0.4668805E+00 ( -12.705eV) occ=1.000    -0.4648999E+00 ( -12.651eV) occ=1.000
+    -0.4708338E+00 ( -12.812eV) occ=1.000    -0.4688196E+00 ( -12.757eV) occ=1.000
+    -0.4731295E+00 ( -12.875eV) occ=1.000    -0.4724121E+00 ( -12.855eV) occ=1.000
+    -0.4910876E+00 ( -13.363eV) occ=1.000    -0.4930931E+00 ( -13.418eV) occ=1.000
+    -0.4980218E+00 ( -13.552eV) occ=1.000    -0.4959053E+00 ( -13.494eV) occ=1.000
+    -0.5033665E+00 ( -13.697eV) occ=1.000    -0.5040071E+00 ( -13.715eV) occ=1.000
+    -0.5129134E+00 ( -13.957eV) occ=1.000    -0.5091337E+00 ( -13.854eV) occ=1.000
+    -0.5174363E+00 ( -14.080eV) occ=1.000    -0.5177015E+00 ( -14.087eV) occ=1.000
+    -0.5271820E+00 ( -14.345eV) occ=1.000    -0.5270399E+00 ( -14.342eV) occ=1.000
+    -0.1267476E+01 ( -34.490eV) occ=1.000    -0.1264597E+01 ( -34.412eV) occ=1.000
+    -0.1271059E+01 ( -34.588eV) occ=1.000    -0.1268257E+01 ( -34.511eV) occ=1.000
+    -0.1276748E+01 ( -34.742eV) occ=1.000    -0.1273270E+01 ( -34.648eV) occ=1.000
+    -0.1287568E+01 ( -35.037eV) occ=1.000    -0.1277880E+01 ( -34.773eV) occ=1.000
+    -0.1341043E+01 ( -36.492eV) occ=1.000    -0.1339264E+01 ( -36.444eV) occ=1.000
+    -0.1347318E+01 ( -36.663eV) occ=1.000    -0.1346053E+01 ( -36.628eV) occ=1.000
+    -0.1351623E+01 ( -36.780eV) occ=1.000    -0.1349743E+01 ( -36.729eV) occ=1.000
+    -0.1357726E+01 ( -36.946eV) occ=1.000    -0.1357348E+01 ( -36.936eV) occ=1.000
+
+ Brillouin zone point:      4
+    weight=  0.125000
+    k     =<   0.375  -0.375   0.000> . <b1,b2,b3> 
+          =<   0.362  -0.256  -0.000>
+
+ orbital energies:
+     0.2417922E+00 (   6.580eV) occ=1.000
+     0.2363331E+00 (   6.431eV) occ=1.000     0.2418806E+00 (   6.582eV) occ=1.000
+     0.2350083E+00 (   6.395eV) occ=1.000     0.2373788E+00 (   6.459eV) occ=1.000
+     0.2342421E+00 (   6.374eV) occ=1.000     0.2352592E+00 (   6.402eV) occ=1.000
+     0.2304422E+00 (   6.271eV) occ=1.000     0.2323001E+00 (   6.321eV) occ=1.000
+     0.2277913E+00 (   6.199eV) occ=1.000     0.2305696E+00 (   6.274eV) occ=1.000
+     0.2259443E+00 (   6.148eV) occ=1.000     0.2264614E+00 (   6.162eV) occ=1.000
+     0.2252802E+00 (   6.130eV) occ=1.000     0.2237670E+00 (   6.089eV) occ=1.000
+     0.2232638E+00 (   6.075eV) occ=1.000     0.2234092E+00 (   6.079eV) occ=1.000
+     0.2182179E+00 (   5.938eV) occ=1.000     0.2185064E+00 (   5.946eV) occ=1.000
+     0.2112129E+00 (   5.747eV) occ=1.000     0.2128016E+00 (   5.791eV) occ=1.000
+     0.2104828E+00 (   5.728eV) occ=1.000     0.2111597E+00 (   5.746eV) occ=1.000
+     0.2081732E+00 (   5.665eV) occ=1.000     0.2100721E+00 (   5.716eV) occ=1.000
+     0.2052261E+00 (   5.585eV) occ=1.000     0.2084548E+00 (   5.672eV) occ=1.000
+     0.2024225E+00 (   5.508eV) occ=1.000     0.2048869E+00 (   5.575eV) occ=1.000
+     0.2019043E+00 (   5.494eV) occ=1.000     0.2021061E+00 (   5.500eV) occ=1.000
+     0.1790202E+00 (   4.871eV) occ=1.000     0.1803055E+00 (   4.906eV) occ=1.000
+     0.1721248E+00 (   4.684eV) occ=1.000     0.1715468E+00 (   4.668eV) occ=1.000
+     0.1659927E+00 (   4.517eV) occ=1.000     0.1673195E+00 (   4.553eV) occ=1.000
+     0.1575760E+00 (   4.288eV) occ=1.000     0.1563397E+00 (   4.254eV) occ=1.000
+     0.1484303E+00 (   4.039eV) occ=1.000     0.1493929E+00 (   4.065eV) occ=1.000
+     0.1457285E+00 (   3.966eV) occ=1.000     0.1479003E+00 (   4.025eV) occ=1.000
+     0.1404909E+00 (   3.823eV) occ=1.000     0.1411727E+00 (   3.842eV) occ=1.000
+     0.1241072E+00 (   3.377eV) occ=1.000     0.1291572E+00 (   3.515eV) occ=1.000
+     0.1216651E+00 (   3.311eV) occ=1.000     0.1183092E+00 (   3.219eV) occ=1.000
+    -0.3125473E+00 (  -8.505eV) occ=1.000    -0.3112205E+00 (  -8.469eV) occ=1.000
+    -0.3221888E+00 (  -8.767eV) occ=1.000    -0.3189617E+00 (  -8.679eV) occ=1.000
+    -0.3264875E+00 (  -8.884eV) occ=1.000    -0.3259971E+00 (  -8.871eV) occ=1.000
+    -0.3347166E+00 (  -9.108eV) occ=1.000    -0.3305047E+00 (  -8.994eV) occ=1.000
+    -0.3378627E+00 (  -9.194eV) occ=1.000    -0.3329825E+00 (  -9.061eV) occ=1.000
+    -0.3490194E+00 (  -9.497eV) occ=1.000    -0.3463000E+00 (  -9.423eV) occ=1.000
+    -0.3579072E+00 (  -9.739eV) occ=1.000    -0.3524220E+00 (  -9.590eV) occ=1.000
+    -0.3748435E+00 ( -10.200eV) occ=1.000    -0.3665633E+00 (  -9.975eV) occ=1.000
+    -0.3825964E+00 ( -10.411eV) occ=1.000    -0.3818409E+00 ( -10.391eV) occ=1.000
+    -0.3929853E+00 ( -10.694eV) occ=1.000    -0.3921005E+00 ( -10.670eV) occ=1.000
+    -0.3944232E+00 ( -10.733eV) occ=1.000    -0.3953688E+00 ( -10.759eV) occ=1.000
+    -0.4004783E+00 ( -10.898eV) occ=1.000    -0.4004289E+00 ( -10.896eV) occ=1.000
+    -0.4088976E+00 ( -11.127eV) occ=1.000    -0.4043989E+00 ( -11.004eV) occ=1.000
+    -0.4281979E+00 ( -11.652eV) occ=1.000    -0.4253801E+00 ( -11.575eV) occ=1.000
+    -0.4341791E+00 ( -11.815eV) occ=1.000    -0.4319345E+00 ( -11.754eV) occ=1.000
+    -0.4440259E+00 ( -12.083eV) occ=1.000    -0.4435710E+00 ( -12.070eV) occ=1.000
+    -0.5103807E+00 ( -13.888eV) occ=1.000    -0.5101452E+00 ( -13.882eV) occ=1.000
+    -0.5143788E+00 ( -13.997eV) occ=1.000    -0.5144416E+00 ( -13.999eV) occ=1.000
+    -0.5235773E+00 ( -14.247eV) occ=1.000    -0.5221395E+00 ( -14.208eV) occ=1.000
+    -0.5341398E+00 ( -14.535eV) occ=1.000    -0.5324111E+00 ( -14.488eV) occ=1.000
+    -0.5363629E+00 ( -14.595eV) occ=1.000    -0.5360735E+00 ( -14.587eV) occ=1.000
+    -0.5404244E+00 ( -14.706eV) occ=1.000    -0.5392736E+00 ( -14.674eV) occ=1.000
+    -0.5470281E+00 ( -14.886eV) occ=1.000    -0.5449128E+00 ( -14.828eV) occ=1.000
+    -0.5539318E+00 ( -15.073eV) occ=1.000    -0.5516490E+00 ( -15.011eV) occ=1.000
+    -0.1271855E+01 ( -34.609eV) occ=1.000    -0.1268931E+01 ( -34.530eV) occ=1.000
+    -0.1272649E+01 ( -34.631eV) occ=1.000    -0.1271160E+01 ( -34.590eV) occ=1.000
+    -0.1275476E+01 ( -34.708eV) occ=1.000    -0.1272564E+01 ( -34.629eV) occ=1.000
+    -0.1287984E+01 ( -35.048eV) occ=1.000    -0.1275635E+01 ( -34.712eV) occ=1.000
+    -0.1338247E+01 ( -36.416eV) occ=1.000    -0.1336805E+01 ( -36.377eV) occ=1.000
+    -0.1342931E+01 ( -36.543eV) occ=1.000    -0.1341400E+01 ( -36.502eV) occ=1.000
+    -0.1345198E+01 ( -36.605eV) occ=1.000    -0.1343473E+01 ( -36.558eV) occ=1.000
+    -0.1349664E+01 ( -36.727eV) occ=1.000    -0.1349810E+01 ( -36.730eV) occ=1.000
+
+ Brillouin zone point:      5
+    weight=  0.125000
+    k     =<   0.375   0.125   0.000> . <b1,b2,b3> 
+          =<   0.362   0.085  -0.000>
+
+ orbital energies:
+     0.2480789E+00 (   6.751eV) occ=1.000
+     0.2428886E+00 (   6.609eV) occ=1.000     0.2446597E+00 (   6.658eV) occ=1.000
+     0.2403621E+00 (   6.541eV) occ=1.000     0.2430031E+00 (   6.613eV) occ=1.000
+     0.2391172E+00 (   6.507eV) occ=1.000     0.2418687E+00 (   6.582eV) occ=1.000
+     0.2379246E+00 (   6.474eV) occ=1.000     0.2398184E+00 (   6.526eV) occ=1.000
+     0.2354935E+00 (   6.408eV) occ=1.000     0.2367998E+00 (   6.444eV) occ=1.000
+     0.2328176E+00 (   6.335eV) occ=1.000     0.2342600E+00 (   6.375eV) occ=1.000
+     0.2289042E+00 (   6.229eV) occ=1.000     0.2314174E+00 (   6.297eV) occ=1.000
+     0.2269394E+00 (   6.175eV) occ=1.000     0.2291961E+00 (   6.237eV) occ=1.000
+     0.2220145E+00 (   6.041eV) occ=1.000     0.2218912E+00 (   6.038eV) occ=1.000
+     0.2186333E+00 (   5.949eV) occ=1.000     0.2202246E+00 (   5.993eV) occ=1.000
+     0.2148155E+00 (   5.845eV) occ=1.000     0.2176547E+00 (   5.923eV) occ=1.000
+     0.2125976E+00 (   5.785eV) occ=1.000     0.2143620E+00 (   5.833eV) occ=1.000
+     0.2105279E+00 (   5.729eV) occ=1.000     0.2121646E+00 (   5.773eV) occ=1.000
+     0.2090610E+00 (   5.689eV) occ=1.000     0.2101153E+00 (   5.718eV) occ=1.000
+     0.2050256E+00 (   5.579eV) occ=1.000     0.2070538E+00 (   5.634eV) occ=1.000
+     0.1973454E+00 (   5.370eV) occ=1.000     0.1995948E+00 (   5.431eV) occ=1.000
+     0.1951662E+00 (   5.311eV) occ=1.000     0.1964930E+00 (   5.347eV) occ=1.000
+     0.1942593E+00 (   5.286eV) occ=1.000     0.1953426E+00 (   5.316eV) occ=1.000
+     0.1924465E+00 (   5.237eV) occ=1.000     0.1939736E+00 (   5.278eV) occ=1.000
+     0.1810002E+00 (   4.925eV) occ=1.000     0.1817960E+00 (   4.947eV) occ=1.000
+     0.1714275E+00 (   4.665eV) occ=1.000     0.1717581E+00 (   4.674eV) occ=1.000
+     0.1667013E+00 (   4.536eV) occ=1.000     0.1694063E+00 (   4.610eV) occ=1.000
+     0.1410174E+00 (   3.837eV) occ=1.000     0.1416512E+00 (   3.855eV) occ=1.000
+     0.1322789E+00 (   3.600eV) occ=1.000     0.1296270E+00 (   3.527eV) occ=1.000
+    -0.3217389E+00 (  -8.755eV) occ=1.000    -0.3198093E+00 (  -8.703eV) occ=1.000
+    -0.3273661E+00 (  -8.908eV) occ=1.000    -0.3250621E+00 (  -8.845eV) occ=1.000
+    -0.3388233E+00 (  -9.220eV) occ=1.000    -0.3325450E+00 (  -9.049eV) occ=1.000
+    -0.3423422E+00 (  -9.316eV) occ=1.000    -0.3430069E+00 (  -9.334eV) occ=1.000
+    -0.3505743E+00 (  -9.540eV) occ=1.000    -0.3479728E+00 (  -9.469eV) occ=1.000
+    -0.3598881E+00 (  -9.793eV) occ=1.000    -0.3553830E+00 (  -9.671eV) occ=1.000
+    -0.3765216E+00 ( -10.246eV) occ=1.000    -0.3730271E+00 ( -10.151eV) occ=1.000
+    -0.3824105E+00 ( -10.406eV) occ=1.000    -0.3775296E+00 ( -10.273eV) occ=1.000
+    -0.3872487E+00 ( -10.538eV) occ=1.000    -0.3841721E+00 ( -10.454eV) occ=1.000
+    -0.4040409E+00 ( -10.995eV) occ=1.000    -0.3999646E+00 ( -10.884eV) occ=1.000
+    -0.4102915E+00 ( -11.165eV) occ=1.000    -0.4108668E+00 ( -11.180eV) occ=1.000
+    -0.4175095E+00 ( -11.361eV) occ=1.000    -0.4152031E+00 ( -11.298eV) occ=1.000
+    -0.4217188E+00 ( -11.476eV) occ=1.000    -0.4192722E+00 ( -11.409eV) occ=1.000
+    -0.4225896E+00 ( -11.499eV) occ=1.000    -0.4212361E+00 ( -11.463eV) occ=1.000
+    -0.4760166E+00 ( -12.953eV) occ=1.000    -0.4741976E+00 ( -12.904eV) occ=1.000
+    -0.4787666E+00 ( -13.028eV) occ=1.000    -0.4779881E+00 ( -13.007eV) occ=1.000
+    -0.4922510E+00 ( -13.395eV) occ=1.000    -0.4899464E+00 ( -13.332eV) occ=1.000
+    -0.5028533E+00 ( -13.683eV) occ=1.000    -0.5012711E+00 ( -13.640eV) occ=1.000
+    -0.5038202E+00 ( -13.710eV) occ=1.000    -0.5051387E+00 ( -13.746eV) occ=1.000
+    -0.5203643E+00 ( -14.160eV) occ=1.000    -0.5182389E+00 ( -14.102eV) occ=1.000
+    -0.5227832E+00 ( -14.226eV) occ=1.000    -0.5221239E+00 ( -14.208eV) occ=1.000
+    -0.5264476E+00 ( -14.325eV) occ=1.000    -0.5241177E+00 ( -14.262eV) occ=1.000
+    -0.5273066E+00 ( -14.349eV) occ=1.000    -0.5282970E+00 ( -14.376eV) occ=1.000
+    -0.5371538E+00 ( -14.617eV) occ=1.000    -0.5346158E+00 ( -14.548eV) occ=1.000
+    -0.1269221E+01 ( -34.538eV) occ=1.000    -0.1266245E+01 ( -34.457eV) occ=1.000
+    -0.1271602E+01 ( -34.602eV) occ=1.000    -0.1268735E+01 ( -34.524eV) occ=1.000
+    -0.1277798E+01 ( -34.771eV) occ=1.000    -0.1274879E+01 ( -34.692eV) occ=1.000
+    -0.1288757E+01 ( -35.069eV) occ=1.000    -0.1277865E+01 ( -34.773eV) occ=1.000
+    -0.1335143E+01 ( -36.331eV) occ=1.000    -0.1333741E+01 ( -36.293eV) occ=1.000
+    -0.1342191E+01 ( -36.523eV) occ=1.000    -0.1340950E+01 ( -36.489eV) occ=1.000
+    -0.1346340E+01 ( -36.636eV) occ=1.000    -0.1344761E+01 ( -36.593eV) occ=1.000
+    -0.1352932E+01 ( -36.815eV) occ=1.000    -0.1352580E+01 ( -36.806eV) occ=1.000
+
+ Brillouin zone point:      6
+    weight=  0.125000
+    k     =<   0.125   0.125   0.000> . <b1,b2,b3> 
+          =<   0.121   0.085  -0.000>
+
+ orbital energies:
+     0.2352315E+00 (   6.401eV) occ=1.000
+     0.2334038E+00 (   6.351eV) occ=1.000     0.2353083E+00 (   6.403eV) occ=1.000
+     0.2283981E+00 (   6.215eV) occ=1.000     0.2343193E+00 (   6.376eV) occ=1.000
+     0.2265446E+00 (   6.165eV) occ=1.000     0.2269965E+00 (   6.177eV) occ=1.000
+     0.2214746E+00 (   6.027eV) occ=1.000     0.2234678E+00 (   6.081eV) occ=1.000
+     0.2205442E+00 (   6.001eV) occ=1.000     0.2217750E+00 (   6.035eV) occ=1.000
+     0.2174563E+00 (   5.917eV) occ=1.000     0.2179688E+00 (   5.931eV) occ=1.000
+     0.2157543E+00 (   5.871eV) occ=1.000     0.2163782E+00 (   5.888eV) occ=1.000
+     0.2104868E+00 (   5.728eV) occ=1.000     0.2134510E+00 (   5.808eV) occ=1.000
+     0.2080536E+00 (   5.661eV) occ=1.000     0.2122591E+00 (   5.776eV) occ=1.000
+     0.2037591E+00 (   5.545eV) occ=1.000     0.2058963E+00 (   5.603eV) occ=1.000
+     0.2030428E+00 (   5.525eV) occ=1.000     0.2035839E+00 (   5.540eV) occ=1.000
+     0.1883950E+00 (   5.127eV) occ=1.000     0.1911997E+00 (   5.203eV) occ=1.000
+     0.1861051E+00 (   5.064eV) occ=1.000     0.1880315E+00 (   5.117eV) occ=1.000
+     0.1836703E+00 (   4.998eV) occ=1.000     0.1822328E+00 (   4.959eV) occ=1.000
+     0.1713360E+00 (   4.662eV) occ=1.000     0.1777388E+00 (   4.837eV) occ=1.000
+     0.1656079E+00 (   4.506eV) occ=1.000     0.1677951E+00 (   4.566eV) occ=1.000
+     0.1575273E+00 (   4.287eV) occ=1.000     0.1599191E+00 (   4.352eV) occ=1.000
+     0.1568882E+00 (   4.269eV) occ=1.000     0.1575991E+00 (   4.289eV) occ=1.000
+     0.1448832E+00 (   3.943eV) occ=1.000     0.1388757E+00 (   3.779eV) occ=1.000
+     0.1344038E+00 (   3.657eV) occ=1.000     0.1357051E+00 (   3.693eV) occ=1.000
+     0.1241734E+00 (   3.379eV) occ=1.000     0.1234228E+00 (   3.359eV) occ=1.000
+     0.1098601E+00 (   2.989eV) occ=1.000     0.1098313E+00 (   2.989eV) occ=1.000
+     0.1030104E+00 (   2.803eV) occ=1.000     0.1068281E+00 (   2.907eV) occ=1.000
+     0.8933434E-01 (   2.431eV) occ=1.000     0.9156523E-01 (   2.492eV) occ=1.000
+    -0.3111189E+00 (  -8.466eV) occ=1.000    -0.3091157E+00 (  -8.412eV) occ=1.000
+    -0.3131481E+00 (  -8.521eV) occ=1.000    -0.3103506E+00 (  -8.445eV) occ=1.000
+    -0.3206560E+00 (  -8.726eV) occ=1.000    -0.3171145E+00 (  -8.629eV) occ=1.000
+    -0.3309115E+00 (  -9.005eV) occ=1.000    -0.3302791E+00 (  -8.987eV) occ=1.000
+    -0.3360222E+00 (  -9.144eV) occ=1.000    -0.3328224E+00 (  -9.057eV) occ=1.000
+    -0.3506050E+00 (  -9.541eV) occ=1.000    -0.3484053E+00 (  -9.481eV) occ=1.000
+    -0.3564115E+00 (  -9.699eV) occ=1.000    -0.3539223E+00 (  -9.631eV) occ=1.000
+    -0.3659763E+00 (  -9.959eV) occ=1.000    -0.3610738E+00 (  -9.825eV) occ=1.000
+    -0.3718540E+00 ( -10.119eV) occ=1.000    -0.3685730E+00 ( -10.029eV) occ=1.000
+    -0.3763240E+00 ( -10.240eV) occ=1.000    -0.3734017E+00 ( -10.161eV) occ=1.000
+    -0.3896782E+00 ( -10.604eV) occ=1.000    -0.3848915E+00 ( -10.474eV) occ=1.000
+    -0.3923138E+00 ( -10.675eV) occ=1.000    -0.3882011E+00 ( -10.564eV) occ=1.000
+    -0.4382368E+00 ( -11.925eV) occ=1.000    -0.4356160E+00 ( -11.854eV) occ=1.000
+    -0.4405621E+00 ( -11.988eV) occ=1.000    -0.4395160E+00 ( -11.960eV) occ=1.000
+    -0.4460208E+00 ( -12.137eV) occ=1.000    -0.4431501E+00 ( -12.059eV) occ=1.000
+    -0.4550844E+00 ( -12.384eV) occ=1.000    -0.4533259E+00 ( -12.336eV) occ=1.000
+    -0.4703454E+00 ( -12.799eV) occ=1.000    -0.4692274E+00 ( -12.768eV) occ=1.000
+    -0.4771228E+00 ( -12.983eV) occ=1.000    -0.4779039E+00 ( -13.005eV) occ=1.000
+    -0.4979261E+00 ( -13.549eV) occ=1.000    -0.4959313E+00 ( -13.495eV) occ=1.000
+    -0.4994113E+00 ( -13.590eV) occ=1.000    -0.4980577E+00 ( -13.553eV) occ=1.000
+    -0.5063587E+00 ( -13.779eV) occ=1.000    -0.5070727E+00 ( -13.798eV) occ=1.000
+    -0.5324733E+00 ( -14.489eV) occ=1.000    -0.5307588E+00 ( -14.443eV) occ=1.000
+    -0.5384665E+00 ( -14.653eV) occ=1.000    -0.5381084E+00 ( -14.643eV) occ=1.000
+    -0.5416059E+00 ( -14.738eV) occ=1.000    -0.5406676E+00 ( -14.712eV) occ=1.000
+    -0.1261179E+01 ( -34.319eV) occ=1.000    -0.1258134E+01 ( -34.236eV) occ=1.000
+    -0.1266111E+01 ( -34.453eV) occ=1.000    -0.1261456E+01 ( -34.326eV) occ=1.000
+    -0.1282284E+01 ( -34.893eV) occ=1.000    -0.1278925E+01 ( -34.802eV) occ=1.000
+    -0.1291895E+01 ( -35.155eV) occ=1.000    -0.1284067E+01 ( -34.942eV) occ=1.000
+    -0.1333326E+01 ( -36.282eV) occ=1.000    -0.1331591E+01 ( -36.235eV) occ=1.000
+    -0.1339696E+01 ( -36.455eV) occ=1.000    -0.1338739E+01 ( -36.429eV) occ=1.000
+    -0.1358711E+01 ( -36.973eV) occ=1.000    -0.1356771E+01 ( -36.920eV) occ=1.000
+    -0.1364820E+01 ( -37.139eV) occ=1.000    -0.1364164E+01 ( -37.121eV) occ=1.000
+
+ Brillouin zone point:      7
+    weight=  0.125000
+    k     =<   0.125  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.121  -0.085  -0.000>
+
+ orbital energies:
+     0.2351079E+00 (   6.398eV) occ=1.000
+     0.2335672E+00 (   6.356eV) occ=1.000     0.2353574E+00 (   6.404eV) occ=1.000
+     0.2284438E+00 (   6.216eV) occ=1.000     0.2342819E+00 (   6.375eV) occ=1.000
+     0.2266080E+00 (   6.166eV) occ=1.000     0.2269951E+00 (   6.177eV) occ=1.000
+     0.2216335E+00 (   6.031eV) occ=1.000     0.2234557E+00 (   6.081eV) occ=1.000
+     0.2205903E+00 (   6.003eV) occ=1.000     0.2217879E+00 (   6.035eV) occ=1.000
+     0.2174838E+00 (   5.918eV) occ=1.000     0.2179595E+00 (   5.931eV) occ=1.000
+     0.2158207E+00 (   5.873eV) occ=1.000     0.2163466E+00 (   5.887eV) occ=1.000
+     0.2104824E+00 (   5.728eV) occ=1.000     0.2134600E+00 (   5.809eV) occ=1.000
+     0.2080103E+00 (   5.660eV) occ=1.000     0.2122926E+00 (   5.777eV) occ=1.000
+     0.2037717E+00 (   5.545eV) occ=1.000     0.2058894E+00 (   5.603eV) occ=1.000
+     0.2030426E+00 (   5.525eV) occ=1.000     0.2035952E+00 (   5.540eV) occ=1.000
+     0.1883821E+00 (   5.126eV) occ=1.000     0.1911563E+00 (   5.202eV) occ=1.000
+     0.1859664E+00 (   5.060eV) occ=1.000     0.1880869E+00 (   5.118eV) occ=1.000
+     0.1837188E+00 (   4.999eV) occ=1.000     0.1822411E+00 (   4.959eV) occ=1.000
+     0.1713293E+00 (   4.662eV) occ=1.000     0.1777517E+00 (   4.837eV) occ=1.000
+     0.1655814E+00 (   4.506eV) occ=1.000     0.1678201E+00 (   4.567eV) occ=1.000
+     0.1574921E+00 (   4.286eV) occ=1.000     0.1599073E+00 (   4.351eV) occ=1.000
+     0.1568894E+00 (   4.269eV) occ=1.000     0.1576144E+00 (   4.289eV) occ=1.000
+     0.1448657E+00 (   3.942eV) occ=1.000     0.1388816E+00 (   3.779eV) occ=1.000
+     0.1344169E+00 (   3.658eV) occ=1.000     0.1356998E+00 (   3.693eV) occ=1.000
+     0.1241574E+00 (   3.379eV) occ=1.000     0.1234227E+00 (   3.359eV) occ=1.000
+     0.1098453E+00 (   2.989eV) occ=1.000     0.1098367E+00 (   2.989eV) occ=1.000
+     0.1030175E+00 (   2.803eV) occ=1.000     0.1068370E+00 (   2.907eV) occ=1.000
+     0.8931439E-01 (   2.430eV) occ=1.000     0.9157186E-01 (   2.492eV) occ=1.000
+    -0.3111062E+00 (  -8.466eV) occ=1.000    -0.3090874E+00 (  -8.411eV) occ=1.000
+    -0.3131498E+00 (  -8.521eV) occ=1.000    -0.3102538E+00 (  -8.443eV) occ=1.000
+    -0.3206569E+00 (  -8.726eV) occ=1.000    -0.3170702E+00 (  -8.628eV) occ=1.000
+    -0.3309212E+00 (  -9.005eV) occ=1.000    -0.3303740E+00 (  -8.990eV) occ=1.000
+    -0.3360223E+00 (  -9.144eV) occ=1.000    -0.3328698E+00 (  -9.058eV) occ=1.000
+    -0.3505713E+00 (  -9.540eV) occ=1.000    -0.3484336E+00 (  -9.481eV) occ=1.000
+    -0.3564278E+00 (  -9.699eV) occ=1.000    -0.3539030E+00 (  -9.630eV) occ=1.000
+    -0.3659763E+00 (  -9.959eV) occ=1.000    -0.3610828E+00 (  -9.826eV) occ=1.000
+    -0.3718526E+00 ( -10.119eV) occ=1.000    -0.3685725E+00 ( -10.029eV) occ=1.000
+    -0.3763168E+00 ( -10.240eV) occ=1.000    -0.3734087E+00 ( -10.161eV) occ=1.000
+    -0.3896792E+00 ( -10.604eV) occ=1.000    -0.3849219E+00 ( -10.474eV) occ=1.000
+    -0.3923090E+00 ( -10.675eV) occ=1.000    -0.3881985E+00 ( -10.564eV) occ=1.000
+    -0.4382496E+00 ( -11.925eV) occ=1.000    -0.4356058E+00 ( -11.854eV) occ=1.000
+    -0.4405723E+00 ( -11.989eV) occ=1.000    -0.4395417E+00 ( -11.961eV) occ=1.000
+    -0.4460331E+00 ( -12.137eV) occ=1.000    -0.4431626E+00 ( -12.059eV) occ=1.000
+    -0.4550877E+00 ( -12.384eV) occ=1.000    -0.4533560E+00 ( -12.337eV) occ=1.000
+    -0.4703474E+00 ( -12.799eV) occ=1.000    -0.4692270E+00 ( -12.768eV) occ=1.000
+    -0.4771283E+00 ( -12.983eV) occ=1.000    -0.4778954E+00 ( -13.004eV) occ=1.000
+    -0.4979288E+00 ( -13.549eV) occ=1.000    -0.4959316E+00 ( -13.495eV) occ=1.000
+    -0.4994094E+00 ( -13.590eV) occ=1.000    -0.4979916E+00 ( -13.551eV) occ=1.000
+    -0.5063585E+00 ( -13.779eV) occ=1.000    -0.5070737E+00 ( -13.798eV) occ=1.000
+    -0.5324595E+00 ( -14.489eV) occ=1.000    -0.5307596E+00 ( -14.443eV) occ=1.000
+    -0.5384663E+00 ( -14.653eV) occ=1.000    -0.5381083E+00 ( -14.643eV) occ=1.000
+    -0.5416011E+00 ( -14.738eV) occ=1.000    -0.5406674E+00 ( -14.712eV) occ=1.000
+    -0.1261179E+01 ( -34.319eV) occ=1.000    -0.1258134E+01 ( -34.236eV) occ=1.000
+    -0.1266111E+01 ( -34.453eV) occ=1.000    -0.1261458E+01 ( -34.326eV) occ=1.000
+    -0.1282284E+01 ( -34.893eV) occ=1.000    -0.1278924E+01 ( -34.802eV) occ=1.000
+    -0.1291896E+01 ( -35.155eV) occ=1.000    -0.1284066E+01 ( -34.941eV) occ=1.000
+    -0.1333326E+01 ( -36.282eV) occ=1.000    -0.1331591E+01 ( -36.235eV) occ=1.000
+    -0.1339696E+01 ( -36.455eV) occ=1.000    -0.1338739E+01 ( -36.429eV) occ=1.000
+    -0.1358711E+01 ( -36.973eV) occ=1.000    -0.1356771E+01 ( -36.920eV) occ=1.000
+    -0.1364820E+01 ( -37.139eV) occ=1.000    -0.1364164E+01 ( -37.121eV) occ=1.000
+
+ Brillouin zone point:      8
+    weight=  0.125000
+    k     =<   0.375  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.362  -0.085  -0.000>
+
+ orbital energies:
+     0.2479829E+00 (   6.748eV) occ=1.000
+     0.2431529E+00 (   6.617eV) occ=1.000     0.2447695E+00 (   6.661eV) occ=1.000
+     0.2404331E+00 (   6.543eV) occ=1.000     0.2430776E+00 (   6.615eV) occ=1.000
+     0.2392569E+00 (   6.511eV) occ=1.000     0.2419002E+00 (   6.582eV) occ=1.000
+     0.2379740E+00 (   6.476eV) occ=1.000     0.2400236E+00 (   6.531eV) occ=1.000
+     0.2356673E+00 (   6.413eV) occ=1.000     0.2367433E+00 (   6.442eV) occ=1.000
+     0.2325942E+00 (   6.329eV) occ=1.000     0.2341787E+00 (   6.372eV) occ=1.000
+     0.2292236E+00 (   6.238eV) occ=1.000     0.2314729E+00 (   6.299eV) occ=1.000
+     0.2267642E+00 (   6.171eV) occ=1.000     0.2292532E+00 (   6.238eV) occ=1.000
+     0.2221565E+00 (   6.045eV) occ=1.000     0.2219232E+00 (   6.039eV) occ=1.000
+     0.2187326E+00 (   5.952eV) occ=1.000     0.2202475E+00 (   5.993eV) occ=1.000
+     0.2149667E+00 (   5.850eV) occ=1.000     0.2177231E+00 (   5.925eV) occ=1.000
+     0.2125856E+00 (   5.785eV) occ=1.000     0.2143734E+00 (   5.833eV) occ=1.000
+     0.2104599E+00 (   5.727eV) occ=1.000     0.2122406E+00 (   5.775eV) occ=1.000
+     0.2090630E+00 (   5.689eV) occ=1.000     0.2101690E+00 (   5.719eV) occ=1.000
+     0.2049714E+00 (   5.578eV) occ=1.000     0.2070622E+00 (   5.634eV) occ=1.000
+     0.1974244E+00 (   5.372eV) occ=1.000     0.1995685E+00 (   5.431eV) occ=1.000
+     0.1952023E+00 (   5.312eV) occ=1.000     0.1963986E+00 (   5.344eV) occ=1.000
+     0.1941893E+00 (   5.284eV) occ=1.000     0.1952209E+00 (   5.312eV) occ=1.000
+     0.1922861E+00 (   5.232eV) occ=1.000     0.1939685E+00 (   5.278eV) occ=1.000
+     0.1809736E+00 (   4.925eV) occ=1.000     0.1818869E+00 (   4.949eV) occ=1.000
+     0.1714076E+00 (   4.664eV) occ=1.000     0.1717516E+00 (   4.674eV) occ=1.000
+     0.1667388E+00 (   4.537eV) occ=1.000     0.1693624E+00 (   4.609eV) occ=1.000
+     0.1409402E+00 (   3.835eV) occ=1.000     0.1416585E+00 (   3.855eV) occ=1.000
+     0.1323117E+00 (   3.600eV) occ=1.000     0.1296202E+00 (   3.527eV) occ=1.000
+    -0.3217296E+00 (  -8.755eV) occ=1.000    -0.3197565E+00 (  -8.701eV) occ=1.000
+    -0.3273645E+00 (  -8.908eV) occ=1.000    -0.3250639E+00 (  -8.846eV) occ=1.000
+    -0.3388284E+00 (  -9.220eV) occ=1.000    -0.3325477E+00 (  -9.049eV) occ=1.000
+    -0.3423446E+00 (  -9.316eV) occ=1.000    -0.3430168E+00 (  -9.334eV) occ=1.000
+    -0.3505716E+00 (  -9.540eV) occ=1.000    -0.3478964E+00 (  -9.467eV) occ=1.000
+    -0.3598740E+00 (  -9.793eV) occ=1.000    -0.3553521E+00 (  -9.670eV) occ=1.000
+    -0.3765332E+00 ( -10.246eV) occ=1.000    -0.3730811E+00 ( -10.152eV) occ=1.000
+    -0.3824016E+00 ( -10.406eV) occ=1.000    -0.3776742E+00 ( -10.277eV) occ=1.000
+    -0.3872555E+00 ( -10.538eV) occ=1.000    -0.3841597E+00 ( -10.454eV) occ=1.000
+    -0.4040373E+00 ( -10.995eV) occ=1.000    -0.3999903E+00 ( -10.884eV) occ=1.000
+    -0.4102986E+00 ( -11.165eV) occ=1.000    -0.4108339E+00 ( -11.179eV) occ=1.000
+    -0.4174870E+00 ( -11.360eV) occ=1.000    -0.4152105E+00 ( -11.299eV) occ=1.000
+    -0.4217211E+00 ( -11.476eV) occ=1.000    -0.4193068E+00 ( -11.410eV) occ=1.000
+    -0.4225914E+00 ( -11.499eV) occ=1.000    -0.4211999E+00 ( -11.462eV) occ=1.000
+    -0.4760555E+00 ( -12.954eV) occ=1.000    -0.4742049E+00 ( -12.904eV) occ=1.000
+    -0.4787684E+00 ( -13.028eV) occ=1.000    -0.4780131E+00 ( -13.007eV) occ=1.000
+    -0.4922600E+00 ( -13.395eV) occ=1.000    -0.4899411E+00 ( -13.332eV) occ=1.000
+    -0.5028715E+00 ( -13.684eV) occ=1.000    -0.5012349E+00 ( -13.639eV) occ=1.000
+    -0.5038151E+00 ( -13.710eV) occ=1.000    -0.5051441E+00 ( -13.746eV) occ=1.000
+    -0.5203434E+00 ( -14.159eV) occ=1.000    -0.5182286E+00 ( -14.102eV) occ=1.000
+    -0.5227762E+00 ( -14.226eV) occ=1.000    -0.5221328E+00 ( -14.208eV) occ=1.000
+    -0.5264570E+00 ( -14.326eV) occ=1.000    -0.5240939E+00 ( -14.261eV) occ=1.000
+    -0.5273071E+00 ( -14.349eV) occ=1.000    -0.5282881E+00 ( -14.376eV) occ=1.000
+    -0.5371331E+00 ( -14.616eV) occ=1.000    -0.5346229E+00 ( -14.548eV) occ=1.000
+    -0.1269222E+01 ( -34.538eV) occ=1.000    -0.1266246E+01 ( -34.457eV) occ=1.000
+    -0.1271602E+01 ( -34.602eV) occ=1.000    -0.1268740E+01 ( -34.524eV) occ=1.000
+    -0.1277798E+01 ( -34.771eV) occ=1.000    -0.1274879E+01 ( -34.691eV) occ=1.000
+    -0.1288757E+01 ( -35.069eV) occ=1.000    -0.1277861E+01 ( -34.773eV) occ=1.000
+    -0.1335144E+01 ( -36.331eV) occ=1.000    -0.1333741E+01 ( -36.293eV) occ=1.000
+    -0.1342191E+01 ( -36.523eV) occ=1.000    -0.1340950E+01 ( -36.489eV) occ=1.000
+    -0.1346339E+01 ( -36.636eV) occ=1.000    -0.1344761E+01 ( -36.593eV) occ=1.000
+    -0.1352932E+01 ( -36.815eV) occ=1.000    -0.1352580E+01 ( -36.806eV) occ=1.000
+
+ Total BAND energy   :  -0.4110936663E+03
+
+
+=== Spin Contamination ===
+
+ <Sexact^2> =   0.75000000000000000     
+ <S^2>      =    9.6430948632093632     
+
+
+ Writing Crystallographic Information File:./perm/U6-pbe96.opt.cif
+   - cell not shifted (nwpw:cif_shift_cell .false.)
+
+ output psi filename:./perm/U8H-110-ctr.movecs
+
+
+== Timing ==
+
+cputime in seconds
+  prologue    :   0.246643E+03
+  main loop   :   0.147700E+04
+  epilogue    :   0.126362E+03
+  total       :   0.185001E+04
+  cputime/step:   0.235191E+01       (     628 evalulations,     269 linesearches)
+
+
+Time spent doing                        total          step
+  FFTs                       :   0.254109E+02  0.404633E-01
+  dot products               :   0.886773E+03  0.141206E+01
+  geodesic                   :   0.625451E+03  0.995941E+00
+  ffm_dgemm                  :   0.000000E+00  0.000000E+00
+  fmf_dgemm                  :   0.000000E+00  0.000000E+00
+  m_diagonalize              :   0.000000E+00  0.000000E+00
+    - m_tredq                :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq      :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq_dgemm:   0.000000E+00  0.000000E+00
+       - m_tredq_dgemm1      :   0.000000E+00  0.000000E+00
+    - m_getdiags             :   0.000000E+00  0.000000E+00
+    - m_tqliq                :   0.000000E+00  0.000000E+00
+    - m_eigsrt               :   0.000000E+00  0.000000E+00
+  exchange correlation       :   0.362659E+02  0.577483E-01
+  local pseudopotentials     :   0.607014E-03  0.966582E-06
+  non-local pseudopotentials :   0.285410E+03  0.454475E+00
+  hartree potentials         :   0.160957E+00  0.256301E-03
+  ion-ion interaction        :   0.633008E+00  0.100797E-02
+  structure factors          :   0.404855E+00  0.644673E-03
+  phase factors              :   0.000000E+00  0.000000E+00
+  masking and packing        :   0.342584E+02  0.545516E-01
+  queue fft                  :   0.344258E+03  0.548182E+00
+  queue fft (serial)         :   0.105305E+03  0.167683E+00
+  queue fft (message passing):   0.231655E+03  0.368877E+00
+  HFX potential              :   0.000000E+00  0.000000E+00
+  qmmm LJ                    :   0.000000E+00  0.000000E+00
+  qmmm residual Q            :   0.000000E+00  0.000000E+00
+
+     >>>  JOB COMPLETED     AT Sun Mar 10 04:11:42 2013  <<<
+
+ Task  times  cpu:     1831.1s     wall:     1850.0s
+ Summary of allocated global arrays
+-----------------------------------
+  No active global arrays
+
+
+
+                         GA Statistics for process    0
+                         ------------------------------
+
+       create   destroy   get      put      acc     scatter   gather  read&inc
+calls:    0        0        0        0        0        0        0        0     
+number of processes/call 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+bytes total:             0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+bytes remote:            0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+Max memory consumed for GA by this process: 0 bytes
+MA_summarize_allocated_blocks: starting scan ...
+MA_summarize_allocated_blocks: scan completed: 0 heap blocks, 0 stack blocks
+MA usage statistics:
+
+	allocation statistics:
+					      heap	     stack
+					      ----	     -----
+	current number of blocks	         0	         0
+	maximum number of blocks	       282	        25
+	current total bytes		         0	         0
+	maximum total bytes		 176085648	  75479616
+	maximum total K-bytes		    176086	     75480
+	maximum total M-bytes		       177	        76
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+
+
+
+                                     CITATION
+                                     --------
+                Please cite the following reference when publishing
+                           results obtained with NWChem:
+
+                 M. Valiev, E.J. Bylaska, N. Govind, K. Kowalski,
+              T.P. Straatsma, H.J.J. van Dam, D. Wang, J. Nieplocha,
+                        E. Apra, T.L. Windus, W.A. de Jong
+                 "NWChem: a comprehensive and scalable open-source
+                  solution for large scale molecular simulations"
+                      Comput. Phys. Commun. 181, 1477 (2010)
+                           doi:10.1016/j.cpc.2010.04.018
+
+                              AUTHORS & CONTRIBUTORS
+                              ----------------------
+          E. Apra, E. J. Bylaska, W. A. de Jong, N. Govind, K. Kowalski,
+       T. P. Straatsma, M. Valiev, H. J. J. van Dam, D. Wang, T. L. Windus,
+    J. Hammond, J. Autschbach, F. Aquino, S. Hirata, M. T. Hackler, K. Lopata,
+      J. Mullin, P. Nichols, R. Peverati, Y. Zhao, P.-D. Fan, R. J. Harrison,
+        M. Dupuis, D. M. A. Smith, J. Nieplocha, V. Tipparaju, M. Krishnan,
+       B. E. Van Kuiken, A. Vazquez-Mayagoitia, L. Jensen, M. Swart, Q. Wu,
+   T. Van Voorhis, A. A. Auer, M. Nooijen, L. D. Crosby, E. Brown, G. Cisneros,
+      G. I. Fann, H. Fruchtl, J. Garza, K. Hirao, R. Kendall, J. A. Nichols,
+        K. Tsemekhman, K. Wolinski, J. Anchell, D. Bernholdt, P. Borowski,
+  T. Clark, D. Clerc, H. Dachsel, M. Deegan, K. Dyall, D. Elwood, E. Glendening,
+         M. Gutowski, A. Hess, J. Jaffe, B. Johnson, J. Ju, R. Kobayashi,
+     R. Kutteh, Z. Lin, R. Littlefield, X. Long, B. Meng, T. Nakajima, S. Niu,
+      L. Pollack, M. Rosing, K. Glaesemann, G. Sandrone, M. Stave, H. Taylor,
+                  G. Thomas, J. H. van Lenthe, A. Wong, Z. Zhang.
+
+ Total times  cpu:    15522.8s     wall:    15663.4s
+cp: cannot stat `./U8H-110-ctr.out': No such file or directory
+----------------------------------------
+Begin Torque Epilogue (Sun Mar 10 04:11:43 2013)
+Job ID:           384874.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8H-110-ctr
+Session:          12927
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=12:00:00
+Resources:        cput=1251:03:25,mem=115937336kb,vmem=606838688kb,walltime=04:21:08
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub092 taub093 taub094 taub095 taub243 taub247 taub248 taub268 taub297 taub310 taub320 taub322 taub381 taub397 taub399 taub403 taub428 taub432 taub435 taub471 taub476 taub477 taub481 taub489
+End Torque Epilogue
+----------------------------------------

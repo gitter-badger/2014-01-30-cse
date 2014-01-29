@@ -1,0 +1,29 @@
+#!/bin/csh
+#PBS -l walltime=04:00:00
+#PBS -l nodes=24:ppn=12
+#PBS -q cse
+#PBS -V
+#PBS -N U6O2-211-parctr
+#PBS -j oe
+#PBS -o U6O2-211-parctr.out.$PBS_JOBID
+#PBS -m ae
+#PBS -M davis68@illinois.edu
+setenv job "U6O2-211-parctr"
+setenv RUN_DIR /home/davis68/last-runs/
+
+#module purge
+module load mvapich2/1.6-gcc
+module load mvapich2/mpiexec
+
+setenv NWCHEM_NWPW_LIBRARY /home/davis68/nwchem/nwchem-6.1/src/nwpw/libraryps/
+setenv NWCHEM_BIN "/home/davis68/bin"
+
+cd ~/scratch ; mkdir $PBS_JOBID ; cd $PBS_JOBID ; mkdir perm/ ; mkdir scratch/
+cp $RUN_DIR/$job.nw .
+#cp ~/scratch/355326.taubm1.campuscluster.illinois.edu/perm/* ./perm/
+cp ~/scratch/db/U6O2-211/* ./perm/
+
+mpiexec $NWCHEM_BIN/nwchem-dev ./$job.nw #&> ./$job.out
+
+mkdir $RUN_DIR/$job
+cp ./$job.out $RUN_DIR/$job/

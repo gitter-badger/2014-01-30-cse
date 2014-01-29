@@ -1,0 +1,123 @@
+title "Gamma-uranium (100) adsorption"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+restart U6O2-100-crossctr
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 36 36 256
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 3
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 8 12 8
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+  tolerances 1.0e-6 1.0e-6
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:kbpp_filter    .true.
+
+## Optimization ##
+driver
+  #clear                # Deletes all restart data
+  loose               # Specify loose, default, or tight convergence
+  xyz U6O2     # Output XYZ file of geometry at each stage
+  maxiter 40
+end
+set driver:linopt 0
+set nwpw:cif_filename U6O2.opt
+set nwpw:psi_nolattice .true.
+
+#       (100) gamma-uranium surface with surface displacements:	29.7%	-15.3%	and X displacement of	-0.50	Å
+geometry	center	noautosym	noautoz	print	
+	system	crystal			
+	lat_a	3.44			
+	lat_b	3.44			
+	lat_c	22.32			
+	alpha	90.0d0			
+	beta	90.0d0			
+	gamma	90.0d0			
+	end				
+	U1	0.50000	0.50000	0.72009	
+	U2	0.00000	0.00000	0.66591	
+	U3	0.50000	0.50000	0.57706	
+	U4	0.00000	0.00000	0.50000	
+	U5	0.50000	0.50000	0.41115	
+	U6	0.00000	0.00000	0.35697	
+	O1	0.12436	0.87564	0.69768	
+	O2	0.87564	0.12436	0.69768	
+end					
+#task band energy					
+					
+nwpw
+  simulation_cell
+    ngrid 64 64 512
+  end
+end
+
+#       (100) gamma-uranium surface with surface displacements:	29.7%	-15.3%	and X displacement of	2.00	Å
+#cross-brg
+geometry	center	noautosym	noautoz	print	
+	system	crystal			
+	lat_a	3.44			
+	lat_b	3.44			
+	lat_c	22.32			
+	alpha	90.0d0			
+	beta	90.0d0			
+	gamma	90.0d0			
+	end				
+	U1	0.50000	0.50000	0.72009	
+	U2	0.00000	0.00000	0.66591	
+	U3	0.50000	0.50000	0.57706	
+	U4	0.00000	0.00000	0.50000	
+	U5	0.50000	0.50000	0.41115	
+	U6	0.00000	0.00000	0.35697	
+	O1	0.37436	0.12564	0.80969	
+	O2	0.12564	0.37436	0.80969	
+end					
+#task band energy					
+
+#       (100) gamma-uranium surface with surface displacements:	29.7%	-15.3%	and X displacement of	1.75	Å
+#cross-ctr
+geometry	center	noautosym	noautoz	print	
+	system	crystal			
+	lat_a	3.44			
+	lat_b	3.44			
+	lat_c	22.32			
+	alpha	90.0d0			
+	beta	90.0d0			
+	gamma	90.0d0			
+	end				
+	U1	0.50000	0.50000	0.72009	
+	U2	0.00000	0.00000	0.66591	
+	U3	0.50000	0.50000	0.57706	
+	U4	0.00000	0.00000	0.50000	
+	U5	0.50000	0.50000	0.41115	
+	U6	0.00000	0.00000	0.35697	
+	O1	0.12436	0.87564	0.79849	
+	O2	0.87564	0.12436	0.79849	
+end					
+task band energy					
+
+# A.M.D.G.

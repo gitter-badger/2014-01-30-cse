@@ -1,0 +1,2035 @@
+----------------------------------------
+Begin Torque Prologue (Thu Feb 28 06:46:35 2013)
+Job ID:           381390.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O-211-top
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=01:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub223 taub230 taub240 taub244 taub297 taub374 taub375 taub376 taub384 taub392 taub405 taub423 taub425 taub431 taub432 taub433 taub441 taub442 taub444 taub447 taub456 taub457 taub461 taub462
+End Torque Prologue
+----------------------------------------
+ argument  1 = ./U6O-211-top.nw
+
+
+
+============================== echo of input deck ==============================
+title "Gamma-uranium (211) adsorption"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+start U6O-211-top
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 36 48 320
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 3
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 10 10 12
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:cif_filename U6-pbe96.opt
+
+#       (211) gamma-uranium surface with surface displacements: 43.40%  -18.50% and H displacement of   0.250   Å
+geometry        center  noautosym       noautoz print
+        system  crystal
+        lat_a   2.97913
+        lat_b   4.86259
+        lat_c   23.42762
+        alpha   90.0d0
+        beta    90.0d0
+        gamma   90.0d0
+        end
+        U1      0.66667 0.50000 0.66494
+        U2      0.33333 0.00000 0.63100
+        U3      0.00000 0.50000 0.55996
+        U4      0.66667 0.00000 0.50000
+        U5      0.33333 0.50000 0.42895
+        U6      0.00000 0.00000 0.39502
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements: 43.40%  -18.50% and H displacement of   0.250   Å
+geometry        center  noautosym       noautoz print
+        system  crystal
+        lat_a   2.97913
+        lat_b   4.86259
+        lat_c   23.42762
+        alpha   90.0d0
+        beta    90.0d0
+        gamma   90.0d0
+        end
+        U1      0.66667 0.50000 0.66494
+        U2      0.33333 0.00000 0.63100
+        U3      0.00000 0.50000 0.55996
+        U4      0.66667 0.00000 0.50000
+        U5      0.33333 0.50000 0.42895
+        U6      0.00000 0.00000 0.39502
+        O1      0.66667 0.50000 0.67561
+end
+#task band energy
+
+nwpw
+  simulation_cell
+    ngrid 60 96 480
+  end
+end
+
+#       (211) gamma-uranium surface with surface displacements: 43.40%  -18.50% and H displacement of   0.250   Å
+geometry        center  noautosym       noautoz print
+        system  crystal
+        lat_a   2.97913
+        lat_b   4.86259
+        lat_c   23.42762
+        alpha   90.0d0
+        beta    90.0d0
+        gamma   90.0d0
+        end
+        U1      0.66667 0.50000 0.66494
+        U2      0.33333 0.00000 0.63100
+        U3      0.00000 0.50000 0.55996
+        U4      0.66667 0.00000 0.50000
+        U5      0.33333 0.50000 0.42895
+        U6      0.00000 0.00000 0.39502
+        O1      0.66667 0.50000 0.67561
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	0.250	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.67561
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	0.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.68628
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	0.750	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.69695
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.000	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.70762
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.250	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.71829
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.72896
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.750	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.73963
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.72896
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.750	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.73963
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	2.000	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.75031
+end
+task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	7.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	O1	0.66667	0.50000	0.98507
+end
+task band energy
+
+# A.M.D.G.
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 6.1.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2012
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = taub230
+    program         = /home/davis68/bin/nwchem-dev
+    date            = Thu Feb 28 06:46:41 2013
+
+    compiled        = Wed_Oct_03_09:41:00_2012
+    source          = /home/davis68/nwchem/nwchem-src-2012-Aug-27/
+    nwchem branch   = Development
+    nwchem revision = 22805
+    ga revision     = 10079
+    input           = ./U6O-211-top.nw
+    prefix          = U6O-211-top.
+    data base       = ./perm/U6O-211-top.db
+    status          = startup
+    nproc           =      288
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =   81920001 doubles =    625.0 Mbytes
+    stack    =   81920001 doubles =    625.0 Mbytes
+    global   =  163840000 doubles =   1250.0 Mbytes (distinct from heap & stack)
+    total    =  327680002 doubles =   2500.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = ./perm
+  0 scratch   = ./scratch
+
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+                          Gamma-uranium (211) adsorption
+                          ------------------------------
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:          9
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         20
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    15.82793435
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     0.47238  |     0.24997
+    7 O1               |   2 U2               |     5.34148  |     2.82659
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         11
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   7 O1               |    68.75
+    4 U4               |   2 U2               |   7 O1               |   104.10
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   1 U1               |   2 U2               |   106.84
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         26
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    15.82793435
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     0.47238  |     0.24997
+    7 O1               |   2 U2               |     5.34148  |     2.82659
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         11
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   7 O1               |    68.75
+    4 U4               |   2 U2               |   7 O1               |   104.10
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   1 U1               |   2 U2               |   106.84
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         26
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    15.82793435
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     0.47238  |     0.24997
+    7 O1               |   2 U2               |     5.34148  |     2.82659
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         11
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   7 O1               |    68.75
+    4 U4               |   2 U2               |   7 O1               |   104.10
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   1 U1               |   2 U2               |   106.84
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         26
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    16.07790705
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     0.94476  |     0.49995
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    16.32787976
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     1.41714  |     0.74992
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    16.57785246
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     1.88952  |     0.99989
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    16.82782517
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     2.36190  |     1.24986
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    17.07779788
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     2.83428  |     1.49984
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    17.32777058
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     3.30666  |     1.74981
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    17.07779788
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     2.83428  |     1.49984
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    17.32777058
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     3.30666  |     1.74981
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 O1                   8.0000     1.98609660     2.43129500    17.57797756
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 O1               |   1 U1               |     3.77948  |     2.00002
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   106.84
+    3 U3               |   1 U1               |   7 O1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Thu Feb 28 06:46:42 2013  <<<
+          ================ input data ========================
+  library name resolved from: environment
+  NWCHEM_NWPW_LIBRARY set to: </home/davis68/nwchem/nwchem-6.1/src/nwpw/libraryps/>
+ Generating 1d pseudopotential for U   
+
+ Generated formatted_filename: ./perm/U.cpp
+ - Spline fitted, nray=42243 -
+  library name resolved from: environment
+  NWCHEM_NWPW_LIBRARY set to: </home/davis68/nwchem/nwchem-6.1/src/nwpw/libraryps/>
+ Generating 1d pseudopotential for O   
+
+ Generated formatted_filename: ./perm/O.cpp
+ - Spline fitted, nray=42243 -
+ random planewave guess, initial psi:U6O-211-top.movecs                                
+ -   spin, nalpha, nbeta:                    2                   46                   44
+
+ input psi filename:./perm/U6O-211-top.movecs
+Warning - Orthogonalization performed, spin,zone: 1   1
+        - error(before)=  0.643908E+01 (  0.395609E+02)
+        - error(after)=   0.710543E-14 (  0.460000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   1
+        - error(before)=  0.616329E+01 (  0.378367E+02)
+        - error(after)=   0.000000E+00 (  0.440000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   2
+        - error(before)=  0.644003E+01 (  0.395600E+02)
+        - error(after)=   0.710543E-14 (  0.460000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   2
+        - error(before)=  0.616369E+01 (  0.378363E+02)
+        - error(after)=   0.710543E-14 (  0.440000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   3
+        - error(before)=  0.643975E+01 (  0.395602E+02)
+        - error(after)=   0.710543E-14 (  0.460000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   3
+        - error(before)=  0.616421E+01 (  0.378358E+02)
+        - error(after)=   0.710543E-14 (  0.440000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   4
+        - error(before)=  0.643969E+01 (  0.395603E+02)
+        - error(after)=   0.142109E-13 (  0.460000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   4
+        - error(before)=  0.616424E+01 (  0.378358E+02)
+        - error(after)=   0.000000E+00 (  0.440000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   5
+        - error(before)=  0.644026E+01 (  0.395597E+02)
+        - error(after)=   0.000000E+00 (  0.460000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   5
+        - error(before)=  0.616348E+01 (  0.378365E+02)
+        - error(after)=   0.142109E-13 (  0.440000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   6
+        - error(before)=  0.644008E+01 (  0.395599E+02)
+        - error(after)=   0.000000E+00 (  0.460000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   6
+        - error(before)=  0.616271E+01 (  0.378373E+02)
+        - error(after)=   0.000000E+00 (  0.440000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   7
+        - error(before)=  0.644020E+01 (  0.395598E+02)
+        - error(after)=   0.142109E-13 (  0.460000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   7
+        - error(before)=  0.616467E+01 (  0.378353E+02)
+        - error(after)=   0.000000E+00 (  0.440000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   8
+        - error(before)=  0.643888E+01 (  0.395611E+02)
+        - error(after)=   0.710543E-14 (  0.460000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   8
+        - error(before)=  0.616368E+01 (  0.378363E+02)
+        - error(after)=   0.710543E-14 (  0.440000E+02)
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+      2: O     core charge: 6.0  lmax=2
+             comment    : Parameterized (Chem.Phys.Lett., vol 322, page 447) Hamman psp
+             pseudpotential type            :   0
+             highest angular component      :   2
+             local potential used           :   2
+             number of non-local projections:   4
+             cutoff =   0.700   0.700   0.700
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  6     O   :  1
+
+ number of electrons: spin up=   46.00  spin down=   44.00 (fourier space)
+ number of orbitals:  spin up=      46  spin down=      44 (fourier space)
+
+ supercell:
+      lattice:    a1=<   5.630   0.000   0.000 >
+                  a2=<   0.000   9.189   0.000 >
+                  a3=<   0.000   0.000  44.272 >
+      reciprocal: b1=<   1.116   0.000  -0.000 >
+                  b2=<  -0.000   0.684  -0.000 >
+                  b3=<   0.000   0.000   0.142 >
+
+      lattice:    a=   5.630    b=   9.189     c=  44.272
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     2290.2
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-3.07590645
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.419   0.256  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.140   0.256  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.140   0.256  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.419  -0.256  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.419   0.085  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.140   0.085  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.140  -0.085  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.419  -0.085  -0.000>
+
+ computational grids:
+      density     cutoff=180.000  fft=  60x  96x 480(   263991 waves     7333 per task)
+      wavefnc   1 cutoff= 90.000  fft=  60x  96x 480(    93406 waves     2594 per task)
+      wavefnc   2 cutoff= 90.000  fft=  60x  96x 480(    93331 waves     2592 per task)
+      wavefnc   3 cutoff= 90.000  fft=  60x  96x 480(    93331 waves     2592 per task)
+      wavefnc   4 cutoff= 90.000  fft=  60x  96x 480(    93406 waves     2594 per task)
+      wavefnc   5 cutoff= 90.000  fft=  60x  96x 480(    93512 waves     2597 per task)
+      wavefnc   6 cutoff= 90.000  fft=  60x  96x 480(    93355 waves     2593 per task)
+      wavefnc   7 cutoff= 90.000  fft=  60x  96x 480(    93355 waves     2593 per task)
+      wavefnc   8 cutoff= 90.000  fft=  60x  96x 480(    93512 waves     2597 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Thu Feb 28 06:54:44 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+     -  10 steepest descent iterations performed
+      10   -0.2994210819E+03   -0.38671E+01    0.89028E+01
+     -  10 steepest descent iterations performed
+      20   -0.3194976905E+03   -0.40524E+00    0.16151E+00
+     -  10 steepest descent iterations performed
+      30   -0.3219400636E+03   -0.11033E+00    0.26726E-01
+     -  10 steepest descent iterations performed
+      40   -0.3227982354E+03   -0.47853E-01    0.82457E-02
+     -  10 steepest descent iterations performed
+      50   -0.3231858766E+03   -0.21661E-01    0.37325E-02
+     -  10 steepest descent iterations performed
+      60   -0.3233941816E+03   -0.12798E-01    0.21417E-02
+     -  10 steepest descent iterations performed
+      70   -0.3235190323E+03   -0.74770E-02    0.15844E-02
+      80   -0.3236793182E+03   -0.54510E-02    0.88163E-02
+      90   -0.3237128182E+03   -0.40150E-02    0.91908E-03
+     100   -0.3237570256E+03   -0.32423E-02    0.31780E-02
+     110   -0.3237810330E+03   -0.16040E-02    0.91430E-03
+     120   -0.3238018233E+03   -0.28371E-02    0.12088E-02
+     -  10 steepest descent iterations performed
+     130   -0.3238223905E+03   -0.11026E-02    0.21396E-03
+     140   -0.3238423549E+03   -0.24354E-02    0.11979E-02
+     -  10 steepest descent iterations performed
+     150   -0.3238540433E+03   -0.70710E-03    0.26523E-03
+     160   -0.3238639996E+03   -0.10263E-02    0.10789E-02
+     -  10 steepest descent iterations performed
+     170   -0.3238733162E+03   -0.48849E-03    0.21256E-03
+     180   -0.3238797522E+03   -0.70008E-03    0.64443E-03
+     -  10 steepest descent iterations performed
+     190   -0.3238869581E+03   -0.45223E-03    0.27304E-03
+     200   -0.3238917963E+03   -0.44358E-03    0.53766E-03
+     210   -0.3239045837E+03   -0.73689E-03    0.40608E-02
+     -  10 steepest descent iterations performed
+     220   -0.3239114200E+03   -0.28568E-03    0.15976E-03
+     230   -0.3239134276E+03   -0.19827E-03    0.10038E-03
+     240   -0.3239161059E+03   -0.26269E-03    0.36758E-03
+     -  10 steepest descent iterations performed
+     250   -0.3239188054E+03   -0.15976E-03    0.54273E-04
+     260   -0.3239206945E+03   -0.20584E-03    0.20894E-03
+     -  10 steepest descent iterations performed
+     270   -0.3239227311E+03   -0.16658E-03    0.82128E-04
+     280   -0.3239243667E+03   -0.12872E-03    0.23721E-03
+     290   -0.3239286277E+03   -0.35107E-03    0.21590E-02
+     -  10 steepest descent iterations performed
+     300   -0.3239321336E+03   -0.13762E-03    0.33326E-04
+     310   -0.3239331609E+03   -0.95276E-04    0.47529E-04
+     320   -0.3239340425E+03   -0.90316E-04    0.94374E-04
+     330   -0.3239371507E+03   -0.20098E-03    0.17721E-02
+     -  10 steepest descent iterations performed
+     340   -0.3239390750E+03   -0.84863E-04    0.17938E-04
+     350   -0.3239397947E+03   -0.62585E-04    0.36996E-04
+     360   -0.3239404024E+03   -0.66520E-04    0.70074E-04
+     -  10 steepest descent iterations performed
+     370   -0.3239411565E+03   -0.66860E-04    0.37199E-04
+Last System Error Message from Task 1:: Numerical result out of range
+Last System Error Message from Task 2:: Numerical result out of range
+Last System Error Message from Task 3:: Numerical result out of range
+Last System Error Message from Task 4:: Numerical result out of range
+0:Terminate signal was sent, status=: 15
+Last System Error Message from Task 5:: Numerical result out of range
+Last System Error Message from Task 6:: Numerical result out of range
+Last System Error Message from Task 7:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 1
+Last System Error Message from Task 8:: Numerical result out of range
+Last System Error Message from Task 9:: Numerical result out of range
+Last System Error Message from Task 10:: Numerical result out of range
+Last System Error Message from Task 11:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 3
+application called MPI_Abort(comm=0x84000003, 15) - process 5
+application called MPI_Abort(comm=0x84000003, 15) - process 2
+application called MPI_Abort(comm=0x84000003, 15) - process 7
+application called MPI_Abort(comm=0x84000003, 15) - process 6
+application called MPI_Abort(comm=0x84000003, 15) - process 8
+application called MPI_Abort(comm=0x84000003, 15) - process 9
+application called MPI_Abort(comm=0x84000003, 15) - process 11
+application called MPI_Abort(comm=0x84000003, 15) - process 4
+application called MPI_Abort(comm=0x84000003, 15) - process 10
+(rank:0 hostname:taub230 pid:13649):ARMCI DASSERT fail. ../../ga-5-1/armci/src/common/signaltrap.c:SigTermHandler():472 cond:0
+Last System Error Message from Task 0:: No such file or directory
+application called MPI_Abort(comm=0x84000005, 15) - process 0
+----------------------------------------
+Begin Torque Epilogue (Thu Feb 28 07:47:03 2013)
+Job ID:           381390.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O-211-top
+Session:          13588
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=01:00:00
+Resources:        cput=285:49:23,mem=353824788kb,vmem=680342372kb,walltime=01:00:28
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub223 taub230 taub240 taub244 taub297 taub374 taub375 taub376 taub384 taub392 taub405 taub423 taub425 taub431 taub432 taub433 taub441 taub442 taub444 taub447 taub456 taub457 taub461 taub462
+End Torque Epilogue
+----------------------------------------

@@ -1,0 +1,26 @@
+----------------------------------------
+Begin Torque Prologue (Sat Mar 16 20:40:17 2013)
+Job ID:           389665.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8H-110-ctr
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=24:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub092 taub094 taub235 taub243 taub248 taub253 taub255 taub259 taub364 taub365 taub366 taub367 taub368 taub373 taub381 taub403 taub404 taub405 taub406 taub444 taub445 taub447 taub472 taub498
+End Torque Prologue
+----------------------------------------
+----------------------------------------
+Begin Torque Epilogue (Sun Mar 17 04:36:36 2013)
+Job ID:           389665.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8H-110-ctr
+Session:          13454
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=24:00:00
+Resources:        cput=2281:36:44,mem=74594872kb,vmem=588671916kb,walltime=07:56:19
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub092 taub094 taub235 taub243 taub248 taub253 taub255 taub259 taub364 taub365 taub366 taub367 taub368 taub373 taub381 taub403 taub404 taub405 taub406 taub444 taub445 taub447 taub472 taub498
+End Torque Epilogue
+----------------------------------------

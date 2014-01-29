@@ -1,0 +1,1277 @@
+----------------------------------------
+Begin Torque Prologue (Mon Mar 11 03:53:23 2013)
+Job ID:           385095.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8-110
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=04:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub354 taub355 taub356 taub358 taub377 taub411 taub431 taub433 taub434 taub436 taub440 taub442 taub448 taub449 taub453 taub454 taub479 taub492 taub493 taub494 taub496 taub497 taub498 taub502
+End Torque Prologue
+----------------------------------------
+ argument  1 = ./U8-110.nw
+
+
+
+============================== echo of input deck ==============================
+title "Gamma-uranium (100) adsorption"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+start U8-110
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 36 48 360
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 1
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 8 12 8
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+  tolerances 1.0e-7 1.0e-7
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:kbpp_filter    .true.
+
+## Optimization ##
+driver
+  #clear                # Deletes all restart data
+  loose               # Specify loose, default, or tight convergence
+  xyz U8O2     # Output XYZ file of geometry at each stage
+  maxiter 80
+end
+set driver:linopt 0
+set nwpw:cif_filename U8O2-110.opt
+set nwpw:psi_nolattice .true.
+
+#       (110) gamma-uranium surface with surface displacements:	15.30%	and X displacement of	2.000	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	3.440
+	lat_b	4.865
+	lat_c	26.595
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.00000	0.00000	0.66893
+	U2	0.50000	0.50000	0.66893
+	U3	0.00000	0.50000	0.59146
+	U4	0.50000	0.00000	0.59146
+	U5	0.00000	0.00000	0.50000
+	U6	0.50000	0.50000	0.50000
+	U7	0.00000	0.50000	0.42253
+	U8	0.50000	0.00000	0.42253
+end
+constraints surf
+  fix atom 1:6
+end
+set constraints surf
+task band energy ignore
+
+# A.M.D.G.
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 6.1.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2012
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = taub502
+    program         = /home/davis68/bin/nwchem-dev
+    date            = Mon Mar 11 03:53:27 2013
+
+    compiled        = Wed_Oct_03_09:41:00_2012
+    source          = /home/davis68/nwchem/nwchem-src-2012-Aug-27/
+    nwchem branch   = Development
+    nwchem revision = 22805
+    ga revision     = 10079
+    input           = ./U8-110.nw
+    prefix          = U8-110.
+    data base       = ./perm/U8-110.db
+    status          = startup
+    nproc           =      288
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =   81920001 doubles =    625.0 Mbytes
+    stack    =   81920001 doubles =    625.0 Mbytes
+    global   =  163840000 doubles =   1250.0 Mbytes (distinct from heap & stack)
+    total    =  327680002 doubles =   2500.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = ./perm
+  0 scratch   = ./scratch
+
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+                          Gamma-uranium (100) adsorption
+                          ------------------------------
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     0.00000000     0.00000000    17.79019335
+    2 U2                  92.0000     1.72000000     2.43250000    17.79019335
+    3 U3                  92.0000     0.00000000     2.43250000    15.72987870
+    4 U4                  92.0000     1.72000000     0.00000000    15.72987870
+    5 U5                  92.0000     0.00000000     0.00000000    13.29750000
+    6 U6                  92.0000     1.72000000     2.43250000    13.29750000
+    7 U7                  92.0000     0.00000000     2.43250000    11.23718535
+    8 U8                  92.0000     1.72000000     0.00000000    11.23718535
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   3.440   0.000   0.000 >
+      a2=<   0.000   4.865   0.000 >
+      a3=<   0.000   0.000  26.595 >
+      a=       3.440 b=      4.865 c=      26.595
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   445.1
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   0.967   0.000  -0.000 >
+      b2=<  -0.000   0.683  -0.000 >
+      b3=<   0.000   0.000   0.125 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      U7               238.050800
+      U8               238.050800
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.62982  |     2.97917
+    3 U3               |   1 U1               |     6.02403  |     3.18778
+    3 U3               |   2 U2               |     5.07183  |     2.68390
+    4 U4               |   1 U1               |     5.07183  |     2.68390
+    4 U4               |   2 U2               |     6.02403  |     3.18778
+    4 U4               |   3 U3               |     5.62982  |     2.97917
+    5 U5               |   3 U3               |     6.50064  |     3.43999
+    5 U5               |   4 U4               |     5.62963  |     2.97907
+    6 U6               |   3 U3               |     5.62963  |     2.97907
+    6 U6               |   4 U4               |     6.50064  |     3.43999
+    6 U6               |   5 U5               |     5.62982  |     2.97917
+    7 U7               |   5 U5               |     6.02403  |     3.18778
+    7 U7               |   6 U6               |     5.07183  |     2.68390
+    8 U8               |   5 U5               |     5.07183  |     2.68390
+    8 U8               |   6 U6               |     6.02403  |     3.18778
+    8 U8               |   7 U7               |     5.62982  |     2.97917
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         16
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    68.28
+    2 U2               |   1 U1               |   4 U4               |    68.28
+    1 U1               |   4 U4               |   3 U3               |    68.28
+    1 U1               |   2 U2               |   3 U3               |    68.28
+    2 U2               |   1 U1               |   4 U4               |    68.28
+    2 U2               |   3 U3               |   4 U4               |    68.28
+    3 U3               |   2 U2               |   1 U1               |    68.28
+    3 U3               |   4 U4               |   1 U1               |    68.28
+    1 U1               |   3 U3               |   5 U5               |    85.26
+    1 U1               |   3 U3               |   6 U6               |   121.85
+    2 U2               |   3 U3               |   4 U4               |    68.28
+    2 U2               |   3 U3               |   5 U5               |   122.87
+    2 U2               |   3 U3               |   6 U6               |   104.88
+    3 U3               |   4 U4               |   5 U5               |    70.53
+    4 U4               |   3 U3               |   6 U6               |    70.53
+    3 U3               |   6 U6               |   5 U5               |    70.53
+    4 U4               |   1 U1               |   2 U2               |    68.28
+    1 U1               |   4 U4               |   3 U3               |    68.28
+    1 U1               |   4 U4               |   5 U5               |   104.88
+    1 U1               |   4 U4               |   6 U6               |   122.87
+    4 U4               |   3 U3               |   2 U2               |    68.28
+    2 U2               |   4 U4               |   5 U5               |   121.85
+    2 U2               |   4 U4               |   6 U6               |    85.26
+    3 U3               |   4 U4               |   5 U5               |    70.53
+    4 U4               |   3 U3               |   6 U6               |    70.53
+    4 U4               |   5 U5               |   6 U6               |    70.53
+    5 U5               |   4 U4               |   3 U3               |    70.53
+    5 U5               |   6 U6               |   3 U3               |    70.53
+    3 U3               |   5 U5               |   7 U7               |    85.26
+    3 U3               |   5 U5               |   8 U8               |   122.87
+    4 U4               |   5 U5               |   6 U6               |    70.53
+    4 U4               |   5 U5               |   7 U7               |   121.85
+    4 U4               |   5 U5               |   8 U8               |   104.88
+    5 U5               |   6 U6               |   7 U7               |    68.28
+    6 U6               |   5 U5               |   8 U8               |    68.28
+    5 U5               |   8 U8               |   7 U7               |    68.28
+    6 U6               |   3 U3               |   4 U4               |    70.53
+    3 U3               |   6 U6               |   5 U5               |    70.53
+    3 U3               |   6 U6               |   7 U7               |   104.88
+    3 U3               |   6 U6               |   8 U8               |   121.85
+    6 U6               |   5 U5               |   4 U4               |    70.53
+    4 U4               |   6 U6               |   7 U7               |   122.87
+    4 U4               |   6 U6               |   8 U8               |    85.26
+    5 U5               |   6 U6               |   7 U7               |    68.28
+    6 U6               |   5 U5               |   8 U8               |    68.28
+    6 U6               |   7 U7               |   8 U8               |    68.28
+    7 U7               |   6 U6               |   5 U5               |    68.28
+    7 U7               |   8 U8               |   5 U5               |    68.28
+    6 U6               |   7 U7               |   8 U8               |    68.28
+    8 U8               |   5 U5               |   6 U6               |    68.28
+    5 U5               |   8 U8               |   7 U7               |    68.28
+    8 U8               |   7 U7               |   6 U6               |    68.28
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         52
+ ==============================================================================
+
+
+
+ fixed atoms                  :   1     2     3     4
+                                  5     6
+
+
+ no springs found
+                         NWChem Constraints Module
+                         -------------------------
+ General Information
+ -------------------
+ fixed atoms                  :   1     2     3     4
+                                  5     6
+
+
+ no springs found
+ no springs found
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Mon Mar 11 03:53:28 2013  <<<
+          ================ input data ========================
+  library name resolved from: environment
+  NWCHEM_NWPW_LIBRARY set to: </home/davis68/nwchem/nwchem-6.1/src/nwpw/libraryps/>
+ Generating 1d pseudopotential for U   
+
+ Generated formatted_filename: ./perm/U.cpp
+ - Spline fitted, nray=27864 -
+ - filtered -
+ random planewave guess, initial psi:U8-110.movecs                                     
+ -   spin, nalpha, nbeta:                    1                   56                    0
+
+ input psi filename:./perm/U8-110.movecs
+Warning - Orthogonalization performed, spin,zone: 1   1
+        - error(before)=  0.649905E+01 (  0.495010E+02)
+        - error(after)=   0.710543E-14 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   2
+        - error(before)=  0.649963E+01 (  0.495004E+02)
+        - error(after)=   0.000000E+00 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   3
+        - error(before)=  0.650053E+01 (  0.494995E+02)
+        - error(after)=   0.142109E-13 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   4
+        - error(before)=  0.649915E+01 (  0.495008E+02)
+        - error(after)=   0.710543E-14 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   5
+        - error(before)=  0.649786E+01 (  0.495021E+02)
+        - error(after)=   0.142109E-13 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   6
+        - error(before)=  0.650015E+01 (  0.494999E+02)
+        - error(after)=   0.710543E-14 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   7
+        - error(before)=  0.649903E+01 (  0.495010E+02)
+        - error(after)=   0.000000E+00 (  0.560000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   8
+        - error(before)=  0.649733E+01 (  0.495027E+02)
+        - error(after)=   0.142109E-13 (  0.560000E+02)
+
+ Fixed ion positions:    1    2    3    4    5    6
+
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = restricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  8
+
+ number of electrons: spin up=   56.00  spin down=   56.00 (fourier space)
+ number of orbitals:  spin up=      56  spin down=      56 (fourier space)
+
+ supercell:
+      lattice:    a1=<   6.501   0.000   0.000 >
+                  a2=<   0.000   9.194   0.000 >
+                  a3=<   0.000   0.000  50.257 >
+      reciprocal: b1=<   0.967   0.000  -0.000 >
+                  b2=<  -0.000   0.683  -0.000 >
+                  b3=<   0.000   0.000   0.125 >
+
+      lattice:    a=   6.501    b=   9.194     c=  50.257
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     3003.6
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-3.45682194
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.362   0.256  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.121   0.256  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.121   0.256  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.362  -0.256  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.362   0.085  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.121   0.085  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.121  -0.085  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.362  -0.085  -0.000>
+
+ computational grids:
+      density     cutoff=134.521  fft=  36x  48x 360(   223609 waves     6211 per task)
+      wavefnc   1 cutoff= 90.000  fft=  36x  48x 360(   122493 waves     3402 per task)
+      wavefnc   2 cutoff= 90.000  fft=  36x  48x 360(   122404 waves     3400 per task)
+      wavefnc   3 cutoff= 90.000  fft=  36x  48x 360(   122404 waves     3400 per task)
+      wavefnc   4 cutoff= 90.000  fft=  36x  48x 360(   122493 waves     3402 per task)
+      wavefnc   5 cutoff= 90.000  fft=  36x  48x 360(   122618 waves     3406 per task)
+      wavefnc   6 cutoff= 90.000  fft=  36x  48x 360(   122427 waves     3400 per task)
+      wavefnc   7 cutoff= 90.000  fft=  36x  48x 360(   122427 waves     3400 per task)
+      wavefnc   8 cutoff= 90.000  fft=  36x  48x 360(   122618 waves     3406 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Mon Mar 11 03:57:34 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+     -  10 steepest descent iterations performed
+      10   -0.3829856732E+03   -0.45985E+01    0.88714E+01
+     -  10 steepest descent iterations performed
+      20   -0.4052402378E+03   -0.46492E+00    0.10496E+00
+     -  10 steepest descent iterations performed
+      30   -0.4080519759E+03   -0.15842E+00    0.25791E-01
+     -  10 steepest descent iterations performed
+      40   -0.4090737425E+03   -0.54948E-01    0.93358E-02
+     -  10 steepest descent iterations performed
+      50   -0.4095491392E+03   -0.28623E-01    0.45449E-02
+     -  10 steepest descent iterations performed
+      60   -0.4098109817E+03   -0.15394E-01    0.20003E-02
+     -  10 steepest descent iterations performed
+      70   -0.4099682246E+03   -0.96894E-02    0.15916E-02
+      80   -0.4101697658E+03   -0.71539E-02    0.70730E-02
+      90   -0.4102113827E+03   -0.46850E-02    0.62195E-03
+     100   -0.4102638459E+03   -0.44895E-02    0.26556E-02
+     110   -0.4102922811E+03   -0.15789E-02    0.67650E-03
+     120   -0.4103114446E+03   -0.27126E-02    0.53556E-03
+     -  10 steepest descent iterations performed
+     130   -0.4103283903E+03   -0.82562E-03    0.92190E-04
+     140   -0.4103439717E+03   -0.18691E-02    0.33964E-03
+     -  10 steepest descent iterations performed
+     150   -0.4103518084E+03   -0.39465E-03    0.71816E-04
+     160   -0.4103576919E+03   -0.69412E-03    0.16733E-03
+     -  10 steepest descent iterations performed
+     170   -0.4103631443E+03   -0.25161E-03    0.73126E-04
+     180   -0.4103668861E+03   -0.40407E-03    0.10093E-03
+     -  10 steepest descent iterations performed
+     190   -0.4103710518E+03   -0.22823E-03    0.92483E-04
+     200   -0.4103736480E+03   -0.27430E-03    0.69167E-04
+     -  10 steepest descent iterations performed
+     210   -0.4103768580E+03   -0.16308E-03    0.72841E-04
+     220   -0.4103788529E+03   -0.20636E-03    0.51426E-04
+     -  10 steepest descent iterations performed
+     230   -0.4103814077E+03   -0.14614E-03    0.71765E-04
+     240   -0.4103829133E+03   -0.15059E-03    0.36274E-04
+     -  10 steepest descent iterations performed
+     250   -0.4103849072E+03   -0.10487E-03    0.52058E-04
+     260   -0.4103861070E+03   -0.12138E-03    0.29896E-04
+     -  10 steepest descent iterations performed
+     270   -0.4103877009E+03   -0.92417E-04    0.47287E-04
+     280   -0.4103886160E+03   -0.89059E-04    0.21192E-04
+     290   -0.4103941778E+03   -0.25809E-03    0.78367E-03
+     -  10 steepest descent iterations performed
+     300   -0.4103955019E+03   -0.44207E-04    0.11135E-04
+     310   -0.4103956788E+03   -0.15459E-04    0.50522E-05
+     320   -0.4103961118E+03   -0.39532E-04    0.39329E-04
+     -  10 steepest descent iterations performed
+     330   -0.4103964851E+03   -0.14770E-04    0.55404E-05
+     340   -0.4103966181E+03   -0.20046E-04    0.34842E-05
+     -  10 steepest descent iterations performed
+     350   -0.4103968067E+03   -0.17026E-04    0.47394E-05
+     360   -0.4103970229E+03   -0.18607E-04    0.14792E-04
+     -  10 steepest descent iterations performed
+     370   -0.4103972863E+03   -0.13691E-04    0.60858E-05
+     380   -0.4103973734E+03   -0.11030E-04    0.21055E-05
+     390   -0.4103979210E+03   -0.73982E-04    0.12637E-03
+     -  10 steepest descent iterations performed
+     400   -0.4103983928E+03   -0.97453E-05    0.17800E-05
+     410   -0.4103984581E+03   -0.70209E-05    0.16586E-05
+     420   -0.4103985697E+03   -0.67032E-05    0.63722E-05
+     430   -0.4103992995E+03   -0.13192E-03    0.34208E-03
+     -  10 steepest descent iterations performed
+     440   -0.4103997786E+03   -0.10957E-04    0.14064E-05
+     450   -0.4103998531E+03   -0.26909E-05    0.80736E-06
+     460   -0.4103998914E+03   -0.34227E-05    0.78537E-06
+     -  10 steepest descent iterations performed
+     470   -0.4103999422E+03   -0.76685E-05    0.14727E-05
+     -  10 steepest descent iterations performed
+     480   -0.4103999803E+03   -0.20355E-05    0.50247E-06
+     490   -0.4104000954E+03   -0.18225E-04    0.19661E-04
+     -  10 steepest descent iterations performed
+     500   -0.4104001968E+03   -0.37793E-05    0.67923E-06
+     510   -0.4104002207E+03   -0.23959E-05    0.42625E-06
+     520   -0.4104002543E+03   -0.40387E-05    0.17646E-05
+     -  10 steepest descent iterations performed
+     530   -0.4104002962E+03   -0.18745E-05    0.40418E-06
+     540   -0.4104003226E+03   -0.28484E-05    0.10071E-05
+     -  10 steepest descent iterations performed
+     550   -0.4104003571E+03   -0.29743E-05    0.59112E-06
+     -  10 steepest descent iterations performed
+     560   -0.4104003819E+03   -0.22220E-05    0.69329E-06
+     570   -0.4104004474E+03   -0.58611E-05    0.99806E-05
+     -  10 steepest descent iterations performed
+     580   -0.4104005119E+03   -0.29405E-05    0.29710E-06
+     590   -0.4104005238E+03   -0.10694E-05    0.14091E-06
+     600   -0.4104005467E+03   -0.23754E-05    0.13477E-05
+     -  10 steepest descent iterations performed
+     610   -0.4104005737E+03   -0.95887E-06    0.16279E-06
+     620   -0.4104005901E+03   -0.19607E-05    0.65118E-06
+     -  10 steepest descent iterations performed
+     630   -0.4104006107E+03   -0.16947E-05    0.29847E-06
+     640   -0.4104006245E+03   -0.14783E-05    0.50255E-06
+     650   -0.4104006961E+03   -0.11046E-04    0.21085E-04
+     -  10 steepest descent iterations performed
+     660   -0.4104007584E+03   -0.73261E-06    0.31735E-06
+     670   -0.4104007684E+03   -0.66876E-06    0.17531E-06
+     680   -0.4104007752E+03   -0.71734E-06    0.20985E-06
+     -  10 steepest descent iterations performed
+     690   -0.4104007869E+03   -0.12651E-05    0.24254E-06
+     -  10 steepest descent iterations performed
+     700   -0.4104007949E+03   -0.54178E-06    0.20260E-06
+     710   -0.4104008300E+03   -0.32105E-05    0.85751E-05
+     -  10 steepest descent iterations performed
+     720   -0.4104008610E+03   -0.17865E-05    0.17730E-06
+     730   -0.4104008655E+03   -0.31196E-06    0.52311E-07
+     740   -0.4104008727E+03   -0.10830E-05    0.42655E-06
+     -  10 steepest descent iterations performed
+     750   -0.4104008809E+03   -0.25693E-06    0.52628E-07
+     760   -0.4104008893E+03   -0.78638E-06    0.55452E-06
+     -  10 steepest descent iterations performed
+     770   -0.4104008982E+03   -0.56822E-06    0.92832E-07
+     780   -0.4104009021E+03   -0.56520E-06    0.10562E-06
+     790   -0.4104009217E+03   -0.26913E-05    0.45548E-05
+     -  10 steepest descent iterations performed
+     800   -0.4104009404E+03   -0.24754E-06    0.82943E-07
+     810   -0.4104009437E+03   -0.30958E-06    0.55213E-07
+     -  10 steepest descent iterations performed
+     820   -0.4104009480E+03   -0.75421E-06    0.12744E-06
+     -  10 steepest descent iterations performed
+     830   -0.4104009516E+03   -0.14268E-06    0.38245E-07
+     840   -0.4104009602E+03   -0.10074E-05    0.11918E-05
+     -  10 steepest descent iterations performed
+     850   -0.4104009686E+03   -0.37391E-06    0.43079E-07
+     860   -0.4104009706E+03   -0.23222E-06    0.39899E-07
+     870   -0.4104009766E+03   -0.71017E-06    0.64738E-06
+     -  10 steepest descent iterations performed
+     880   -0.4104009830E+03   -0.23761E-06    0.47492E-07
+     890   -0.4104009847E+03   -0.14533E-06    0.39032E-07
+     900   -0.4104009891E+03   -0.51126E-06    0.42284E-06
+     -  10 steepest descent iterations performed
+     910   -0.4104009939E+03   -0.21374E-06    0.25636E-07
+     920   -0.4104009957E+03   -0.24886E-06    0.46710E-07
+     -  10 steepest descent iterations performed
+     930   -0.4104009981E+03   -0.20648E-06    0.44614E-07
+     940   -0.4104010013E+03   -0.29647E-06    0.26620E-06
+     -  10 steepest descent iterations performed
+     950   -0.4104010052E+03   -0.25237E-06    0.29862E-07
+     960   -0.4104010064E+03   -0.13744E-06    0.27096E-07
+     970   -0.4104010108E+03   -0.74139E-06    0.58778E-06
+     -  10 steepest descent iterations performed
+     980   -0.4104010154E+03   -0.11644E-06    0.19033E-07
+     990   -0.4104010155E+03   -0.95817E-07    0.12255E-09
+  *** tolerance ok.    iteration terminated.
+     >>>  ITERATION ENDED   AT Mon Mar 11 04:44:24 2013  <<<
+
+
+          =============  summary of results  =================
+
+ number of electrons: spin up=   56.00000  down=   56.00000 (real space)
+
+ total     energy    :  -0.4104010155E+03 (   -0.51300E+02/ion)
+ total orbital energy:  -0.3249988745E+02 (   -0.58036E+00/electron)
+ hartree   energy    :   0.2481646309E+04 (    0.44315E+02/electron)
+ exc-corr  energy    :  -0.5163738656E+02 (   -0.92210E+00/electron)
+ ion-ion   energy    :   0.2088025291E+04 (    0.26100E+03/ion)
+
+ K.S. kinetic energy :   0.1820650914E+03 (    0.32512E+01/electron)
+ K.S. V_l  energy    :  -0.6303352751E+03 (   -0.11256E+02/electron)
+ K.S. V_nl energy    :  -0.5758553817E+02 (   -0.10283E+01/electron)
+ K.S. V_Hart energy  :   0.4963292618E+04 (    0.88630E+02/electron)
+ K.S. V_xc energy    :  -0.6735727636E+02 (   -0.12028E+01/electron)
+ K.S. V_so energy    :   0.0000000000E+00 (    0.00000E+00/electron)
+ Virial Coefficient  :   0.2311269281E+02
+
+ Brillouin zone point:      1
+    weight=  0.125000
+    k     =<   0.375   0.375   0.000> . <b1,b2,b3> 
+          =<   0.362   0.256  -0.000>
+
+ orbital energies:
+     0.2479627E+00 (   6.747eV) occ=1.000
+     0.2467791E+00 (   6.715eV) occ=1.000
+     0.2442212E+00 (   6.646eV) occ=1.000
+     0.2426646E+00 (   6.603eV) occ=1.000
+     0.2365809E+00 (   6.438eV) occ=1.000
+     0.2343049E+00 (   6.376eV) occ=1.000
+     0.2342145E+00 (   6.373eV) occ=1.000
+     0.2279579E+00 (   6.203eV) occ=1.000
+     0.2241333E+00 (   6.099eV) occ=1.000
+     0.2203894E+00 (   5.997eV) occ=1.000
+     0.2154098E+00 (   5.862eV) occ=1.000
+     0.2117753E+00 (   5.763eV) occ=1.000
+     0.2094321E+00 (   5.699eV) occ=1.000
+     0.2067197E+00 (   5.625eV) occ=1.000
+     0.2044604E+00 (   5.564eV) occ=1.000
+     0.2033307E+00 (   5.533eV) occ=1.000
+     0.1768056E+00 (   4.811eV) occ=1.000
+     0.1732047E+00 (   4.713eV) occ=1.000
+     0.1637419E+00 (   4.456eV) occ=1.000
+     0.1560021E+00 (   4.245eV) occ=1.000
+     0.1518569E+00 (   4.132eV) occ=1.000
+     0.1454809E+00 (   3.959eV) occ=1.000
+     0.1392661E+00 (   3.790eV) occ=1.000
+     0.1273210E+00 (   3.465eV) occ=1.000
+    -0.3314343E+00 (  -9.019eV) occ=1.000
+    -0.3366368E+00 (  -9.160eV) occ=1.000
+    -0.3410561E+00 (  -9.281eV) occ=1.000
+    -0.3477795E+00 (  -9.464eV) occ=1.000
+    -0.3592769E+00 (  -9.777eV) occ=1.000
+    -0.3599159E+00 (  -9.794eV) occ=1.000
+    -0.3685692E+00 ( -10.029eV) occ=1.000
+    -0.3822585E+00 ( -10.402eV) occ=1.000
+    -0.3938634E+00 ( -10.718eV) occ=1.000
+    -0.3951832E+00 ( -10.754eV) occ=1.000
+    -0.4060973E+00 ( -11.051eV) occ=1.000
+    -0.4063790E+00 ( -11.058eV) occ=1.000
+    -0.4125374E+00 ( -11.226eV) occ=1.000
+    -0.4309126E+00 ( -11.726eV) occ=1.000
+    -0.4441739E+00 ( -12.087eV) occ=1.000
+    -0.4491817E+00 ( -12.223eV) occ=1.000
+    -0.5198736E+00 ( -14.147eV) occ=1.000
+    -0.5224517E+00 ( -14.217eV) occ=1.000
+    -0.5284574E+00 ( -14.380eV) occ=1.000
+    -0.5299856E+00 ( -14.422eV) occ=1.000
+    -0.5426162E+00 ( -14.765eV) occ=1.000
+    -0.5455362E+00 ( -14.845eV) occ=1.000
+    -0.5477596E+00 ( -14.905eV) occ=1.000
+    -0.5498095E+00 ( -14.961eV) occ=1.000
+    -0.1320551E+01 ( -35.934eV) occ=1.000
+    -0.1321474E+01 ( -35.959eV) occ=1.000
+    -0.1323779E+01 ( -36.022eV) occ=1.000
+    -0.1326228E+01 ( -36.089eV) occ=1.000
+    -0.1337008E+01 ( -36.382eV) occ=1.000
+    -0.1337635E+01 ( -36.399eV) occ=1.000
+    -0.1342612E+01 ( -36.535eV) occ=1.000
+    -0.1344008E+01 ( -36.573eV) occ=1.000
+
+ Brillouin zone point:      2
+    weight=  0.125000
+    k     =<   0.125   0.375   0.000> . <b1,b2,b3> 
+          =<   0.121   0.256  -0.000>
+
+ orbital energies:
+     0.2430071E+00 (   6.613eV) occ=1.000
+     0.2422326E+00 (   6.592eV) occ=1.000
+     0.2380028E+00 (   6.476eV) occ=1.000
+     0.2358610E+00 (   6.418eV) occ=1.000
+     0.2282519E+00 (   6.211eV) occ=1.000
+     0.2280019E+00 (   6.204eV) occ=1.000
+     0.2240530E+00 (   6.097eV) occ=1.000
+     0.2236922E+00 (   6.087eV) occ=1.000
+     0.2178702E+00 (   5.929eV) occ=1.000
+     0.2148274E+00 (   5.846eV) occ=1.000
+     0.2120569E+00 (   5.770eV) occ=1.000
+     0.2060254E+00 (   5.606eV) occ=1.000
+     0.2003603E+00 (   5.452eV) occ=1.000
+     0.1932924E+00 (   5.260eV) occ=1.000
+     0.1819875E+00 (   4.952eV) occ=1.000
+     0.1800517E+00 (   4.899eV) occ=1.000
+     0.1711742E+00 (   4.658eV) occ=1.000
+     0.1694523E+00 (   4.611eV) occ=1.000
+     0.1601487E+00 (   4.358eV) occ=1.000
+     0.1564739E+00 (   4.258eV) occ=1.000
+     0.1547104E+00 (   4.210eV) occ=1.000
+     0.1454192E+00 (   3.957eV) occ=1.000
+     0.1263399E+00 (   3.438eV) occ=1.000
+     0.1217320E+00 (   3.313eV) occ=1.000
+    -0.3316416E+00 (  -9.024eV) occ=1.000
+    -0.3400849E+00 (  -9.254eV) occ=1.000
+    -0.3455516E+00 (  -9.403eV) occ=1.000
+    -0.3615622E+00 (  -9.839eV) occ=1.000
+    -0.3659110E+00 (  -9.957eV) occ=1.000
+    -0.3678343E+00 ( -10.009eV) occ=1.000
+    -0.3816251E+00 ( -10.385eV) occ=1.000
+    -0.3870830E+00 ( -10.533eV) occ=1.000
+    -0.3894130E+00 ( -10.597eV) occ=1.000
+    -0.3922464E+00 ( -10.674eV) occ=1.000
+    -0.4171877E+00 ( -11.352eV) occ=1.000
+    -0.4201421E+00 ( -11.433eV) occ=1.000
+    -0.4302528E+00 ( -11.708eV) occ=1.000
+    -0.4309437E+00 ( -11.727eV) occ=1.000
+    -0.4550770E+00 ( -12.383eV) occ=1.000
+    -0.4684217E+00 ( -12.747eV) occ=1.000
+    -0.4730411E+00 ( -12.872eV) occ=1.000
+    -0.4803080E+00 ( -13.070eV) occ=1.000
+    -0.4956494E+00 ( -13.487eV) occ=1.000
+    -0.5006195E+00 ( -13.623eV) occ=1.000
+    -0.5068952E+00 ( -13.793eV) occ=1.000
+    -0.5136484E+00 ( -13.977eV) occ=1.000
+    -0.5186159E+00 ( -14.112eV) occ=1.000
+    -0.5292347E+00 ( -14.401eV) occ=1.000
+    -0.1309276E+01 ( -35.627eV) occ=1.000
+    -0.1315756E+01 ( -35.804eV) occ=1.000
+    -0.1317005E+01 ( -35.838eV) occ=1.000
+    -0.1324628E+01 ( -36.045eV) occ=1.000
+    -0.1343227E+01 ( -36.551eV) occ=1.000
+    -0.1346537E+01 ( -36.641eV) occ=1.000
+    -0.1354137E+01 ( -36.848eV) occ=1.000
+    -0.1358210E+01 ( -36.959eV) occ=1.000
+
+ Brillouin zone point:      3
+    weight=  0.125000
+    k     =<  -0.125   0.375   0.000> . <b1,b2,b3> 
+          =<  -0.121   0.256  -0.000>
+
+ orbital energies:
+     0.2431273E+00 (   6.616eV) occ=1.000
+     0.2422725E+00 (   6.593eV) occ=1.000
+     0.2379699E+00 (   6.476eV) occ=1.000
+     0.2358838E+00 (   6.419eV) occ=1.000
+     0.2282373E+00 (   6.211eV) occ=1.000
+     0.2279928E+00 (   6.204eV) occ=1.000
+     0.2240728E+00 (   6.097eV) occ=1.000
+     0.2236953E+00 (   6.087eV) occ=1.000
+     0.2178783E+00 (   5.929eV) occ=1.000
+     0.2148501E+00 (   5.846eV) occ=1.000
+     0.2120406E+00 (   5.770eV) occ=1.000
+     0.2060399E+00 (   5.607eV) occ=1.000
+     0.2003504E+00 (   5.452eV) occ=1.000
+     0.1932915E+00 (   5.260eV) occ=1.000
+     0.1819635E+00 (   4.952eV) occ=1.000
+     0.1800563E+00 (   4.900eV) occ=1.000
+     0.1711780E+00 (   4.658eV) occ=1.000
+     0.1694489E+00 (   4.611eV) occ=1.000
+     0.1601469E+00 (   4.358eV) occ=1.000
+     0.1564707E+00 (   4.258eV) occ=1.000
+     0.1547123E+00 (   4.210eV) occ=1.000
+     0.1454257E+00 (   3.957eV) occ=1.000
+     0.1263397E+00 (   3.438eV) occ=1.000
+     0.1217313E+00 (   3.313eV) occ=1.000
+    -0.3316446E+00 (  -9.025eV) occ=1.000
+    -0.3400829E+00 (  -9.254eV) occ=1.000
+    -0.3455471E+00 (  -9.403eV) occ=1.000
+    -0.3615648E+00 (  -9.839eV) occ=1.000
+    -0.3659029E+00 (  -9.957eV) occ=1.000
+    -0.3678382E+00 ( -10.009eV) occ=1.000
+    -0.3816182E+00 ( -10.384eV) occ=1.000
+    -0.3870796E+00 ( -10.533eV) occ=1.000
+    -0.3893977E+00 ( -10.596eV) occ=1.000
+    -0.3922520E+00 ( -10.674eV) occ=1.000
+    -0.4171864E+00 ( -11.352eV) occ=1.000
+    -0.4201444E+00 ( -11.433eV) occ=1.000
+    -0.4302662E+00 ( -11.708eV) occ=1.000
+    -0.4309535E+00 ( -11.727eV) occ=1.000
+    -0.4550862E+00 ( -12.384eV) occ=1.000
+    -0.4684330E+00 ( -12.747eV) occ=1.000
+    -0.4730429E+00 ( -12.872eV) occ=1.000
+    -0.4802977E+00 ( -13.070eV) occ=1.000
+    -0.4956355E+00 ( -13.487eV) occ=1.000
+    -0.5006274E+00 ( -13.623eV) occ=1.000
+    -0.5068943E+00 ( -13.793eV) occ=1.000
+    -0.5136492E+00 ( -13.977eV) occ=1.000
+    -0.5186079E+00 ( -14.112eV) occ=1.000
+    -0.5292361E+00 ( -14.401eV) occ=1.000
+    -0.1309276E+01 ( -35.627eV) occ=1.000
+    -0.1315756E+01 ( -35.804eV) occ=1.000
+    -0.1317005E+01 ( -35.838eV) occ=1.000
+    -0.1324628E+01 ( -36.045eV) occ=1.000
+    -0.1343227E+01 ( -36.551eV) occ=1.000
+    -0.1346537E+01 ( -36.641eV) occ=1.000
+    -0.1354137E+01 ( -36.848eV) occ=1.000
+    -0.1358210E+01 ( -36.959eV) occ=1.000
+
+ Brillouin zone point:      4
+    weight=  0.125000
+    k     =<   0.375  -0.375   0.000> . <b1,b2,b3> 
+          =<   0.362  -0.256  -0.000>
+
+ orbital energies:
+     0.2479435E+00 (   6.747eV) occ=1.000
+     0.2467938E+00 (   6.716eV) occ=1.000
+     0.2441975E+00 (   6.645eV) occ=1.000
+     0.2426459E+00 (   6.603eV) occ=1.000
+     0.2365790E+00 (   6.438eV) occ=1.000
+     0.2343199E+00 (   6.376eV) occ=1.000
+     0.2342193E+00 (   6.373eV) occ=1.000
+     0.2279635E+00 (   6.203eV) occ=1.000
+     0.2241396E+00 (   6.099eV) occ=1.000
+     0.2204050E+00 (   5.998eV) occ=1.000
+     0.2153998E+00 (   5.861eV) occ=1.000
+     0.2117765E+00 (   5.763eV) occ=1.000
+     0.2094364E+00 (   5.699eV) occ=1.000
+     0.2067167E+00 (   5.625eV) occ=1.000
+     0.2044364E+00 (   5.563eV) occ=1.000
+     0.2033478E+00 (   5.533eV) occ=1.000
+     0.1768042E+00 (   4.811eV) occ=1.000
+     0.1732029E+00 (   4.713eV) occ=1.000
+     0.1637435E+00 (   4.456eV) occ=1.000
+     0.1560038E+00 (   4.245eV) occ=1.000
+     0.1518581E+00 (   4.132eV) occ=1.000
+     0.1454855E+00 (   3.959eV) occ=1.000
+     0.1392649E+00 (   3.790eV) occ=1.000
+     0.1273179E+00 (   3.465eV) occ=1.000
+    -0.3314366E+00 (  -9.019eV) occ=1.000
+    -0.3366282E+00 (  -9.160eV) occ=1.000
+    -0.3410556E+00 (  -9.281eV) occ=1.000
+    -0.3477839E+00 (  -9.464eV) occ=1.000
+    -0.3592588E+00 (  -9.776eV) occ=1.000
+    -0.3599165E+00 (  -9.794eV) occ=1.000
+    -0.3685717E+00 ( -10.029eV) occ=1.000
+    -0.3822746E+00 ( -10.402eV) occ=1.000
+    -0.3938596E+00 ( -10.718eV) occ=1.000
+    -0.3951776E+00 ( -10.753eV) occ=1.000
+    -0.4060967E+00 ( -11.051eV) occ=1.000
+    -0.4063828E+00 ( -11.058eV) occ=1.000
+    -0.4125343E+00 ( -11.226eV) occ=1.000
+    -0.4309184E+00 ( -11.726eV) occ=1.000
+    -0.4441821E+00 ( -12.087eV) occ=1.000
+    -0.4491800E+00 ( -12.223eV) occ=1.000
+    -0.5198730E+00 ( -14.147eV) occ=1.000
+    -0.5224645E+00 ( -14.217eV) occ=1.000
+    -0.5284544E+00 ( -14.380eV) occ=1.000
+    -0.5299749E+00 ( -14.421eV) occ=1.000
+    -0.5426148E+00 ( -14.765eV) occ=1.000
+    -0.5455430E+00 ( -14.845eV) occ=1.000
+    -0.5477586E+00 ( -14.905eV) occ=1.000
+    -0.5498036E+00 ( -14.961eV) occ=1.000
+    -0.1320550E+01 ( -35.934eV) occ=1.000
+    -0.1321474E+01 ( -35.959eV) occ=1.000
+    -0.1323779E+01 ( -36.022eV) occ=1.000
+    -0.1326228E+01 ( -36.089eV) occ=1.000
+    -0.1337008E+01 ( -36.382eV) occ=1.000
+    -0.1337636E+01 ( -36.399eV) occ=1.000
+    -0.1342612E+01 ( -36.535eV) occ=1.000
+    -0.1344007E+01 ( -36.573eV) occ=1.000
+
+ Brillouin zone point:      5
+    weight=  0.125000
+    k     =<   0.375   0.125   0.000> . <b1,b2,b3> 
+          =<   0.362   0.085  -0.000>
+
+ orbital energies:
+     0.2562808E+00 (   6.974eV) occ=1.000
+     0.2551106E+00 (   6.942eV) occ=1.000
+     0.2530460E+00 (   6.886eV) occ=1.000
+     0.2496122E+00 (   6.792eV) occ=1.000
+     0.2465694E+00 (   6.710eV) occ=1.000
+     0.2447856E+00 (   6.661eV) occ=1.000
+     0.2418306E+00 (   6.581eV) occ=1.000
+     0.2396332E+00 (   6.521eV) occ=1.000
+     0.2355826E+00 (   6.411eV) occ=1.000
+     0.2270193E+00 (   6.178eV) occ=1.000
+     0.2253620E+00 (   6.132eV) occ=1.000
+     0.2204913E+00 (   6.000eV) occ=1.000
+     0.2169186E+00 (   5.903eV) occ=1.000
+     0.2104242E+00 (   5.726eV) occ=1.000
+     0.2094140E+00 (   5.698eV) occ=1.000
+     0.2045953E+00 (   5.567eV) occ=1.000
+     0.1975787E+00 (   5.376eV) occ=1.000
+     0.1959019E+00 (   5.331eV) occ=1.000
+     0.1952093E+00 (   5.312eV) occ=1.000
+     0.1940297E+00 (   5.280eV) occ=1.000
+     0.1809732E+00 (   4.925eV) occ=1.000
+     0.1692356E+00 (   4.605eV) occ=1.000
+     0.1659674E+00 (   4.516eV) occ=1.000
+     0.1398494E+00 (   3.806eV) occ=1.000
+    -0.3341097E+00 (  -9.092eV) occ=1.000
+    -0.3403395E+00 (  -9.261eV) occ=1.000
+    -0.3501667E+00 (  -9.529eV) occ=1.000
+    -0.3531639E+00 (  -9.610eV) occ=1.000
+    -0.3710253E+00 ( -10.096eV) occ=1.000
+    -0.3710377E+00 ( -10.097eV) occ=1.000
+    -0.3902895E+00 ( -10.620eV) occ=1.000
+    -0.3966567E+00 ( -10.794eV) occ=1.000
+    -0.3971327E+00 ( -10.807eV) occ=1.000
+    -0.4097078E+00 ( -11.149eV) occ=1.000
+    -0.4214221E+00 ( -11.468eV) occ=1.000
+    -0.4232506E+00 ( -11.517eV) occ=1.000
+    -0.4253694E+00 ( -11.575eV) occ=1.000
+    -0.4387662E+00 ( -11.940eV) occ=1.000
+    -0.4785908E+00 ( -13.023eV) occ=1.000
+    -0.4789163E+00 ( -13.032eV) occ=1.000
+    -0.4939825E+00 ( -13.442eV) occ=1.000
+    -0.5061117E+00 ( -13.772eV) occ=1.000
+    -0.5158577E+00 ( -14.037eV) occ=1.000
+    -0.5158855E+00 ( -14.038eV) occ=1.000
+    -0.5280326E+00 ( -14.369eV) occ=1.000
+    -0.5291863E+00 ( -14.400eV) occ=1.000
+    -0.5310239E+00 ( -14.450eV) occ=1.000
+    -0.5354708E+00 ( -14.571eV) occ=1.000
+    -0.1319725E+01 ( -35.912eV) occ=1.000
+    -0.1321667E+01 ( -35.965eV) occ=1.000
+    -0.1322078E+01 ( -35.976eV) occ=1.000
+    -0.1327801E+01 ( -36.132eV) occ=1.000
+    -0.1333249E+01 ( -36.280eV) occ=1.000
+    -0.1333475E+01 ( -36.286eV) occ=1.000
+    -0.1346653E+01 ( -36.645eV) occ=1.000
+    -0.1348636E+01 ( -36.699eV) occ=1.000
+
+ Brillouin zone point:      6
+    weight=  0.125000
+    k     =<   0.125   0.125   0.000> . <b1,b2,b3> 
+          =<   0.121   0.085  -0.000>
+
+ orbital energies:
+     0.2436853E+00 (   6.631eV) occ=1.000
+     0.2381426E+00 (   6.480eV) occ=1.000
+     0.2374305E+00 (   6.461eV) occ=1.000
+     0.2331804E+00 (   6.345eV) occ=1.000
+     0.2316667E+00 (   6.304eV) occ=1.000
+     0.2252278E+00 (   6.129eV) occ=1.000
+     0.2204838E+00 (   6.000eV) occ=1.000
+     0.2185811E+00 (   5.948eV) occ=1.000
+     0.2183476E+00 (   5.942eV) occ=1.000
+     0.2121730E+00 (   5.774eV) occ=1.000
+     0.2065000E+00 (   5.619eV) occ=1.000
+     0.2034696E+00 (   5.537eV) occ=1.000
+     0.1915779E+00 (   5.213eV) occ=1.000
+     0.1850926E+00 (   5.037eV) occ=1.000
+     0.1790144E+00 (   4.871eV) occ=1.000
+     0.1667054E+00 (   4.536eV) occ=1.000
+     0.1607541E+00 (   4.374eV) occ=1.000
+     0.1603155E+00 (   4.362eV) occ=1.000
+     0.1513406E+00 (   4.118eV) occ=1.000
+     0.1394675E+00 (   3.795eV) occ=1.000
+     0.1369024E+00 (   3.725eV) occ=1.000
+     0.1239629E+00 (   3.373eV) occ=1.000
+     0.1101039E+00 (   2.996eV) occ=1.000
+     0.1012411E+00 (   2.755eV) occ=1.000
+    -0.3259707E+00 (  -8.870eV) occ=1.000
+    -0.3321802E+00 (  -9.039eV) occ=1.000
+    -0.3463159E+00 (  -9.424eV) occ=1.000
+    -0.3479099E+00 (  -9.467eV) occ=1.000
+    -0.3531533E+00 (  -9.610eV) occ=1.000
+    -0.3618770E+00 (  -9.847eV) occ=1.000
+    -0.3644799E+00 (  -9.918eV) occ=1.000
+    -0.3670803E+00 (  -9.989eV) occ=1.000
+    -0.3729948E+00 ( -10.150eV) occ=1.000
+    -0.3815721E+00 ( -10.383eV) occ=1.000
+    -0.4024859E+00 ( -10.952eV) occ=1.000
+    -0.4032289E+00 ( -10.973eV) occ=1.000
+    -0.4413885E+00 ( -12.011eV) occ=1.000
+    -0.4490798E+00 ( -12.220eV) occ=1.000
+    -0.4546714E+00 ( -12.372eV) occ=1.000
+    -0.4708304E+00 ( -12.812eV) occ=1.000
+    -0.4709290E+00 ( -12.815eV) occ=1.000
+    -0.4800990E+00 ( -13.064eV) occ=1.000
+    -0.5023394E+00 ( -13.669eV) occ=1.000
+    -0.5040218E+00 ( -13.715eV) occ=1.000
+    -0.5084265E+00 ( -13.835eV) occ=1.000
+    -0.5329222E+00 ( -14.502eV) occ=1.000
+    -0.5405807E+00 ( -14.710eV) occ=1.000
+    -0.5430411E+00 ( -14.777eV) occ=1.000
+    -0.1304552E+01 ( -35.499eV) occ=1.000
+    -0.1311396E+01 ( -35.685eV) occ=1.000
+    -0.1320214E+01 ( -35.925eV) occ=1.000
+    -0.1329831E+01 ( -36.187eV) occ=1.000
+    -0.1335118E+01 ( -36.331eV) occ=1.000
+    -0.1337832E+01 ( -36.405eV) occ=1.000
+    -0.1361494E+01 ( -37.048eV) occ=1.000
+    -0.1366053E+01 ( -37.172eV) occ=1.000
+
+ Brillouin zone point:      7
+    weight=  0.125000
+    k     =<   0.125  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.121  -0.085  -0.000>
+
+ orbital energies:
+     0.2437109E+00 (   6.632eV) occ=1.000
+     0.2381302E+00 (   6.480eV) occ=1.000
+     0.2374155E+00 (   6.460eV) occ=1.000
+     0.2331840E+00 (   6.345eV) occ=1.000
+     0.2316709E+00 (   6.304eV) occ=1.000
+     0.2252234E+00 (   6.129eV) occ=1.000
+     0.2204905E+00 (   6.000eV) occ=1.000
+     0.2185771E+00 (   5.948eV) occ=1.000
+     0.2183824E+00 (   5.943eV) occ=1.000
+     0.2121837E+00 (   5.774eV) occ=1.000
+     0.2064980E+00 (   5.619eV) occ=1.000
+     0.2034650E+00 (   5.537eV) occ=1.000
+     0.1915852E+00 (   5.213eV) occ=1.000
+     0.1850833E+00 (   5.036eV) occ=1.000
+     0.1789923E+00 (   4.871eV) occ=1.000
+     0.1667041E+00 (   4.536eV) occ=1.000
+     0.1607531E+00 (   4.374eV) occ=1.000
+     0.1603129E+00 (   4.362eV) occ=1.000
+     0.1513402E+00 (   4.118eV) occ=1.000
+     0.1394746E+00 (   3.795eV) occ=1.000
+     0.1369025E+00 (   3.725eV) occ=1.000
+     0.1239656E+00 (   3.373eV) occ=1.000
+     0.1101032E+00 (   2.996eV) occ=1.000
+     0.1012409E+00 (   2.755eV) occ=1.000
+    -0.3259720E+00 (  -8.870eV) occ=1.000
+    -0.3321769E+00 (  -9.039eV) occ=1.000
+    -0.3463152E+00 (  -9.424eV) occ=1.000
+    -0.3479051E+00 (  -9.467eV) occ=1.000
+    -0.3531503E+00 (  -9.610eV) occ=1.000
+    -0.3618666E+00 (  -9.847eV) occ=1.000
+    -0.3644746E+00 (  -9.918eV) occ=1.000
+    -0.3670810E+00 (  -9.989eV) occ=1.000
+    -0.3730034E+00 ( -10.150eV) occ=1.000
+    -0.3815802E+00 ( -10.383eV) occ=1.000
+    -0.4024851E+00 ( -10.952eV) occ=1.000
+    -0.4032305E+00 ( -10.973eV) occ=1.000
+    -0.4413925E+00 ( -12.011eV) occ=1.000
+    -0.4490815E+00 ( -12.220eV) occ=1.000
+    -0.4546717E+00 ( -12.372eV) occ=1.000
+    -0.4708348E+00 ( -12.812eV) occ=1.000
+    -0.4709373E+00 ( -12.815eV) occ=1.000
+    -0.4800981E+00 ( -13.064eV) occ=1.000
+    -0.5023364E+00 ( -13.669eV) occ=1.000
+    -0.5040164E+00 ( -13.715eV) occ=1.000
+    -0.5084264E+00 ( -13.835eV) occ=1.000
+    -0.5329201E+00 ( -14.502eV) occ=1.000
+    -0.5405809E+00 ( -14.710eV) occ=1.000
+    -0.5430401E+00 ( -14.777eV) occ=1.000
+    -0.1304552E+01 ( -35.499eV) occ=1.000
+    -0.1311396E+01 ( -35.685eV) occ=1.000
+    -0.1320214E+01 ( -35.925eV) occ=1.000
+    -0.1329831E+01 ( -36.187eV) occ=1.000
+    -0.1335118E+01 ( -36.331eV) occ=1.000
+    -0.1337832E+01 ( -36.405eV) occ=1.000
+    -0.1361494E+01 ( -37.048eV) occ=1.000
+    -0.1366053E+01 ( -37.172eV) occ=1.000
+
+ Brillouin zone point:      8
+    weight=  0.125000
+    k     =<   0.375  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.362  -0.085  -0.000>
+
+ orbital energies:
+     0.2562248E+00 (   6.972eV) occ=1.000
+     0.2551069E+00 (   6.942eV) occ=1.000
+     0.2530442E+00 (   6.886eV) occ=1.000
+     0.2496234E+00 (   6.793eV) occ=1.000
+     0.2465626E+00 (   6.709eV) occ=1.000
+     0.2447984E+00 (   6.661eV) occ=1.000
+     0.2418304E+00 (   6.581eV) occ=1.000
+     0.2396453E+00 (   6.521eV) occ=1.000
+     0.2355561E+00 (   6.410eV) occ=1.000
+     0.2270105E+00 (   6.177eV) occ=1.000
+     0.2253265E+00 (   6.131eV) occ=1.000
+     0.2204934E+00 (   6.000eV) occ=1.000
+     0.2169133E+00 (   5.903eV) occ=1.000
+     0.2104236E+00 (   5.726eV) occ=1.000
+     0.2094131E+00 (   5.698eV) occ=1.000
+     0.2046104E+00 (   5.568eV) occ=1.000
+     0.1975929E+00 (   5.377eV) occ=1.000
+     0.1959183E+00 (   5.331eV) occ=1.000
+     0.1952233E+00 (   5.312eV) occ=1.000
+     0.1940298E+00 (   5.280eV) occ=1.000
+     0.1809588E+00 (   4.924eV) occ=1.000
+     0.1692367E+00 (   4.605eV) occ=1.000
+     0.1659709E+00 (   4.516eV) occ=1.000
+     0.1398500E+00 (   3.806eV) occ=1.000
+    -0.3341109E+00 (  -9.092eV) occ=1.000
+    -0.3403350E+00 (  -9.261eV) occ=1.000
+    -0.3501666E+00 (  -9.529eV) occ=1.000
+    -0.3531648E+00 (  -9.610eV) occ=1.000
+    -0.3710161E+00 ( -10.096eV) occ=1.000
+    -0.3710398E+00 ( -10.097eV) occ=1.000
+    -0.3902907E+00 ( -10.620eV) occ=1.000
+    -0.3966598E+00 ( -10.794eV) occ=1.000
+    -0.3971296E+00 ( -10.807eV) occ=1.000
+    -0.4096970E+00 ( -11.149eV) occ=1.000
+    -0.4214164E+00 ( -11.467eV) occ=1.000
+    -0.4232528E+00 ( -11.517eV) occ=1.000
+    -0.4253847E+00 ( -11.575eV) occ=1.000
+    -0.4387690E+00 ( -11.940eV) occ=1.000
+    -0.4785943E+00 ( -13.023eV) occ=1.000
+    -0.4789248E+00 ( -13.032eV) occ=1.000
+    -0.4939908E+00 ( -13.442eV) occ=1.000
+    -0.5061099E+00 ( -13.772eV) occ=1.000
+    -0.5158478E+00 ( -14.037eV) occ=1.000
+    -0.5158812E+00 ( -14.038eV) occ=1.000
+    -0.5280319E+00 ( -14.369eV) occ=1.000
+    -0.5291901E+00 ( -14.400eV) occ=1.000
+    -0.5310225E+00 ( -14.450eV) occ=1.000
+    -0.5354680E+00 ( -14.571eV) occ=1.000
+    -0.1319725E+01 ( -35.912eV) occ=1.000
+    -0.1321667E+01 ( -35.965eV) occ=1.000
+    -0.1322078E+01 ( -35.976eV) occ=1.000
+    -0.1327801E+01 ( -36.132eV) occ=1.000
+    -0.1333249E+01 ( -36.280eV) occ=1.000
+    -0.1333476E+01 ( -36.286eV) occ=1.000
+    -0.1346652E+01 ( -36.645eV) occ=1.000
+    -0.1348636E+01 ( -36.699eV) occ=1.000
+
+ Total BAND energy   :  -0.4104010155E+03
+
+
+=== Spin Contamination ===
+
+ <Sexact^2> =    0.0000000000000000     
+ <S^2>      =    0.0000000000000000     
+
+
+ Writing Crystallographic Information File:./perm/U8O2-110.opt.cif
+   - cell not shifted (nwpw:cif_shift_cell .false.)
+
+ output psi filename:./perm/U8-110.movecs
+
+
+== Timing ==
+
+cputime in seconds
+  prologue    :   0.245477E+03
+  main loop   :   0.281056E+04
+  epilogue    :   0.589693E+02
+  total       :   0.311501E+04
+  cputime/step:   0.105186E+01       (    2672 evalulations,     981 linesearches)
+
+
+Time spent doing                        total          step
+  FFTs                       :   0.633774E+02  0.237191E-01
+  dot products               :   0.153650E+04  0.575036E+00
+  geodesic                   :   0.966215E+03  0.361608E+00
+  ffm_dgemm                  :   0.000000E+00  0.000000E+00
+  fmf_dgemm                  :   0.000000E+00  0.000000E+00
+  m_diagonalize              :   0.000000E+00  0.000000E+00
+    - m_tredq                :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq      :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq_dgemm:   0.000000E+00  0.000000E+00
+       - m_tredq_dgemm1      :   0.000000E+00  0.000000E+00
+    - m_getdiags             :   0.000000E+00  0.000000E+00
+    - m_tqliq                :   0.000000E+00  0.000000E+00
+    - m_eigsrt               :   0.000000E+00  0.000000E+00
+  exchange correlation       :   0.728967E+02  0.272817E-01
+  local pseudopotentials     :   0.554085E-03  0.207367E-06
+  non-local pseudopotentials :   0.581626E+03  0.217674E+00
+  hartree potentials         :   0.516490E+00  0.193297E-03
+  ion-ion interaction        :   0.262491E+01  0.982377E-03
+  structure factors          :   0.157733E+01  0.590318E-03
+  phase factors              :   0.000000E+00  0.000000E+00
+  masking and packing        :   0.737189E+02  0.275894E-01
+  queue fft                  :   0.722690E+03  0.270468E+00
+  queue fft (serial)         :   0.222878E+03  0.834124E-01
+  queue fft (message passing):   0.483915E+03  0.181106E+00
+  HFX potential              :   0.000000E+00  0.000000E+00
+  qmmm LJ                    :   0.000000E+00  0.000000E+00
+  qmmm residual Q            :   0.000000E+00  0.000000E+00
+
+     >>>  JOB COMPLETED     AT Mon Mar 11 04:45:23 2013  <<<
+
+ Task  times  cpu:     3071.1s     wall:     3115.4s
+ Summary of allocated global arrays
+-----------------------------------
+  No active global arrays
+
+
+
+                         GA Statistics for process    0
+                         ------------------------------
+
+       create   destroy   get      put      acc     scatter   gather  read&inc
+calls:    0        0        0        0        0        0        0        0     
+number of processes/call 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+bytes total:             0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+bytes remote:            0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+Max memory consumed for GA by this process: 0 bytes
+MA_summarize_allocated_blocks: starting scan ...
+MA_summarize_allocated_blocks: scan completed: 0 heap blocks, 0 stack blocks
+MA usage statistics:
+
+	allocation statistics:
+					      heap	     stack
+					      ----	     -----
+	current number of blocks	         0	         0
+	maximum number of blocks	       282	        18
+	current total bytes		         0	         0
+	maximum total bytes		 133659024	  75479616
+	maximum total K-bytes		    133660	     75480
+	maximum total M-bytes		       134	        76
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+
+
+
+                                     CITATION
+                                     --------
+                Please cite the following reference when publishing
+                           results obtained with NWChem:
+
+                 M. Valiev, E.J. Bylaska, N. Govind, K. Kowalski,
+              T.P. Straatsma, H.J.J. van Dam, D. Wang, J. Nieplocha,
+                        E. Apra, T.L. Windus, W.A. de Jong
+                 "NWChem: a comprehensive and scalable open-source
+                  solution for large scale molecular simulations"
+                      Comput. Phys. Commun. 181, 1477 (2010)
+                           doi:10.1016/j.cpc.2010.04.018
+
+                              AUTHORS & CONTRIBUTORS
+                              ----------------------
+          E. Apra, E. J. Bylaska, W. A. de Jong, N. Govind, K. Kowalski,
+       T. P. Straatsma, M. Valiev, H. J. J. van Dam, D. Wang, T. L. Windus,
+    J. Hammond, J. Autschbach, F. Aquino, S. Hirata, M. T. Hackler, K. Lopata,
+      J. Mullin, P. Nichols, R. Peverati, Y. Zhao, P.-D. Fan, R. J. Harrison,
+        M. Dupuis, D. M. A. Smith, J. Nieplocha, V. Tipparaju, M. Krishnan,
+       B. E. Van Kuiken, A. Vazquez-Mayagoitia, L. Jensen, M. Swart, Q. Wu,
+   T. Van Voorhis, A. A. Auer, M. Nooijen, L. D. Crosby, E. Brown, G. Cisneros,
+      G. I. Fann, H. Fruchtl, J. Garza, K. Hirao, R. Kendall, J. A. Nichols,
+        K. Tsemekhman, K. Wolinski, J. Anchell, D. Bernholdt, P. Borowski,
+  T. Clark, D. Clerc, H. Dachsel, M. Deegan, K. Dyall, D. Elwood, E. Glendening,
+         M. Gutowski, A. Hess, J. Jaffe, B. Johnson, J. Ju, R. Kobayashi,
+     R. Kutteh, Z. Lin, R. Littlefield, X. Long, B. Meng, T. Nakajima, S. Niu,
+      L. Pollack, M. Rosing, K. Glaesemann, G. Sandrone, M. Stave, H. Taylor,
+                  G. Thomas, J. H. van Lenthe, A. Wong, Z. Zhang.
+
+ Total times  cpu:     3071.6s     wall:     3116.6s
+cp: cannot stat `./U8-110.out': No such file or directory
+----------------------------------------
+Begin Torque Epilogue (Mon Mar 11 04:45:25 2013)
+Job ID:           385095.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8-110
+Session:          20509
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=04:00:00
+Resources:        cput=247:12:39,mem=114800108kb,vmem=606800512kb,walltime=00:52:01
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub354 taub355 taub356 taub358 taub377 taub411 taub431 taub433 taub434 taub436 taub440 taub442 taub448 taub449 taub453 taub454 taub479 taub492 taub493 taub494 taub496 taub497 taub498 taub502
+End Torque Epilogue
+----------------------------------------

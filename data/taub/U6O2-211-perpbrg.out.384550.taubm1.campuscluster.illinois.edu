@@ -1,0 +1,3488 @@
+----------------------------------------
+Begin Torque Prologue (Sat Mar  9 00:29:44 2013)
+Job ID:           384550.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O2-211-perpbrg
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=08:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub251 taub265 taub266 taub268 taub279 taub315 taub319 taub334 taub337 taub341 taub344 taub345 taub357 taub358 taub377 taub454 taub456 taub485 taub487 taub488 taub492 taub496 taub497 taub512
+End Torque Prologue
+----------------------------------------
+ argument  1 = ./U6O2-211-perpbrg.nw
+
+
+
+============================== echo of input deck ==============================
+title "Gamma-uranium (211) adsorption"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+restart U6O2-211-perpbrg
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 36 48 210
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 3
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 8 12 8
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+  #tolerances 1.0e-6 1.0e-6
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:kbpp_filter    .true.
+
+## Optimization ##
+driver
+  #clear                # Deletes all restart data
+  loose               # Specify loose, default, or tight convergence
+  xyz U6O2     # Output XYZ file of geometry at each stage
+  maxiter 40
+end
+set driver:linopt 0
+set nwpw:cif_filename U6O2.opt
+set nwpw:psi_nolattice .true.
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	-0.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.66468
+	O2	0.79692	0.00000	0.66468
+end
+#task band energy
+
+nwpw
+  simulation_cell
+    ngrid 64 96 420
+  end
+end
+
+#O2 (211) perp-brg
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	-0.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.66468
+	O2	0.79692	0.00000	0.66468
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	-0.250	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.67692
+	O2	0.79692	0.00000	0.67692
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	0.000	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.68916
+	O2	0.79692	0.00000	0.68916
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	0.250	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.70140
+	O2	0.79692	0.00000	0.70140
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	0.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.71364
+	O2	0.79692	0.00000	0.71364
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	0.750	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.72587
+	O2	0.79692	0.00000	0.72587
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.000	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.73811
+	O2	0.79692	0.00000	0.73811
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.250	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.75035
+	O2	0.79692	0.00000	0.75035
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.76259
+	O2	0.79692	0.00000	0.76259
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.76259
+	O2	0.79692	0.00000	0.76259
+end
+#task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and X displacement of	1.750	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.77483
+	O2	0.79692	0.00000	0.77483
+end
+task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and X displacement of	2.000	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.20308	0.00000	0.78707
+	O2	0.79692	0.00000	0.78707
+end
+task band energy
+
+# A.M.D.G.
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 6.1.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2012
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = taub512
+    program         = /home/davis68/bin/nwchem-dev
+    date            = Sat Mar  9 00:30:42 2013
+
+    compiled        = Wed_Oct_03_09:41:00_2012
+    source          = /home/davis68/nwchem/nwchem-src-2012-Aug-27/
+    nwchem branch   = Development
+    nwchem revision = 22805
+    ga revision     = 10079
+    input           = ./U6O2-211-perpbrg.nw
+    prefix          = U6O2-211-perpbrg.
+    data base       = ./perm/U6O2-211-perpbrg.db
+    status          = restart
+    nproc           =      288
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =   81920001 doubles =    625.0 Mbytes
+    stack    =   81920001 doubles =    625.0 Mbytes
+    global   =  163840000 doubles =   1250.0 Mbytes (distinct from heap & stack)
+    total    =  327680002 doubles =   2500.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = ./perm
+  0 scratch   = ./scratch
+
+
+           Previous task information
+           -------------------------
+
+    Theory    = band                            
+    Operation = energy                        
+    Status    = fail                          
+    Qmmm      = F
+    Ignore    = F
+
+
+           Geometries in the database
+           --------------------------
+
+       Name                              Natoms  Last Modified
+       --------------------------------  ------  ------------------------
+    1  geometry                               8  Sat Mar  9 00:12:09 2013  
+    2  pspwgeometry                           8  Sat Mar  9 00:15:42 2013  
+
+  The geometry named "geometry" is the default for restart
+
+
+
+           Basis sets in the database
+           --------------------------
+
+  There are no basis sets in the database
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+                          Gamma-uranium (211) adsorption
+                          ------------------------------
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    13.57783046
+    8 O2                   8.0000     2.37412828     0.00000000    13.57783046
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   1 U1               |     5.36785  |     2.84054
+    7 O1               |   2 U2               |     0.92109  |     0.48742
+    8 O2               |   1 U1               |     4.74763  |     2.51234
+    8 O2               |   2 U2               |     2.66875  |     1.41224
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         13
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   7 O1               |    96.47
+    1 U1               |   8 O2               |   2 U2               |    83.72
+    3 U3               |   1 U1               |   7 O1               |    63.74
+    3 U3               |   1 U1               |   8 O2               |    86.69
+    7 O1               |   1 U1               |   8 O2               |    37.98
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    96.47
+    2 U2               |   8 O2               |   1 U1               |    83.72
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |    94.00
+    3 U3               |   2 U2               |   8 O2               |   115.10
+    4 U4               |   2 U2               |   7 O1               |   145.17
+    4 U4               |   2 U2               |   8 O2               |    84.13
+    7 O1               |   2 U2               |   8 O2               |   130.70
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   2 U2               |   1 U1               |    96.47
+    1 U1               |   8 O2               |   2 U2               |    83.72
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         34
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    13.57783046
+    8 O2                   8.0000     2.37412828     0.00000000    13.57783046
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   1 U1               |     5.36785  |     2.84054
+    7 O1               |   2 U2               |     0.92109  |     0.48742
+    8 O2               |   1 U1               |     4.74763  |     2.51234
+    8 O2               |   2 U2               |     2.66875  |     1.41224
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         13
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   7 O1               |    96.47
+    1 U1               |   8 O2               |   2 U2               |    83.72
+    3 U3               |   1 U1               |   7 O1               |    63.74
+    3 U3               |   1 U1               |   8 O2               |    86.69
+    7 O1               |   1 U1               |   8 O2               |    37.98
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    96.47
+    2 U2               |   8 O2               |   1 U1               |    83.72
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |    94.00
+    3 U3               |   2 U2               |   8 O2               |   115.10
+    4 U4               |   2 U2               |   7 O1               |   145.17
+    4 U4               |   2 U2               |   8 O2               |    84.13
+    7 O1               |   2 U2               |   8 O2               |   130.70
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   2 U2               |   1 U1               |    96.47
+    1 U1               |   8 O2               |   2 U2               |    83.72
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         34
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    13.82786453
+    8 O2                   8.0000     2.37412828     0.00000000    13.82786453
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   1 U1               |     5.30510  |     2.80734
+    7 O1               |   2 U2               |     1.26429  |     0.66903
+    8 O2               |   1 U1               |     4.67656  |     2.47473
+    8 O2               |   2 U2               |     2.80575  |     1.48474
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         13
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   7 O1               |    88.50
+    1 U1               |   8 O2               |   2 U2               |    83.76
+    3 U3               |   1 U1               |   7 O1               |    67.77
+    3 U3               |   1 U1               |   8 O2               |    91.14
+    7 O1               |   1 U1               |   8 O2               |    38.49
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    88.50
+    2 U2               |   8 O2               |   1 U1               |    83.76
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   104.53
+    3 U3               |   2 U2               |   8 O2               |   119.58
+    4 U4               |   2 U2               |   7 O1               |   162.48
+    4 U4               |   2 U2               |   8 O2               |    93.60
+    7 O1               |   2 U2               |   8 O2               |   103.91
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   2 U2               |   1 U1               |    88.50
+    1 U1               |   8 O2               |   2 U2               |    83.76
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         34
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    14.07789860
+    8 O2                   8.0000     2.37412828     0.00000000    14.07789860
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   1 U1               |     5.28401  |     2.79618
+    7 O1               |   2 U2               |     1.67181  |     0.88468
+    8 O2               |   1 U1               |     4.65263  |     2.46206
+    8 O2               |   2 U2               |     3.01144  |     1.59359
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         13
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   7 O1               |    84.17
+    1 U1               |   8 O2               |   2 U2               |    82.15
+    3 U3               |   1 U1               |   7 O1               |    71.92
+    3 U3               |   1 U1               |   8 O2               |    95.68
+    7 O1               |   1 U1               |   8 O2               |    38.67
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    84.17
+    2 U2               |   8 O2               |   1 U1               |    82.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   109.94
+    3 U3               |   2 U2               |   8 O2               |   122.95
+    4 U4               |   2 U2               |   7 O1               |   171.91
+    4 U4               |   2 U2               |   8 O2               |   102.00
+    7 O1               |   2 U2               |   8 O2               |    86.09
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   2 U2               |   1 U1               |    84.17
+    1 U1               |   8 O2               |   2 U2               |    82.15
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         34
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    14.32793267
+    8 O2                   8.0000     2.37412828     0.00000000    14.32793267
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   1 U1               |     5.30510  |     2.80734
+    7 O1               |   2 U2               |     2.10665  |     1.11479
+    8 O2               |   1 U1               |     4.67656  |     2.47473
+    8 O2               |   2 U2               |     3.27289  |     1.73194
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         13
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   7 O1               |    81.63
+    1 U1               |   8 O2               |   2 U2               |    79.28
+    3 U3               |   1 U1               |   7 O1               |    76.13
+    3 U3               |   1 U1               |   8 O2               |   100.20
+    7 O1               |   1 U1               |   8 O2               |    38.49
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    81.63
+    2 U2               |   8 O2               |   1 U1               |    79.28
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   113.00
+    3 U3               |   2 U2               |   8 O2               |   125.29
+    4 U4               |   2 U2               |   7 O1               |   177.56
+    4 U4               |   2 U2               |   8 O2               |   109.18
+    7 O1               |   2 U2               |   8 O2               |    73.25
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   2 U2               |   1 U1               |    81.63
+    1 U1               |   8 O2               |   2 U2               |    79.28
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         34
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    14.57796674
+    8 O2                   8.0000     2.37412828     0.00000000    14.57796674
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   1 U1               |     5.36785  |     2.84054
+    7 O1               |   2 U2               |     2.55489  |     1.35199
+    8 O2               |   1 U1               |     4.74763  |     2.51234
+    8 O2               |   2 U2               |     3.57789  |     1.89334
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         13
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   7 O1               |    80.00
+    1 U1               |   8 O2               |   2 U2               |    75.59
+    3 U3               |   1 U1               |   7 O1               |    80.30
+    3 U3               |   1 U1               |   8 O2               |   104.59
+    7 O1               |   1 U1               |   8 O2               |    37.98
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    80.00
+    2 U2               |   8 O2               |   1 U1               |    75.59
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   114.91
+    3 U3               |   2 U2               |   8 O2               |   126.81
+    4 U4               |   2 U2               |   7 O1               |   178.75
+    4 U4               |   2 U2               |   8 O2               |   115.23
+    7 O1               |   2 U2               |   8 O2               |    63.52
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    7 O1               |   2 U2               |   1 U1               |    80.00
+    1 U1               |   8 O2               |   2 U2               |    75.59
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         34
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    14.82779653
+    8 O2                   8.0000     2.37412828     0.00000000    14.82779653
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   2 U2               |     3.01019  |     1.59293
+    8 O2               |   1 U1               |     4.86365  |     2.57373
+    8 O2               |   2 U2               |     3.91601  |     2.07226
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         12
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   8 O2               |   2 U2               |    71.48
+    3 U3               |   1 U1               |   8 O2               |   108.75
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    78.88
+    2 U2               |   8 O2               |   1 U1               |    71.48
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   116.19
+    3 U3               |   2 U2               |   8 O2               |   127.73
+    4 U4               |   2 U2               |   7 O1               |   176.17
+    4 U4               |   2 U2               |   8 O2               |   120.27
+    7 O1               |   2 U2               |   8 O2               |    55.89
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    1 U1               |   8 O2               |   2 U2               |    71.48
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         30
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    15.07783060
+    8 O2                   8.0000     2.37412828     0.00000000    15.07783060
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   2 U2               |     3.47036  |     1.83644
+    8 O2               |   1 U1               |     5.02171  |     2.65737
+    8 O2               |   2 U2               |     4.27987  |     2.26481
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         12
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   8 O2               |   2 U2               |    67.22
+    3 U3               |   1 U1               |   8 O2               |   112.61
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    78.07
+    2 U2               |   8 O2               |   1 U1               |    67.22
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   117.11
+    3 U3               |   2 U2               |   8 O2               |   128.24
+    4 U4               |   2 U2               |   7 O1               |   174.27
+    4 U4               |   2 U2               |   8 O2               |   124.49
+    7 O1               |   2 U2               |   8 O2               |    49.77
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    1 U1               |   8 O2               |   2 U2               |    67.22
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         30
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    15.32786467
+    8 O2                   8.0000     2.37412828     0.00000000    15.32786467
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   2 U2               |     3.93346  |     2.08150
+    8 O2               |   1 U1               |     5.21790  |     2.76119
+    8 O2               |   2 U2               |     4.66325  |     2.46769
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         12
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   8 O2               |    63.73
+    3 U3               |   1 U1               |   8 O2               |   116.13
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    77.46
+    1 U1               |   2 U2               |   8 O2               |    63.73
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   117.80
+    3 U3               |   2 U2               |   8 O2               |   128.49
+    4 U4               |   2 U2               |   7 O1               |   172.81
+    4 U4               |   2 U2               |   8 O2               |   128.04
+    7 O1               |   2 U2               |   8 O2               |    44.78
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    8 O2               |   2 U2               |   1 U1               |    63.73
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         30
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    15.57789874
+    8 O2                   8.0000     2.37412828     0.00000000    15.57789874
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   2 U2               |     4.39855  |     2.32761
+    8 O2               |   2 U2               |     5.06173  |     2.67855
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         11
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    76.98
+    1 U1               |   2 U2               |   8 O2               |    64.22
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   118.33
+    3 U3               |   2 U2               |   8 O2               |   128.56
+    4 U4               |   2 U2               |   7 O1               |   171.67
+    4 U4               |   2 U2               |   8 O2               |   131.03
+    7 O1               |   2 U2               |   8 O2               |    40.63
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         27
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    15.57789874
+    8 O2                   8.0000     2.37412828     0.00000000    15.57789874
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   2 U2               |     4.39855  |     2.32761
+    8 O2               |   2 U2               |     5.06173  |     2.67855
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         11
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    76.98
+    1 U1               |   2 U2               |   8 O2               |    64.22
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   118.33
+    3 U3               |   2 U2               |   8 O2               |   128.56
+    4 U4               |   2 U2               |   7 O1               |   171.67
+    4 U4               |   2 U2               |   8 O2               |   131.03
+    7 O1               |   2 U2               |   8 O2               |    40.63
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         27
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    15.82793280
+    8 O2                   8.0000     2.37412828     0.00000000    15.82793280
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   2 U2               |     4.86508  |     2.57449
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    76.59
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   118.75
+    4 U4               |   2 U2               |   7 O1               |   170.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         23
+ ==============================================================================
+
+
+
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Sat Mar  9 00:30:42 2013  <<<
+          ================ input data ========================
+
+ input psi filename:./perm/U6O2-211-perpbrg.movecs
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+      2: O     core charge: 6.0  lmax=2
+             comment    : Parameterized (Chem.Phys.Lett., vol 322, page 447) Hamman psp
+             pseudpotential type            :   0
+             highest angular component      :   2
+             local potential used           :   2
+             number of non-local projections:   4
+             cutoff =   0.700   0.700   0.700
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  6     O   :  2
+
+ number of electrons: spin up=   49.00  spin down=   47.00 (fourier space)
+ number of orbitals:  spin up=      49  spin down=      47 (fourier space)
+
+ supercell:
+      lattice:    a1=<   5.630   0.000   0.000 >
+                  a2=<   0.000   9.189   0.000 >
+                  a3=<   0.000   0.000  38.603 >
+      reciprocal: b1=<   1.116   0.000  -0.000 >
+                  b2=<  -0.000   0.684  -0.000 >
+                  b3=<   0.000   0.000   0.163 >
+
+      lattice:    a=   5.630    b=   9.189     c=  38.603
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     1997.0
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-2.04206249
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.419   0.256  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.140   0.256  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.140   0.256  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.419  -0.256  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.419   0.085  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.140   0.085  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.140  -0.085  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.419  -0.085  -0.000>
+
+ computational grids:
+      density     cutoff=180.000  fft=  64x  96x 420(   230205 waves     6394 per task)
+      wavefnc   1 cutoff= 90.000  fft=  64x  96x 420(    81468 waves     2263 per task)
+      wavefnc   2 cutoff= 90.000  fft=  64x  96x 420(    81379 waves     2260 per task)
+      wavefnc   3 cutoff= 90.000  fft=  64x  96x 420(    81379 waves     2260 per task)
+      wavefnc   4 cutoff= 90.000  fft=  64x  96x 420(    81468 waves     2263 per task)
+      wavefnc   5 cutoff= 90.000  fft=  64x  96x 420(    81490 waves     2263 per task)
+      wavefnc   6 cutoff= 90.000  fft=  64x  96x 420(    81407 waves     2261 per task)
+      wavefnc   7 cutoff= 90.000  fft=  64x  96x 420(    81407 waves     2261 per task)
+      wavefnc   8 cutoff= 90.000  fft=  64x  96x 420(    81490 waves     2263 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Sat Mar  9 00:35:41 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+      10   -0.3385607190E+03   -0.38357E+00    0.73631E+01
+     -  10 steepest descent iterations performed
+      20   -0.3396688340E+03   -0.10174E-01    0.94016E-01
+     -  10 steepest descent iterations performed
+      30   -0.3397346367E+03   -0.21969E-02    0.38625E-02
+      40   -0.3397498557E+03   -0.86699E-03    0.18616E-02
+      50   -0.3397586619E+03   -0.68868E-03    0.67682E-03
+      60   -0.3397631764E+03   -0.45127E-03    0.32987E-03
+      70   -0.3397668735E+03   -0.28373E-03    0.39247E-03
+      80   -0.3397692960E+03   -0.26920E-03    0.19964E-03
+      90   -0.3397710829E+03   -0.15046E-03    0.13095E-03
+     100   -0.3397724102E+03   -0.11977E-03    0.10332E-03
+     110   -0.3397733800E+03   -0.94027E-04    0.88977E-04
+     120   -0.3397741673E+03   -0.66185E-04    0.94649E-04
+     130   -0.3397747850E+03   -0.58536E-04    0.92506E-04
+     140   -0.3397753332E+03   -0.51472E-04    0.10874E-03
+     150   -0.3397758151E+03   -0.45924E-04    0.12267E-03
+     160   -0.3397762619E+03   -0.42065E-04    0.13964E-03
+     170   -0.3397766800E+03   -0.40841E-04    0.15634E-03
+     180   -0.3397770717E+03   -0.37547E-04    0.17164E-03
+     190   -0.3397774521E+03   -0.36216E-04    0.19643E-03
+     200   -0.3397778205E+03   -0.37054E-04    0.21725E-03
+     -  10 steepest descent iterations performed
+     210   -0.3397782709E+03   -0.33974E-04    0.12827E-04
+     220   -0.3397785894E+03   -0.28740E-04    0.23795E-04
+     230   -0.3397788501E+03   -0.25032E-04    0.33088E-04
+     240   -0.3397790766E+03   -0.21661E-04    0.43508E-04
+     250   -0.3397792960E+03   -0.21816E-04    0.64508E-04
+     -  10 steepest descent iterations performed
+     260   -0.3397794775E+03   -0.12191E-04    0.59253E-05
+     270   -0.3397796049E+03   -0.13554E-04    0.15651E-04
+     -  10 steepest descent iterations performed
+     280   -0.3397797135E+03   -0.67323E-05    0.43488E-05
+     290   -0.3397797791E+03   -0.60711E-05    0.10472E-04
+     300   -0.3397800687E+03   -0.42868E-04    0.35886E-03
+     -  10 steepest descent iterations performed
+     310   -0.3397802923E+03   -0.75911E-05    0.28976E-05
+     320   -0.3397803421E+03   -0.54775E-05    0.27943E-05
+     330   -0.3397803918E+03   -0.45894E-05    0.84651E-05
+     340   -0.3397805605E+03   -0.26533E-04    0.17319E-03
+     -  10 steepest descent iterations performed
+     350   -0.3397806863E+03   -0.34555E-05    0.17582E-05
+     360   -0.3397807359E+03   -0.41243E-05    0.42258E-05
+     -  10 steepest descent iterations performed
+     370   -0.3397807760E+03   -0.31947E-05    0.31859E-05
+     380   -0.3397808458E+03   -0.14327E-04    0.40032E-04
+     -  10 steepest descent iterations performed
+     390   -0.3397809126E+03   -0.24553E-05    0.15010E-05
+     400   -0.3397809404E+03   -0.21421E-05    0.36143E-05
+     410   -0.3397810102E+03   -0.90729E-05    0.48567E-04
+     -  10 steepest descent iterations performed
+     420   -0.3397810842E+03   -0.45982E-05    0.22509E-05
+     430   -0.3397811060E+03   -0.23076E-05    0.17527E-05
+     440   -0.3397811419E+03   -0.50229E-05    0.14231E-04
+     -  10 steepest descent iterations performed
+     450   -0.3397811854E+03   -0.20506E-05    0.17379E-05
+     460   -0.3397812107E+03   -0.30480E-05    0.46399E-05
+     -  10 steepest descent iterations performed
+     470   -0.3397812412E+03   -0.32241E-05    0.26464E-05
+     -  10 steepest descent iterations performed
+     480   -0.3397812632E+03   -0.14904E-05    0.21792E-05
+     490   -0.3397813518E+03   -0.10518E-04    0.12741E-03
+     -  10 steepest descent iterations performed
+     500   -0.3397814381E+03   -0.14411E-05    0.16577E-05
+     510   -0.3397814494E+03   -0.14326E-05    0.11705E-05
+     520   -0.3397815134E+03   -0.83014E-05    0.78789E-04
+     -  10 steepest descent iterations performed
+     530   -0.3397815723E+03   -0.26555E-05    0.90150E-06
+     540   -0.3397815872E+03   -0.76407E-06    0.85032E-06
+     550   -0.3397816051E+03   -0.26173E-05    0.63529E-05
+     -  10 steepest descent iterations performed
+     560   -0.3397816284E+03   -0.17824E-05    0.93478E-06
+     570   -0.3397816465E+03   -0.16007E-05    0.49946E-05
+     580   -0.3397816837E+03   -0.49199E-05    0.35541E-04
+     -  10 steepest descent iterations performed
+     590   -0.3397817277E+03   -0.20314E-05    0.77228E-06
+     600   -0.3397817399E+03   -0.67961E-06    0.78592E-06
+     610   -0.3397817531E+03   -0.17651E-05    0.43292E-05
+     -  10 steepest descent iterations performed
+     620   -0.3397817711E+03   -0.14268E-05    0.82815E-06
+     630   -0.3397817855E+03   -0.14007E-05    0.40930E-05
+     640   -0.3397818141E+03   -0.35668E-05    0.26480E-04
+     -  10 steepest descent iterations performed
+     650   -0.3397818484E+03   -0.15530E-05    0.65326E-06
+     660   -0.3397818578E+03   -0.60374E-06    0.63289E-06
+     670   -0.3397818678E+03   -0.11665E-05    0.30099E-05
+     -  10 steepest descent iterations performed
+     680   -0.3397818817E+03   -0.10596E-05    0.71492E-06
+     690   -0.3397818931E+03   -0.12683E-05    0.33605E-05
+     -  10 steepest descent iterations performed
+     700   -0.3397819069E+03   -0.86737E-06    0.91043E-06
+     710   -0.3397819159E+03   -0.70477E-06    0.21103E-05
+     720   -0.3397819482E+03   -0.69352E-05    0.46664E-04
+     -  10 steepest descent iterations performed
+     730   -0.3397819810E+03   -0.62729E-06    0.32982E-06
+     740   -0.3397819886E+03   -0.11774E-05    0.74342E-06
+     -  10 steepest descent iterations performed
+     750   -0.3397819981E+03   -0.11425E-05    0.22561E-05
+     760   -0.3397820139E+03   -0.15386E-05    0.12804E-04
+     -  10 steepest descent iterations performed
+     770   -0.3397820327E+03   -0.72951E-06    0.47460E-06
+     780   -0.3397820365E+03   -0.41164E-06    0.29354E-06
+     790   -0.3397820445E+03   -0.75565E-06    0.37047E-05
+     -  10 steepest descent iterations performed
+     800   -0.3397820540E+03   -0.33341E-06    0.24518E-06
+     810   -0.3397820606E+03   -0.97146E-06    0.20226E-05
+     -  10 steepest descent iterations performed
+     820   -0.3397820679E+03   -0.58551E-06    0.51667E-06
+     830   -0.3397820730E+03   -0.51871E-06    0.12386E-05
+     840   -0.3397820889E+03   -0.17472E-05    0.20659E-04
+     -  10 steepest descent iterations performed
+     850   -0.3397821050E+03   -0.50591E-06    0.16629E-06
+     860   -0.3397821092E+03   -0.35768E-06    0.31780E-06
+     870   -0.3397821122E+03   -0.37837E-06    0.66971E-06
+     -  10 steepest descent iterations performed
+     880   -0.3397821172E+03   -0.41713E-06    0.38792E-06
+     -  10 steepest descent iterations performed
+     890   -0.3397821205E+03   -0.29651E-06    0.33886E-06
+     900   -0.3397821340E+03   -0.27471E-05    0.21452E-04
+     -  10 steepest descent iterations performed
+     910   -0.3397821463E+03   -0.33989E-06    0.75082E-07
+     920   -0.3397821480E+03   -0.16040E-06    0.12104E-06
+     930   -0.3397821518E+03   -0.18227E-06    0.16016E-05
+     -  10 steepest descent iterations performed
+     940   -0.3397821561E+03   -0.22294E-06    0.18534E-06
+     -  10 steepest descent iterations performed
+     950   -0.3397821581E+03   -0.15457E-06    0.20376E-06
+     960   -0.3397821870E+03   -0.31435E-05    0.14997E-03
+     -  10 steepest descent iterations performed
+     970   -0.3397822030E+03   -0.20555E-06    0.63604E-07
+     980   -0.3397822039E+03   -0.79729E-07    0.13046E-07
+  *** tolerance ok.    iteration terminated.
+     >>>  ITERATION ENDED   AT Sat Mar  9 02:21:25 2013  <<<
+
+
+          =============  summary of results  =================
+
+ number of electrons: spin up=   49.00000  down=   47.00000 (real space)
+
+ total     energy    :  -0.3397822039E+03 (   -0.42473E+02/ion)
+ total orbital energy:  -0.1890550412E+02 (   -0.19693E+00/electron)
+ hartree   energy    :   0.1043233184E+04 (    0.10867E+02/electron)
+ exc-corr  energy    :  -0.4636312536E+02 (   -0.48295E+00/electron)
+ ion-ion   energy    :   0.7083441799E+03 (    0.88543E+02/ion)
+
+ K.S. kinetic energy :   0.1667808203E+03 (    0.17373E+01/electron)
+ K.S. V_l  energy    :  -0.2688434310E+03 (   -0.28005E+01/electron)
+ K.S. V_nl energy    :  -0.5237941656E+02 (   -0.54562E+00/electron)
+ K.S. V_Hart energy  :   0.2086466369E+04 (    0.21734E+02/electron)
+ K.S. V_xc energy    :  -0.6037543007E+02 (   -0.62891E+00/electron)
+ K.S. V_so energy    :   0.0000000000E+00 (    0.00000E+00/electron)
+ Virial Coefficient  :   0.1022220714E+02
+
+ Brillouin zone point:      1
+    weight=  0.125000
+    k     =<   0.375   0.375   0.000> . <b1,b2,b3> 
+          =<   0.419   0.256  -0.000>
+
+ orbital energies:
+     0.3136289E+00 (   8.534eV) occ=1.000
+     0.3080410E+00 (   8.382eV) occ=1.000
+     0.3015222E+00 (   8.205eV) occ=1.000     0.3051546E+00 (   8.304eV) occ=1.000
+     0.2973248E+00 (   8.091eV) occ=1.000     0.2999404E+00 (   8.162eV) occ=1.000
+     0.2922481E+00 (   7.953eV) occ=1.000     0.2979099E+00 (   8.107eV) occ=1.000
+     0.2871095E+00 (   7.813eV) occ=1.000     0.2959392E+00 (   8.053eV) occ=1.000
+     0.2859028E+00 (   7.780eV) occ=1.000     0.2920798E+00 (   7.948eV) occ=1.000
+     0.2841028E+00 (   7.731eV) occ=1.000     0.2882222E+00 (   7.843eV) occ=1.000
+     0.2786385E+00 (   7.582eV) occ=1.000     0.2827015E+00 (   7.693eV) occ=1.000
+     0.2716286E+00 (   7.391eV) occ=1.000     0.2778026E+00 (   7.559eV) occ=1.000
+     0.2653133E+00 (   7.220eV) occ=1.000     0.2701656E+00 (   7.352eV) occ=1.000
+     0.2519666E+00 (   6.856eV) occ=1.000     0.2644203E+00 (   7.195eV) occ=1.000
+     0.2495246E+00 (   6.790eV) occ=1.000     0.2550594E+00 (   6.941eV) occ=1.000
+     0.2376054E+00 (   6.466eV) occ=1.000     0.2475431E+00 (   6.736eV) occ=1.000
+     0.2337778E+00 (   6.361eV) occ=1.000     0.2457374E+00 (   6.687eV) occ=1.000
+     0.2298243E+00 (   6.254eV) occ=1.000     0.2336043E+00 (   6.357eV) occ=1.000
+     0.2218831E+00 (   6.038eV) occ=1.000     0.2293469E+00 (   6.241eV) occ=1.000
+     0.2201990E+00 (   5.992eV) occ=1.000     0.2229489E+00 (   6.067eV) occ=1.000
+     0.2036780E+00 (   5.542eV) occ=1.000     0.2090845E+00 (   5.690eV) occ=1.000
+     0.1976886E+00 (   5.379eV) occ=1.000     0.2022151E+00 (   5.503eV) occ=1.000
+     0.1460947E+00 (   3.975eV) occ=1.000     0.1611853E+00 (   4.386eV) occ=1.000
+     0.3469667E-01 (   0.944eV) occ=1.000     0.6209338E-01 (   1.690eV) occ=1.000
+     0.3181315E-01 (   0.866eV) occ=1.000     0.5213555E-01 (   1.419eV) occ=1.000
+    -0.2580315E+00 (  -7.021eV) occ=1.000    -0.2502853E+00 (  -6.811eV) occ=1.000
+    -0.2665559E+00 (  -7.253eV) occ=1.000    -0.2651137E+00 (  -7.214eV) occ=1.000
+    -0.2775915E+00 (  -7.554eV) occ=1.000    -0.2730639E+00 (  -7.431eV) occ=1.000
+    -0.2884040E+00 (  -7.848eV) occ=1.000    -0.2777195E+00 (  -7.557eV) occ=1.000
+    -0.2981149E+00 (  -8.112eV) occ=1.000    -0.2886089E+00 (  -7.854eV) occ=1.000
+    -0.3086837E+00 (  -8.400eV) occ=1.000    -0.2992568E+00 (  -8.143eV) occ=1.000
+    -0.3157589E+00 (  -8.592eV) occ=1.000    -0.3151611E+00 (  -8.576eV) occ=1.000
+    -0.3305884E+00 (  -8.996eV) occ=1.000    -0.3277671E+00 (  -8.919eV) occ=1.000
+    -0.3433354E+00 (  -9.343eV) occ=1.000    -0.3296244E+00 (  -8.970eV) occ=1.000
+    -0.3533766E+00 (  -9.616eV) occ=1.000    -0.3535841E+00 (  -9.622eV) occ=1.000
+    -0.3741684E+00 ( -10.182eV) occ=1.000    -0.3718469E+00 ( -10.119eV) occ=1.000
+    -0.3810404E+00 ( -10.369eV) occ=1.000    -0.3790426E+00 ( -10.314eV) occ=1.000
+    -0.3921598E+00 ( -10.671eV) occ=1.000    -0.3898226E+00 ( -10.608eV) occ=1.000
+    -0.4215934E+00 ( -11.472eV) occ=1.000    -0.4156937E+00 ( -11.312eV) occ=1.000
+    -0.4302741E+00 ( -11.708eV) occ=1.000    -0.4282273E+00 ( -11.653eV) occ=1.000
+    -0.4409134E+00 ( -11.998eV) occ=1.000    -0.4399261E+00 ( -11.971eV) occ=1.000
+    -0.4469913E+00 ( -12.163eV) occ=1.000    -0.4449912E+00 ( -12.109eV) occ=1.000
+    -0.4595847E+00 ( -12.506eV) occ=1.000    -0.4593130E+00 ( -12.499eV) occ=1.000
+    -0.4764158E+00 ( -12.964eV) occ=1.000    -0.4749995E+00 ( -12.925eV) occ=1.000
+    -0.6747910E+00 ( -18.362eV) occ=1.000    -0.6569737E+00 ( -17.877eV) occ=1.000
+    -0.1194867E+01 ( -32.514eV) occ=1.000    -0.1186851E+01 ( -32.296eV) occ=1.000
+    -0.1200710E+01 ( -32.673eV) occ=1.000    -0.1193990E+01 ( -32.490eV) occ=1.000
+    -0.1205975E+01 ( -32.817eV) occ=1.000    -0.1198674E+01 ( -32.618eV) occ=1.000
+    -0.1268575E+01 ( -34.520eV) occ=1.000    -0.1270009E+01 ( -34.559eV) occ=1.000
+    -0.1271522E+01 ( -34.600eV) occ=1.000    -0.1271816E+01 ( -34.608eV) occ=1.000
+    -0.1282257E+01 ( -34.892eV) occ=1.000    -0.1281623E+01 ( -34.875eV) occ=1.000
+
+ Brillouin zone point:      2
+    weight=  0.125000
+    k     =<   0.125   0.375   0.000> . <b1,b2,b3> 
+          =<   0.140   0.256  -0.000>
+
+ orbital energies:
+     0.3142313E+00 (   8.551eV) occ=1.000
+     0.3099105E+00 (   8.433eV) occ=1.000
+     0.3034899E+00 (   8.258eV) occ=1.000     0.3095161E+00 (   8.422eV) occ=1.000
+     0.3008656E+00 (   8.187eV) occ=1.000     0.3061459E+00 (   8.331eV) occ=1.000
+     0.2986579E+00 (   8.127eV) occ=1.000     0.2998491E+00 (   8.159eV) occ=1.000
+     0.2951345E+00 (   8.031eV) occ=1.000     0.2971942E+00 (   8.087eV) occ=1.000
+     0.2917791E+00 (   7.940eV) occ=1.000     0.2929480E+00 (   7.972eV) occ=1.000
+     0.2882412E+00 (   7.844eV) occ=1.000     0.2894313E+00 (   7.876eV) occ=1.000
+     0.2850691E+00 (   7.757eV) occ=1.000     0.2861073E+00 (   7.785eV) occ=1.000
+     0.2832599E+00 (   7.708eV) occ=1.000     0.2834698E+00 (   7.714eV) occ=1.000
+     0.2782951E+00 (   7.573eV) occ=1.000     0.2813532E+00 (   7.656eV) occ=1.000
+     0.2749571E+00 (   7.482eV) occ=1.000     0.2765206E+00 (   7.525eV) occ=1.000
+     0.2723015E+00 (   7.410eV) occ=1.000     0.2718058E+00 (   7.396eV) occ=1.000
+     0.2648387E+00 (   7.207eV) occ=1.000     0.2681195E+00 (   7.296eV) occ=1.000
+     0.2565067E+00 (   6.980eV) occ=1.000     0.2613794E+00 (   7.113eV) occ=1.000
+     0.2510428E+00 (   6.831eV) occ=1.000     0.2543594E+00 (   6.922eV) occ=1.000
+     0.2444906E+00 (   6.653eV) occ=1.000     0.2491787E+00 (   6.781eV) occ=1.000
+     0.2379744E+00 (   6.476eV) occ=1.000     0.2422726E+00 (   6.593eV) occ=1.000
+     0.2266555E+00 (   6.168eV) occ=1.000     0.2294348E+00 (   6.243eV) occ=1.000
+     0.2121140E+00 (   5.772eV) occ=1.000     0.2176599E+00 (   5.923eV) occ=1.000
+     0.9634479E-02 (   0.262eV) occ=1.000     0.3086725E-01 (   0.840eV) occ=1.000
+     0.4679362E-02 (   0.127eV) occ=1.000     0.3001939E-01 (   0.817eV) occ=1.000
+    -0.2691244E-01 (  -0.732eV) occ=1.000    -0.1067863E-01 (  -0.291eV) occ=1.000
+    -0.1960769E+00 (  -5.336eV) occ=1.000    -0.1764202E+00 (  -4.801eV) occ=1.000
+    -0.2499846E+00 (  -6.802eV) occ=1.000    -0.2430199E+00 (  -6.613eV) occ=1.000
+    -0.2603666E+00 (  -7.085eV) occ=1.000    -0.2581532E+00 (  -7.025eV) occ=1.000
+    -0.2648582E+00 (  -7.207eV) occ=1.000    -0.2610497E+00 (  -7.104eV) occ=1.000
+    -0.2748241E+00 (  -7.478eV) occ=1.000    -0.2702831E+00 (  -7.355eV) occ=1.000
+    -0.2802198E+00 (  -7.625eV) occ=1.000    -0.2739583E+00 (  -7.455eV) occ=1.000
+    -0.2926889E+00 (  -7.965eV) occ=1.000    -0.2880117E+00 (  -7.837eV) occ=1.000
+    -0.3029181E+00 (  -8.243eV) occ=1.000    -0.2984499E+00 (  -8.121eV) occ=1.000
+    -0.3084148E+00 (  -8.392eV) occ=1.000    -0.3053702E+00 (  -8.310eV) occ=1.000
+    -0.3253606E+00 (  -8.854eV) occ=1.000    -0.3240409E+00 (  -8.818eV) occ=1.000
+    -0.3349563E+00 (  -9.115eV) occ=1.000    -0.3315323E+00 (  -9.022eV) occ=1.000
+    -0.3470572E+00 (  -9.444eV) occ=1.000    -0.3453825E+00 (  -9.398eV) occ=1.000
+    -0.3664170E+00 (  -9.971eV) occ=1.000    -0.3633916E+00 (  -9.888eV) occ=1.000
+    -0.3835798E+00 ( -10.438eV) occ=1.000    -0.3805779E+00 ( -10.356eV) occ=1.000
+    -0.3943129E+00 ( -10.730eV) occ=1.000    -0.3891176E+00 ( -10.589eV) occ=1.000
+    -0.4142865E+00 ( -11.273eV) occ=1.000    -0.4121407E+00 ( -11.215eV) occ=1.000
+    -0.4309596E+00 ( -11.727eV) occ=1.000    -0.4302974E+00 ( -11.709eV) occ=1.000
+    -0.4513086E+00 ( -12.281eV) occ=1.000    -0.4488350E+00 ( -12.214eV) occ=1.000
+    -0.4640751E+00 ( -12.628eV) occ=1.000    -0.4627965E+00 ( -12.593eV) occ=1.000
+    -0.6893658E+00 ( -18.759eV) occ=1.000    -0.6713339E+00 ( -18.268eV) occ=1.000
+    -0.1203459E+01 ( -32.748eV) occ=1.000    -0.1195608E+01 ( -32.534eV) occ=1.000
+    -0.1210105E+01 ( -32.929eV) occ=1.000    -0.1203525E+01 ( -32.750eV) occ=1.000
+    -0.1216768E+01 ( -33.110eV) occ=1.000    -0.1209529E+01 ( -32.913eV) occ=1.000
+    -0.1277965E+01 ( -34.775eV) occ=1.000    -0.1278591E+01 ( -34.792eV) occ=1.000
+    -0.1280417E+01 ( -34.842eV) occ=1.000    -0.1281296E+01 ( -34.866eV) occ=1.000
+    -0.1293544E+01 ( -35.199eV) occ=1.000    -0.1292904E+01 ( -35.182eV) occ=1.000
+
+ Brillouin zone point:      3
+    weight=  0.125000
+    k     =<  -0.125   0.375   0.000> . <b1,b2,b3> 
+          =<  -0.140   0.256  -0.000>
+
+ orbital energies:
+     0.3147695E+00 (   8.565eV) occ=1.000
+     0.3088390E+00 (   8.404eV) occ=1.000
+     0.3050356E+00 (   8.301eV) occ=1.000     0.3107880E+00 (   8.457eV) occ=1.000
+     0.3016547E+00 (   8.209eV) occ=1.000     0.3067574E+00 (   8.347eV) occ=1.000
+     0.2973006E+00 (   8.090eV) occ=1.000     0.2995100E+00 (   8.150eV) occ=1.000
+     0.2958523E+00 (   8.051eV) occ=1.000     0.2967289E+00 (   8.074eV) occ=1.000
+     0.2906857E+00 (   7.910eV) occ=1.000     0.2938963E+00 (   7.997eV) occ=1.000
+     0.2867886E+00 (   7.804eV) occ=1.000     0.2897942E+00 (   7.886eV) occ=1.000
+     0.2854255E+00 (   7.767eV) occ=1.000     0.2867164E+00 (   7.802eV) occ=1.000
+     0.2839204E+00 (   7.726eV) occ=1.000     0.2833759E+00 (   7.711eV) occ=1.000
+     0.2794180E+00 (   7.603eV) occ=1.000     0.2811296E+00 (   7.650eV) occ=1.000
+     0.2761255E+00 (   7.514eV) occ=1.000     0.2779222E+00 (   7.563eV) occ=1.000
+     0.2711760E+00 (   7.379eV) occ=1.000     0.2715679E+00 (   7.390eV) occ=1.000
+     0.2645604E+00 (   7.199eV) occ=1.000     0.2669332E+00 (   7.264eV) occ=1.000
+     0.2567471E+00 (   6.987eV) occ=1.000     0.2620763E+00 (   7.132eV) occ=1.000
+     0.2505871E+00 (   6.819eV) occ=1.000     0.2529609E+00 (   6.883eV) occ=1.000
+     0.2443366E+00 (   6.649eV) occ=1.000     0.2494528E+00 (   6.788eV) occ=1.000
+     0.2384929E+00 (   6.490eV) occ=1.000     0.2418942E+00 (   6.582eV) occ=1.000
+     0.2268955E+00 (   6.174eV) occ=1.000     0.2291860E+00 (   6.237eV) occ=1.000
+     0.2118841E+00 (   5.766eV) occ=1.000     0.2175671E+00 (   5.920eV) occ=1.000
+     0.9637701E-02 (   0.262eV) occ=1.000     0.3087697E-01 (   0.840eV) occ=1.000
+     0.4678885E-02 (   0.127eV) occ=1.000     0.3000869E-01 (   0.817eV) occ=1.000
+    -0.2690958E-01 (  -0.732eV) occ=1.000    -0.1067728E-01 (  -0.291eV) occ=1.000
+    -0.1960849E+00 (  -5.336eV) occ=1.000    -0.1764201E+00 (  -4.801eV) occ=1.000
+    -0.2508058E+00 (  -6.825eV) occ=1.000    -0.2425974E+00 (  -6.601eV) occ=1.000
+    -0.2604955E+00 (  -7.088eV) occ=1.000    -0.2583921E+00 (  -7.031eV) occ=1.000
+    -0.2643593E+00 (  -7.194eV) occ=1.000    -0.2612282E+00 (  -7.108eV) occ=1.000
+    -0.2744276E+00 (  -7.468eV) occ=1.000    -0.2706597E+00 (  -7.365eV) occ=1.000
+    -0.2798678E+00 (  -7.616eV) occ=1.000    -0.2740007E+00 (  -7.456eV) occ=1.000
+    -0.2931441E+00 (  -7.977eV) occ=1.000    -0.2874226E+00 (  -7.821eV) occ=1.000
+    -0.3025782E+00 (  -8.234eV) occ=1.000    -0.2984724E+00 (  -8.122eV) occ=1.000
+    -0.3085735E+00 (  -8.397eV) occ=1.000    -0.3056644E+00 (  -8.318eV) occ=1.000
+    -0.3255880E+00 (  -8.860eV) occ=1.000    -0.3238025E+00 (  -8.811eV) occ=1.000
+    -0.3345719E+00 (  -9.104eV) occ=1.000    -0.3315091E+00 (  -9.021eV) occ=1.000
+    -0.3469510E+00 (  -9.441eV) occ=1.000    -0.3455631E+00 (  -9.403eV) occ=1.000
+    -0.3667017E+00 (  -9.979eV) occ=1.000    -0.3629764E+00 (  -9.877eV) occ=1.000
+    -0.3835541E+00 ( -10.437eV) occ=1.000    -0.3810038E+00 ( -10.368eV) occ=1.000
+    -0.3943696E+00 ( -10.731eV) occ=1.000    -0.3891328E+00 ( -10.589eV) occ=1.000
+    -0.4142667E+00 ( -11.273eV) occ=1.000    -0.4121460E+00 ( -11.215eV) occ=1.000
+    -0.4310899E+00 ( -11.731eV) occ=1.000    -0.4302008E+00 ( -11.706eV) occ=1.000
+    -0.4513580E+00 ( -12.282eV) occ=1.000    -0.4487304E+00 ( -12.211eV) occ=1.000
+    -0.4639168E+00 ( -12.624eV) occ=1.000    -0.4628877E+00 ( -12.596eV) occ=1.000
+    -0.6893658E+00 ( -18.759eV) occ=1.000    -0.6713339E+00 ( -18.268eV) occ=1.000
+    -0.1203458E+01 ( -32.748eV) occ=1.000    -0.1195611E+01 ( -32.534eV) occ=1.000
+    -0.1210105E+01 ( -32.929eV) occ=1.000    -0.1203526E+01 ( -32.750eV) occ=1.000
+    -0.1216769E+01 ( -33.110eV) occ=1.000    -0.1209526E+01 ( -32.913eV) occ=1.000
+    -0.1277967E+01 ( -34.776eV) occ=1.000    -0.1278587E+01 ( -34.792eV) occ=1.000
+    -0.1280420E+01 ( -34.842eV) occ=1.000    -0.1281295E+01 ( -34.866eV) occ=1.000
+    -0.1293540E+01 ( -35.199eV) occ=1.000    -0.1292908E+01 ( -35.182eV) occ=1.000
+
+ Brillouin zone point:      4
+    weight=  0.125000
+    k     =<   0.375  -0.375   0.000> . <b1,b2,b3> 
+          =<   0.419  -0.256  -0.000>
+
+ orbital energies:
+     0.3164273E+00 (   8.610eV) occ=1.000
+     0.3080701E+00 (   8.383eV) occ=1.000
+     0.2997231E+00 (   8.156eV) occ=1.000     0.3089866E+00 (   8.408eV) occ=1.000
+     0.2964696E+00 (   8.067eV) occ=1.000     0.3004062E+00 (   8.175eV) occ=1.000
+     0.2919389E+00 (   7.944eV) occ=1.000     0.2989768E+00 (   8.136eV) occ=1.000
+     0.2889002E+00 (   7.861eV) occ=1.000     0.2964489E+00 (   8.067eV) occ=1.000
+     0.2857631E+00 (   7.776eV) occ=1.000     0.2924998E+00 (   7.959eV) occ=1.000
+     0.2828555E+00 (   7.697eV) occ=1.000     0.2878436E+00 (   7.833eV) occ=1.000
+     0.2768284E+00 (   7.533eV) occ=1.000     0.2847256E+00 (   7.748eV) occ=1.000
+     0.2739168E+00 (   7.454eV) occ=1.000     0.2734665E+00 (   7.441eV) occ=1.000
+     0.2655116E+00 (   7.225eV) occ=1.000     0.2705329E+00 (   7.362eV) occ=1.000
+     0.2514350E+00 (   6.842eV) occ=1.000     0.2651018E+00 (   7.214eV) occ=1.000
+     0.2503797E+00 (   6.813eV) occ=1.000     0.2550637E+00 (   6.941eV) occ=1.000
+     0.2381152E+00 (   6.479eV) occ=1.000     0.2475101E+00 (   6.735eV) occ=1.000
+     0.2336446E+00 (   6.358eV) occ=1.000     0.2449442E+00 (   6.665eV) occ=1.000
+     0.2295291E+00 (   6.246eV) occ=1.000     0.2339142E+00 (   6.365eV) occ=1.000
+     0.2218816E+00 (   6.038eV) occ=1.000     0.2292785E+00 (   6.239eV) occ=1.000
+     0.2199765E+00 (   5.986eV) occ=1.000     0.2227644E+00 (   6.062eV) occ=1.000
+     0.2037661E+00 (   5.545eV) occ=1.000     0.2091882E+00 (   5.692eV) occ=1.000
+     0.1976402E+00 (   5.378eV) occ=1.000     0.2020956E+00 (   5.499eV) occ=1.000
+     0.1460947E+00 (   3.975eV) occ=1.000     0.1611915E+00 (   4.386eV) occ=1.000
+     0.3470502E-01 (   0.944eV) occ=1.000     0.6208422E-01 (   1.689eV) occ=1.000
+     0.3181177E-01 (   0.866eV) occ=1.000     0.5214408E-01 (   1.419eV) occ=1.000
+    -0.2580674E+00 (  -7.022eV) occ=1.000    -0.2504702E+00 (  -6.816eV) occ=1.000
+    -0.2664260E+00 (  -7.250eV) occ=1.000    -0.2652290E+00 (  -7.217eV) occ=1.000
+    -0.2779838E+00 (  -7.564eV) occ=1.000    -0.2727436E+00 (  -7.422eV) occ=1.000
+    -0.2886978E+00 (  -7.856eV) occ=1.000    -0.2776423E+00 (  -7.555eV) occ=1.000
+    -0.2978952E+00 (  -8.106eV) occ=1.000    -0.2882765E+00 (  -7.844eV) occ=1.000
+    -0.3081928E+00 (  -8.386eV) occ=1.000    -0.2997848E+00 (  -8.158eV) occ=1.000
+    -0.3157873E+00 (  -8.593eV) occ=1.000    -0.3152334E+00 (  -8.578eV) occ=1.000
+    -0.3307910E+00 (  -9.001eV) occ=1.000    -0.3276554E+00 (  -8.916eV) occ=1.000
+    -0.3430425E+00 (  -9.335eV) occ=1.000    -0.3294217E+00 (  -8.964eV) occ=1.000
+    -0.3535750E+00 (  -9.621eV) occ=1.000    -0.3536228E+00 (  -9.623eV) occ=1.000
+    -0.3742956E+00 ( -10.185eV) occ=1.000    -0.3716714E+00 ( -10.114eV) occ=1.000
+    -0.3809296E+00 ( -10.366eV) occ=1.000    -0.3789211E+00 ( -10.311eV) occ=1.000
+    -0.3919603E+00 ( -10.666eV) occ=1.000    -0.3902790E+00 ( -10.620eV) occ=1.000
+    -0.4216059E+00 ( -11.473eV) occ=1.000    -0.4160233E+00 ( -11.321eV) occ=1.000
+    -0.4302730E+00 ( -11.708eV) occ=1.000    -0.4282037E+00 ( -11.652eV) occ=1.000
+    -0.4410638E+00 ( -12.002eV) occ=1.000    -0.4396162E+00 ( -11.963eV) occ=1.000
+    -0.4470697E+00 ( -12.165eV) occ=1.000    -0.4449028E+00 ( -12.107eV) occ=1.000
+    -0.4598705E+00 ( -12.514eV) occ=1.000    -0.4591383E+00 ( -12.494eV) occ=1.000
+    -0.4760818E+00 ( -12.955eV) occ=1.000    -0.4752016E+00 ( -12.931eV) occ=1.000
+    -0.6747910E+00 ( -18.362eV) occ=1.000    -0.6569737E+00 ( -17.877eV) occ=1.000
+    -0.1194865E+01 ( -32.514eV) occ=1.000    -0.1186856E+01 ( -32.296eV) occ=1.000
+    -0.1200710E+01 ( -32.673eV) occ=1.000    -0.1193991E+01 ( -32.490eV) occ=1.000
+    -0.1205977E+01 ( -32.817eV) occ=1.000    -0.1198669E+01 ( -32.618eV) occ=1.000
+    -0.1268576E+01 ( -34.520eV) occ=1.000    -0.1270007E+01 ( -34.559eV) occ=1.000
+    -0.1271527E+01 ( -34.600eV) occ=1.000    -0.1271811E+01 ( -34.608eV) occ=1.000
+    -0.1282251E+01 ( -34.892eV) occ=1.000    -0.1281629E+01 ( -34.875eV) occ=1.000
+
+ Brillouin zone point:      5
+    weight=  0.125000
+    k     =<   0.375   0.125   0.000> . <b1,b2,b3> 
+          =<   0.419   0.085  -0.000>
+
+ orbital energies:
+     0.3192015E+00 (   8.686eV) occ=1.000
+     0.3106445E+00 (   8.453eV) occ=1.000
+     0.3059868E+00 (   8.326eV) occ=1.000     0.3110943E+00 (   8.465eV) occ=1.000
+     0.3004336E+00 (   8.175eV) occ=1.000     0.3042372E+00 (   8.279eV) occ=1.000
+     0.2960294E+00 (   8.055eV) occ=1.000     0.3007095E+00 (   8.183eV) occ=1.000
+     0.2944922E+00 (   8.014eV) occ=1.000     0.2977531E+00 (   8.102eV) occ=1.000
+     0.2872930E+00 (   7.818eV) occ=1.000     0.2952747E+00 (   8.035eV) occ=1.000
+     0.2852684E+00 (   7.763eV) occ=1.000     0.2902062E+00 (   7.897eV) occ=1.000
+     0.2778052E+00 (   7.560eV) occ=1.000     0.2813019E+00 (   7.655eV) occ=1.000
+     0.2746269E+00 (   7.473eV) occ=1.000     0.2804481E+00 (   7.631eV) occ=1.000
+     0.2713562E+00 (   7.384eV) occ=1.000     0.2746192E+00 (   7.473eV) occ=1.000
+     0.2656651E+00 (   7.229eV) occ=1.000     0.2737294E+00 (   7.449eV) occ=1.000
+     0.2542792E+00 (   6.919eV) occ=1.000     0.2644940E+00 (   7.197eV) occ=1.000
+     0.2474023E+00 (   6.732eV) occ=1.000     0.2563528E+00 (   6.976eV) occ=1.000
+     0.2386205E+00 (   6.493eV) occ=1.000     0.2481769E+00 (   6.753eV) occ=1.000
+     0.2351602E+00 (   6.399eV) occ=1.000     0.2444446E+00 (   6.652eV) occ=1.000
+     0.2223901E+00 (   6.052eV) occ=1.000     0.2305983E+00 (   6.275eV) occ=1.000
+     0.2109904E+00 (   5.741eV) occ=1.000     0.2179571E+00 (   5.931eV) occ=1.000
+     0.1984343E+00 (   5.400eV) occ=1.000     0.2011645E+00 (   5.474eV) occ=1.000
+     0.1829548E+00 (   4.978eV) occ=1.000     0.1859653E+00 (   5.060eV) occ=1.000
+     0.1459644E+00 (   3.972eV) occ=1.000     0.1611164E+00 (   4.384eV) occ=1.000
+     0.3544012E-01 (   0.964eV) occ=1.000     0.6299529E-01 (   1.714eV) occ=1.000
+     0.3182490E-01 (   0.866eV) occ=1.000     0.5227514E-01 (   1.422eV) occ=1.000
+    -0.2518561E+00 (  -6.853eV) occ=1.000    -0.2448033E+00 (  -6.661eV) occ=1.000
+    -0.2665246E+00 (  -7.253eV) occ=1.000    -0.2637965E+00 (  -7.178eV) occ=1.000
+    -0.2761375E+00 (  -7.514eV) occ=1.000    -0.2732506E+00 (  -7.436eV) occ=1.000
+    -0.2846788E+00 (  -7.747eV) occ=1.000    -0.2801532E+00 (  -7.623eV) occ=1.000
+    -0.2930558E+00 (  -7.975eV) occ=1.000    -0.2850791E+00 (  -7.757eV) occ=1.000
+    -0.3190601E+00 (  -8.682eV) occ=1.000    -0.3021471E+00 (  -8.222eV) occ=1.000
+    -0.3285786E+00 (  -8.941eV) occ=1.000    -0.3186370E+00 (  -8.671eV) occ=1.000
+    -0.3436279E+00 (  -9.351eV) occ=1.000    -0.3412924E+00 (  -9.287eV) occ=1.000
+    -0.3534985E+00 (  -9.619eV) occ=1.000    -0.3517286E+00 (  -9.571eV) occ=1.000
+    -0.3722508E+00 ( -10.130eV) occ=1.000    -0.3662669E+00 (  -9.967eV) occ=1.000
+    -0.3760742E+00 ( -10.234eV) occ=1.000    -0.3749303E+00 ( -10.202eV) occ=1.000
+    -0.3890844E+00 ( -10.588eV) occ=1.000    -0.3830517E+00 ( -10.423eV) occ=1.000
+    -0.4028945E+00 ( -10.963eV) occ=1.000    -0.4004622E+00 ( -10.897eV) occ=1.000
+    -0.4083732E+00 ( -11.112eV) occ=1.000    -0.4061336E+00 ( -11.052eV) occ=1.000
+    -0.4294598E+00 ( -11.686eV) occ=1.000    -0.4282459E+00 ( -11.653eV) occ=1.000
+    -0.4359459E+00 ( -11.863eV) occ=1.000    -0.4348985E+00 ( -11.834eV) occ=1.000
+    -0.4381830E+00 ( -11.924eV) occ=1.000    -0.4372961E+00 ( -11.900eV) occ=1.000
+    -0.4513041E+00 ( -12.281eV) occ=1.000    -0.4504256E+00 ( -12.257eV) occ=1.000
+    -0.4682769E+00 ( -12.743eV) occ=1.000    -0.4667743E+00 ( -12.702eV) occ=1.000
+    -0.6747646E+00 ( -18.361eV) occ=1.000    -0.6569397E+00 ( -17.876eV) occ=1.000
+    -0.1187382E+01 ( -32.311eV) occ=1.000    -0.1179572E+01 ( -32.098eV) occ=1.000
+    -0.1200042E+01 ( -32.655eV) occ=1.000    -0.1193397E+01 ( -32.474eV) occ=1.000
+    -0.1212773E+01 ( -33.001eV) occ=1.000    -0.1205275E+01 ( -32.797eV) occ=1.000
+    -0.1264686E+01 ( -34.414eV) occ=1.000    -0.1264492E+01 ( -34.409eV) occ=1.000
+    -0.1269377E+01 ( -34.542eV) occ=1.000    -0.1271044E+01 ( -34.587eV) occ=1.000
+    -0.1288441E+01 ( -35.061eV) occ=1.000    -0.1287981E+01 ( -35.048eV) occ=1.000
+
+ Brillouin zone point:      6
+    weight=  0.125000
+    k     =<   0.125   0.125   0.000> . <b1,b2,b3> 
+          =<   0.140   0.085  -0.000>
+
+ orbital energies:
+     0.3128606E+00 (   8.513eV) occ=1.000
+     0.3121191E+00 (   8.493eV) occ=1.000
+     0.3088547E+00 (   8.404eV) occ=1.000     0.3126631E+00 (   8.508eV) occ=1.000
+     0.3036890E+00 (   8.264eV) occ=1.000     0.3079747E+00 (   8.380eV) occ=1.000
+     0.2994004E+00 (   8.147eV) occ=1.000     0.3043525E+00 (   8.282eV) occ=1.000
+     0.2961220E+00 (   8.058eV) occ=1.000     0.2996823E+00 (   8.155eV) occ=1.000
+     0.2912840E+00 (   7.926eV) occ=1.000     0.2959043E+00 (   8.052eV) occ=1.000
+     0.2899418E+00 (   7.890eV) occ=1.000     0.2892895E+00 (   7.872eV) occ=1.000
+     0.2862866E+00 (   7.790eV) occ=1.000     0.2881142E+00 (   7.840eV) occ=1.000
+     0.2841724E+00 (   7.733eV) occ=1.000     0.2851907E+00 (   7.760eV) occ=1.000
+     0.2772722E+00 (   7.545eV) occ=1.000     0.2796364E+00 (   7.609eV) occ=1.000
+     0.2731706E+00 (   7.433eV) occ=1.000     0.2724752E+00 (   7.414eV) occ=1.000
+     0.2697696E+00 (   7.341eV) occ=1.000     0.2684534E+00 (   7.305eV) occ=1.000
+     0.2640555E+00 (   7.185eV) occ=1.000     0.2652498E+00 (   7.218eV) occ=1.000
+     0.2537834E+00 (   6.906eV) occ=1.000     0.2570882E+00 (   6.996eV) occ=1.000
+     0.2507027E+00 (   6.822eV) occ=1.000     0.2497166E+00 (   6.795eV) occ=1.000
+     0.2473244E+00 (   6.730eV) occ=1.000     0.2484951E+00 (   6.762eV) occ=1.000
+     0.2298925E+00 (   6.256eV) occ=1.000     0.2340952E+00 (   6.370eV) occ=1.000
+     0.2215504E+00 (   6.029eV) occ=1.000     0.2245102E+00 (   6.109eV) occ=1.000
+     0.2099015E+00 (   5.712eV) occ=1.000     0.2231903E+00 (   6.073eV) occ=1.000
+     0.9284811E-02 (   0.253eV) occ=1.000     0.3133533E-01 (   0.853eV) occ=1.000
+     0.5104503E-02 (   0.139eV) occ=1.000     0.2975256E-01 (   0.810eV) occ=1.000
+    -0.2681249E-01 (  -0.730eV) occ=1.000    -0.1066644E-01 (  -0.290eV) occ=1.000
+    -0.1957053E+00 (  -5.325eV) occ=1.000    -0.1762000E+00 (  -4.795eV) occ=1.000
+    -0.2347134E+00 (  -6.387eV) occ=1.000    -0.2277477E+00 (  -6.197eV) occ=1.000
+    -0.2575098E+00 (  -7.007eV) occ=1.000    -0.2560159E+00 (  -6.967eV) occ=1.000
+    -0.2668350E+00 (  -7.261eV) occ=1.000    -0.2617953E+00 (  -7.124eV) occ=1.000
+    -0.2729221E+00 (  -7.427eV) occ=1.000    -0.2693319E+00 (  -7.329eV) occ=1.000
+    -0.2795933E+00 (  -7.608eV) occ=1.000    -0.2758530E+00 (  -7.506eV) occ=1.000
+    -0.2854222E+00 (  -7.767eV) occ=1.000    -0.2820259E+00 (  -7.674eV) occ=1.000
+    -0.2991533E+00 (  -8.140eV) occ=1.000    -0.2934571E+00 (  -7.985eV) occ=1.000
+    -0.3071958E+00 (  -8.359eV) occ=1.000    -0.3018163E+00 (  -8.213eV) occ=1.000
+    -0.3232242E+00 (  -8.795eV) occ=1.000    -0.3220197E+00 (  -8.763eV) occ=1.000
+    -0.3368969E+00 (  -9.168eV) occ=1.000    -0.3295593E+00 (  -8.968eV) occ=1.000
+    -0.3427393E+00 (  -9.326eV) occ=1.000    -0.3404304E+00 (  -9.264eV) occ=1.000
+    -0.3549941E+00 (  -9.660eV) occ=1.000    -0.3540351E+00 (  -9.634eV) occ=1.000
+    -0.3813556E+00 ( -10.377eV) occ=1.000    -0.3821956E+00 ( -10.400eV) occ=1.000
+    -0.3944244E+00 ( -10.733eV) occ=1.000    -0.3901629E+00 ( -10.617eV) occ=1.000
+    -0.4318791E+00 ( -11.752eV) occ=1.000    -0.4291640E+00 ( -11.678eV) occ=1.000
+    -0.4401879E+00 ( -11.978eV) occ=1.000    -0.4381247E+00 ( -11.922eV) occ=1.000
+    -0.4481859E+00 ( -12.196eV) occ=1.000    -0.4437158E+00 ( -12.074eV) occ=1.000
+    -0.4835342E+00 ( -13.158eV) occ=1.000    -0.4831128E+00 ( -13.146eV) occ=1.000
+    -0.6892989E+00 ( -18.757eV) occ=1.000    -0.6712328E+00 ( -18.265eV) occ=1.000
+    -0.1193986E+01 ( -32.490eV) occ=1.000    -0.1186256E+01 ( -32.280eV) occ=1.000
+    -0.1209124E+01 ( -32.902eV) occ=1.000    -0.1202642E+01 ( -32.726eV) occ=1.000
+    -0.1224706E+01 ( -33.326eV) occ=1.000    -0.1217421E+01 ( -33.128eV) occ=1.000
+    -0.1270137E+01 ( -34.562eV) occ=1.000    -0.1269919E+01 ( -34.557eV) occ=1.000
+    -0.1280114E+01 ( -34.834eV) occ=1.000    -0.1281524E+01 ( -34.872eV) occ=1.000
+    -0.1301741E+01 ( -35.422eV) occ=1.000    -0.1301245E+01 ( -35.409eV) occ=1.000
+
+ Brillouin zone point:      7
+    weight=  0.125000
+    k     =<   0.125  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.140  -0.085  -0.000>
+
+ orbital energies:
+     0.3137230E+00 (   8.537eV) occ=1.000
+     0.3110108E+00 (   8.463eV) occ=1.000
+     0.3086715E+00 (   8.399eV) occ=1.000     0.3153610E+00 (   8.581eV) occ=1.000
+     0.3045040E+00 (   8.286eV) occ=1.000     0.3113385E+00 (   8.472eV) occ=1.000
+     0.2978253E+00 (   8.104eV) occ=1.000     0.3035204E+00 (   8.259eV) occ=1.000
+     0.2958201E+00 (   8.050eV) occ=1.000     0.3007407E+00 (   8.184eV) occ=1.000
+     0.2926740E+00 (   7.964eV) occ=1.000     0.2954909E+00 (   8.041eV) occ=1.000
+     0.2904296E+00 (   7.903eV) occ=1.000     0.2910210E+00 (   7.919eV) occ=1.000
+     0.2879870E+00 (   7.837eV) occ=1.000     0.2851962E+00 (   7.761eV) occ=1.000
+     0.2833443E+00 (   7.710eV) occ=1.000     0.2848612E+00 (   7.752eV) occ=1.000
+     0.2772115E+00 (   7.543eV) occ=1.000     0.2791993E+00 (   7.597eV) occ=1.000
+     0.2728220E+00 (   7.424eV) occ=1.000     0.2729549E+00 (   7.428eV) occ=1.000
+     0.2686037E+00 (   7.309eV) occ=1.000     0.2682036E+00 (   7.298eV) occ=1.000
+     0.2631506E+00 (   7.161eV) occ=1.000     0.2664306E+00 (   7.250eV) occ=1.000
+     0.2549654E+00 (   6.938eV) occ=1.000     0.2563024E+00 (   6.974eV) occ=1.000
+     0.2505972E+00 (   6.819eV) occ=1.000     0.2494689E+00 (   6.788eV) occ=1.000
+     0.2480201E+00 (   6.749eV) occ=1.000     0.2478747E+00 (   6.745eV) occ=1.000
+     0.2303516E+00 (   6.268eV) occ=1.000     0.2339218E+00 (   6.365eV) occ=1.000
+     0.2208684E+00 (   6.010eV) occ=1.000     0.2244860E+00 (   6.109eV) occ=1.000
+     0.2100167E+00 (   5.715eV) occ=1.000     0.2231293E+00 (   6.072eV) occ=1.000
+     0.9287100E-02 (   0.253eV) occ=1.000     0.3133916E-01 (   0.853eV) occ=1.000
+     0.5103913E-02 (   0.139eV) occ=1.000     0.2974921E-01 (   0.810eV) occ=1.000
+    -0.2680978E-01 (  -0.730eV) occ=1.000    -0.1066457E-01 (  -0.290eV) occ=1.000
+    -0.1957174E+00 (  -5.326eV) occ=1.000    -0.1762003E+00 (  -4.795eV) occ=1.000
+    -0.2352117E+00 (  -6.400eV) occ=1.000    -0.2275703E+00 (  -6.193eV) occ=1.000
+    -0.2574976E+00 (  -7.007eV) occ=1.000    -0.2559419E+00 (  -6.965eV) occ=1.000
+    -0.2667738E+00 (  -7.259eV) occ=1.000    -0.2617272E+00 (  -7.122eV) occ=1.000
+    -0.2730436E+00 (  -7.430eV) occ=1.000    -0.2697488E+00 (  -7.340eV) occ=1.000
+    -0.2783143E+00 (  -7.573eV) occ=1.000    -0.2765776E+00 (  -7.526eV) occ=1.000
+    -0.2859100E+00 (  -7.780eV) occ=1.000    -0.2815506E+00 (  -7.661eV) occ=1.000
+    -0.2992451E+00 (  -8.143eV) occ=1.000    -0.2931717E+00 (  -7.978eV) occ=1.000
+    -0.3069937E+00 (  -8.354eV) occ=1.000    -0.3018006E+00 (  -8.212eV) occ=1.000
+    -0.3235232E+00 (  -8.804eV) occ=1.000    -0.3219128E+00 (  -8.760eV) occ=1.000
+    -0.3371571E+00 (  -9.175eV) occ=1.000    -0.3294348E+00 (  -8.964eV) occ=1.000
+    -0.3424356E+00 (  -9.318eV) occ=1.000    -0.3405995E+00 (  -9.268eV) occ=1.000
+    -0.3552251E+00 (  -9.666eV) occ=1.000    -0.3538647E+00 (  -9.629eV) occ=1.000
+    -0.3813672E+00 ( -10.378eV) occ=1.000    -0.3821538E+00 ( -10.399eV) occ=1.000
+    -0.3942086E+00 ( -10.727eV) occ=1.000    -0.3904682E+00 ( -10.625eV) occ=1.000
+    -0.4319346E+00 ( -11.754eV) occ=1.000    -0.4292351E+00 ( -11.680eV) occ=1.000
+    -0.4402317E+00 ( -11.979eV) occ=1.000    -0.4382360E+00 ( -11.925eV) occ=1.000
+    -0.4482765E+00 ( -12.198eV) occ=1.000    -0.4433886E+00 ( -12.065eV) occ=1.000
+    -0.4834428E+00 ( -13.155eV) occ=1.000    -0.4831646E+00 ( -13.148eV) occ=1.000
+    -0.6892989E+00 ( -18.757eV) occ=1.000    -0.6712328E+00 ( -18.265eV) occ=1.000
+    -0.1193985E+01 ( -32.490eV) occ=1.000    -0.1186258E+01 ( -32.280eV) occ=1.000
+    -0.1209124E+01 ( -32.902eV) occ=1.000    -0.1202642E+01 ( -32.726eV) occ=1.000
+    -0.1224706E+01 ( -33.326eV) occ=1.000    -0.1217420E+01 ( -33.128eV) occ=1.000
+    -0.1270140E+01 ( -34.563eV) occ=1.000    -0.1269917E+01 ( -34.556eV) occ=1.000
+    -0.1280114E+01 ( -34.834eV) occ=1.000    -0.1281524E+01 ( -34.872eV) occ=1.000
+    -0.1301739E+01 ( -35.422eV) occ=1.000    -0.1301247E+01 ( -35.409eV) occ=1.000
+
+ Brillouin zone point:      8
+    weight=  0.125000
+    k     =<   0.375  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.419  -0.085  -0.000>
+
+ orbital energies:
+     0.3182451E+00 (   8.660eV) occ=1.000
+     0.3085282E+00 (   8.396eV) occ=1.000
+     0.3022891E+00 (   8.226eV) occ=1.000     0.3113773E+00 (   8.473eV) occ=1.000
+     0.3006369E+00 (   8.181eV) occ=1.000     0.3031449E+00 (   8.249eV) occ=1.000
+     0.2969276E+00 (   8.080eV) occ=1.000     0.3011542E+00 (   8.195eV) occ=1.000
+     0.2938190E+00 (   7.995eV) occ=1.000     0.3001837E+00 (   8.168eV) occ=1.000
+     0.2883232E+00 (   7.846eV) occ=1.000     0.2933366E+00 (   7.982eV) occ=1.000
+     0.2844269E+00 (   7.740eV) occ=1.000     0.2913971E+00 (   7.929eV) occ=1.000
+     0.2795820E+00 (   7.608eV) occ=1.000     0.2808309E+00 (   7.642eV) occ=1.000
+     0.2749029E+00 (   7.481eV) occ=1.000     0.2797603E+00 (   7.613eV) occ=1.000
+     0.2722607E+00 (   7.409eV) occ=1.000     0.2747750E+00 (   7.477eV) occ=1.000
+     0.2656636E+00 (   7.229eV) occ=1.000     0.2730876E+00 (   7.431eV) occ=1.000
+     0.2546319E+00 (   6.929eV) occ=1.000     0.2651411E+00 (   7.215eV) occ=1.000
+     0.2469875E+00 (   6.721eV) occ=1.000     0.2560797E+00 (   6.968eV) occ=1.000
+     0.2385272E+00 (   6.491eV) occ=1.000     0.2481977E+00 (   6.754eV) occ=1.000
+     0.2354635E+00 (   6.407eV) occ=1.000     0.2448320E+00 (   6.662eV) occ=1.000
+     0.2221414E+00 (   6.045eV) occ=1.000     0.2307435E+00 (   6.279eV) occ=1.000
+     0.2112862E+00 (   5.749eV) occ=1.000     0.2177457E+00 (   5.925eV) occ=1.000
+     0.1983976E+00 (   5.399eV) occ=1.000     0.2011147E+00 (   5.473eV) occ=1.000
+     0.1827887E+00 (   4.974eV) occ=1.000     0.1858894E+00 (   5.058eV) occ=1.000
+     0.1459656E+00 (   3.972eV) occ=1.000     0.1611213E+00 (   4.384eV) occ=1.000
+     0.3543842E-01 (   0.964eV) occ=1.000     0.6299238E-01 (   1.714eV) occ=1.000
+     0.3183182E-01 (   0.866eV) occ=1.000     0.5227605E-01 (   1.423eV) occ=1.000
+    -0.2519436E+00 (  -6.856eV) occ=1.000    -0.2448752E+00 (  -6.663eV) occ=1.000
+    -0.2662742E+00 (  -7.246eV) occ=1.000    -0.2640257E+00 (  -7.185eV) occ=1.000
+    -0.2761498E+00 (  -7.514eV) occ=1.000    -0.2733714E+00 (  -7.439eV) occ=1.000
+    -0.2852041E+00 (  -7.761eV) occ=1.000    -0.2799031E+00 (  -7.617eV) occ=1.000
+    -0.2930209E+00 (  -7.974eV) occ=1.000    -0.2847175E+00 (  -7.748eV) occ=1.000
+    -0.3187417E+00 (  -8.673eV) occ=1.000    -0.3021225E+00 (  -8.221eV) occ=1.000
+    -0.3284553E+00 (  -8.938eV) occ=1.000    -0.3189493E+00 (  -8.679eV) occ=1.000
+    -0.3439407E+00 (  -9.359eV) occ=1.000    -0.3410678E+00 (  -9.281eV) occ=1.000
+    -0.3534588E+00 (  -9.618eV) occ=1.000    -0.3514587E+00 (  -9.564eV) occ=1.000
+    -0.3720214E+00 ( -10.123eV) occ=1.000    -0.3662539E+00 (  -9.966eV) occ=1.000
+    -0.3763395E+00 ( -10.241eV) occ=1.000    -0.3751346E+00 ( -10.208eV) occ=1.000
+    -0.3883455E+00 ( -10.568eV) occ=1.000    -0.3830704E+00 ( -10.424eV) occ=1.000
+    -0.4029133E+00 ( -10.964eV) occ=1.000    -0.4009565E+00 ( -10.911eV) occ=1.000
+    -0.4085348E+00 ( -11.117eV) occ=1.000    -0.4064810E+00 ( -11.061eV) occ=1.000
+    -0.4297156E+00 ( -11.693eV) occ=1.000    -0.4277750E+00 ( -11.640eV) occ=1.000
+    -0.4363232E+00 ( -11.873eV) occ=1.000    -0.4346211E+00 ( -11.827eV) occ=1.000
+    -0.4382686E+00 ( -11.926eV) occ=1.000    -0.4372133E+00 ( -11.897eV) occ=1.000
+    -0.4512855E+00 ( -12.280eV) occ=1.000    -0.4503780E+00 ( -12.256eV) occ=1.000
+    -0.4679533E+00 ( -12.734eV) occ=1.000    -0.4669888E+00 ( -12.708eV) occ=1.000
+    -0.6747646E+00 ( -18.361eV) occ=1.000    -0.6569396E+00 ( -17.876eV) occ=1.000
+    -0.1187381E+01 ( -32.311eV) occ=1.000    -0.1179574E+01 ( -32.098eV) occ=1.000
+    -0.1200042E+01 ( -32.655eV) occ=1.000    -0.1193397E+01 ( -32.474eV) occ=1.000
+    -0.1212773E+01 ( -33.001eV) occ=1.000    -0.1205273E+01 ( -32.797eV) occ=1.000
+    -0.1264690E+01 ( -34.414eV) occ=1.000    -0.1264489E+01 ( -34.409eV) occ=1.000
+    -0.1269377E+01 ( -34.542eV) occ=1.000    -0.1271044E+01 ( -34.587eV) occ=1.000
+    -0.1288439E+01 ( -35.060eV) occ=1.000    -0.1287984E+01 ( -35.048eV) occ=1.000
+
+ Total BAND energy   :  -0.3397822039E+03
+
+
+=== Spin Contamination ===
+
+ <Sexact^2> =    2.0000000000000000     
+ <S^2>      =    9.6553869175350862     
+
+
+ Writing Crystallographic Information File:./perm/U6O2.opt.cif
+   - cell not shifted (nwpw:cif_shift_cell .false.)
+
+ output psi filename:./perm/U6O2-211-perpbrg.movecs
+
+
+== Timing ==
+
+cputime in seconds
+  prologue    :   0.299206E+03
+  main loop   :   0.634365E+04
+  epilogue    :   0.256100E+03
+  total       :   0.689896E+04
+  cputime/step:   0.251035E+01       (    2527 evalulations,     976 linesearches)
+
+
+Time spent doing                        total          step
+  FFTs                       :   0.414578E+03  0.164059E+00
+  dot products               :   0.127667E+04  0.505213E+00
+  geodesic                   :   0.628002E+03  0.248517E+00
+  ffm_dgemm                  :   0.000000E+00  0.000000E+00
+  fmf_dgemm                  :   0.000000E+00  0.000000E+00
+  m_diagonalize              :   0.000000E+00  0.000000E+00
+    - m_tredq                :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq      :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq_dgemm:   0.000000E+00  0.000000E+00
+       - m_tredq_dgemm1      :   0.000000E+00  0.000000E+00
+    - m_getdiags             :   0.000000E+00  0.000000E+00
+    - m_tqliq                :   0.000000E+00  0.000000E+00
+    - m_eigsrt               :   0.000000E+00  0.000000E+00
+  exchange correlation       :   0.620888E+03  0.245702E+00
+  local pseudopotentials     :   0.753164E-03  0.298047E-06
+  non-local pseudopotentials :   0.461277E+03  0.182539E+00
+  hartree potentials         :   0.707725E+00  0.280065E-03
+  ion-ion interaction        :   0.481983E+01  0.190733E-02
+  structure factors          :   0.808371E+00  0.319893E-03
+  phase factors              :   0.000000E+00  0.000000E+00
+  masking and packing        :   0.334154E+03  0.132233E+00
+  queue fft                  :   0.342051E+04  0.135359E+01
+  queue fft (serial)         :   0.125674E+04  0.497325E+00
+  queue fft (message passing):   0.202511E+04  0.801391E+00
+  HFX potential              :   0.000000E+00  0.000000E+00
+  qmmm LJ                    :   0.000000E+00  0.000000E+00
+  qmmm residual Q            :   0.000000E+00  0.000000E+00
+
+     >>>  JOB COMPLETED     AT Sat Mar  9 02:25:41 2013  <<<
+
+ Task  times  cpu:     6822.0s     wall:     6899.0s
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.60500172     0.00000000    16.07796687
+    8 O2                   8.0000     2.37412828     0.00000000    16.07796687
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   2 U2               |     5.33265  |     2.82192
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    1 U1               |   2 U2               |   7 O1               |    76.28
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   7 O1               |   119.10
+    4 U4               |   2 U2               |   7 O1               |   169.97
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         23
+ ==============================================================================
+
+
+
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Sat Mar  9 02:25:41 2013  <<<
+          ================ input data ========================
+
+ input psi filename:./perm/U6O2-211-perpbrg.movecs
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+      2: O     core charge: 6.0  lmax=2
+             comment    : Parameterized (Chem.Phys.Lett., vol 322, page 447) Hamman psp
+             pseudpotential type            :   0
+             highest angular component      :   2
+             local potential used           :   2
+             number of non-local projections:   4
+             cutoff =   0.700   0.700   0.700
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  6     O   :  2
+
+ number of electrons: spin up=   49.00  spin down=   47.00 (fourier space)
+ number of orbitals:  spin up=      49  spin down=      47 (fourier space)
+
+ supercell:
+      lattice:    a1=<   5.630   0.000   0.000 >
+                  a2=<   0.000   9.189   0.000 >
+                  a3=<   0.000   0.000  38.603 >
+      reciprocal: b1=<   1.116   0.000  -0.000 >
+                  b2=<  -0.000   0.684  -0.000 >
+                  b3=<   0.000   0.000   0.163 >
+
+      lattice:    a=   5.630    b=   9.189     c=  38.603
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     1997.0
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-2.04206249
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.419   0.256  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.140   0.256  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.140   0.256  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.419  -0.256  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.419   0.085  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.140   0.085  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.140  -0.085  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.419  -0.085  -0.000>
+
+ computational grids:
+      density     cutoff=180.000  fft=  64x  96x 420(   230205 waves     6394 per task)
+      wavefnc   1 cutoff= 90.000  fft=  64x  96x 420(    81468 waves     2263 per task)
+      wavefnc   2 cutoff= 90.000  fft=  64x  96x 420(    81379 waves     2260 per task)
+      wavefnc   3 cutoff= 90.000  fft=  64x  96x 420(    81379 waves     2260 per task)
+      wavefnc   4 cutoff= 90.000  fft=  64x  96x 420(    81468 waves     2263 per task)
+      wavefnc   5 cutoff= 90.000  fft=  64x  96x 420(    81490 waves     2263 per task)
+      wavefnc   6 cutoff= 90.000  fft=  64x  96x 420(    81407 waves     2261 per task)
+      wavefnc   7 cutoff= 90.000  fft=  64x  96x 420(    81407 waves     2261 per task)
+      wavefnc   8 cutoff= 90.000  fft=  64x  96x 420(    81490 waves     2263 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Sat Mar  9 02:30:42 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+      10   -0.3396947520E+03   -0.29785E-01    0.14348E+01
+     -  10 steepest descent iterations performed
+      20   -0.3397637960E+03   -0.54862E-03    0.40969E-02
+      30   -0.3397676193E+03   -0.20730E-03    0.22100E-03
+      40   -0.3397689659E+03   -0.10028E-03    0.26617E-04
+      50   -0.3397696901E+03   -0.51580E-04    0.27088E-04
+      60   -0.3397700580E+03   -0.30023E-04    0.92188E-05
+      70   -0.3397702905E+03   -0.18956E-04    0.81683E-05
+      80   -0.3397704405E+03   -0.13663E-04    0.67812E-05
+      90   -0.3397705616E+03   -0.11442E-04    0.82991E-05
+     100   -0.3397706582E+03   -0.85782E-05    0.80675E-05
+     110   -0.3397707400E+03   -0.78083E-05    0.81773E-05
+     120   -0.3397708113E+03   -0.65691E-05    0.94382E-05
+     130   -0.3397708726E+03   -0.60057E-05    0.10065E-04
+     140   -0.3397709282E+03   -0.52187E-05    0.11614E-04
+     150   -0.3397709775E+03   -0.46743E-05    0.11930E-04
+     160   -0.3397710223E+03   -0.42223E-05    0.12831E-04
+     170   -0.3397710620E+03   -0.36882E-05    0.12590E-04
+     180   -0.3397710976E+03   -0.34984E-05    0.12648E-04
+     190   -0.3397711315E+03   -0.32149E-05    0.13791E-04
+     200   -0.3397711617E+03   -0.29531E-05    0.13143E-04
+     210   -0.3397711899E+03   -0.26651E-05    0.13478E-04
+     220   -0.3397712147E+03   -0.24178E-05    0.12291E-04
+     230   -0.3397712384E+03   -0.22784E-05    0.12937E-04
+     240   -0.3397712592E+03   -0.19937E-05    0.11479E-04
+     250   -0.3397712788E+03   -0.18916E-05    0.11387E-04
+     260   -0.3397712963E+03   -0.16542E-05    0.10233E-04
+     270   -0.3397713122E+03   -0.15316E-05    0.95101E-05
+     280   -0.3397713262E+03   -0.12995E-05    0.83136E-05
+     290   -0.3397713386E+03   -0.11908E-05    0.71966E-05
+     300   -0.3397713495E+03   -0.10061E-05    0.64018E-05
+     310   -0.3397713589E+03   -0.88610E-06    0.53426E-05
+     320   -0.3397713673E+03   -0.78760E-06    0.50666E-05
+     330   -0.3397713744E+03   -0.67281E-06    0.41376E-05
+     340   -0.3397713810E+03   -0.62015E-06    0.41312E-05
+     350   -0.3397713866E+03   -0.51698E-06    0.35133E-05
+     360   -0.3397713915E+03   -0.46209E-06    0.31022E-05
+     370   -0.3397713956E+03   -0.37056E-06    0.25512E-05
+     380   -0.3397713990E+03   -0.31622E-06    0.20041E-05
+     390   -0.3397714018E+03   -0.25624E-06    0.16025E-05
+     400   -0.3397714042E+03   -0.22206E-06    0.12980E-05
+     410   -0.3397714062E+03   -0.18466E-06    0.10935E-05
+     420   -0.3397714079E+03   -0.16214E-06    0.91552E-06
+     430   -0.3397714094E+03   -0.14366E-06    0.85307E-06
+     440   -0.3397714107E+03   -0.12478E-06    0.74701E-06
+     450   -0.3397714119E+03   -0.10779E-06    0.66261E-06
+     460   -0.3397714123E+03   -0.99994E-07    0.93268E-07
+  *** tolerance ok.    iteration terminated.
+     >>>  ITERATION ENDED   AT Sat Mar  9 03:15:54 2013  <<<
+
+
+          =============  summary of results  =================
+
+ number of electrons: spin up=   49.00000  down=   47.00000 (real space)
+
+ total     energy    :  -0.3397714123E+03 (   -0.42471E+02/ion)
+ total orbital energy:  -0.1902051812E+02 (   -0.19813E+00/electron)
+ hartree   energy    :   0.1014799366E+04 (    0.10571E+02/electron)
+ exc-corr  energy    :  -0.4632002668E+02 (   -0.48250E+00/electron)
+ ion-ion   energy    :   0.6800517638E+03 (    0.85006E+02/ion)
+
+ K.S. kinetic energy :   0.1667091338E+03 (    0.17366E+01/electron)
+ K.S. V_l  energy    :  -0.2611239125E+03 (   -0.27200E+01/electron)
+ K.S. V_nl energy    :  -0.5242029813E+02 (   -0.54604E+00/electron)
+ K.S. V_Hart energy  :   0.2029598731E+04 (    0.21142E+02/electron)
+ K.S. V_xc energy    :  -0.6031673433E+02 (   -0.62830E+00/electron)
+ K.S. V_so energy    :   0.0000000000E+00 (    0.00000E+00/electron)
+ Virial Coefficient  :   0.9931896041E+01
+
+ Brillouin zone point:      1
+    weight=  0.125000
+    k     =<   0.375   0.375   0.000> . <b1,b2,b3> 
+          =<   0.419   0.256  -0.000>
+
+ orbital energies:
+     0.3105515E+00 (   8.451eV) occ=1.000
+     0.3048190E+00 (   8.295eV) occ=1.000
+     0.2983354E+00 (   8.118eV) occ=1.000     0.3023859E+00 (   8.228eV) occ=1.000
+     0.2947674E+00 (   8.021eV) occ=1.000     0.2977066E+00 (   8.101eV) occ=1.000
+     0.2893401E+00 (   7.873eV) occ=1.000     0.2948669E+00 (   8.024eV) occ=1.000
+     0.2845158E+00 (   7.742eV) occ=1.000     0.2932791E+00 (   7.981eV) occ=1.000
+     0.2832312E+00 (   7.707eV) occ=1.000     0.2886119E+00 (   7.854eV) occ=1.000
+     0.2816221E+00 (   7.663eV) occ=1.000     0.2851777E+00 (   7.760eV) occ=1.000
+     0.2757621E+00 (   7.504eV) occ=1.000     0.2801785E+00 (   7.624eV) occ=1.000
+     0.2690905E+00 (   7.322eV) occ=1.000     0.2742119E+00 (   7.462eV) occ=1.000
+     0.2624339E+00 (   7.141eV) occ=1.000     0.2696540E+00 (   7.338eV) occ=1.000
+     0.2513201E+00 (   6.839eV) occ=1.000     0.2653446E+00 (   7.220eV) occ=1.000
+     0.2490930E+00 (   6.778eV) occ=1.000     0.2575860E+00 (   7.009eV) occ=1.000
+     0.2376390E+00 (   6.467eV) occ=1.000     0.2466166E+00 (   6.711eV) occ=1.000
+     0.2362322E+00 (   6.428eV) occ=1.000     0.2444833E+00 (   6.653eV) occ=1.000
+     0.2313817E+00 (   6.296eV) occ=1.000     0.2328255E+00 (   6.336eV) occ=1.000
+     0.2220839E+00 (   6.043eV) occ=1.000     0.2269675E+00 (   6.176eV) occ=1.000
+     0.2188233E+00 (   5.955eV) occ=1.000     0.2214777E+00 (   6.027eV) occ=1.000
+     0.2013397E+00 (   5.479eV) occ=1.000     0.2070091E+00 (   5.633eV) occ=1.000
+     0.1948943E+00 (   5.303eV) occ=1.000     0.2005780E+00 (   5.458eV) occ=1.000
+     0.1506814E+00 (   4.100eV) occ=1.000     0.1648169E+00 (   4.485eV) occ=1.000
+     0.4300460E-01 (   1.170eV) occ=1.000     0.6762658E-01 (   1.840eV) occ=1.000
+     0.3905766E-01 (   1.063eV) occ=1.000     0.6149241E-01 (   1.673eV) occ=1.000
+    -0.2595824E+00 (  -7.064eV) occ=1.000    -0.2527836E+00 (  -6.879eV) occ=1.000
+    -0.2705397E+00 (  -7.362eV) occ=1.000    -0.2677422E+00 (  -7.286eV) occ=1.000
+    -0.2801543E+00 (  -7.623eV) occ=1.000    -0.2750746E+00 (  -7.485eV) occ=1.000
+    -0.2918176E+00 (  -7.941eV) occ=1.000    -0.2781425E+00 (  -7.569eV) occ=1.000
+    -0.2986554E+00 (  -8.127eV) occ=1.000    -0.2894014E+00 (  -7.875eV) occ=1.000
+    -0.3071783E+00 (  -8.359eV) occ=1.000    -0.3008445E+00 (  -8.186eV) occ=1.000
+    -0.3183514E+00 (  -8.663eV) occ=1.000    -0.3166331E+00 (  -8.616eV) occ=1.000
+    -0.3333543E+00 (  -9.071eV) occ=1.000    -0.3299897E+00 (  -8.980eV) occ=1.000
+    -0.3372096E+00 (  -9.176eV) occ=1.000    -0.3318461E+00 (  -9.030eV) occ=1.000
+    -0.3561545E+00 (  -9.692eV) occ=1.000    -0.3540772E+00 (  -9.635eV) occ=1.000
+    -0.3769343E+00 ( -10.257eV) occ=1.000    -0.3732825E+00 ( -10.158eV) occ=1.000
+    -0.3833030E+00 ( -10.430eV) occ=1.000    -0.3803132E+00 ( -10.349eV) occ=1.000
+    -0.3943252E+00 ( -10.730eV) occ=1.000    -0.3906208E+00 ( -10.629eV) occ=1.000
+    -0.4219873E+00 ( -11.483eV) occ=1.000    -0.4181892E+00 ( -11.380eV) occ=1.000
+    -0.4328002E+00 ( -11.777eV) occ=1.000    -0.4304379E+00 ( -11.713eV) occ=1.000
+    -0.4437191E+00 ( -12.074eV) occ=1.000    -0.4421329E+00 ( -12.031eV) occ=1.000
+    -0.4495999E+00 ( -12.234eV) occ=1.000    -0.4472588E+00 ( -12.171eV) occ=1.000
+    -0.4624973E+00 ( -12.585eV) occ=1.000    -0.4602832E+00 ( -12.525eV) occ=1.000
+    -0.4791155E+00 ( -13.037eV) occ=1.000    -0.4765270E+00 ( -12.967eV) occ=1.000
+    -0.6696410E+00 ( -18.222eV) occ=1.000    -0.6528296E+00 ( -17.765eV) occ=1.000
+    -0.1194968E+01 ( -32.517eV) occ=1.000    -0.1189095E+01 ( -32.357eV) occ=1.000
+    -0.1204828E+01 ( -32.785eV) occ=1.000    -0.1196092E+01 ( -32.548eV) occ=1.000
+    -0.1207266E+01 ( -32.852eV) occ=1.000    -0.1200851E+01 ( -32.677eV) occ=1.000
+    -0.1271333E+01 ( -34.595eV) occ=1.000    -0.1271782E+01 ( -34.607eV) occ=1.000
+    -0.1274294E+01 ( -34.676eV) occ=1.000    -0.1274205E+01 ( -34.673eV) occ=1.000
+    -0.1284777E+01 ( -34.961eV) occ=1.000    -0.1283446E+01 ( -34.925eV) occ=1.000
+
+ Brillouin zone point:      2
+    weight=  0.125000
+    k     =<   0.125   0.375   0.000> . <b1,b2,b3> 
+          =<   0.140   0.256  -0.000>
+
+ orbital energies:
+     0.3150579E+00 (   8.573eV) occ=1.000
+     0.3111651E+00 (   8.467eV) occ=1.000
+     0.3040390E+00 (   8.273eV) occ=1.000     0.3062998E+00 (   8.335eV) occ=1.000
+     0.3004341E+00 (   8.175eV) occ=1.000     0.3044028E+00 (   8.283eV) occ=1.000
+     0.2982937E+00 (   8.117eV) occ=1.000     0.2979686E+00 (   8.108eV) occ=1.000
+     0.2940977E+00 (   8.003eV) occ=1.000     0.2952854E+00 (   8.035eV) occ=1.000
+     0.2898725E+00 (   7.888eV) occ=1.000     0.2916849E+00 (   7.937eV) occ=1.000
+     0.2860260E+00 (   7.783eV) occ=1.000     0.2865441E+00 (   7.797eV) occ=1.000
+     0.2831859E+00 (   7.706eV) occ=1.000     0.2841190E+00 (   7.731eV) occ=1.000
+     0.2821085E+00 (   7.677eV) occ=1.000     0.2812368E+00 (   7.653eV) occ=1.000
+     0.2755310E+00 (   7.498eV) occ=1.000     0.2780606E+00 (   7.566eV) occ=1.000
+     0.2724425E+00 (   7.414eV) occ=1.000     0.2750541E+00 (   7.485eV) occ=1.000
+     0.2698353E+00 (   7.343eV) occ=1.000     0.2696332E+00 (   7.337eV) occ=1.000
+     0.2622093E+00 (   7.135eV) occ=1.000     0.2662862E+00 (   7.246eV) occ=1.000
+     0.2537109E+00 (   6.904eV) occ=1.000     0.2597262E+00 (   7.068eV) occ=1.000
+     0.2483429E+00 (   6.758eV) occ=1.000     0.2520823E+00 (   6.860eV) occ=1.000
+     0.2416023E+00 (   6.574eV) occ=1.000     0.2478411E+00 (   6.744eV) occ=1.000
+     0.2345741E+00 (   6.383eV) occ=1.000     0.2397908E+00 (   6.525eV) occ=1.000
+     0.2240813E+00 (   6.098eV) occ=1.000     0.2272587E+00 (   6.184eV) occ=1.000
+     0.2090885E+00 (   5.690eV) occ=1.000     0.2149096E+00 (   5.848eV) occ=1.000
+     0.1321911E-01 (   0.360eV) occ=1.000     0.3730538E-01 (   1.015eV) occ=1.000
+     0.1236840E-01 (   0.337eV) occ=1.000     0.3383661E-01 (   0.921eV) occ=1.000
+    -0.2091828E-01 (  -0.569eV) occ=1.000    -0.5270630E-02 (  -0.143eV) occ=1.000
+    -0.1916120E+00 (  -5.214eV) occ=1.000    -0.1722626E+00 (  -4.688eV) occ=1.000
+    -0.2508197E+00 (  -6.825eV) occ=1.000    -0.2453991E+00 (  -6.678eV) occ=1.000
+    -0.2630028E+00 (  -7.157eV) occ=1.000    -0.2604042E+00 (  -7.086eV) occ=1.000
+    -0.2662672E+00 (  -7.246eV) occ=1.000    -0.2629620E+00 (  -7.156eV) occ=1.000
+    -0.2774641E+00 (  -7.550eV) occ=1.000    -0.2724631E+00 (  -7.414eV) occ=1.000
+    -0.2822527E+00 (  -7.681eV) occ=1.000    -0.2761461E+00 (  -7.514eV) occ=1.000
+    -0.2941235E+00 (  -8.004eV) occ=1.000    -0.2900731E+00 (  -7.893eV) occ=1.000
+    -0.3036041E+00 (  -8.262eV) occ=1.000    -0.3004579E+00 (  -8.176eV) occ=1.000
+    -0.3098240E+00 (  -8.431eV) occ=1.000    -0.3071836E+00 (  -8.359eV) occ=1.000
+    -0.3278885E+00 (  -8.922eV) occ=1.000    -0.3258356E+00 (  -8.867eV) occ=1.000
+    -0.3372753E+00 (  -9.178eV) occ=1.000    -0.3329541E+00 (  -9.060eV) occ=1.000
+    -0.3495099E+00 (  -9.511eV) occ=1.000    -0.3469889E+00 (  -9.442eV) occ=1.000
+    -0.3688501E+00 ( -10.037eV) occ=1.000    -0.3651817E+00 (  -9.937eV) occ=1.000
+    -0.3859271E+00 ( -10.502eV) occ=1.000    -0.3827965E+00 ( -10.417eV) occ=1.000
+    -0.3954479E+00 ( -10.761eV) occ=1.000    -0.3912440E+00 ( -10.646eV) occ=1.000
+    -0.4171241E+00 ( -11.351eV) occ=1.000    -0.4141636E+00 ( -11.270eV) occ=1.000
+    -0.4337209E+00 ( -11.802eV) occ=1.000    -0.4321895E+00 ( -11.761eV) occ=1.000
+    -0.4542760E+00 ( -12.362eV) occ=1.000    -0.4511813E+00 ( -12.277eV) occ=1.000
+    -0.4669723E+00 ( -12.707eV) occ=1.000    -0.4649279E+00 ( -12.651eV) occ=1.000
+    -0.6837900E+00 ( -18.607eV) occ=1.000    -0.6667095E+00 ( -18.142eV) occ=1.000
+    -0.1203773E+01 ( -32.757eV) occ=1.000    -0.1197839E+01 ( -32.595eV) occ=1.000
+    -0.1214144E+01 ( -33.039eV) occ=1.000    -0.1205621E+01 ( -32.807eV) occ=1.000
+    -0.1217880E+01 ( -33.140eV) occ=1.000    -0.1211733E+01 ( -32.973eV) occ=1.000
+    -0.1280740E+01 ( -34.851eV) occ=1.000    -0.1279886E+01 ( -34.828eV) occ=1.000
+    -0.1283147E+01 ( -34.916eV) occ=1.000    -0.1284169E+01 ( -34.944eV) occ=1.000
+    -0.1296097E+01 ( -35.269eV) occ=1.000    -0.1294645E+01 ( -35.229eV) occ=1.000
+
+ Brillouin zone point:      3
+    weight=  0.125000
+    k     =<  -0.125   0.375   0.000> . <b1,b2,b3> 
+          =<  -0.140   0.256  -0.000>
+
+ orbital energies:
+     0.3138519E+00 (   8.540eV) occ=1.000
+     0.3122894E+00 (   8.498eV) occ=1.000
+     0.3046864E+00 (   8.291eV) occ=1.000     0.3076286E+00 (   8.371eV) occ=1.000
+     0.3013845E+00 (   8.201eV) occ=1.000     0.3053794E+00 (   8.310eV) occ=1.000
+     0.2978219E+00 (   8.104eV) occ=1.000     0.2982382E+00 (   8.116eV) occ=1.000
+     0.2937568E+00 (   7.994eV) occ=1.000     0.2951518E+00 (   8.032eV) occ=1.000
+     0.2878939E+00 (   7.834eV) occ=1.000     0.2928953E+00 (   7.970eV) occ=1.000
+     0.2858269E+00 (   7.778eV) occ=1.000     0.2881141E+00 (   7.840eV) occ=1.000
+     0.2847254E+00 (   7.748eV) occ=1.000     0.2850759E+00 (   7.757eV) occ=1.000
+     0.2811848E+00 (   7.651eV) occ=1.000     0.2804659E+00 (   7.632eV) occ=1.000
+     0.2765380E+00 (   7.525eV) occ=1.000     0.2794296E+00 (   7.604eV) occ=1.000
+     0.2735014E+00 (   7.442eV) occ=1.000     0.2755386E+00 (   7.498eV) occ=1.000
+     0.2692286E+00 (   7.326eV) occ=1.000     0.2696919E+00 (   7.339eV) occ=1.000
+     0.2618138E+00 (   7.124eV) occ=1.000     0.2648825E+00 (   7.208eV) occ=1.000
+     0.2538394E+00 (   6.907eV) occ=1.000     0.2600736E+00 (   7.077eV) occ=1.000
+     0.2478915E+00 (   6.746eV) occ=1.000     0.2506824E+00 (   6.821eV) occ=1.000
+     0.2416350E+00 (   6.575eV) occ=1.000     0.2477128E+00 (   6.741eV) occ=1.000
+     0.2349932E+00 (   6.395eV) occ=1.000     0.2394945E+00 (   6.517eV) occ=1.000
+     0.2242519E+00 (   6.102eV) occ=1.000     0.2269827E+00 (   6.177eV) occ=1.000
+     0.2089042E+00 (   5.685eV) occ=1.000     0.2147677E+00 (   5.844eV) occ=1.000
+     0.1321950E-01 (   0.360eV) occ=1.000     0.3732271E-01 (   1.016eV) occ=1.000
+     0.1236843E-01 (   0.337eV) occ=1.000     0.3382014E-01 (   0.920eV) occ=1.000
+    -0.2091731E-01 (  -0.569eV) occ=1.000    -0.5270914E-02 (  -0.143eV) occ=1.000
+    -0.1916142E+00 (  -5.214eV) occ=1.000    -0.1722624E+00 (  -4.688eV) occ=1.000
+    -0.2508915E+00 (  -6.827eV) occ=1.000    -0.2450152E+00 (  -6.667eV) occ=1.000
+    -0.2628663E+00 (  -7.153eV) occ=1.000    -0.2605600E+00 (  -7.090eV) occ=1.000
+    -0.2665539E+00 (  -7.253eV) occ=1.000    -0.2632100E+00 (  -7.162eV) occ=1.000
+    -0.2771854E+00 (  -7.543eV) occ=1.000    -0.2727957E+00 (  -7.423eV) occ=1.000
+    -0.2819537E+00 (  -7.672eV) occ=1.000    -0.2762738E+00 (  -7.518eV) occ=1.000
+    -0.2946696E+00 (  -8.018eV) occ=1.000    -0.2894574E+00 (  -7.877eV) occ=1.000
+    -0.3033890E+00 (  -8.256eV) occ=1.000    -0.3002998E+00 (  -8.172eV) occ=1.000
+    -0.3097725E+00 (  -8.429eV) occ=1.000    -0.3073733E+00 (  -8.364eV) occ=1.000
+    -0.3281349E+00 (  -8.929eV) occ=1.000    -0.3257346E+00 (  -8.864eV) occ=1.000
+    -0.3370071E+00 (  -9.171eV) occ=1.000    -0.3330738E+00 (  -9.063eV) occ=1.000
+    -0.3493936E+00 (  -9.508eV) occ=1.000    -0.3471405E+00 (  -9.446eV) occ=1.000
+    -0.3692206E+00 ( -10.047eV) occ=1.000    -0.3648435E+00 (  -9.928eV) occ=1.000
+    -0.3858401E+00 ( -10.499eV) occ=1.000    -0.3830806E+00 ( -10.424eV) occ=1.000
+    -0.3954008E+00 ( -10.759eV) occ=1.000    -0.3912466E+00 ( -10.646eV) occ=1.000
+    -0.4170454E+00 ( -11.348eV) occ=1.000    -0.4143031E+00 ( -11.274eV) occ=1.000
+    -0.4339471E+00 ( -11.808eV) occ=1.000    -0.4320943E+00 ( -11.758eV) occ=1.000
+    -0.4542975E+00 ( -12.362eV) occ=1.000    -0.4510729E+00 ( -12.274eV) occ=1.000
+    -0.4667962E+00 ( -12.702eV) occ=1.000    -0.4649589E+00 ( -12.652eV) occ=1.000
+    -0.6837900E+00 ( -18.607eV) occ=1.000    -0.6667095E+00 ( -18.142eV) occ=1.000
+    -0.1203775E+01 ( -32.757eV) occ=1.000    -0.1197841E+01 ( -32.595eV) occ=1.000
+    -0.1214144E+01 ( -33.039eV) occ=1.000    -0.1205622E+01 ( -32.807eV) occ=1.000
+    -0.1217879E+01 ( -33.140eV) occ=1.000    -0.1211731E+01 ( -32.973eV) occ=1.000
+    -0.1280743E+01 ( -34.851eV) occ=1.000    -0.1279884E+01 ( -34.828eV) occ=1.000
+    -0.1283149E+01 ( -34.917eV) occ=1.000    -0.1284168E+01 ( -34.944eV) occ=1.000
+    -0.1296093E+01 ( -35.269eV) occ=1.000    -0.1294647E+01 ( -35.229eV) occ=1.000
+
+ Brillouin zone point:      4
+    weight=  0.125000
+    k     =<   0.375  -0.375   0.000> . <b1,b2,b3> 
+          =<   0.419  -0.256  -0.000>
+
+ orbital energies:
+     0.3139012E+00 (   8.542eV) occ=1.000
+     0.3050706E+00 (   8.301eV) occ=1.000
+     0.2972366E+00 (   8.088eV) occ=1.000     0.3037435E+00 (   8.265eV) occ=1.000
+     0.2935959E+00 (   7.989eV) occ=1.000     0.2975973E+00 (   8.098eV) occ=1.000
+     0.2889842E+00 (   7.864eV) occ=1.000     0.2962533E+00 (   8.062eV) occ=1.000
+     0.2860541E+00 (   7.784eV) occ=1.000     0.2921577E+00 (   7.950eV) occ=1.000
+     0.2832435E+00 (   7.708eV) occ=1.000     0.2888512E+00 (   7.860eV) occ=1.000
+     0.2803230E+00 (   7.628eV) occ=1.000     0.2847603E+00 (   7.749eV) occ=1.000
+     0.2735579E+00 (   7.444eV) occ=1.000     0.2819491E+00 (   7.672eV) occ=1.000
+     0.2710845E+00 (   7.377eV) occ=1.000     0.2722088E+00 (   7.407eV) occ=1.000
+     0.2624121E+00 (   7.141eV) occ=1.000     0.2691689E+00 (   7.325eV) occ=1.000
+     0.2510285E+00 (   6.831eV) occ=1.000     0.2659056E+00 (   7.236eV) occ=1.000
+     0.2496079E+00 (   6.792eV) occ=1.000     0.2581346E+00 (   7.024eV) occ=1.000
+     0.2381769E+00 (   6.481eV) occ=1.000     0.2465791E+00 (   6.710eV) occ=1.000
+     0.2364374E+00 (   6.434eV) occ=1.000     0.2441442E+00 (   6.644eV) occ=1.000
+     0.2308799E+00 (   6.283eV) occ=1.000     0.2329684E+00 (   6.339eV) occ=1.000
+     0.2219430E+00 (   6.039eV) occ=1.000     0.2268280E+00 (   6.172eV) occ=1.000
+     0.2187114E+00 (   5.951eV) occ=1.000     0.2213887E+00 (   6.024eV) occ=1.000
+     0.2015854E+00 (   5.485eV) occ=1.000     0.2072183E+00 (   5.639eV) occ=1.000
+     0.1948613E+00 (   5.302eV) occ=1.000     0.2002836E+00 (   5.450eV) occ=1.000
+     0.1506814E+00 (   4.100eV) occ=1.000     0.1648174E+00 (   4.485eV) occ=1.000
+     0.4300567E-01 (   1.170eV) occ=1.000     0.6763159E-01 (   1.840eV) occ=1.000
+     0.3905901E-01 (   1.063eV) occ=1.000     0.6148608E-01 (   1.673eV) occ=1.000
+    -0.2595019E+00 (  -7.061eV) occ=1.000    -0.2529939E+00 (  -6.884eV) occ=1.000
+    -0.2701194E+00 (  -7.350eV) occ=1.000    -0.2677507E+00 (  -7.286eV) occ=1.000
+    -0.2808272E+00 (  -7.642eV) occ=1.000    -0.2749290E+00 (  -7.481eV) occ=1.000
+    -0.2920023E+00 (  -7.946eV) occ=1.000    -0.2779796E+00 (  -7.564eV) occ=1.000
+    -0.2985622E+00 (  -8.124eV) occ=1.000    -0.2890892E+00 (  -7.867eV) occ=1.000
+    -0.3067619E+00 (  -8.347eV) occ=1.000    -0.3014086E+00 (  -8.202eV) occ=1.000
+    -0.3185793E+00 (  -8.669eV) occ=1.000    -0.3166220E+00 (  -8.616eV) occ=1.000
+    -0.3335493E+00 (  -9.076eV) occ=1.000    -0.3298678E+00 (  -8.976eV) occ=1.000
+    -0.3369675E+00 (  -9.169eV) occ=1.000    -0.3316153E+00 (  -9.024eV) occ=1.000
+    -0.3561341E+00 (  -9.691eV) occ=1.000    -0.3541129E+00 (  -9.636eV) occ=1.000
+    -0.3769961E+00 ( -10.259eV) occ=1.000    -0.3731689E+00 ( -10.155eV) occ=1.000
+    -0.3831309E+00 ( -10.426eV) occ=1.000    -0.3801300E+00 ( -10.344eV) occ=1.000
+    -0.3942881E+00 ( -10.729eV) occ=1.000    -0.3911089E+00 ( -10.643eV) occ=1.000
+    -0.4220784E+00 ( -11.485eV) occ=1.000    -0.4185007E+00 ( -11.388eV) occ=1.000
+    -0.4328742E+00 ( -11.779eV) occ=1.000    -0.4304679E+00 ( -11.714eV) occ=1.000
+    -0.4437217E+00 ( -12.074eV) occ=1.000    -0.4418045E+00 ( -12.022eV) occ=1.000
+    -0.4496047E+00 ( -12.234eV) occ=1.000    -0.4472114E+00 ( -12.169eV) occ=1.000
+    -0.4628444E+00 ( -12.595eV) occ=1.000    -0.4602359E+00 ( -12.524eV) occ=1.000
+    -0.4787507E+00 ( -13.028eV) occ=1.000    -0.4765743E+00 ( -12.968eV) occ=1.000
+    -0.6696411E+00 ( -18.222eV) occ=1.000    -0.6528297E+00 ( -17.765eV) occ=1.000
+    -0.1194969E+01 ( -32.517eV) occ=1.000    -0.1189099E+01 ( -32.357eV) occ=1.000
+    -0.1204828E+01 ( -32.785eV) occ=1.000    -0.1196093E+01 ( -32.548eV) occ=1.000
+    -0.1207264E+01 ( -32.852eV) occ=1.000    -0.1200848E+01 ( -32.677eV) occ=1.000
+    -0.1271335E+01 ( -34.595eV) occ=1.000    -0.1271779E+01 ( -34.607eV) occ=1.000
+    -0.1274299E+01 ( -34.676eV) occ=1.000    -0.1274204E+01 ( -34.673eV) occ=1.000
+    -0.1284771E+01 ( -34.961eV) occ=1.000    -0.1283448E+01 ( -34.925eV) occ=1.000
+
+ Brillouin zone point:      5
+    weight=  0.125000
+    k     =<   0.375   0.125   0.000> . <b1,b2,b3> 
+          =<   0.419   0.085  -0.000>
+
+ orbital energies:
+     0.3151989E+00 (   8.577eV) occ=1.000
+     0.3080553E+00 (   8.383eV) occ=1.000
+     0.3034980E+00 (   8.259eV) occ=1.000     0.3057155E+00 (   8.319eV) occ=1.000
+     0.2975649E+00 (   8.097eV) occ=1.000     0.3003507E+00 (   8.173eV) occ=1.000
+     0.2929209E+00 (   7.971eV) occ=1.000     0.2965686E+00 (   8.070eV) occ=1.000
+     0.2910260E+00 (   7.919eV) occ=1.000     0.2935408E+00 (   7.988eV) occ=1.000
+     0.2844912E+00 (   7.741eV) occ=1.000     0.2919020E+00 (   7.943eV) occ=1.000
+     0.2821901E+00 (   7.679eV) occ=1.000     0.2887463E+00 (   7.857eV) occ=1.000
+     0.2750979E+00 (   7.486eV) occ=1.000     0.2805914E+00 (   7.635eV) occ=1.000
+     0.2718669E+00 (   7.398eV) occ=1.000     0.2787224E+00 (   7.584eV) occ=1.000
+     0.2686980E+00 (   7.312eV) occ=1.000     0.2730855E+00 (   7.431eV) occ=1.000
+     0.2626373E+00 (   7.147eV) occ=1.000     0.2715297E+00 (   7.389eV) occ=1.000
+     0.2512850E+00 (   6.838eV) occ=1.000     0.2635119E+00 (   7.171eV) occ=1.000
+     0.2501523E+00 (   6.807eV) occ=1.000     0.2565239E+00 (   6.980eV) occ=1.000
+     0.2418258E+00 (   6.580eV) occ=1.000     0.2520371E+00 (   6.858eV) occ=1.000
+     0.2369459E+00 (   6.448eV) occ=1.000     0.2436305E+00 (   6.630eV) occ=1.000
+     0.2228128E+00 (   6.063eV) occ=1.000     0.2292499E+00 (   6.238eV) occ=1.000
+     0.2107929E+00 (   5.736eV) occ=1.000     0.2160874E+00 (   5.880eV) occ=1.000
+     0.1968327E+00 (   5.356eV) occ=1.000     0.2001555E+00 (   5.447eV) occ=1.000
+     0.1803382E+00 (   4.907eV) occ=1.000     0.1840417E+00 (   5.008eV) occ=1.000
+     0.1505303E+00 (   4.096eV) occ=1.000     0.1647504E+00 (   4.483eV) occ=1.000
+     0.4390139E-01 (   1.195eV) occ=1.000     0.6866193E-01 (   1.868eV) occ=1.000
+     0.3913888E-01 (   1.065eV) occ=1.000     0.6179128E-01 (   1.681eV) occ=1.000
+    -0.2539947E+00 (  -6.912eV) occ=1.000    -0.2475200E+00 (  -6.735eV) occ=1.000
+    -0.2692043E+00 (  -7.325eV) occ=1.000    -0.2661325E+00 (  -7.242eV) occ=1.000
+    -0.2806379E+00 (  -7.637eV) occ=1.000    -0.2747589E+00 (  -7.477eV) occ=1.000
+    -0.2879910E+00 (  -7.837eV) occ=1.000    -0.2807883E+00 (  -7.641eV) occ=1.000
+    -0.2958842E+00 (  -8.051eV) occ=1.000    -0.2866622E+00 (  -7.801eV) occ=1.000
+    -0.3151933E+00 (  -8.577eV) occ=1.000    -0.3042160E+00 (  -8.278eV) occ=1.000
+    -0.3238849E+00 (  -8.813eV) occ=1.000    -0.3201349E+00 (  -8.711eV) occ=1.000
+    -0.3457472E+00 (  -9.408eV) occ=1.000    -0.3425147E+00 (  -9.320eV) occ=1.000
+    -0.3554464E+00 (  -9.672eV) occ=1.000    -0.3520395E+00 (  -9.580eV) occ=1.000
+    -0.3733118E+00 ( -10.158eV) occ=1.000    -0.3684772E+00 ( -10.027eV) occ=1.000
+    -0.3781990E+00 ( -10.291eV) occ=1.000    -0.3752745E+00 ( -10.212eV) occ=1.000
+    -0.3901568E+00 ( -10.617eV) occ=1.000    -0.3854981E+00 ( -10.490eV) occ=1.000
+    -0.4054700E+00 ( -11.033eV) occ=1.000    -0.4024152E+00 ( -10.950eV) occ=1.000
+    -0.4109847E+00 ( -11.184eV) occ=1.000    -0.4078426E+00 ( -11.098eV) occ=1.000
+    -0.4319142E+00 ( -11.753eV) occ=1.000    -0.4299424E+00 ( -11.699eV) occ=1.000
+    -0.4385315E+00 ( -11.933eV) occ=1.000    -0.4367682E+00 ( -11.885eV) occ=1.000
+    -0.4409157E+00 ( -11.998eV) occ=1.000    -0.4391379E+00 ( -11.950eV) occ=1.000
+    -0.4539996E+00 ( -12.354eV) occ=1.000    -0.4523922E+00 ( -12.310eV) occ=1.000
+    -0.4710468E+00 ( -12.818eV) occ=1.000    -0.4683651E+00 ( -12.745eV) occ=1.000
+    -0.6696442E+00 ( -18.222eV) occ=1.000    -0.6528318E+00 ( -17.765eV) occ=1.000
+    -0.1187762E+01 ( -32.321eV) occ=1.000    -0.1181795E+01 ( -32.159eV) occ=1.000
+    -0.1204210E+01 ( -32.768eV) occ=1.000    -0.1195496E+01 ( -32.531eV) occ=1.000
+    -0.1213723E+01 ( -33.027eV) occ=1.000    -0.1207476E+01 ( -32.857eV) occ=1.000
+    -0.1267411E+01 ( -34.488eV) occ=1.000    -0.1265719E+01 ( -34.442eV) occ=1.000
+    -0.1272115E+01 ( -34.616eV) occ=1.000    -0.1274203E+01 ( -34.673eV) occ=1.000
+    -0.1291036E+01 ( -35.131eV) occ=1.000    -0.1289577E+01 ( -35.091eV) occ=1.000
+
+ Brillouin zone point:      6
+    weight=  0.125000
+    k     =<   0.125   0.125   0.000> . <b1,b2,b3> 
+          =<   0.140   0.085  -0.000>
+
+ orbital energies:
+     0.3173113E+00 (   8.635eV) occ=1.000
+     0.3114832E+00 (   8.476eV) occ=1.000
+     0.3081593E+00 (   8.386eV) occ=1.000     0.3107805E+00 (   8.457eV) occ=1.000
+     0.3031372E+00 (   8.249eV) occ=1.000     0.3066628E+00 (   8.345eV) occ=1.000
+     0.3000614E+00 (   8.165eV) occ=1.000     0.3027765E+00 (   8.239eV) occ=1.000
+     0.2960267E+00 (   8.055eV) occ=1.000     0.2972549E+00 (   8.089eV) occ=1.000
+     0.2890441E+00 (   7.865eV) occ=1.000     0.2922500E+00 (   7.953eV) occ=1.000
+     0.2877384E+00 (   7.830eV) occ=1.000     0.2871708E+00 (   7.814eV) occ=1.000
+     0.2840216E+00 (   7.729eV) occ=1.000     0.2856709E+00 (   7.774eV) occ=1.000
+     0.2815740E+00 (   7.662eV) occ=1.000     0.2832298E+00 (   7.707eV) occ=1.000
+     0.2762057E+00 (   7.516eV) occ=1.000     0.2787768E+00 (   7.586eV) occ=1.000
+     0.2703237E+00 (   7.356eV) occ=1.000     0.2706920E+00 (   7.366eV) occ=1.000
+     0.2675093E+00 (   7.279eV) occ=1.000     0.2668461E+00 (   7.261eV) occ=1.000
+     0.2607617E+00 (   7.096eV) occ=1.000     0.2637452E+00 (   7.177eV) occ=1.000
+     0.2510361E+00 (   6.831eV) occ=1.000     0.2542541E+00 (   6.919eV) occ=1.000
+     0.2473998E+00 (   6.732eV) occ=1.000     0.2473061E+00 (   6.730eV) occ=1.000
+     0.2444885E+00 (   6.653eV) occ=1.000     0.2468039E+00 (   6.716eV) occ=1.000
+     0.2270266E+00 (   6.178eV) occ=1.000     0.2307796E+00 (   6.280eV) occ=1.000
+     0.2185154E+00 (   5.946eV) occ=1.000     0.2219973E+00 (   6.041eV) occ=1.000
+     0.2065216E+00 (   5.620eV) occ=1.000     0.2198132E+00 (   5.981eV) occ=1.000
+     0.1362159E-01 (   0.371eV) occ=1.000     0.3779289E-01 (   1.028eV) occ=1.000
+     0.1266581E-01 (   0.345eV) occ=1.000     0.3417085E-01 (   0.930eV) occ=1.000
+    -0.2087091E-01 (  -0.568eV) occ=1.000    -0.5278061E-02 (  -0.144eV) occ=1.000
+    -0.1914217E+00 (  -5.209eV) occ=1.000    -0.1721507E+00 (  -4.684eV) occ=1.000
+    -0.2368182E+00 (  -6.444eV) occ=1.000    -0.2303800E+00 (  -6.269eV) occ=1.000
+    -0.2596453E+00 (  -7.065eV) occ=1.000    -0.2580176E+00 (  -7.021eV) occ=1.000
+    -0.2684467E+00 (  -7.305eV) occ=1.000    -0.2639916E+00 (  -7.184eV) occ=1.000
+    -0.2743340E+00 (  -7.465eV) occ=1.000    -0.2713025E+00 (  -7.383eV) occ=1.000
+    -0.2824929E+00 (  -7.687eV) occ=1.000    -0.2780291E+00 (  -7.566eV) occ=1.000
+    -0.2876237E+00 (  -7.827eV) occ=1.000    -0.2840591E+00 (  -7.730eV) occ=1.000
+    -0.3000344E+00 (  -8.164eV) occ=1.000    -0.2957218E+00 (  -8.047eV) occ=1.000
+    -0.3094683E+00 (  -8.421eV) occ=1.000    -0.3039194E+00 (  -8.270eV) occ=1.000
+    -0.3257217E+00 (  -8.863eV) occ=1.000    -0.3229940E+00 (  -8.789eV) occ=1.000
+    -0.3367054E+00 (  -9.162eV) occ=1.000    -0.3316923E+00 (  -9.026eV) occ=1.000
+    -0.3440878E+00 (  -9.363eV) occ=1.000    -0.3429824E+00 (  -9.333eV) occ=1.000
+    -0.3574989E+00 (  -9.728eV) occ=1.000    -0.3552736E+00 (  -9.668eV) occ=1.000
+    -0.3842274E+00 ( -10.455eV) occ=1.000    -0.3825256E+00 ( -10.409eV) occ=1.000
+    -0.3968363E+00 ( -10.799eV) occ=1.000    -0.3925669E+00 ( -10.682eV) occ=1.000
+    -0.4345556E+00 ( -11.825eV) occ=1.000    -0.4316134E+00 ( -11.745eV) occ=1.000
+    -0.4430677E+00 ( -12.057eV) occ=1.000    -0.4404406E+00 ( -11.985eV) occ=1.000
+    -0.4505402E+00 ( -12.260eV) occ=1.000    -0.4463614E+00 ( -12.146eV) occ=1.000
+    -0.4864305E+00 ( -13.237eV) occ=1.000    -0.4847829E+00 ( -13.192eV) occ=1.000
+    -0.6837792E+00 ( -18.607eV) occ=1.000    -0.6666879E+00 ( -18.142eV) occ=1.000
+    -0.1194439E+01 ( -32.503eV) occ=1.000    -0.1188465E+01 ( -32.340eV) occ=1.000
+    -0.1213249E+01 ( -33.014eV) occ=1.000    -0.1204739E+01 ( -32.783eV) occ=1.000
+    -0.1225611E+01 ( -33.351eV) occ=1.000    -0.1219656E+01 ( -33.189eV) occ=1.000
+    -0.1272838E+01 ( -34.636eV) occ=1.000    -0.1271158E+01 ( -34.590eV) occ=1.000
+    -0.1282826E+01 ( -34.908eV) occ=1.000    -0.1284641E+01 ( -34.957eV) occ=1.000
+    -0.1304365E+01 ( -35.494eV) occ=1.000    -0.1302786E+01 ( -35.451eV) occ=1.000
+
+ Brillouin zone point:      7
+    weight=  0.125000
+    k     =<   0.125  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.140  -0.085  -0.000>
+
+ orbital energies:
+     0.3169291E+00 (   8.624eV) occ=1.000
+     0.3106746E+00 (   8.454eV) occ=1.000
+     0.3093613E+00 (   8.418eV) occ=1.000     0.3124804E+00 (   8.503eV) occ=1.000
+     0.3034705E+00 (   8.258eV) occ=1.000     0.3092046E+00 (   8.414eV) occ=1.000
+     0.2996925E+00 (   8.155eV) occ=1.000     0.3020063E+00 (   8.218eV) occ=1.000
+     0.2944746E+00 (   8.013eV) occ=1.000     0.2993249E+00 (   8.145eV) occ=1.000
+     0.2915052E+00 (   7.932eV) occ=1.000     0.2935404E+00 (   7.988eV) occ=1.000
+     0.2875042E+00 (   7.823eV) occ=1.000     0.2889334E+00 (   7.862eV) occ=1.000
+     0.2852374E+00 (   7.762eV) occ=1.000     0.2837064E+00 (   7.720eV) occ=1.000
+     0.2807681E+00 (   7.640eV) occ=1.000     0.2820076E+00 (   7.674eV) occ=1.000
+     0.2758943E+00 (   7.508eV) occ=1.000     0.2776723E+00 (   7.556eV) occ=1.000
+     0.2703532E+00 (   7.357eV) occ=1.000     0.2720410E+00 (   7.403eV) occ=1.000
+     0.2664951E+00 (   7.252eV) occ=1.000     0.2661329E+00 (   7.242eV) occ=1.000
+     0.2598270E+00 (   7.070eV) occ=1.000     0.2649191E+00 (   7.209eV) occ=1.000
+     0.2519844E+00 (   6.857eV) occ=1.000     0.2539409E+00 (   6.910eV) occ=1.000
+     0.2473932E+00 (   6.732eV) occ=1.000     0.2473131E+00 (   6.730eV) occ=1.000
+     0.2451560E+00 (   6.671eV) occ=1.000     0.2459643E+00 (   6.693eV) occ=1.000
+     0.2272882E+00 (   6.185eV) occ=1.000     0.2301186E+00 (   6.262eV) occ=1.000
+     0.2180651E+00 (   5.934eV) occ=1.000     0.2222081E+00 (   6.047eV) occ=1.000
+     0.2066209E+00 (   5.622eV) occ=1.000     0.2196040E+00 (   5.976eV) occ=1.000
+     0.1361731E-01 (   0.371eV) occ=1.000     0.3780822E-01 (   1.029eV) occ=1.000
+     0.1267072E-01 (   0.345eV) occ=1.000     0.3415645E-01 (   0.929eV) occ=1.000
+    -0.2087022E-01 (  -0.568eV) occ=1.000    -0.5278002E-02 (  -0.144eV) occ=1.000
+    -0.1914245E+00 (  -5.209eV) occ=1.000    -0.1721505E+00 (  -4.684eV) occ=1.000
+    -0.2368867E+00 (  -6.446eV) occ=1.000    -0.2302226E+00 (  -6.265eV) occ=1.000
+    -0.2595945E+00 (  -7.064eV) occ=1.000    -0.2579285E+00 (  -7.019eV) occ=1.000
+    -0.2688531E+00 (  -7.316eV) occ=1.000    -0.2639076E+00 (  -7.181eV) occ=1.000
+    -0.2742843E+00 (  -7.464eV) occ=1.000    -0.2717117E+00 (  -7.394eV) occ=1.000
+    -0.2811118E+00 (  -7.650eV) occ=1.000    -0.2787049E+00 (  -7.584eV) occ=1.000
+    -0.2884151E+00 (  -7.848eV) occ=1.000    -0.2836488E+00 (  -7.719eV) occ=1.000
+    -0.3002076E+00 (  -8.169eV) occ=1.000    -0.2953341E+00 (  -8.037eV) occ=1.000
+    -0.3093477E+00 (  -8.418eV) occ=1.000    -0.3038953E+00 (  -8.269eV) occ=1.000
+    -0.3259065E+00 (  -8.868eV) occ=1.000    -0.3230183E+00 (  -8.790eV) occ=1.000
+    -0.3369107E+00 (  -9.168eV) occ=1.000    -0.3315900E+00 (  -9.023eV) occ=1.000
+    -0.3437977E+00 (  -9.355eV) occ=1.000    -0.3430996E+00 (  -9.336eV) occ=1.000
+    -0.3576575E+00 (  -9.732eV) occ=1.000    -0.3551152E+00 (  -9.663eV) occ=1.000
+    -0.3842024E+00 ( -10.455eV) occ=1.000    -0.3824876E+00 ( -10.408eV) occ=1.000
+    -0.3967320E+00 ( -10.796eV) occ=1.000    -0.3928658E+00 ( -10.691eV) occ=1.000
+    -0.4346691E+00 ( -11.828eV) occ=1.000    -0.4317190E+00 ( -11.748eV) occ=1.000
+    -0.4430749E+00 ( -12.057eV) occ=1.000    -0.4405442E+00 ( -11.988eV) occ=1.000
+    -0.4505540E+00 ( -12.260eV) occ=1.000    -0.4460456E+00 ( -12.138eV) occ=1.000
+    -0.4863425E+00 ( -13.234eV) occ=1.000    -0.4847998E+00 ( -13.192eV) occ=1.000
+    -0.6837792E+00 ( -18.607eV) occ=1.000    -0.6666880E+00 ( -18.142eV) occ=1.000
+    -0.1194440E+01 ( -32.503eV) occ=1.000    -0.1188466E+01 ( -32.340eV) occ=1.000
+    -0.1213249E+01 ( -33.014eV) occ=1.000    -0.1204740E+01 ( -32.783eV) occ=1.000
+    -0.1225611E+01 ( -33.351eV) occ=1.000    -0.1219655E+01 ( -33.189eV) occ=1.000
+    -0.1272841E+01 ( -34.636eV) occ=1.000    -0.1271157E+01 ( -34.590eV) occ=1.000
+    -0.1282825E+01 ( -34.908eV) occ=1.000    -0.1284641E+01 ( -34.957eV) occ=1.000
+    -0.1304363E+01 ( -35.494eV) occ=1.000    -0.1302786E+01 ( -35.451eV) occ=1.000
+
+ Brillouin zone point:      8
+    weight=  0.125000
+    k     =<   0.375  -0.125   0.000> . <b1,b2,b3> 
+          =<   0.419  -0.085  -0.000>
+
+ orbital energies:
+     0.3145413E+00 (   8.559eV) occ=1.000
+     0.3060020E+00 (   8.327eV) occ=1.000
+     0.2992798E+00 (   8.144eV) occ=1.000     0.3040072E+00 (   8.273eV) occ=1.000
+     0.2975236E+00 (   8.096eV) occ=1.000     0.3008134E+00 (   8.186eV) occ=1.000
+     0.2931689E+00 (   7.978eV) occ=1.000     0.2967482E+00 (   8.075eV) occ=1.000
+     0.2909409E+00 (   7.917eV) occ=1.000     0.2959638E+00 (   8.054eV) occ=1.000
+     0.2855420E+00 (   7.770eV) occ=1.000     0.2906410E+00 (   7.909eV) occ=1.000
+     0.2815024E+00 (   7.660eV) occ=1.000     0.2881936E+00 (   7.842eV) occ=1.000
+     0.2767766E+00 (   7.532eV) occ=1.000     0.2803265E+00 (   7.628eV) occ=1.000
+     0.2720165E+00 (   7.402eV) occ=1.000     0.2783165E+00 (   7.573eV) occ=1.000
+     0.2694024E+00 (   7.331eV) occ=1.000     0.2730593E+00 (   7.430eV) occ=1.000
+     0.2628840E+00 (   7.153eV) occ=1.000     0.2716497E+00 (   7.392eV) occ=1.000
+     0.2514707E+00 (   6.843eV) occ=1.000     0.2640096E+00 (   7.184eV) occ=1.000
+     0.2500453E+00 (   6.804eV) occ=1.000     0.2573205E+00 (   7.002eV) occ=1.000
+     0.2414203E+00 (   6.569eV) occ=1.000     0.2515018E+00 (   6.844eV) occ=1.000
+     0.2373869E+00 (   6.460eV) occ=1.000     0.2441227E+00 (   6.643eV) occ=1.000
+     0.2224992E+00 (   6.055eV) occ=1.000     0.2293243E+00 (   6.240eV) occ=1.000
+     0.2110990E+00 (   5.744eV) occ=1.000     0.2160265E+00 (   5.878eV) occ=1.000
+     0.1967322E+00 (   5.353eV) occ=1.000     0.2000334E+00 (   5.443eV) occ=1.000
+     0.1803130E+00 (   4.907eV) occ=1.000     0.1839232E+00 (   5.005eV) occ=1.000
+     0.1505315E+00 (   4.096eV) occ=1.000     0.1647476E+00 (   4.483eV) occ=1.000
+     0.4389439E-01 (   1.194eV) occ=1.000     0.6871220E-01 (   1.870eV) occ=1.000
+     0.3914701E-01 (   1.065eV) occ=1.000     0.6174404E-01 (   1.680eV) occ=1.000
+    -0.2540273E+00 (  -6.912eV) occ=1.000    -0.2476033E+00 (  -6.738eV) occ=1.000
+    -0.2686299E+00 (  -7.310eV) occ=1.000    -0.2662820E+00 (  -7.246eV) occ=1.000
+    -0.2806716E+00 (  -7.638eV) occ=1.000    -0.2748352E+00 (  -7.479eV) occ=1.000
+    -0.2890935E+00 (  -7.867eV) occ=1.000    -0.2808658E+00 (  -7.643eV) occ=1.000
+    -0.2956249E+00 (  -8.044eV) occ=1.000    -0.2861455E+00 (  -7.786eV) occ=1.000
+    -0.3151869E+00 (  -8.577eV) occ=1.000    -0.3041315E+00 (  -8.276eV) occ=1.000
+    -0.3234446E+00 (  -8.801eV) occ=1.000    -0.3204234E+00 (  -8.719eV) occ=1.000
+    -0.3458805E+00 (  -9.412eV) occ=1.000    -0.3422692E+00 (  -9.314eV) occ=1.000
+    -0.3554949E+00 (  -9.674eV) occ=1.000    -0.3518933E+00 (  -9.576eV) occ=1.000
+    -0.3731904E+00 ( -10.155eV) occ=1.000    -0.3684106E+00 ( -10.025eV) occ=1.000
+    -0.3784092E+00 ( -10.297eV) occ=1.000    -0.3753771E+00 ( -10.215eV) occ=1.000
+    -0.3896853E+00 ( -10.604eV) occ=1.000    -0.3854733E+00 ( -10.489eV) occ=1.000
+    -0.4054840E+00 ( -11.034eV) occ=1.000    -0.4028279E+00 ( -10.962eV) occ=1.000
+    -0.4110485E+00 ( -11.185eV) occ=1.000    -0.4082955E+00 ( -11.110eV) occ=1.000
+    -0.4320151E+00 ( -11.756eV) occ=1.000    -0.4295571E+00 ( -11.689eV) occ=1.000
+    -0.4389101E+00 ( -11.943eV) occ=1.000    -0.4365276E+00 ( -11.879eV) occ=1.000
+    -0.4409878E+00 ( -12.000eV) occ=1.000    -0.4391699E+00 ( -11.951eV) occ=1.000
+    -0.4540810E+00 ( -12.356eV) occ=1.000    -0.4523825E+00 ( -12.310eV) occ=1.000
+    -0.4706632E+00 ( -12.807eV) occ=1.000    -0.4684028E+00 ( -12.746eV) occ=1.000
+    -0.6696442E+00 ( -18.222eV) occ=1.000    -0.6528319E+00 ( -17.765eV) occ=1.000
+    -0.1187763E+01 ( -32.321eV) occ=1.000    -0.1181797E+01 ( -32.159eV) occ=1.000
+    -0.1204210E+01 ( -32.768eV) occ=1.000    -0.1195497E+01 ( -32.531eV) occ=1.000
+    -0.1213722E+01 ( -33.027eV) occ=1.000    -0.1207475E+01 ( -32.857eV) occ=1.000
+    -0.1267415E+01 ( -34.488eV) occ=1.000    -0.1265718E+01 ( -34.442eV) occ=1.000
+    -0.1272115E+01 ( -34.616eV) occ=1.000    -0.1274203E+01 ( -34.673eV) occ=1.000
+    -0.1291033E+01 ( -35.131eV) occ=1.000    -0.1289578E+01 ( -35.091eV) occ=1.000
+
+ Total BAND energy   :  -0.3397714123E+03
+
+
+=== Spin Contamination ===
+
+ <Sexact^2> =    2.0000000000000000     
+ <S^2>      =    9.7282397203073501     
+
+
+ Writing Crystallographic Information File:./perm/U6O2.opt.cif
+   - cell not shifted (nwpw:cif_shift_cell .false.)
+
+ output psi filename:./perm/U6O2-211-perpbrg.movecs
+
+
+== Timing ==
+
+cputime in seconds
+  prologue    :   0.301378E+03
+  main loop   :   0.271172E+04
+  epilogue    :   0.260274E+03
+  total       :   0.327337E+04
+  cputime/step:   0.260742E+01       (    1040 evalulations,     454 linesearches)
+
+
+Time spent doing                        total          step
+  FFTs                       :   0.170372E+03  0.163820E+00
+  dot products               :   0.658566E+03  0.633236E+00
+  geodesic                   :   0.376874E+03  0.362379E+00
+  ffm_dgemm                  :   0.000000E+00  0.000000E+00
+  fmf_dgemm                  :   0.000000E+00  0.000000E+00
+  m_diagonalize              :   0.000000E+00  0.000000E+00
+    - m_tredq                :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq      :   0.000000E+00  0.000000E+00
+       - m_tredq_houseq_dgemm:   0.000000E+00  0.000000E+00
+       - m_tredq_dgemm1      :   0.000000E+00  0.000000E+00
+    - m_getdiags             :   0.000000E+00  0.000000E+00
+    - m_tqliq                :   0.000000E+00  0.000000E+00
+    - m_eigsrt               :   0.000000E+00  0.000000E+00
+  exchange correlation       :   0.255295E+03  0.245476E+00
+  local pseudopotentials     :   0.568151E-03  0.546299E-06
+  non-local pseudopotentials :   0.190290E+03  0.182971E+00
+  hartree potentials         :   0.350653E+00  0.337166E-03
+  ion-ion interaction        :   0.217084E+01  0.208734E-02
+  structure factors          :   0.328627E+00  0.315988E-03
+  phase factors              :   0.000000E+00  0.000000E+00
+  masking and packing        :   0.137157E+03  0.131882E+00
+  queue fft                  :   0.140500E+04  0.135096E+01
+  queue fft (serial)         :   0.516210E+03  0.496356E+00
+  queue fft (message passing):   0.831769E+03  0.799778E+00
+  HFX potential              :   0.000000E+00  0.000000E+00
+  qmmm LJ                    :   0.000000E+00  0.000000E+00
+  qmmm residual Q            :   0.000000E+00  0.000000E+00
+
+     >>>  JOB COMPLETED     AT Sat Mar  9 03:20:14 2013  <<<
+
+ Task  times  cpu:     3229.3s     wall:     3273.4s
+ Summary of allocated global arrays
+-----------------------------------
+  No active global arrays
+
+
+
+                         GA Statistics for process    0
+                         ------------------------------
+
+       create   destroy   get      put      acc     scatter   gather  read&inc
+calls:    0        0        0        0        0        0        0        0     
+number of processes/call 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+bytes total:             0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+bytes remote:            0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+Max memory consumed for GA by this process: 0 bytes
+MA_summarize_allocated_blocks: starting scan ...
+MA_summarize_allocated_blocks: scan completed: 0 heap blocks, 0 stack blocks
+MA usage statistics:
+
+	allocation statistics:
+					      heap	     stack
+					      ----	     -----
+	current number of blocks	         0	         0
+	maximum number of blocks	       282	        25
+	current total bytes		         0	         0
+	maximum total bytes		 256212632	  22997128
+	maximum total K-bytes		    256213	     22998
+	maximum total M-bytes		       257	        23
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+
+
+
+                                     CITATION
+                                     --------
+                Please cite the following reference when publishing
+                           results obtained with NWChem:
+
+                 M. Valiev, E.J. Bylaska, N. Govind, K. Kowalski,
+              T.P. Straatsma, H.J.J. van Dam, D. Wang, J. Nieplocha,
+                        E. Apra, T.L. Windus, W.A. de Jong
+                 "NWChem: a comprehensive and scalable open-source
+                  solution for large scale molecular simulations"
+                      Comput. Phys. Commun. 181, 1477 (2010)
+                           doi:10.1016/j.cpc.2010.04.018
+
+                              AUTHORS & CONTRIBUTORS
+                              ----------------------
+          E. Apra, E. J. Bylaska, W. A. de Jong, N. Govind, K. Kowalski,
+       T. P. Straatsma, M. Valiev, H. J. J. van Dam, D. Wang, T. L. Windus,
+    J. Hammond, J. Autschbach, F. Aquino, S. Hirata, M. T. Hackler, K. Lopata,
+      J. Mullin, P. Nichols, R. Peverati, Y. Zhao, P.-D. Fan, R. J. Harrison,
+        M. Dupuis, D. M. A. Smith, J. Nieplocha, V. Tipparaju, M. Krishnan,
+       B. E. Van Kuiken, A. Vazquez-Mayagoitia, L. Jensen, M. Swart, Q. Wu,
+   T. Van Voorhis, A. A. Auer, M. Nooijen, L. D. Crosby, E. Brown, G. Cisneros,
+      G. I. Fann, H. Fruchtl, J. Garza, K. Hirao, R. Kendall, J. A. Nichols,
+        K. Tsemekhman, K. Wolinski, J. Anchell, D. Bernholdt, P. Borowski,
+  T. Clark, D. Clerc, H. Dachsel, M. Deegan, K. Dyall, D. Elwood, E. Glendening,
+         M. Gutowski, A. Hess, J. Jaffe, B. Johnson, J. Ju, R. Kobayashi,
+     R. Kutteh, Z. Lin, R. Littlefield, X. Long, B. Meng, T. Nakajima, S. Niu,
+      L. Pollack, M. Rosing, K. Glaesemann, G. Sandrone, M. Stave, H. Taylor,
+                  G. Thomas, J. H. van Lenthe, A. Wong, Z. Zhang.
+
+ Total times  cpu:    10051.8s     wall:    10173.4s
+cp: cannot stat `./U6O2-211-perpbrg.out': No such file or directory
+----------------------------------------
+Begin Torque Epilogue (Sat Mar  9 03:20:16 2013)
+Job ID:           384550.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O2-211-perpbrg
+Session:          22271
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=08:00:00
+Resources:        cput=811:19:33,mem=105957688kb,vmem=588534340kb,walltime=02:50:31
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub251 taub265 taub266 taub268 taub279 taub315 taub319 taub334 taub337 taub341 taub344 taub345 taub357 taub358 taub377 taub454 taub456 taub485 taub487 taub488 taub492 taub496 taub497 taub512
+End Torque Epilogue
+----------------------------------------

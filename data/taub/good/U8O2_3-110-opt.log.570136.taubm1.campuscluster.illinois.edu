@@ -1,0 +1,603 @@
+----------------------------------------
+Begin Torque Prologue (Tue Apr  9 15:21:57 2013)
+Job ID:           570136.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8O2_3-110-opt
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=24:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub281 taub308 taub323 taub336 taub337 taub338 taub339 taub354 taub356 taub357 taub362 taub367 taub372 taub373 taub374 taub378 taub390 taub393 taub430 taub458 taub460 taub469 taub487 taub504
+End Torque Prologue
+----------------------------------------
+rtdb_seq_open: ./perm/U8O2_3-110-opt.db does not exist, cannot open old
+Last System Error Message from Task 3:: No such file or directory
+Last System Error Message from Task 6:: No such file or directory
+Last System Error Message from Task 0:: No such file or directory
+Last System Error Message from Task 8:: No such file or directory
+Last System Error Message from Task 1:: No such file or directory
+Last System Error Message from Task 2:: No such file or directory
+Last System Error Message from Task 4:: No such file or directory
+Last System Error Message from Task 5:: No such file or directory
+Last System Error Message from Task 9:: No such file or directory
+Last System Error Message from Task 10:: No such file or directory
+Last System Error Message from Task 11:: No such file or directory
+Last System Error Message from Task 7:: No such file or directory
+application called MPI_Abort(comm=0x84000003, 0) - process 3
+application called MPI_Abort(comm=0x84000003, 0) - process 1
+application called MPI_Abort(comm=0x84000003, 0) - process 4
+application called MPI_Abort(comm=0x84000003, 0) - process 11
+application called MPI_Abort(comm=0x84000003, 0) - process 10
+application called MPI_Abort(comm=0x84000003, 0) - process 8
+application called MPI_Abort(comm=0x84000003, 0) - process 7
+application called MPI_Abort(comm=0x84000003, 0) - process 9
+application called MPI_Abort(comm=0x84000003, 0) - process 5
+application called MPI_Abort(comm=0x84000003, 0) - process 2
+application called MPI_Abort(comm=0x84000003, 0) - process 6
+application called MPI_Abort(comm=0x84000005, 0) - process 0
+Last System Error Message from Task 145:: No such file or directory
+Last System Error Message from Task 146:: No such file or directory
+Last System Error Message from Task 61:: No such file or directory
+Last System Error Message from Task 62:: No such file or directory
+Last System Error Message from Task 133:: No such file or directory
+Last System Error Message from Task 134:: No such file or directory
+Last System Error Message from Task 135:: No such file or directory
+Last System Error Message from Task 60:: No such file or directory
+Last System Error Message from Task 66:: No such file or directory
+Last System Error Message from Task 149:: No such file or directory
+Last System Error Message from Task 150:: No such file or directory
+Last System Error Message from Task 152:: No such file or directory
+Last System Error Message from Task 155:: No such file or directory
+Last System Error Message from Task 25:: No such file or directory
+Last System Error Message from Task 144:: No such file or directory
+Last System Error Message from Task 136:: No such file or directory
+Last System Error Message from Task 147:: No such file or directory
+Last System Error Message from Task 148:: No such file or directory
+Last System Error Message from Task 137:: No such file or directory
+Last System Error Message from Task 151:: No such file or directory
+Last System Error Message from Task 153:: No such file or directory
+Last System Error Message from Task 154:: No such file or directory
+Last System Error Message from Task 26:: No such file or directory
+Last System Error Message from Task 63:: No such file or directory
+Last System Error Message from Task 132:: No such file or directory
+Last System Error Message from Task 64:: No such file or directory
+Last System Error Message from Task 18:: No such file or directory
+Last System Error Message from Task 65:: No such file or directory
+Last System Error Message from Task 32:: No such file or directory
+Last System Error Message from Task 67:: No such file or directory
+Last System Error Message from Task 68:: No such file or directory
+Last System Error Message from Task 69:: No such file or directory
+Last System Error Message from Task 23:: No such file or directory
+Last System Error Message from Task 70:: No such file or directory
+Last System Error Message from Task 138:: No such file or directory
+Last System Error Message from Task 71:: No such file or directory
+Last System Error Message from Task 139:: No such file or directory
+Last System Error Message from Task 140:: No such file or directory
+Last System Error Message from Task 141:: No such file or directory
+Last System Error Message from Task 142:: No such file or directory
+Last System Error Message from Task 143:: No such file or directory
+Last System Error Message from Task 12:: No such file or directory
+Last System Error Message from Task 24:: No such file or directory
+Last System Error Message from Task 13:: No such file or directory
+Last System Error Message from Task 14:: No such file or directory
+Last System Error Message from Task 15:: No such file or directory
+Last System Error Message from Task 27:: No such file or directory
+Last System Error Message from Task 16:: No such file or directory
+Last System Error Message from Task 28:: No such file or directory
+Last System Error Message from Task 17:: No such file or directory
+Last System Error Message from Task 29:: No such file or directory
+Last System Error Message from Task 30:: No such file or directory
+Last System Error Message from Task 19:: No such file or directory
+Last System Error Message from Task 31:: No such file or directory
+Last System Error Message from Task 20:: No such file or directory
+Last System Error Message from Task 21:: No such file or directory
+Last System Error Message from Task 33:: No such file or directory
+Last System Error Message from Task 22:: No such file or directory
+Last System Error Message from Task 34:: No such file or directory
+Last System Error Message from Task 35:: No such file or directory
+Last System Error Message from Task 207:: No such file or directory
+Last System Error Message from Task 210:: No such file or directory
+Last System Error Message from Task 37:: No such file or directory
+Last System Error Message from Task 38:: No such file or directory
+Last System Error Message from Task 40:: No such file or directory
+Last System Error Message from Task 41:: No such file or directory
+Last System Error Message from Task 42:: No such file or directory
+Last System Error Message from Task 169:: No such file or directory
+Last System Error Message from Task 204:: No such file or directory
+Last System Error Message from Task 44:: No such file or directory
+Last System Error Message from Task 170:: No such file or directory
+Last System Error Message from Task 205:: No such file or directory
+Last System Error Message from Task 45:: No such file or directory
+Last System Error Message from Task 206:: No such file or directory
+Last System Error Message from Task 173:: No such file or directory
+Last System Error Message from Task 208:: No such file or directory
+Last System Error Message from Task 209:: No such file or directory
+Last System Error Message from Task 221:: No such file or directory
+Last System Error Message from Task 176:: No such file or directory
+Last System Error Message from Task 211:: No such file or directory
+Last System Error Message from Task 177:: No such file or directory
+Last System Error Message from Task 212:: No such file or directory
+Last System Error Message from Task 213:: No such file or directory
+Last System Error Message from Task 178:: No such file or directory
+Last System Error Message from Task 214:: No such file or directory
+Last System Error Message from Task 215:: No such file or directory
+Last System Error Message from Task 36:: No such file or directory
+Last System Error Message from Task 72:: No such file or directory
+Last System Error Message from Task 73:: No such file or directory
+Last System Error Message from Task 39:: No such file or directory
+Last System Error Message from Task 74:: No such file or directory
+Last System Error Message from Task 75:: No such file or directory
+Last System Error Message from Task 76:: No such file or directory
+Last System Error Message from Task 168:: No such file or directory
+Last System Error Message from Task 77:: No such file or directory
+Last System Error Message from Task 43:: No such file or directory
+Last System Error Message from Task 192:: No such file or directory
+Last System Error Message from Task 78:: No such file or directory
+Last System Error Message from Task 79:: No such file or directory
+Last System Error Message from Task 216:: No such file or directory
+Last System Error Message from Task 193:: No such file or directory
+Last System Error Message from Task 171:: No such file or directory
+Last System Error Message from Task 80:: No such file or directory
+Last System Error Message from Task 217:: No such file or directory
+Last System Error Message from Task 194:: No such file or directory
+Last System Error Message from Task 57:: No such file or directory
+Last System Error Message from Task 46:: No such file or directory
+Last System Error Message from Task 172:: No such file or directory
+Last System Error Message from Task 81:: No such file or directory
+Last System Error Message from Task 195:: No such file or directory
+Last System Error Message from Task 218:: No such file or directory
+Last System Error Message from Task 47:: No such file or directory
+Last System Error Message from Task 82:: No such file or directory
+Last System Error Message from Task 196:: No such file or directory
+Last System Error Message from Task 219:: No such file or directory
+Last System Error Message from Task 174:: No such file or directory
+Last System Error Message from Task 83:: No such file or directory
+Last System Error Message from Task 197:: No such file or directory
+Last System Error Message from Task 220:: No such file or directory
+Last System Error Message from Task 175:: No such file or directory
+Last System Error Message from Task 198:: No such file or directory
+Last System Error Message from Task 199:: No such file or directory
+Last System Error Message from Task 222:: No such file or directory
+Last System Error Message from Task 200:: No such file or directory
+Last System Error Message from Task 223:: No such file or directory
+Last System Error Message from Task 201:: No such file or directory
+Last System Error Message from Task 224:: No such file or directory
+Last System Error Message from Task 179:: No such file or directory
+Last System Error Message from Task 202:: No such file or directory
+Last System Error Message from Task 225:: No such file or directory
+Last System Error Message from Task 203:: No such file or directory
+Last System Error Message from Task 226:: No such file or directory
+Last System Error Message from Task 227:: No such file or directory
+Last System Error Message from Task 241:: No such file or directory
+Last System Error Message from Task 276:: No such file or directory
+Last System Error Message from Task 278:: No such file or directory
+Last System Error Message from Task 279:: No such file or directory
+Last System Error Message from Task 244:: No such file or directory
+Last System Error Message from Task 268:: No such file or directory
+Last System Error Message from Task 280:: No such file or directory
+Last System Error Message from Task 245:: No such file or directory
+Last System Error Message from Task 281:: No such file or directory
+Last System Error Message from Task 246:: No such file or directory
+Last System Error Message from Task 247:: No such file or directory
+Last System Error Message from Task 283:: No such file or directory
+Last System Error Message from Task 248:: No such file or directory
+Last System Error Message from Task 284:: No such file or directory
+Last System Error Message from Task 249:: No such file or directory
+Last System Error Message from Task 285:: No such file or directory
+Last System Error Message from Task 250:: No such file or directory
+Last System Error Message from Task 274:: No such file or directory
+Last System Error Message from Task 286:: No such file or directory
+Last System Error Message from Task 251:: No such file or directory
+Last System Error Message from Task 275:: No such file or directory
+Last System Error Message from Task 287:: No such file or directory
+Last System Error Message from Task 48:: No such file or directory
+Last System Error Message from Task 49:: No such file or directory
+Last System Error Message from Task 50:: No such file or directory
+Last System Error Message from Task 108:: No such file or directory
+Last System Error Message from Task 51:: No such file or directory
+Last System Error Message from Task 120:: No such file or directory
+Last System Error Message from Task 109:: No such file or directory
+Last System Error Message from Task 52:: No such file or directory
+Last System Error Message from Task 110:: No such file or directory
+Last System Error Message from Task 121:: No such file or directory
+Last System Error Message from Task 53:: No such file or directory
+Last System Error Message from Task 111:: No such file or directory
+Last System Error Message from Task 122:: No such file or directory
+Last System Error Message from Task 54:: No such file or directory
+Last System Error Message from Task 112:: No such file or directory
+Last System Error Message from Task 123:: No such file or directory
+Last System Error Message from Task 55:: No such file or directory
+Last System Error Message from Task 181:: No such file or directory
+Last System Error Message from Task 113:: No such file or directory
+Last System Error Message from Task 124:: No such file or directory
+Last System Error Message from Task 182:: No such file or directory
+Last System Error Message from Task 56:: No such file or directory
+Last System Error Message from Task 228:: No such file or directory
+Last System Error Message from Task 114:: No such file or directory
+Last System Error Message from Task 240:: No such file or directory
+Last System Error Message from Task 125:: No such file or directory
+Last System Error Message from Task 126:: No such file or directory
+Last System Error Message from Task 115:: No such file or directory
+Last System Error Message from Task 58:: No such file or directory
+Last System Error Message from Task 127:: No such file or directory
+Last System Error Message from Task 116:: No such file or directory
+Last System Error Message from Task 128:: No such file or directory
+Last System Error Message from Task 59:: No such file or directory
+Last System Error Message from Task 129:: No such file or directory
+Last System Error Message from Task 117:: No such file or directory
+Last System Error Message from Task 130:: No such file or directory
+Last System Error Message from Task 118:: No such file or directory
+Last System Error Message from Task 187:: No such file or directory
+Last System Error Message from Task 131:: No such file or directory
+Last System Error Message from Task 119:: No such file or directory
+Last System Error Message from Task 188:: No such file or directory
+Last System Error Message from Task 189:: No such file or directory
+Last System Error Message from Task 190:: No such file or directory
+Last System Error Message from Task 191:: No such file or directory
+Last System Error Message from Task 229:: No such file or directory
+Last System Error Message from Task 264:: No such file or directory
+Last System Error Message from Task 265:: No such file or directory
+Last System Error Message from Task 230:: No such file or directory
+Last System Error Message from Task 277:: No such file or directory
+Last System Error Message from Task 242:: No such file or directory
+Last System Error Message from Task 266:: No such file or directory
+Last System Error Message from Task 243:: No such file or directory
+Last System Error Message from Task 231:: No such file or directory
+Last System Error Message from Task 267:: No such file or directory
+Last System Error Message from Task 232:: No such file or directory
+Last System Error Message from Task 233:: No such file or directory
+Last System Error Message from Task 269:: No such file or directory
+Last System Error Message from Task 234:: No such file or directory
+Last System Error Message from Task 270:: No such file or directory
+Last System Error Message from Task 282:: No such file or directory
+Last System Error Message from Task 235:: No such file or directory
+Last System Error Message from Task 271:: No such file or directory
+Last System Error Message from Task 236:: No such file or directory
+Last System Error Message from Task 272:: No such file or directory
+Last System Error Message from Task 256:: No such file or directory
+Last System Error Message from Task 237:: No such file or directory
+Last System Error Message from Task 273:: No such file or directory
+Last System Error Message from Task 238:: No such file or directory
+Last System Error Message from Task 239:: No such file or directory
+Last System Error Message from Task 180:: No such file or directory
+Last System Error Message from Task 183:: No such file or directory
+Last System Error Message from Task 252:: No such file or directory
+Last System Error Message from Task 184:: No such file or directory
+Last System Error Message from Task 185:: No such file or directory
+Last System Error Message from Task 186:: No such file or directory
+Last System Error Message from Task 253:: No such file or directory
+Last System Error Message from Task 254:: No such file or directory
+Last System Error Message from Task 255:: No such file or directory
+Last System Error Message from Task 257:: No such file or directory
+Last System Error Message from Task 258:: No such file or directory
+Last System Error Message from Task 259:: No such file or directory
+Last System Error Message from Task 260:: No such file or directory
+Last System Error Message from Task 261:: No such file or directory
+Last System Error Message from Task 262:: No such file or directory
+Last System Error Message from Task 263:: No such file or directory
+Last System Error Message from Task 102:: No such file or directory
+Last System Error Message from Task 106:: No such file or directory
+Last System Error Message from Task 97:: No such file or directory
+Last System Error Message from Task 99:: No such file or directory
+Last System Error Message from Task 105:: No such file or directory
+Last System Error Message from Task 101:: No such file or directory
+Last System Error Message from Task 104:: No such file or directory
+Last System Error Message from Task 100:: No such file or directory
+Last System Error Message from Task 103:: No such file or directory
+Last System Error Message from Task 107:: No such file or directory
+Last System Error Message from Task 96:: No such file or directory
+Last System Error Message from Task 98:: No such file or directory
+application called MPI_Abort(comm=0x84000003, 0) - process 145
+application called MPI_Abort(comm=0x84000003, 0) - process 66
+application called MPI_Abort(comm=0x84000003, 0) - process 17
+application called MPI_Abort(comm=0x84000003, 0) - process 61
+application called MPI_Abort(comm=0x84000003, 0) - process 14
+application called MPI_Abort(comm=0x84000003, 0) - process 71
+application called MPI_Abort(comm=0x84000003, 0) - process 25
+application called MPI_Abort(comm=0x84000003, 0) - process 62
+application called MPI_Abort(comm=0x84000003, 0) - process 70
+application called MPI_Abort(comm=0x84000003, 0) - process 18
+application called MPI_Abort(comm=0x84000003, 0) - process 152
+application called MPI_Abort(comm=0x84000003, 0) - process 153
+application called MPI_Abort(comm=0x84000003, 0) - process 215
+application called MPI_Abort(comm=0x84000003, 0) - process 64
+application called MPI_Abort(comm=0x84000003, 0) - process 34
+application called MPI_Abort(comm=0x84000003, 0) - process 133
+application called MPI_Abort(comm=0x84000003, 0) - process 75
+application called MPI_Abort(comm=0x84000003, 0) - process 20
+application called MPI_Abort(comm=0x84000003, 0) - process 177
+application called MPI_Abort(comm=0x84000003, 0) - process 179
+application called MPI_Abort(comm=0x84000003, 0) - process 175
+application called MPI_Abort(comm=0x84000003, 0) - process 210
+application called MPI_Abort(comm=0x84000003, 0) - process 211
+application called MPI_Abort(comm=0x84000003, 0) - process 206
+application called MPI_Abort(comm=0x84000003, 0) - process 141
+application called MPI_Abort(comm=0x84000003, 0) - process 147
+application called MPI_Abort(comm=0x84000003, 0) - process 22
+application called MPI_Abort(comm=0x84000003, 0) - process 26
+application called MPI_Abort(comm=0x84000003, 0) - process 21
+application called MPI_Abort(comm=0x84000003, 0) - process 44
+application called MPI_Abort(comm=0x84000003, 0) - process 207
+application called MPI_Abort(comm=0x84000003, 0) - process 223
+application called MPI_Abort(comm=0x84000003, 0) - process 146
+application called MPI_Abort(comm=0x84000003, 0) - process 148
+application called MPI_Abort(comm=0x84000003, 0) - process 138
+application called MPI_Abort(comm=0x84000003, 0) - process 249
+application called MPI_Abort(comm=0x84000003, 0) - process 193
+application called MPI_Abort(comm=0x84000003, 0) - process 200
+application called MPI_Abort(comm=0x84000003, 0) - process 39
+application called MPI_Abort(comm=0x84000003, 0) - process 187
+application called MPI_Abort(comm=0x84000003, 0) - process 32
+application called MPI_Abort(comm=0x84000003, 0) - process 47
+application called MPI_Abort(comm=0x84000003, 0) - process 135
+application called MPI_Abort(comm=0x84000003, 0) - process 33
+application called MPI_Abort(comm=0x84000003, 0) - process 198
+application called MPI_Abort(comm=0x84000003, 0) - process 231
+application called MPI_Abort(comm=0x84000003, 0) - process 251
+application called MPI_Abort(comm=0x84000003, 0) - process 195
+application called MPI_Abort(comm=0x84000003, 0) - process 246
+application called MPI_Abort(comm=0x84000003, 0) - process 73
+application called MPI_Abort(comm=0x84000003, 0) - process 230
+application called MPI_Abort(comm=0x84000003, 0) - process 188
+application called MPI_Abort(comm=0x84000003, 0) - process 38
+application called MPI_Abort(comm=0x84000003, 0) - process 191
+application called MPI_Abort(comm=0x84000003, 0) - process 63
+application called MPI_Abort(comm=0x84000003, 0) - process 134
+application called MPI_Abort(comm=0x84000003, 0) - process 28
+application called MPI_Abort(comm=0x84000003, 0) - process 137
+application called MPI_Abort(comm=0x84000003, 0) - process 110
+application called MPI_Abort(comm=0x84000003, 0) - process 227
+application called MPI_Abort(comm=0x84000003, 0) - process 136
+application called MPI_Abort(comm=0x84000003, 0) - process 82
+application called MPI_Abort(comm=0x84000003, 0) - process 275
+application called MPI_Abort(comm=0x84000003, 0) - process 287
+application called MPI_Abort(comm=0x84000003, 0) - process 53
+application called MPI_Abort(comm=0x84000003, 0) - process 242
+application called MPI_Abort(comm=0x84000003, 0) - process 139
+application called MPI_Abort(comm=0x84000003, 0) - process 140
+application called MPI_Abort(comm=0x84000003, 0) - process 212
+application called MPI_Abort(comm=0x84000003, 0) - process 203
+application called MPI_Abort(comm=0x84000003, 0) - process 244
+application called MPI_Abort(comm=0x84000003, 0) - process 37
+application called MPI_Abort(comm=0x84000003, 0) - process 29
+application called MPI_Abort(comm=0x84000003, 0) - process 57
+application called MPI_Abort(comm=0x84000003, 0) - process 233
+application called MPI_Abort(comm=0x84000003, 0) - process 80
+application called MPI_Abort(comm=0x84000003, 0) - process 220
+application called MPI_Abort(comm=0x84000003, 0) - process 271
+application called MPI_Abort(comm=0x84000003, 0) - process 49
+application called MPI_Abort(comm=0x84000003, 0) - process 229
+application called MPI_Abort(comm=0x84000003, 0) - process 219
+application called MPI_Abort(comm=0x84000003, 0) - process 79
+application called MPI_Abort(comm=0x84000003, 0) - process 45
+application called MPI_Abort(comm=0x84000003, 0) - process 172
+application called MPI_Abort(comm=0x84000003, 0) - process 222
+application called MPI_Abort(comm=0x84000003, 0) - process 46
+application called MPI_Abort(comm=0x84000003, 0) - process 270
+application called MPI_Abort(comm=0x84000003, 0) - process 182
+application called MPI_Abort(comm=0x84000003, 0) - process 197
+application called MPI_Abort(comm=0x84000003, 0) - process 125
+application called MPI_Abort(comm=0x84000003, 0) - process 130
+application called MPI_Abort(comm=0x84000003, 0) - process 241
+application called MPI_Abort(comm=0x84000003, 0) - process 254
+application called MPI_Abort(comm=0x84000003, 0) - process 128
+application called MPI_Abort(comm=0x84000003, 0) - process 121
+application called MPI_Abort(comm=0x84000003, 0) - process 58
+application called MPI_Abort(comm=0x84000005, 0) - process 24
+application called MPI_Abort(comm=0x84000003, 0) - process 78
+application called MPI_Abort(comm=0x84000003, 0) - process 226
+application called MPI_Abort(comm=0x84000003, 0) - process 50
+application called MPI_Abort(comm=0x84000003, 0) - process 122
+application called MPI_Abort(comm=0x84000003, 0) - process 55
+application called MPI_Abort(comm=0x84000003, 0) - process 170
+application called MPI_Abort(comm=0x84000003, 0) - process 149
+application called MPI_Abort(comm=0x84000003, 0) - process 184
+application called MPI_Abort(comm=0x84000003, 0) - process 83
+application called MPI_Abort(comm=0x84000003, 0) - process 283
+application called MPI_Abort(comm=0x84000003, 0) - process 257
+application called MPI_Abort(comm=0x84000003, 0) - process 181
+application called MPI_Abort(comm=0x84000005, 0) - process 36
+application called MPI_Abort(comm=0x84000003, 0) - process 196
+application called MPI_Abort(comm=0x84000003, 0) - process 285
+application called MPI_Abort(comm=0x84000003, 0) - process 169
+application called MPI_Abort(comm=0x84000003, 0) - process 218
+application called MPI_Abort(comm=0x84000003, 0) - process 185
+application called MPI_Abort(comm=0x84000003, 0) - process 266
+application called MPI_Abort(comm=0x84000003, 0) - process 258
+application called MPI_Abort(comm=0x84000003, 0) - process 109
+application called MPI_Abort(comm=0x84000003, 0) - process 111
+application called MPI_Abort(comm=0x84000003, 0) - process 119
+application called MPI_Abort(comm=0x84000003, 0) - process 268
+application called MPI_Abort(comm=0x84000003, 0) - process 261
+application called MPI_Abort(comm=0x84000003, 0) - process 263
+application called MPI_Abort(comm=0x84000005, 0) - process 216
+application called MPI_Abort(comm=0x84000003, 0) - process 56
+application called MPI_Abort(comm=0x84000003, 0) - process 173
+application called MPI_Abort(comm=0x84000003, 0) - process 183
+application called MPI_Abort(comm=0x84000003, 0) - process 126
+application called MPI_Abort(comm=0x84000003, 0) - process 277
+application called MPI_Abort(comm=0x84000003, 0) - process 267
+application called MPI_Abort(comm=0x84000003, 0) - process 281
+application called MPI_Abort(comm=0x84000003, 0) - process 127
+application called MPI_Abort(comm=0x84000003, 0) - process 278
+application called MPI_Abort(comm=0x84000003, 0) - process 245
+application called MPI_Abort(comm=0x84000003, 0) - process 239
+application called MPI_Abort(comm=0x84000003, 0) - process 114
+application called MPI_Abort(comm=0x84000003, 0) - process 116
+application called MPI_Abort(comm=0x84000003, 0) - process 238
+application called MPI_Abort(comm=0x84000003, 0) - process 155
+application called MPI_Abort(comm=0x84000003, 0) - process 59
+application called MPI_Abort(comm=0x84000003, 0) - process 115
+application called MPI_Abort(comm=0x84000003, 0) - process 150
+application called MPI_Abort(comm=0x84000003, 0) - process 117
+application called MPI_Abort(comm=0x84000003, 0) - process 129
+application called MPI_Abort(comm=0x84000005, 0) - process 252
+application called MPI_Abort(comm=0x84000003, 0) - process 234
+application called MPI_Abort(comm=0x84000003, 0) - process 100
+application called MPI_Abort(comm=0x84000003, 0) - process 214
+application called MPI_Abort(comm=0x84000005, 0) - process 264
+application called MPI_Abort(comm=0x84000003, 0) - process 237
+application called MPI_Abort(comm=0x84000003, 0) - process 236
+application called MPI_Abort(comm=0x84000003, 0) - process 99
+application called MPI_Abort(comm=0x84000003, 0) - process 151
+application called MPI_Abort(comm=0x84000003, 0) - process 118
+application called MPI_Abort(comm=0x84000003, 0) - process 13
+application called MPI_Abort(comm=0x84000003, 0) - process 15
+application called MPI_Abort(comm=0x84000003, 0) - process 286
+application called MPI_Abort(comm=0x84000003, 0) - process 260
+application called MPI_Abort(comm=0x84000003, 0) - process 65
+application called MPI_Abort(comm=0x84000003, 0) - process 282
+application called MPI_Abort(comm=0x84000003, 0) - process 201
+application called MPI_Abort(comm=0x84000003, 0) - process 41
+application called MPI_Abort(comm=0x84000003, 0) - process 19
+application called MPI_Abort(comm=0x84000003, 0) - process 113
+application called MPI_Abort(comm=0x84000003, 0) - process 274
+application called MPI_Abort(comm=0x84000003, 0) - process 243
+application called MPI_Abort(comm=0x84000003, 0) - process 98
+application called MPI_Abort(comm=0x84000003, 0) - process 256
+application called MPI_Abort(comm=0x84000003, 0) - process 67
+application called MPI_Abort(comm=0x84000003, 0) - process 81
+application called MPI_Abort(comm=0x84000003, 0) - process 16
+application called MPI_Abort(comm=0x84000003, 0) - process 209
+application called MPI_Abort(comm=0x84000003, 0) - process 194
+application called MPI_Abort(comm=0x84000003, 0) - process 105
+application called MPI_Abort(comm=0x84000003, 0) - process 154
+application called MPI_Abort(comm=0x84000003, 0) - process 102
+application called MPI_Abort(comm=0x84000003, 0) - process 279
+application called MPI_Abort(comm=0x84000003, 0) - process 221
+application called MPI_Abort(comm=0x84000003, 0) - process 107
+application called MPI_Abort(comm=0x84000003, 0) - process 112
+application called MPI_Abort(comm=0x84000003, 0) - process 280
+application called MPI_Abort(comm=0x84000003, 0) - process 284
+application called MPI_Abort(comm=0x84000003, 0) - process 205
+application called MPI_Abort(comm=0x84000003, 0) - process 27
+application called MPI_Abort(comm=0x84000003, 0) - process 217
+application called MPI_Abort(comm=0x84000003, 0) - process 178
+application called MPI_Abort(comm=0x84000005, 0) - process 96
+application called MPI_Abort(comm=0x84000003, 0) - process 40
+application called MPI_Abort(comm=0x84000003, 0) - process 174
+application called MPI_Abort(comm=0x84000003, 0) - process 171
+application called MPI_Abort(comm=0x84000003, 0) - process 232
+application called MPI_Abort(comm=0x84000003, 0) - process 208
+application called MPI_Abort(comm=0x84000003, 0) - process 213
+application called MPI_Abort(comm=0x84000003, 0) - process 106
+application called MPI_Abort(comm=0x84000003, 0) - process 224
+application called MPI_Abort(comm=0x84000003, 0) - process 273
+application called MPI_Abort(comm=0x84000003, 0) - process 259
+application called MPI_Abort(comm=0x84000003, 0) - process 142
+application called MPI_Abort(comm=0x84000003, 0) - process 199
+application called MPI_Abort(comm=0x84000005, 0) - process 168
+application called MPI_Abort(comm=0x84000005, 0) - process 60
+application called MPI_Abort(comm=0x84000003, 0) - process 269
+application called MPI_Abort(comm=0x84000003, 0) - process 31
+application called MPI_Abort(comm=0x84000003, 0) - process 68
+application called MPI_Abort(comm=0x84000003, 0) - process 262
+application called MPI_Abort(comm=0x84000005, 0) - process 12
+application called MPI_Abort(comm=0x84000003, 0) - process 69
+application called MPI_Abort(comm=0x84000003, 0) - process 248
+application called MPI_Abort(comm=0x84000003, 0) - process 51
+application called MPI_Abort(comm=0x84000003, 0) - process 265
+application called MPI_Abort(comm=0x84000003, 0) - process 225
+application called MPI_Abort(comm=0x84000003, 0) - process 52
+application called MPI_Abort(comm=0x84000003, 0) - process 247
+application called MPI_Abort(comm=0x84000003, 0) - process 30
+application called MPI_Abort(comm=0x84000003, 0) - process 35
+application called MPI_Abort(comm=0x84000003, 0) - process 272
+application called MPI_Abort(comm=0x84000003, 0) - process 77
+application called MPI_Abort(comm=0x84000005, 0) - process 240
+application called MPI_Abort(comm=0x84000003, 0) - process 202
+application called MPI_Abort(comm=0x84000003, 0) - process 143
+application called MPI_Abort(comm=0x84000003, 0) - process 186
+application called MPI_Abort(comm=0x84000003, 0) - process 74
+application called MPI_Abort(comm=0x84000005, 0) - process 132
+application called MPI_Abort(comm=0x84000003, 0) - process 250
+application called MPI_Abort(comm=0x84000003, 0) - process 54
+application called MPI_Abort(comm=0x84000003, 0) - process 124
+application called MPI_Abort(comm=0x84000005, 0) - process 192
+application called MPI_Abort(comm=0x84000005, 0) - process 144
+application called MPI_Abort(comm=0x84000005, 0) - process 48
+application called MPI_Abort(comm=0x84000005, 0) - process 204
+application called MPI_Abort(comm=0x84000003, 0) - process 23
+application called MPI_Abort(comm=0x84000003, 0) - process 101
+application called MPI_Abort(comm=0x84000003, 0) - process 176
+application called MPI_Abort(comm=0x84000005, 0) - process 120
+application called MPI_Abort(comm=0x84000005, 0) - process 72
+application called MPI_Abort(comm=0x84000005, 0) - process 180
+application called MPI_Abort(comm=0x84000005, 0) - process 276
+application called MPI_Abort(comm=0x84000003, 0) - process 76
+application called MPI_Abort(comm=0x84000003, 0) - process 103
+application called MPI_Abort(comm=0x84000003, 0) - process 42
+application called MPI_Abort(comm=0x84000003, 0) - process 131
+application called MPI_Abort(comm=0x84000003, 0) - process 123
+application called MPI_Abort(comm=0x84000003, 0) - process 235
+application called MPI_Abort(comm=0x84000005, 0) - process 108
+application called MPI_Abort(comm=0x84000003, 0) - process 255
+application called MPI_Abort(comm=0x84000003, 0) - process 97
+application called MPI_Abort(comm=0x84000003, 0) - process 189
+application called MPI_Abort(comm=0x84000003, 0) - process 190
+application called MPI_Abort(comm=0x84000003, 0) - process 253
+application called MPI_Abort(comm=0x84000003, 0) - process 43
+application called MPI_Abort(comm=0x84000003, 0) - process 104
+application called MPI_Abort(comm=0x84000005, 0) - process 228
+Last System Error Message from Task 157:: No such file or directory
+Last System Error Message from Task 158:: No such file or directory
+Last System Error Message from Task 165:: No such file or directory
+Last System Error Message from Task 166:: No such file or directory
+Last System Error Message from Task 159:: No such file or directory
+Last System Error Message from Task 162:: No such file or directory
+Last System Error Message from Task 167:: No such file or directory
+Last System Error Message from Task 156:: No such file or directory
+Last System Error Message from Task 163:: No such file or directory
+Last System Error Message from Task 160:: No such file or directory
+Last System Error Message from Task 161:: No such file or directory
+Last System Error Message from Task 164:: No such file or directory
+application called MPI_Abort(comm=0x84000003, 0) - process 157
+application called MPI_Abort(comm=0x84000003, 0) - process 161
+application called MPI_Abort(comm=0x84000003, 0) - process 160
+application called MPI_Abort(comm=0x84000003, 0) - process 165
+application called MPI_Abort(comm=0x84000003, 0) - process 164
+application called MPI_Abort(comm=0x84000003, 0) - process 163
+application called MPI_Abort(comm=0x84000003, 0) - process 159
+application called MPI_Abort(comm=0x84000003, 0) - process 166
+application called MPI_Abort(comm=0x84000003, 0) - process 158
+application called MPI_Abort(comm=0x84000003, 0) - process 162
+application called MPI_Abort(comm=0x84000005, 0) - process 156
+application called MPI_Abort(comm=0x84000003, 0) - process 167
+Last System Error Message from Task 93:: No such file or directory
+Last System Error Message from Task 88:: No such file or directory
+Last System Error Message from Task 89:: No such file or directory
+Last System Error Message from Task 86:: No such file or directory
+Last System Error Message from Task 87:: No such file or directory
+Last System Error Message from Task 95:: No such file or directory
+Last System Error Message from Task 90:: No such file or directory
+Last System Error Message from Task 84:: No such file or directory
+Last System Error Message from Task 85:: No such file or directory
+Last System Error Message from Task 91:: No such file or directory
+Last System Error Message from Task 92:: No such file or directory
+Last System Error Message from Task 94:: No such file or directory
+application called MPI_Abort(comm=0x84000003, 0) - process 93
+application called MPI_Abort(comm=0x84000003, 0) - process 94
+application called MPI_Abort(comm=0x84000003, 0) - process 86
+application called MPI_Abort(comm=0x84000003, 0) - process 92
+application called MPI_Abort(comm=0x84000003, 0) - process 95
+application called MPI_Abort(comm=0x84000003, 0) - process 87
+application called MPI_Abort(comm=0x84000003, 0) - process 89
+application called MPI_Abort(comm=0x84000003, 0) - process 85
+application called MPI_Abort(comm=0x84000003, 0) - process 90
+application called MPI_Abort(comm=0x84000005, 0) - process 84
+application called MPI_Abort(comm=0x84000003, 0) - process 88
+application called MPI_Abort(comm=0x84000003, 0) - process 91
+----------------------------------------
+Begin Torque Epilogue (Tue Apr  9 15:22:16 2013)
+Job ID:           570136.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8O2_3-110-opt
+Session:          11691
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=24:00:00
+Resources:        cput=00:08:45,mem=9455284kb,vmem=126004316kb,walltime=00:00:19
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub281 taub308 taub323 taub336 taub337 taub338 taub339 taub354 taub356 taub357 taub362 taub367 taub372 taub373 taub374 taub378 taub390 taub393 taub430 taub458 taub460 taub469 taub487 taub504
+End Torque Epilogue
+----------------------------------------

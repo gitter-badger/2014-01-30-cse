@@ -1,0 +1,925 @@
+----------------------------------------
+Begin Torque Prologue (Sun Mar 10 07:54:40 2013)
+Job ID:           384924.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6H-211-top
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=04:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub362 taub363 taub364 taub377 taub380 taub385 taub387 taub406 taub409 taub410 taub411 taub431 taub440 taub441 taub442 taub454 taub456 taub485 taub487 taub488 taub492 taub496 taub497 taub512
+End Torque Prologue
+----------------------------------------
+ argument  1 = ./U6H-211-top.nw
+
+
+
+============================== echo of input deck ==============================
+title "Gamma-uranium (211) adsorption"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+start U6H-211-top
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 36 48 320
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 2
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 10 10 12
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:cif_filename U6-pbe96.opt
+
+#       (211) gamma-uranium surface with surface displacements: 43.40%  -18.50% and H displacement of   0.250   Å
+geometry        center  noautosym       noautoz print
+        system  crystal
+        lat_a   2.97913
+        lat_b   4.86259
+        lat_c   23.42762
+        alpha   90.0d0
+        beta    90.0d0
+        gamma   90.0d0
+        end
+        U1      0.66667 0.50000 0.66494
+        U2      0.33333 0.00000 0.63100
+        U3      0.00000 0.50000 0.55996
+        U4      0.66667 0.00000 0.50000
+        U5      0.33333 0.50000 0.42895
+        U6      0.00000 0.00000 0.39502
+        H1      0.66667 0.50000 0.67561
+end
+#task band energy
+
+nwpw
+  simulation_cell
+    ngrid 60 96 480
+  end
+end
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	2.250	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	H1	0.66667	0.50000	0.76098
+end
+task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	2.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	H1	0.66667	0.50000	0.77165
+end
+task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.000	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	H1	0.83333	0.00000	0.70762
+end
+task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.250	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	H1	0.83333	0.00000	0.71829
+end
+task band energy
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and H displacement of	1.500	Å
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	23.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.66494
+	U2	0.33333	0.00000	0.63100
+	U3	0.00000	0.50000	0.55996
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.42895
+	U6	0.00000	0.00000	0.39502
+	H1	0.83333	0.00000	0.72896
+end
+task band energy
+
+# A.M.D.G.
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 6.1.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2012
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = taub512
+    program         = /home/davis68/bin/nwchem-dev
+    date            = Sun Mar 10 07:54:44 2013
+
+    compiled        = Wed_Oct_03_09:41:00_2012
+    source          = /home/davis68/nwchem/nwchem-src-2012-Aug-27/
+    nwchem branch   = Development
+    nwchem revision = 22805
+    ga revision     = 10079
+    input           = ./U6H-211-top.nw
+    prefix          = U6H-211-top.
+    data base       = ./perm/U6H-211-top.db
+    status          = startup
+    nproc           =      288
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =   81920001 doubles =    625.0 Mbytes
+    stack    =   81920001 doubles =    625.0 Mbytes
+    global   =  163840000 doubles =   1250.0 Mbytes (distinct from heap & stack)
+    total    =  327680002 doubles =   2500.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = ./perm
+  0 scratch   = ./scratch
+
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+                          Gamma-uranium (211) adsorption
+                          ------------------------------
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 H1                   1.0000     1.98609660     2.43129500    15.82793435
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      H1                 1.007825
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 H1               |   1 U1               |     0.47238  |     0.24997
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 H1               |   106.84
+    3 U3               |   1 U1               |   7 H1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                         Geometry "geometry" -> "        "
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    15.57796164
+    2 U2                  92.0000     0.99303340     0.00000000    14.78282822
+    3 U3                  92.0000     0.00000000     2.43129500    13.11853010
+    4 U4                  92.0000     1.98609660     0.00000000    11.71381000
+    5 U5                  92.0000     0.99303340     2.43129500    10.04927760
+    6 U6                  92.0000     0.00000000     0.00000000     9.25437845
+    7 H1                   1.0000     1.98609660     2.43129500    17.82795027
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  23.428 >
+      a=       2.979 b=      4.863 c=      23.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   339.4
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.142 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      H1                 1.007825
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18543  |     2.74401
+    3 U3               |   1 U1               |     5.97386  |     3.16123
+    3 U3               |   2 U2               |     5.87556  |     3.10921
+    4 U4               |   2 U2               |     6.09566  |     3.22569
+    4 U4               |   3 U3               |     6.49940  |     3.43933
+    5 U5               |   3 U3               |     6.09607  |     3.22590
+    5 U5               |   4 U4               |     5.87581  |     3.10935
+    6 U6               |   4 U4               |     5.97386  |     3.16123
+    6 U6               |   5 U5               |     5.18528  |     2.74393
+    7 H1               |   1 U1               |     4.25186  |     2.24999
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         10
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 H1               |   106.84
+    3 U3               |   1 U1               |   7 H1               |   141.08
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.46
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.74
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.74
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         22
+ ==============================================================================
+
+
+
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Sun Mar 10 07:54:45 2013  <<<
+          ================ input data ========================
+  library name resolved from: environment
+  NWCHEM_NWPW_LIBRARY set to: </home/davis68/nwchem/nwchem-6.1/src/nwpw/libraryps/>
+ Generating 1d pseudopotential for U   
+
+ Generated formatted_filename: ./perm/U.cpp
+ - Spline fitted, nray=42243 -
+  library name resolved from: environment
+  NWCHEM_NWPW_LIBRARY set to: </home/davis68/nwchem/nwchem-6.1/src/nwpw/libraryps/>
+ Generating 1d pseudopotential for H   
+
+ Generated formatted_filename: ./perm/H.cpp
+ - Spline fitted, nray=42243 -
+ random planewave guess, initial psi:U6H-211-top.movecs                                
+ -   spin, nalpha, nbeta:                    2                   43                   42
+
+ input psi filename:./perm/U6H-211-top.movecs
+Warning - Orthogonalization performed, spin,zone: 1   1
+        - error(before)=  0.602513E+01 (  0.369749E+02)
+        - error(after)=   0.000000E+00 (  0.430000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   1
+        - error(before)=  0.588786E+01 (  0.361121E+02)
+        - error(after)=   0.142109E-13 (  0.420000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   2
+        - error(before)=  0.602593E+01 (  0.369741E+02)
+        - error(after)=   0.710543E-14 (  0.430000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   2
+        - error(before)=  0.588745E+01 (  0.361125E+02)
+        - error(after)=   0.710543E-14 (  0.420000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   3
+        - error(before)=  0.602555E+01 (  0.369744E+02)
+        - error(after)=   0.000000E+00 (  0.430000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   3
+        - error(before)=  0.588778E+01 (  0.361122E+02)
+        - error(after)=   0.000000E+00 (  0.420000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   4
+        - error(before)=  0.602510E+01 (  0.369749E+02)
+        - error(after)=   0.710543E-14 (  0.430000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   4
+        - error(before)=  0.588810E+01 (  0.361119E+02)
+        - error(after)=   0.000000E+00 (  0.420000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   5
+        - error(before)=  0.602583E+01 (  0.369742E+02)
+        - error(after)=   0.710543E-14 (  0.430000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   5
+        - error(before)=  0.588776E+01 (  0.361122E+02)
+        - error(after)=   0.710543E-14 (  0.420000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   6
+        - error(before)=  0.602613E+01 (  0.369739E+02)
+        - error(after)=   0.710543E-14 (  0.430000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   6
+        - error(before)=  0.588734E+01 (  0.361127E+02)
+        - error(after)=   0.000000E+00 (  0.420000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   7
+        - error(before)=  0.602506E+01 (  0.369749E+02)
+        - error(after)=   0.000000E+00 (  0.430000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   7
+        - error(before)=  0.588856E+01 (  0.361114E+02)
+        - error(after)=   0.710543E-14 (  0.420000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   8
+        - error(before)=  0.602606E+01 (  0.369739E+02)
+        - error(after)=   0.710543E-14 (  0.430000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   8
+        - error(before)=  0.588767E+01 (  0.361123E+02)
+        - error(after)=   0.000000E+00 (  0.420000E+02)
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+      2: H     core charge: 1.0  lmax=1
+             comment    : Parameterized (Chem.Phys.Lett., vol 322, page 447) Hamman psp
+             pseudpotential type            :   0
+             highest angular component      :   1
+             local potential used           :   1
+             number of non-local projections:   1
+             cutoff =   0.800   0.800
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  6     H   :  1
+
+ number of electrons: spin up=   43.00  spin down=   42.00 (fourier space)
+ number of orbitals:  spin up=      43  spin down=      42 (fourier space)
+
+ supercell:
+      lattice:    a1=<   5.630   0.000   0.000 >
+                  a2=<   0.000   9.189   0.000 >
+                  a3=<   0.000   0.000  44.272 >
+      reciprocal: b1=<   1.116   0.000  -0.000 >
+                  b2=<  -0.000   0.684  -0.000 >
+                  b3=<   0.000   0.000   0.142 >
+
+      lattice:    a=   5.630    b=   9.189     c=  44.272
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     2290.2
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-3.07590645
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.419   0.256  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.140   0.256  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.140   0.256  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.419  -0.256  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.419   0.085  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.140   0.085  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.140  -0.085  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.419  -0.085  -0.000>
+
+ computational grids:
+      density     cutoff=180.000  fft=  60x  96x 480(   263991 waves     7333 per task)
+      wavefnc   1 cutoff= 90.000  fft=  60x  96x 480(    93406 waves     2594 per task)
+      wavefnc   2 cutoff= 90.000  fft=  60x  96x 480(    93331 waves     2592 per task)
+      wavefnc   3 cutoff= 90.000  fft=  60x  96x 480(    93331 waves     2592 per task)
+      wavefnc   4 cutoff= 90.000  fft=  60x  96x 480(    93406 waves     2594 per task)
+      wavefnc   5 cutoff= 90.000  fft=  60x  96x 480(    93512 waves     2597 per task)
+      wavefnc   6 cutoff= 90.000  fft=  60x  96x 480(    93355 waves     2593 per task)
+      wavefnc   7 cutoff= 90.000  fft=  60x  96x 480(    93355 waves     2593 per task)
+      wavefnc   8 cutoff= 90.000  fft=  60x  96x 480(    93512 waves     2597 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Sun Mar 10 08:02:02 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+     -  10 steepest descent iterations performed
+      10   -0.2867824733E+03   -0.32556E+01    0.74874E+01
+     -  10 steepest descent iterations performed
+      20   -0.3042531772E+03   -0.33302E+00    0.99677E-01
+     -  10 steepest descent iterations performed
+      30   -0.3065036702E+03   -0.12325E+00    0.32975E-01
+     -  10 steepest descent iterations performed
+      40   -0.3073306818E+03   -0.40478E-01    0.70534E-02
+     -  10 steepest descent iterations performed
+      50   -0.3077119203E+03   -0.22880E-01    0.48065E-02
+     -  10 steepest descent iterations performed
+      60   -0.3079186366E+03   -0.11445E-01    0.22043E-02
+     -  10 steepest descent iterations performed
+      70   -0.3080445547E+03   -0.82044E-02    0.19757E-02
+      80   -0.3082090751E+03   -0.53155E-02    0.97499E-02
+      90   -0.3082445592E+03   -0.45936E-02    0.96763E-03
+     100   -0.3082923924E+03   -0.33562E-02    0.35549E-02
+     110   -0.3083166756E+03   -0.17638E-02    0.10131E-02
+     120   -0.3083389839E+03   -0.30281E-02    0.14257E-02
+     -  10 steepest descent iterations performed
+     130   -0.3083600387E+03   -0.10572E-02    0.20442E-03
+     140   -0.3083794581E+03   -0.23271E-02    0.94496E-03
+     -  10 steepest descent iterations performed
+     150   -0.3083907655E+03   -0.67726E-03    0.26015E-03
+     160   -0.3083998516E+03   -0.93414E-03    0.82398E-03
+     -  10 steepest descent iterations performed
+     170   -0.3084085267E+03   -0.41455E-03    0.18559E-03
+     180   -0.3084141793E+03   -0.61058E-03    0.41976E-03
+     -  10 steepest descent iterations performed
+     190   -0.3084207054E+03   -0.39786E-03    0.23176E-03
+     200   -0.3084251076E+03   -0.41463E-03    0.39349E-03
+     -  10 steepest descent iterations performed
+     210   -0.3084306585E+03   -0.27736E-03    0.16852E-03
+     220   -0.3084341335E+03   -0.38296E-03    0.29549E-03
+     -  10 steepest descent iterations performed
+     230   -0.3084388824E+03   -0.29680E-03    0.19668E-03
+     240   -0.3084421545E+03   -0.31665E-03    0.34282E-03
+     -  10 steepest descent iterations performed
+     250   -0.3084468504E+03   -0.24707E-03    0.17825E-03
+     260   -0.3084500415E+03   -0.37083E-03    0.36836E-03
+     -  10 steepest descent iterations performed
+     270   -0.3084549238E+03   -0.31722E-03    0.23178E-03
+     280   -0.3084584664E+03   -0.35041E-03    0.46490E-03
+     -  10 steepest descent iterations performed
+     290   -0.3084639289E+03   -0.28973E-03    0.22683E-03
+     300   -0.3084675124E+03   -0.39927E-03    0.44338E-03
+     -  10 steepest descent iterations performed
+     310   -0.3084729291E+03   -0.34523E-03    0.25727E-03
+     320   -0.3084763556E+03   -0.30464E-03    0.37965E-03
+     330   -0.3084888800E+03   -0.44420E-03    0.38463E-02
+     -  10 steepest descent iterations performed
+     340   -0.3084934808E+03   -0.20619E-03    0.21048E-03
+     350   -0.3084949755E+03   -0.16818E-03    0.10630E-03
+     360   -0.3084978190E+03   -0.13077E-03    0.62481E-03
+     370   -0.3085001898E+03   -0.17053E-03    0.57993E-03
+     -  10 steepest descent iterations performed
+     380   -0.3085022188E+03   -0.18891E-03    0.60726E-04
+     -  10 steepest descent iterations performed
+     390   -0.3085030185E+03   -0.47792E-04    0.27762E-04
+     400   -0.3085041528E+03   -0.80437E-04    0.33145E-03
+     -  10 steepest descent iterations performed
+     410   -0.3085048609E+03   -0.51757E-04    0.32057E-04
+     420   -0.3085052650E+03   -0.44944E-04    0.64834E-04
+     430   -0.3085059631E+03   -0.79229E-04    0.30969E-03
+     -  10 steepest descent iterations performed
+     440   -0.3085065095E+03   -0.31679E-04    0.16190E-04
+     450   -0.3085068100E+03   -0.20512E-04    0.28105E-04
+     460   -0.3085069933E+03   -0.15784E-04    0.27267E-04
+     470   -0.3085075548E+03   -0.70650E-04    0.47463E-03
+     -  10 steepest descent iterations performed
+     480   -0.3085079371E+03   -0.13631E-04    0.49454E-05
+     490   -0.3085080543E+03   -0.93457E-05    0.66391E-05
+     500   -0.3085081638E+03   -0.11611E-04    0.17551E-04
+     -  10 steepest descent iterations performed
+     510   -0.3085082614E+03   -0.74919E-05    0.52974E-05
+     520   -0.3085083659E+03   -0.12252E-04    0.27557E-04
+     -  10 steepest descent iterations performed
+     530   -0.3085084662E+03   -0.59062E-05    0.39021E-05
+     540   -0.3085085151E+03   -0.50759E-05    0.58968E-05
+     550   -0.3085086693E+03   -0.15256E-04    0.10781E-03
+     -  10 steepest descent iterations performed
+     560   -0.3085087885E+03   -0.52447E-05    0.17083E-05
+     570   -0.3085088380E+03   -0.44889E-05    0.32485E-05
+     580   -0.3085088735E+03   -0.26432E-05    0.43464E-05
+     590   -0.3085089564E+03   -0.10844E-04    0.45387E-04
+     -  10 steepest descent iterations performed
+     600   -0.3085090339E+03   -0.29055E-05    0.15315E-05
+     610   -0.3085090697E+03   -0.28538E-05    0.30808E-05
+     620   -0.3085090980E+03   -0.30116E-05    0.43503E-05
+     -  10 steepest descent iterations performed
+     630   -0.3085091347E+03   -0.39361E-05    0.19787E-05
+     -  10 steepest descent iterations performed
+     640   -0.3085091566E+03   -0.14327E-05    0.88335E-06
+     650   -0.3085092290E+03   -0.99923E-05    0.55582E-04
+     -  10 steepest descent iterations performed
+     660   -0.3085092963E+03   -0.22206E-05    0.64259E-06
+     670   -0.3085093089E+03   -0.16201E-05    0.66977E-06
+     680   -0.3085093406E+03   -0.23940E-05    0.10732E-04
+     -  10 steepest descent iterations performed
+     690   -0.3085093756E+03   -0.11424E-05    0.84910E-06
+     700   -0.3085093913E+03   -0.19757E-05    0.20769E-05
+     -  10 steepest descent iterations performed
+     710   -0.3085094119E+03   -0.15948E-05    0.11495E-05
+     720   -0.3085094320E+03   -0.23454E-05    0.47677E-05
+     -  10 steepest descent iterations performed
+     730   -0.3085094600E+03   -0.17408E-05    0.10956E-05
+     740   -0.3085094705E+03   -0.12018E-05    0.11945E-05
+     750   -0.3085096403E+03   -0.20348E-04    0.47555E-03
+     -  10 steepest descent iterations performed
+     760   -0.3085097729E+03   -0.17787E-05    0.76499E-06
+     770   -0.3085097873E+03   -0.11918E-05    0.72519E-06
+     780   -0.3085097989E+03   -0.16579E-05    0.20169E-05
+     -  10 steepest descent iterations performed
+     790   -0.3085098166E+03   -0.15702E-05    0.95898E-06
+     800   -0.3085098304E+03   -0.12570E-05    0.30479E-05
+     810   -0.3085099164E+03   -0.11670E-04    0.17937E-03
+     -  10 steepest descent iterations performed
+     820   -0.3085100043E+03   -0.19085E-05    0.59548E-06
+     830   -0.3085100202E+03   -0.14812E-05    0.86838E-06
+     840   -0.3085100306E+03   -0.11788E-05    0.15201E-05
+     850   -0.3085101022E+03   -0.12782E-04    0.12263E-03
+     -  10 steepest descent iterations performed
+     860   -0.3085101641E+03   -0.16201E-05    0.64815E-06
+     870   -0.3085101865E+03   -0.16559E-05    0.12897E-05
+     -  10 steepest descent iterations performed
+     880   -0.3085102004E+03   -0.17942E-05    0.14499E-05
+     -  10 steepest descent iterations performed
+     890   -0.3085102123E+03   -0.66623E-06    0.73733E-06
+     900   -0.3085102742E+03   -0.82712E-05    0.10470E-03
+     -  10 steepest descent iterations performed
+     910   -0.3085103355E+03   -0.11265E-05    0.36888E-06
+     920   -0.3085103438E+03   -0.12292E-05    0.66783E-06
+     -  10 steepest descent iterations performed
+     930   -0.3085103563E+03   -0.11179E-05    0.15252E-05
+     940   -0.3085103999E+03   -0.53348E-05    0.55619E-04
+     -  10 steepest descent iterations performed
+     950   -0.3085104457E+03   -0.14208E-05    0.37726E-06
+     960   -0.3085104528E+03   -0.80666E-06    0.47944E-06
+     970   -0.3085104748E+03   -0.33929E-05    0.13023E-04
+     -  10 steepest descent iterations performed
+     980   -0.3085104990E+03   -0.58990E-06    0.54673E-06
+     990   -0.3085105087E+03   -0.12173E-05    0.18227E-05
+     -  10 steepest descent iterations performed
+    1000   -0.3085105223E+03   -0.14646E-05    0.11607E-05
+     -  10 steepest descent iterations performed
+    1010   -0.3085105337E+03   -0.90226E-06    0.15528E-05
+    1020   -0.3085105623E+03   -0.33798E-05    0.27508E-04
+     -  10 steepest descent iterations performed
+    1030   -0.3085105941E+03   -0.12235E-05    0.48242E-06
+    1040   -0.3085105997E+03   -0.64677E-06    0.38129E-06
+    1050   -0.3085106255E+03   -0.48900E-05    0.25292E-04
+     -  10 steepest descent iterations performed
+    1060   -0.3085106523E+03   -0.51044E-06    0.32734E-06
+    1070   -0.3085106602E+03   -0.86882E-06    0.14296E-05
+     -  10 steepest descent iterations performed
+    1080   -0.3085106707E+03   -0.10591E-05    0.10597E-05
+     -  10 steepest descent iterations performed
+    1090   -0.3085106790E+03   -0.65389E-06    0.82837E-06
+    1100   -0.3085107044E+03   -0.20650E-05    0.27587E-04
+     -  10 steepest descent iterations performed
+    1110   -0.3085107309E+03   -0.84443E-06    0.42046E-06
+    1120   -0.3085107351E+03   -0.49415E-06    0.32802E-06
+    1130   -0.3085107556E+03   -0.31742E-05    0.20903E-04
+     -  10 steepest descent iterations performed
+    1140   -0.3085107767E+03   -0.43128E-06    0.23753E-06
+    1150   -0.3085107815E+03   -0.77443E-06    0.66533E-06
+     -  10 steepest descent iterations performed
+    1160   -0.3085107885E+03   -0.82853E-06    0.74181E-06
+     -  10 steepest descent iterations performed
+    1170   -0.3085107947E+03   -0.55065E-06    0.56728E-06
+    1180   -0.3085108121E+03   -0.22020E-05    0.17264E-04
+     -  10 steepest descent iterations performed
+    1190   -0.3085108303E+03   -0.48744E-06    0.21154E-06
+    1200   -0.3085108336E+03   -0.32804E-06    0.28415E-06
+    1210   -0.3085108485E+03   -0.23778E-05    0.13739E-04
+     -  10 steepest descent iterations performed
+    1220   -0.3085108638E+03   -0.25049E-06    0.17848E-06
+    1230   -0.3085108675E+03   -0.37243E-06    0.43156E-06
+     -  10 steepest descent iterations performed
+    1240   -0.3085108733E+03   -0.87838E-06    0.79404E-06
+     -  10 steepest descent iterations performed
+    1250   -0.3085108785E+03   -0.38086E-06    0.45603E-06
+    1260   -0.3085108881E+03   -0.97071E-06    0.60157E-05
+     -  10 steepest descent iterations performed
+    1270   -0.3085108991E+03   -0.35323E-06    0.23638E-06
+    1280   -0.3085109015E+03   -0.31174E-06    0.22908E-06
+    1290   -0.3085109238E+03   -0.38591E-05    0.41207E-04
+     -  10 steepest descent iterations performed
+    1300   -0.3085109449E+03   -0.25403E-06    0.11938E-06
+    1310   -0.3085109473E+03   -0.30167E-06    0.18134E-06
+     -  10 steepest descent iterations performed
+    1320   -0.3085109510E+03   -0.57625E-06    0.50945E-06
+     -  10 steepest descent iterations performed
+    1330   -0.3085109545E+03   -0.22020E-06    0.18173E-06
+    1340   -0.3085109636E+03   -0.13790E-05    0.74254E-05
+     -  10 steepest descent iterations performed
+    1350   -0.3085109732E+03   -0.19232E-06    0.90993E-07
+    1360   -0.3085109751E+03   -0.24189E-06    0.19827E-06
+     -  10 steepest descent iterations performed
+    1370   -0.3085109784E+03   -0.37718E-06    0.29420E-06
+     -  10 steepest descent iterations performed
+    1380   -0.3085109815E+03   -0.21347E-06    0.23976E-06
+    1390   -0.3085109905E+03   -0.14791E-05    0.79696E-05
+     -  10 steepest descent iterations performed
+    1400   -0.3085110003E+03   -0.26000E-06    0.79200E-07
+    1410   -0.3085110019E+03   -0.20542E-06    0.12853E-06
+    1420   -0.3085110182E+03   -0.12367E-05    0.28348E-04
+     -  10 steepest descent iterations performed
+    1430   -0.3085110342E+03   -0.26443E-06    0.11290E-06
+    1440   -0.3085110359E+03   -0.16940E-06    0.79659E-07
+    1450   -0.3085110395E+03   -0.57022E-06    0.12104E-05
+     -  10 steepest descent iterations performed
+    1460   -0.3085110440E+03   -0.15218E-06    0.94762E-07
+    1470   -0.3085110465E+03   -0.27018E-06    0.45002E-06
+     -  10 steepest descent iterations performed
+    1480   -0.3085110498E+03   -0.25236E-06    0.16887E-06
+    1490   -0.3085110527E+03   -0.41939E-06    0.66572E-06
+     -  10 steepest descent iterations performed
+    1500   -0.3085110568E+03   -0.26048E-06    0.15725E-06
+    1510   -0.3085110588E+03   -0.16688E-06    0.26860E-06
+    1520   -0.3085110871E+03   -0.34268E-05    0.94014E-04
+     -  10 steepest descent iterations performed
+    1530   -0.3085111162E+03   -0.36837E-06    0.11486E-06
+    1540   -0.3085111183E+03   -0.27185E-06    0.89787E-07
+    1550   -0.3085111211E+03   -0.33817E-06    0.53381E-06
+     -  10 steepest descent iterations performed
+    1560   -0.3085111250E+03   -0.22483E-06    0.17310E-06
+    1570   -0.3085111279E+03   -0.27403E-06    0.59047E-06
+     -  10 steepest descent iterations performed
+    1580   -0.3085111323E+03   -0.31834E-06    0.19657E-06
+     -  10 steepest descent iterations performed
+    1590   -0.3085111355E+03   -0.34339E-06    0.44404E-06
+     -  10 steepest descent iterations performed
+    1600   -0.3085111386E+03   -0.18165E-06    0.12686E-06
+    1610   -0.3085111476E+03   -0.11981E-05    0.76475E-05
+     -  10 steepest descent iterations performed
+    1620   -0.3085111575E+03   -0.33750E-06    0.88246E-07
+    1630   -0.3085111598E+03   -0.13746E-06    0.14798E-06
+    1640   -0.3085111698E+03   -0.36147E-05    0.82478E-05
+     -  10 steepest descent iterations performed
+    1650   -0.3085111810E+03   -0.29782E-06    0.12082E-06
+    1660   -0.3085111839E+03   -0.21294E-06    0.25840E-06
+    1670   -0.3085111909E+03   -0.79624E-06    0.35783E-05
+     -  10 steepest descent iterations performed
+    1680   -0.3085111998E+03   -0.39108E-06    0.12637E-06
+    1690   -0.3085112030E+03   -0.44718E-06    0.32124E-06
+Last System Error Message from Task 1:: Numerical result out of range
+Last System Error Message from Task 2:: Numerical result out of range
+Last System Error Message from Task 3:: Numerical result out of range
+Last System Error Message from Task 4:: Numerical result out of range
+Last System Error Message from Task 5:: Numerical result out of range
+Last System Error Message from Task 6:: Numerical result out of range
+0:Terminate signal was sent, status=: 15
+(rank:0 hostname:taub512 pid:7423):ARMCI DASSERT fail. ../../ga-5-1/armci/src/common/signaltrap.c:SigTermHandler():472 cond:0
+Last System Error Message from Task 0:: No such file or directory
+Last System Error Message from Task 7:: Numerical result out of range
+Last System Error Message from Task 8:: Numerical result out of range
+Last System Error Message from Task 9:: Numerical result out of range
+Last System Error Message from Task 10:: Numerical result out of range
+Last System Error Message from Task 11:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 1
+application called MPI_Abort(comm=0x84000003, 15) - process 2
+application called MPI_Abort(comm=0x84000003, 15) - process 5
+application called MPI_Abort(comm=0x84000003, 15) - process 6
+application called MPI_Abort(comm=0x84000005, 15) - process 0
+application called MPI_Abort(comm=0x84000003, 15) - process 3
+application called MPI_Abort(comm=0x84000003, 15) - process 9
+application called MPI_Abort(comm=0x84000003, 15) - process 8
+application called MPI_Abort(comm=0x84000003, 15) - process 10
+application called MPI_Abort(comm=0x84000003, 15) - process 11
+application called MPI_Abort(comm=0x84000003, 15) - process 4
+application called MPI_Abort(comm=0x84000003, 15) - process 7
+----------------------------------------
+Begin Torque Epilogue (Sun Mar 10 11:54:47 2013)
+Job ID:           384924.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6H-211-top
+Session:          7363
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=04:00:00
+Resources:        cput=1147:32:09,mem=353598984kb,vmem=679847344kb,walltime=04:00:07
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub362 taub363 taub364 taub377 taub380 taub385 taub387 taub406 taub409 taub410 taub411 taub431 taub440 taub441 taub442 taub454 taub456 taub485 taub487 taub488 taub492 taub496 taub497 taub512
+End Torque Epilogue
+----------------------------------------

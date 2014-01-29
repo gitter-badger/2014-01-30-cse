@@ -1,0 +1,666 @@
+----------------------------------------
+Begin Torque Prologue (Fri Mar 15 17:13:41 2013)
+Job ID:           389265.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O2-211-opt-es
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=02:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub297 taub308 taub313 taub314 taub315 taub316 taub318 taub320 taub333 taub336 taub351 taub353 taub356 taub357 taub358 taub370 taub377 taub386 taub387 taub388 taub390 taub391 taub399 taub463
+End Torque Prologue
+----------------------------------------
+ argument  1 = ./U6O2-211-opt-es.nw
+
+
+
+============================== echo of input deck ==============================
+title "Gamma-uranium (100) slab relaxation"
+echo
+
+permanent_dir ./perm
+scratch_dir   ./scratch
+
+restart U6O2-211-parctr
+
+memory 2500 mb
+
+nwpw
+  # Real-space discretization
+  simulation_cell
+    ngrid 64 96 420
+  end
+
+  # Spin multiplicity---quenched to 1 in the solid state
+  mult 3
+
+  # Band, k-point sampling, and parallelism
+  monkhorst-pack 4 4 1
+  np_dimensions 8 12 8
+  mapping 2
+
+  # Periodicity considerations
+  ewald_rcut 3.0
+  ewald_ncut 8
+
+  # Simulation parameters
+  #restricted    # DFT||ODFT||RESTRICTED||UNRESTRICTED
+  #spin_orbit .true.
+  xc pbe96
+  cutoff 90.0
+  loop 10 300
+end
+set nwpw:minimizer      2
+set nwpw:lcao_skip      .true.
+set nwpw:kbpp_ray       .true.
+set nwpw:kbpp_filter    .true.
+
+#       (211) gamma-uranium surface with surface displacements:	43.40%	-18.50%	and optimal X displacement.
+geometry	center	noautosym	noautoz	print
+	system	crystal
+	lat_a	2.97913
+	lat_b	4.86259
+	lat_c	20.42762
+	alpha	90.0d0
+	beta	90.0d0
+	gamma	90.0d0
+	end
+	U1	0.66667	0.50000	0.68916
+	U2	0.33333	0.00000	0.65024
+	U3	0.00000	0.50000	0.56876
+	U4	0.66667	0.00000	0.50000
+	U5	0.33333	0.50000	0.41852
+	U6	0.00000	0.00000	0.37960
+	O1	0.15909	0.75385	0.73808
+	O2	0.15686	0.24913	0.73819
+end
+task band energy
+
+constraints
+  clear
+end
+
+# Get the electronic characteristics of this geometry.
+nwpw
+  dos
+  efield
+  mulliken
+  #esp
+  #efieldgrad
+  #electrondensity
+end
+task pspw energy ignore
+set nwpw:dos:actlist 7:8
+task pspw energy ignore
+
+# Get the band structure.
+task band energy
+nwpw
+  virtual 16
+  brillouin_zone
+    zone_name bccpath
+    path bcc gamma h n gamma p h n
+  end
+  zone_structure_name bccpath
+end
+task band structure
+
+nwpw
+  virtual 16
+  dos-grid 5 5 5
+end
+task band dos
+
+# A.M.D.G.
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 6.1.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2012
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = taub463
+    program         = /home/davis68/bin/nwchem-dev
+    date            = Fri Mar 15 17:14:07 2013
+
+    compiled        = Wed_Oct_03_09:41:00_2012
+    source          = /home/davis68/nwchem/nwchem-src-2012-Aug-27/
+    nwchem branch   = Development
+    nwchem revision = 22805
+    ga revision     = 10079
+    input           = ./U6O2-211-opt-es.nw
+    prefix          = U6O2-211-parctr.
+    data base       = ./perm/U6O2-211-parctr.db
+    status          = restart
+    nproc           =      288
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =   81920001 doubles =    625.0 Mbytes
+    stack    =   81920001 doubles =    625.0 Mbytes
+    global   =  163840000 doubles =   1250.0 Mbytes (distinct from heap & stack)
+    total    =  327680002 doubles =   2500.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = ./perm
+  0 scratch   = ./scratch
+
+
+           Previous task information
+           -------------------------
+
+    Theory    = pspw                            
+    Operation = energy                        
+    Status    = fail                          
+    Qmmm      = F
+    Ignore    = T
+
+
+           Geometries in the database
+           --------------------------
+
+       Name                              Natoms  Last Modified
+       --------------------------------  ------  ------------------------
+    1  driverinitial                          8  Mon Mar 11 22:00:55 2013  
+    2  geometry                               8  Tue Mar 12 21:47:15 2013  
+    3  pspwgeometry                           8  Tue Mar 12 22:51:54 2013  
+
+  The geometry named "geometry" is the default for restart
+
+
+
+           Basis sets in the database
+           --------------------------
+
+  There are no basis sets in the database
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+                        Gamma-uranium (100) slab relaxation
+                        -----------------------------------
+
+  !!!!!!!!!  geom_3d NEEDS TESTING !!!!!!!!!! 
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 U1                  92.0000     1.98609660     2.43129500    14.07789860
+    2 U2                  92.0000     0.99303340     0.00000000    13.28285563
+    3 U3                  92.0000     0.00000000     2.43129500    11.61841315
+    4 U4                  92.0000     1.98609660     0.00000000    10.21381000
+    5 U5                  92.0000     0.99303340     2.43129500     8.54936752
+    6 U6                  92.0000     0.00000000     0.00000000     7.75432455
+    7 O1                   8.0000     0.47394979     3.66566347    15.07721777
+    8 O2                   8.0000     0.46730633     1.21141705    15.07946481
+
+      Lattice Parameters 
+      ------------------ 
+
+      lattice vectors in angstroms (scale by  1.889725989 to convert to a.u.)
+
+      a1=<   2.979   0.000   0.000 >
+      a2=<   0.000   4.863   0.000 >
+      a3=<   0.000   0.000  20.428 >
+      a=       2.979 b=      4.863 c=      20.428
+      alpha=  90.000 beta=  90.000 gamma=  90.000
+      omega=   295.9
+
+      reciprocal lattice vectors in a.u.
+
+      b1=<   1.116   0.000  -0.000 >
+      b2=<  -0.000   0.684  -0.000 >
+      b3=<   0.000   0.000   0.163 >
+
+      Atomic Mass 
+      ----------- 
+
+      U1               238.050800
+      U2               238.050800
+      U3               238.050800
+      U4               238.050800
+      U5               238.050800
+      U6               238.050800
+      O1                15.994910
+      O2                15.994910
+
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 U2               |   1 U1               |     5.18538  |     2.74399
+    3 U3               |   1 U1               |     5.97394  |     3.16127
+    3 U3               |   2 U2               |     5.87570  |     3.10929
+    4 U4               |   2 U2               |     6.09571  |     3.22571
+    4 U4               |   3 U3               |     6.49931  |     3.43929
+    5 U5               |   3 U3               |     6.09569  |     3.22570
+    5 U5               |   4 U4               |     5.87572  |     3.10930
+    6 U6               |   4 U4               |     5.97394  |     3.16127
+    6 U6               |   5 U5               |     5.18536  |     2.74398
+    7 O1               |   1 U1               |     4.14402  |     2.19292
+    8 O2               |   1 U1               |     4.13930  |     2.19042
+    8 O2               |   2 U2               |     4.21359  |     2.22974
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         12
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    2 U2               |   1 U1               |   7 O1               |   112.41
+    1 U1               |   8 O2               |   2 U2               |    76.74
+    3 U3               |   1 U1               |   7 O1               |    85.49
+    3 U3               |   1 U1               |   8 O2               |    85.42
+    7 O1               |   1 U1               |   8 O2               |    68.10
+    1 U1               |   2 U2               |   3 U3               |    65.03
+    1 U1               |   2 U2               |   4 U4               |    99.45
+    2 U2               |   8 O2               |   1 U1               |    76.74
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    3 U3               |   2 U2               |   8 O2               |    86.05
+    4 U4               |   2 U2               |   8 O2               |   147.06
+    3 U3               |   2 U2               |   1 U1               |    65.03
+    1 U1               |   3 U3               |   4 U4               |    87.42
+    1 U1               |   3 U3               |   5 U5               |   123.15
+    3 U3               |   2 U2               |   4 U4               |    65.73
+    2 U2               |   3 U3               |   5 U5               |   114.27
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    4 U4               |   2 U2               |   3 U3               |    65.73
+    2 U2               |   4 U4               |   5 U5               |   114.27
+    2 U2               |   4 U4               |   6 U6               |   123.15
+    4 U4               |   5 U5               |   3 U3               |    65.73
+    3 U3               |   4 U4               |   6 U6               |    87.42
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    3 U3               |   5 U5               |   4 U4               |    65.73
+    3 U3               |   5 U5               |   6 U6               |    99.45
+    4 U4               |   5 U5               |   6 U6               |    65.03
+    6 U6               |   5 U5               |   4 U4               |    65.03
+    1 U1               |   8 O2               |   2 U2               |    76.74
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:         29
+ ==============================================================================
+
+
+
+                         NWChem Constraints Module
+                         -------------------------
+ General Information
+ -------------------
+ fixed atoms                  :   1     2     3     4
+                                  5     6
+
+
+ no springs found
+ no springs found
+          **********************************************************
+          *                                                        *
+          *                   NWPW BAND Calculation                *
+          *                                                        *
+          *  [(bundled Grassman/Stiefel manifold implementation)]  *
+          *                                                        *
+          *         [ NorthWest Chemistry implementation ]         *
+          *                                                        *
+          *                version #1.10   01/31/03                *
+          *                                                        *
+          *  A pseudopotential plane-wave band structure program   *
+          *  with Brillouin zone sampling for optimizing crystals, *
+          *  slabs, and polymers.  Developed by Eric J. Bylaska    *
+          *  , Edoardo Apra, and Patrick Nichols.                  *
+          *                                                        *
+          **********************************************************
+     >>>  JOB STARTED       AT Fri Mar 15 17:14:07 2013  <<<
+          ================ input data ========================
+ random planewave guess, initial psi:U6O2-211-parctr.movecs                            
+ -   spin, nalpha, nbeta:                    2                   49                   47
+
+ input psi filename:./perm/U6O2-211-parctr.movecs
+Warning - Orthogonalization performed, spin,zone: 1   1
+        - error(before)=  0.686937E+01 (  0.421306E+02)
+        - error(after)=   0.710543E-14 (  0.490000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   1
+        - error(before)=  0.659277E+01 (  0.404072E+02)
+        - error(after)=   0.142109E-13 (  0.470000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   2
+        - error(before)=  0.686981E+01 (  0.421302E+02)
+        - error(after)=   0.710543E-14 (  0.490000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   2
+        - error(before)=  0.659312E+01 (  0.404069E+02)
+        - error(after)=   0.142109E-13 (  0.470000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   3
+        - error(before)=  0.686965E+01 (  0.421303E+02)
+        - error(after)=   0.710543E-14 (  0.490000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   3
+        - error(before)=  0.659341E+01 (  0.404066E+02)
+        - error(after)=   0.710543E-14 (  0.470000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   4
+        - error(before)=  0.686866E+01 (  0.421313E+02)
+        - error(after)=   0.000000E+00 (  0.490000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   4
+        - error(before)=  0.659268E+01 (  0.404073E+02)
+        - error(after)=   0.000000E+00 (  0.470000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   5
+        - error(before)=  0.687018E+01 (  0.421298E+02)
+        - error(after)=   0.000000E+00 (  0.490000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   5
+        - error(before)=  0.659253E+01 (  0.404075E+02)
+        - error(after)=   0.710543E-14 (  0.470000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   6
+        - error(before)=  0.686990E+01 (  0.421301E+02)
+        - error(after)=   0.000000E+00 (  0.490000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   6
+        - error(before)=  0.659231E+01 (  0.404077E+02)
+        - error(after)=   0.142109E-13 (  0.470000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   7
+        - error(before)=  0.687011E+01 (  0.421299E+02)
+        - error(after)=   0.710543E-14 (  0.490000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   7
+        - error(before)=  0.659355E+01 (  0.404064E+02)
+        - error(after)=   0.142109E-13 (  0.470000E+02)
+Warning - Orthogonalization performed, spin,zone: 1   8
+        - error(before)=  0.687013E+01 (  0.421299E+02)
+        - error(after)=   0.710543E-14 (  0.490000E+02)
+Warning - Orthogonalization performed, spin,zone: 2   8
+        - error(before)=  0.659221E+01 (  0.404078E+02)
+        - error(after)=   0.710543E-14 (  0.470000E+02)
+
+ Fixed ion positions:    1    2    3    4    5    6
+
+
+ number of processors used:             288
+ processor grid           :  36 x   1 x   8
+ parallel mapping         :     2d  hilbert
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBE96 (White and Bird) parameterization
+
+ elements involved in the cluster:
+      1: U     core charge:14.0  lmax=3
+             comment    : Parameterized (J.Chem. Phys. vol 128, 124507 (2008)) Troullier-Martins psp
+             pseudpotential type            :   0
+             highest angular component      :   3
+             local potential used           :   0
+             number of non-local projections:  15
+             cutoff =   1.421   1.602   2.400   1.250
+      2: O     core charge: 6.0  lmax=2
+             comment    : Parameterized (Chem.Phys.Lett., vol 322, page 447) Hamman psp
+             pseudpotential type            :   0
+             highest angular component      :   2
+             local potential used           :   2
+             number of non-local projections:   4
+             cutoff =   0.700   0.700   0.700
+
+ total charge:   0.000
+
+ atomic composition:
+     U   :  6     O   :  2
+
+ number of electrons: spin up=   49.00  spin down=   47.00 (fourier space)
+ number of orbitals:  spin up=      49  spin down=      47 (fourier space)
+
+ supercell:
+      lattice:    a1=<   5.630   0.000   0.000 >
+                  a2=<   0.000   9.189   0.000 >
+                  a3=<   0.000   0.000  38.603 >
+      reciprocal: b1=<   1.116   0.000  -0.000 >
+                  b2=<  -0.000   0.684  -0.000 >
+                  b3=<   0.000   0.000   0.163 >
+
+      lattice:    a=   5.630    b=   9.189     c=  38.603
+              alpha=  90.000 beta=  90.000 gamma=  90.000
+      volume :     1997.0
+      ewald summation: cut radius=    3.00  and  8
+                        madelung=-2.04206249
+
+ brillouin zone:
+      number of zone points:     8
+      weight=   0.125  ks=<   0.375   0.375   0.000 >, k=<   0.419   0.256  -0.000>
+      weight=   0.125  ks=<   0.125   0.375   0.000 >, k=<   0.140   0.256  -0.000>
+      weight=   0.125  ks=<  -0.125   0.375   0.000 >, k=<  -0.140   0.256  -0.000>
+      weight=   0.125  ks=<   0.375  -0.375   0.000 >, k=<   0.419  -0.256  -0.000>
+      weight=   0.125  ks=<   0.375   0.125   0.000 >, k=<   0.419   0.085  -0.000>
+      weight=   0.125  ks=<   0.125   0.125   0.000 >, k=<   0.140   0.085  -0.000>
+      weight=   0.125  ks=<   0.125  -0.125   0.000 >, k=<   0.140  -0.085  -0.000>
+      weight=   0.125  ks=<   0.375  -0.125   0.000 >, k=<   0.419  -0.085  -0.000>
+
+ computational grids:
+      density     cutoff=180.000  fft=  64x  96x 420(   230205 waves     6394 per task)
+      wavefnc   1 cutoff= 90.000  fft=  64x  96x 420(    81468 waves     2263 per task)
+      wavefnc   2 cutoff= 90.000  fft=  64x  96x 420(    81379 waves     2260 per task)
+      wavefnc   3 cutoff= 90.000  fft=  64x  96x 420(    81379 waves     2260 per task)
+      wavefnc   4 cutoff= 90.000  fft=  64x  96x 420(    81468 waves     2263 per task)
+      wavefnc   5 cutoff= 90.000  fft=  64x  96x 420(    81490 waves     2263 per task)
+      wavefnc   6 cutoff= 90.000  fft=  64x  96x 420(    81407 waves     2261 per task)
+      wavefnc   7 cutoff= 90.000  fft=  64x  96x 420(    81407 waves     2261 per task)
+      wavefnc   8 cutoff= 90.000  fft=  64x  96x 420(    81490 waves     2263 per task)
+
+ technical parameters:
+      time step=      5.80     ficticious mass=  400000.0
+      tolerance=.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      3000 (   10 inner    300 outer )
+
+
+
+= energy calculation =
+
+
+          ======== bundled Grassmann lmbfgs iteration ========
+     >>>  ITERATION STARTED AT Fri Mar 15 17:20:48 2013  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+     -  10 steepest descent iterations performed
+      10   -0.3144245405E+03   -0.42137E+01    0.10169E+02
+     -  10 steepest descent iterations performed
+      20   -0.3355675219E+03   -0.44665E+00    0.15080E+00
+     -  10 steepest descent iterations performed
+      30   -0.3381063518E+03   -0.11592E+00    0.26051E-01
+     -  10 steepest descent iterations performed
+      40   -0.3389299571E+03   -0.43889E-01    0.68163E-02
+     -  10 steepest descent iterations performed
+      50   -0.3392973567E+03   -0.22067E-01    0.36520E-02
+     -  10 steepest descent iterations performed
+      60   -0.3394953459E+03   -0.11909E-01    0.21538E-02
+     -  10 steepest descent iterations performed
+      70   -0.3396149218E+03   -0.75739E-02    0.15376E-02
+      80   -0.3397708970E+03   -0.49638E-02    0.68827E-02
+      90   -0.3398036721E+03   -0.40048E-02    0.66559E-03
+     100   -0.3398472740E+03   -0.31473E-02    0.24291E-02
+     110   -0.3398703063E+03   -0.15743E-02    0.78810E-03
+     120   -0.3398898151E+03   -0.25723E-02    0.10924E-02
+     -  10 steepest descent iterations performed
+     130   -0.3399083988E+03   -0.98934E-03    0.18759E-03
+     140   -0.3399251129E+03   -0.18711E-02    0.79181E-03
+     -  10 steepest descent iterations performed
+     150   -0.3399347401E+03   -0.56374E-03    0.21064E-03
+     160   -0.3399427079E+03   -0.89805E-03    0.75426E-03
+     -  10 steepest descent iterations performed
+     170   -0.3399504683E+03   -0.39136E-03    0.15591E-03
+     180   -0.3399558944E+03   -0.60926E-03    0.49150E-03
+     -  10 steepest descent iterations performed
+     190   -0.3399623762E+03   -0.39846E-03    0.25235E-03
+     200   -0.3399672885E+03   -0.53318E-03    0.62522E-03
+     -  10 steepest descent iterations performed
+     210   -0.3399738185E+03   -0.34743E-03    0.20567E-03
+     220   -0.3399783185E+03   -0.50860E-03    0.50950E-03
+     -  10 steepest descent iterations performed
+     230   -0.3399845999E+03   -0.38791E-03    0.27426E-03
+     240   -0.3399887542E+03   -0.40333E-03    0.44490E-03
+     -  10 steepest descent iterations performed
+     250   -0.3399943596E+03   -0.29150E-03    0.17489E-03
+     260   -0.3399976416E+03   -0.33570E-03    0.27081E-03
+     -  10 steepest descent iterations performed
+     270   -0.3400020042E+03   -0.26169E-03    0.17541E-03
+     280   -0.3400046238E+03   -0.23746E-03    0.21988E-03
+     290   -0.3400143838E+03   -0.39364E-03    0.30758E-02
+     -  10 steepest descent iterations performed
+     300   -0.3400178702E+03   -0.17576E-03    0.10984E-03
+     310   -0.3400192244E+03   -0.16613E-03    0.93671E-04
+     320   -0.3400216551E+03   -0.13480E-03    0.43182E-03
+     330   -0.3400237712E+03   -0.17414E-03    0.44998E-03
+     -  10 steepest descent iterations performed
+     340   -0.3400258332E+03   -0.20923E-03    0.63673E-04
+     -  10 steepest descent iterations performed
+     350   -0.3400268845E+03   -0.62282E-04    0.28107E-04
+     360   -0.3400286913E+03   -0.16203E-03    0.46065E-03
+     -  10 steepest descent iterations performed
+     370   -0.3400300285E+03   -0.69419E-04    0.28106E-04
+     380   -0.3400306443E+03   -0.85014E-04    0.63248E-04
+     -  10 steepest descent iterations performed
+     390   -0.3400314050E+03   -0.39262E-04    0.25988E-04
+     400   -0.3400320571E+03   -0.69075E-04    0.96191E-04
+     -  10 steepest descent iterations performed
+     410   -0.3400329030E+03   -0.47807E-04    0.22433E-04
+     420   -0.3400332711E+03   -0.48679E-04    0.37359E-04
+     -  10 steepest descent iterations performed
+     430   -0.3400338449E+03   -0.30797E-04    0.21879E-04
+     440   -0.3400343151E+03   -0.44396E-04    0.72319E-04
+     -  10 steepest descent iterations performed
+     450   -0.3400349458E+03   -0.36187E-04    0.19248E-04
+     460   -0.3400352201E+03   -0.34239E-04    0.30466E-04
+     470   -0.3400378558E+03   -0.23190E-03    0.34938E-02
+     -  10 steepest descent iterations performed
+     480   -0.3400387505E+03   -0.26585E-04    0.12815E-04
+     490   -0.3400389045E+03   -0.12309E-04    0.72746E-05
+     500   -0.3400392981E+03   -0.38513E-04    0.15977E-03
+     -  10 steepest descent iterations performed
+     510   -0.3400395876E+03   -0.16693E-04    0.79595E-05
+     520   -0.3400396987E+03   -0.13678E-04    0.16660E-04
+     530   -0.3400400676E+03   -0.35243E-04    0.33120E-03
+     -  10 steepest descent iterations performed
+     540   -0.3400404075E+03   -0.11986E-04    0.83720E-05
+     550   -0.3400405126E+03   -0.10014E-04    0.10833E-04
+     560   -0.3400406697E+03   -0.15090E-04    0.59051E-04
+     -  10 steepest descent iterations performed
+     570   -0.3400408482E+03   -0.98905E-05    0.83043E-05
+     580   -0.3400409626E+03   -0.13473E-04    0.26611E-04
+     -  10 steepest descent iterations performed
+     590   -0.3400411060E+03   -0.10876E-04    0.12465E-04
+     600   -0.3400412112E+03   -0.10191E-04    0.30623E-04
+     610   -0.3400418312E+03   -0.64695E-04    0.15610E-02
+     -  10 steepest descent iterations performed
+     620   -0.3400423661E+03   -0.14532E-04    0.54761E-05
+     630   -0.3400424769E+03   -0.86478E-05    0.77397E-05
+     640   -0.3400425485E+03   -0.56367E-05    0.11709E-04
+     650   -0.3400427799E+03   -0.41146E-04    0.25152E-03
+     -  10 steepest descent iterations performed
+     660   -0.3400430223E+03   -0.85975E-05    0.49425E-05
+     670   -0.3400431167E+03   -0.85938E-05    0.13682E-04
+     680   -0.3400432217E+03   -0.84006E-05    0.37046E-04
+     690   -0.3400434953E+03   -0.28116E-04    0.39455E-03
+     -  10 steepest descent iterations performed
+     700   -0.3400438066E+03   -0.13033E-04    0.53403E-05
+     710   -0.3400439118E+03   -0.99963E-05    0.11248E-04
+     720   -0.3400439984E+03   -0.81997E-05    0.19236E-04
+     730   -0.3400441602E+03   -0.24593E-04    0.13411E-03
+     -  10 steepest descent iterations performed
+     740   -0.3400443581E+03   -0.89368E-05    0.51991E-05
+     750   -0.3400444526E+03   -0.95843E-05    0.15531E-04
+     -  10 steepest descent iterations performed
+     760   -0.3400445396E+03   -0.72892E-05    0.78406E-05
+     770   -0.3400446782E+03   -0.21395E-04    0.98552E-04
+     -  10 steepest descent iterations performed
+     780   -0.3400448337E+03   -0.67895E-05    0.36794E-05
+     790   -0.3400448925E+03   -0.62576E-05    0.11261E-04
+     800   -0.3400451772E+03   -0.12481E-04    0.44090E-03
+     -  10 steepest descent iterations performed
+     810   -0.3400454409E+03   -0.79230E-05    0.86912E-05
+     820   -0.3400455107E+03   -0.43966E-05    0.49123E-05
+     830   -0.3400455804E+03   -0.92984E-05    0.25148E-04
+Last System Error Message from Task 1:: Numerical result out of range
+Last System Error Message from Task 2:: Numerical result out of range
+Last System Error Message from Task 3:: Numerical result out of range
+0:Terminate signal was sent, status=: 15
+(rank:0 hostname:taub463 pid:5345):ARMCI DASSERT fail. ../../ga-5-1/armci/src/common/signaltrap.c:SigTermHandler():472 cond:0
+Last System Error Message from Task 0:: Numerical result out of range
+Last System Error Message from Task 4:: Numerical result out of range
+Last System Error Message from Task 5:: Numerical result out of range
+Last System Error Message from Task 6:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 1
+Last System Error Message from Task 7:: Numerical result out of range
+Last System Error Message from Task 8:: Numerical result out of range
+Last System Error Message from Task 9:: Numerical result out of range
+Last System Error Message from Task 10:: Numerical result out of range
+Last System Error Message from Task 11:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 2
+     -  10 steepest descent iterations performed
+application called MPI_Abort(comm=0x84000005, 15) - process 0
+application called MPI_Abort(comm=0x84000003, 15) - process 5
+application called MPI_Abort(comm=0x84000003, 15) - process 3
+application called MPI_Abort(comm=0x84000003, 15) - process 4
+application called MPI_Abort(comm=0x84000003, 15) - process 6
+application called MPI_Abort(comm=0x84000003, 15) - process 11
+application called MPI_Abort(comm=0x84000003, 15) - process 10
+application called MPI_Abort(comm=0x84000003, 15) - process 9
+application called MPI_Abort(comm=0x84000003, 15) - process 8
+application called MPI_Abort(comm=0x84000003, 15) - process 7
+----------------------------------------
+Begin Torque Epilogue (Fri Mar 15 18:51:32 2013)
+Job ID:           389265.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U6O2-211-opt-es
+Session:          5282
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=02:00:00
+Resources:        cput=464:26:24,mem=104649548kb,vmem=587445100kb,walltime=01:37:51
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub297 taub308 taub313 taub314 taub315 taub316 taub318 taub320 taub333 taub336 taub351 taub353 taub356 taub357 taub358 taub370 taub377 taub386 taub387 taub388 taub390 taub391 taub399 taub463
+End Torque Epilogue
+----------------------------------------

@@ -1,0 +1,193 @@
+----------------------------------------
+Begin Torque Prologue (Thu Mar 21 04:47:19 2013)
+Job ID:           391877.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8H-110-opt-es
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=08:00:00
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub365 taub368 taub376 taub377 taub380 taub381 taub434 taub455 taub457 taub470 taub471 taub474 taub477 taub481 taub482 taub490 taub491 taub494 taub498 taub503 taub505 taub508 taub511 taub512
+End Torque Prologue
+----------------------------------------
+=>> PBS: job killed: walltime 28817 exceeded limit 28800
+Last System Error Message from Task 1:: Numerical result out of range
+Last System Error Message from Task 2:: Numerical result out of range
+Last System Error Message from Task 3:: Numerical result out of range
+Last System Error Message from Task 0:: Numerical result out of range
+Last System Error Message from Task 4:: Numerical result out of range
+Last System Error Message from Task 5:: Numerical result out of range
+Last System Error Message from Task 6:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 1
+Last System Error Message from Task 7:: Numerical result out of range
+Last System Error Message from Task 8:: Numerical result out of range
+Last System Error Message from Task 9:: Numerical result out of range
+Last System Error Message from Task 10:: Numerical result out of range
+Last System Error Message from Task 11:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 3
+application called MPI_Abort(comm=0x84000003, 15) - process 2
+application called MPI_Abort(comm=0x84000003, 15) - process 5
+application called MPI_Abort(comm=0x84000003, 15) - process 6
+application called MPI_Abort(comm=0x84000003, 15) - process 8
+application called MPI_Abort(comm=0x84000003, 15) - process 9
+application called MPI_Abort(comm=0x84000003, 15) - process 10
+application called MPI_Abort(comm=0x84000003, 15) - process 4
+application called MPI_Abort(comm=0x84000003, 15) - process 11
+application called MPI_Abort(comm=0x84000005, 15) - process 0
+application called MPI_Abort(comm=0x84000003, 15) - process 7
+Last System Error Message from Task 12:: Numerical result out of range
+Last System Error Message from Task 24:: Numerical result out of range
+Last System Error Message from Task 36:: Numerical result out of range
+Last System Error Message from Task 48:: Numerical result out of range
+Last System Error Message from Task 60:: Numerical result out of range
+Last System Error Message from Task 72:: Numerical result out of range
+application called MPI_Abort(comm=0x84000005, 15) - process 12
+application called MPI_Abort(comm=0x84000005, 15) - process 24
+application called MPI_Abort(comm=0x84000005, 15) - process 36
+application called MPI_Abort(comm=0x84000005, 15) - process 48
+application called MPI_Abort(comm=0x84000005, 15) - process 60
+application called MPI_Abort(comm=0x84000005, 15) - process 72
+Last System Error Message from Task 37:: Numerical result out of range
+Last System Error Message from Task 73:: Numerical result out of range
+Last System Error Message from Task 13:: Numerical result out of range
+Last System Error Message from Task 49:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 37
+Last System Error Message from Task 61:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 73
+Last System Error Message from Task 25:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 13
+application called MPI_Abort(comm=0x84000003, 15) - process 49
+application called MPI_Abort(comm=0x84000003, 15) - process 61
+application called MPI_Abort(comm=0x84000003, 15) - process 25
+Last System Error Message from Task 14:: Numerical result out of range
+Last System Error Message from Task 38:: Numerical result out of range
+Last System Error Message from Task 74:: Numerical result out of range
+Last System Error Message from Task 50:: Numerical result out of range
+Last System Error Message from Task 62:: Numerical result out of range
+Last System Error Message from Task 26:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 14
+application called MPI_Abort(comm=0x84000003, 15) - process 38
+application called MPI_Abort(comm=0x84000003, 15) - process 50
+application called MPI_Abort(comm=0x84000003, 15) - process 74
+application called MPI_Abort(comm=0x84000003, 15) - process 62
+application called MPI_Abort(comm=0x84000003, 15) - process 26
+Last System Error Message from Task 63:: Numerical result out of range
+Last System Error Message from Task 15:: Numerical result out of range
+Last System Error Message from Task 39:: Numerical result out of range
+Last System Error Message from Task 51:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 63
+application called MPI_Abort(comm=0x84000003, 15) - process 15
+Last System Error Message from Task 27:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 39
+application called MPI_Abort(comm=0x84000003, 15) - process 51
+Last System Error Message from Task 75:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 27
+application called MPI_Abort(comm=0x84000003, 15) - process 75
+Last System Error Message from Task 64:: Numerical result out of range
+Last System Error Message from Task 16:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 64
+Last System Error Message from Task 40:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 16
+Last System Error Message from Task 52:: Numerical result out of range
+Last System Error Message from Task 76:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 40
+application called MPI_Abort(comm=0x84000003, 15) - process 52
+Last System Error Message from Task 28:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 76
+application called MPI_Abort(comm=0x84000003, 15) - process 28
+Last System Error Message from Task 65:: Numerical result out of range
+Last System Error Message from Task 41:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 65
+application called MPI_Abort(comm=0x84000003, 15) - process 41
+Last System Error Message from Task 17:: Numerical result out of range
+Last System Error Message from Task 77:: Numerical result out of range
+Last System Error Message from Task 53:: Numerical result out of range
+Last System Error Message from Task 29:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 17
+application called MPI_Abort(comm=0x84000003, 15) - process 77
+application called MPI_Abort(comm=0x84000003, 15) - process 53
+application called MPI_Abort(comm=0x84000003, 15) - process 29
+Last System Error Message from Task 42:: Numerical result out of range
+Last System Error Message from Task 66:: Numerical result out of range
+Last System Error Message from Task 78:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 66
+application called MPI_Abort(comm=0x84000003, 15) - process 42
+Last System Error Message from Task 18:: Numerical result out of range
+Last System Error Message from Task 54:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 78
+application called MPI_Abort(comm=0x84000003, 15) - process 18
+Last System Error Message from Task 30:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 54
+application called MPI_Abort(comm=0x84000003, 15) - process 30
+Last System Error Message from Task 19:: Numerical result out of range
+Last System Error Message from Task 43:: Numerical result out of range
+Last System Error Message from Task 55:: Numerical result out of range
+Last System Error Message from Task 67:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 19
+application called MPI_Abort(comm=0x84000003, 15) - process 43
+Last System Error Message from Task 79:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 55
+application called MPI_Abort(comm=0x84000003, 15) - process 67
+application called MPI_Abort(comm=0x84000003, 15) - process 79
+Last System Error Message from Task 31:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 31
+Last System Error Message from Task 56:: Numerical result out of range
+Last System Error Message from Task 20:: Numerical result out of range
+Last System Error Message from Task 80:: Numerical result out of range
+Last System Error Message from Task 44:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 56
+application called MPI_Abort(comm=0x84000003, 15) - process 20
+Last System Error Message from Task 68:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 80
+application called MPI_Abort(comm=0x84000003, 15) - process 44
+application called MPI_Abort(comm=0x84000003, 15) - process 68
+Last System Error Message from Task 32:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 32
+Last System Error Message from Task 57:: Numerical result out of range
+Last System Error Message from Task 21:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 57
+application called MPI_Abort(comm=0x84000003, 15) - process 21
+Last System Error Message from Task 81:: Numerical result out of range
+Last System Error Message from Task 45:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 81
+application called MPI_Abort(comm=0x84000003, 15) - process 45
+Last System Error Message from Task 69:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 69
+Last System Error Message from Task 33:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 33
+Last System Error Message from Task 58:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 58
+Last System Error Message from Task 22:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 22
+Last System Error Message from Task 82:: Numerical result out of range
+Last System Error Message from Task 46:: Numerical result out of range
+Last System Error Message from Task 70:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 82
+application called MPI_Abort(comm=0x84000003, 15) - process 46
+application called MPI_Abort(comm=0x84000003, 15) - process 70
+Last System Error Message from Task 34:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 34
+Last System Error Message from Task 59:: Numerical result out of range
+Last System Error Message from Task 23:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 59
+application called MPI_Abort(comm=0x84000003, 15) - process 23
+Last System Error Message from Task 47:: Numerical result out of range
+Last System Error Message from Task 71:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 47
+application called MPI_Abort(comm=0x84000003, 15) - process 71
+Last System Error Message from Task 35:: Numerical result out of range
+application called MPI_Abort(comm=0x84000003, 15) - process 35
+----------------------------------------
+Begin Torque Epilogue (Thu Mar 21 12:47:43 2013)
+Job ID:           391877.taubm1.campuscluster.illinois.edu
+Username:         davis68
+Group:            npre_rizwan
+Job Name:         U8H-110-opt-es
+Session:          11575
+Limits:           ncpus=1,neednodes=24:ppn=12,nodes=24:ppn=12,walltime=08:00:00
+Resources:        cput=2302:42:48,mem=136083880kb,vmem=612443440kb,walltime=08:00:17
+Job Queue:        cse
+Account:          NPRE
+Nodes:            taub365 taub368 taub376 taub377 taub380 taub381 taub434 taub455 taub457 taub470 taub471 taub474 taub477 taub481 taub482 taub490 taub491 taub494 taub498 taub503 taub505 taub508 taub511 taub512
+End Torque Epilogue
+----------------------------------------
