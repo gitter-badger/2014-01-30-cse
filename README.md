@@ -1,6 +1,8 @@
 Software Carpentry Bootcamps
 ============================
 
+[![Join the chat at https://gitter.im/dlebauer/2014-01-30-cse](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dlebauer/2014-01-30-cse?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This repository's `gh-pages` branch is the starting point for a bootcamp website.
 It contains a template for your bootcamp's home page,
 and the shared lesson materials we have developed.
